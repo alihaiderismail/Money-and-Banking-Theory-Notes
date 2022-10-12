@@ -1,0 +1,3736 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\special{papersize=8.5in,11in}
+%\usepackage{palatino,amssymb,amsfonts,amsmath,latexsym,setspace}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+% \usepackage[dvips]{graphicx}
+
+\usepackage{fancyhdr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{lscape}
+% \usepackage{color}
+\usepackage{colortbl}
+ \usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subfig}
+% \usepackage{subcaption}
+\usepackage{sidecap}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{hyperref}
+
+
+\setcounter{MaxMatrixCols}{10}
+%  Chad's style file for nice paper format.
+%  Various ideas for this style are taken from
+%    -- Matthias Doepke and Michele Tertilt
+%    -- Tony Roberts
+
+% Hyperstuff
+\hypersetup{citecolor=ChadMagenta,linkcolor=ChadDarkBlue,urlcolor=ChadDarkBlue}
+
+% example file to change the style of LaTeX
+% first colour for latex or pdflatex
+%\ifx\pdfoutput\@undefined\usepackage[usenames,dvips]{color}
+% \else\usepackage[usenames,dvipsnames]{color}
+% and fix pdf colour problems
+% \IfFileExists{pdfcolmk.sty}{\usepackage{pdfcolmk}}{} 
+%\fi
+
+% Chad's colors:
+% See http://web.njit.edu/~kevin/rgb.txt.html for possibilities
+\definecolor{ChadDarkBlue}{rgb}{.1,0,.2}  
+\definecolor{ChadBlue}{rgb}{.1,.1,.5}  
+\definecolor{ChadRoyal}{rgb}{.2,.2,.8}  
+%\definecolor{ChadGreen}{rgb}{0,.35,.1}
+%\definecolor{ChadGreen}{rgb}{0,.5,.25}  % Too bright
+%\definecolor{ChadGreen}{rgb}{0,.4,.2}    % Still too bright
+\definecolor{ChadGreen}{rgb}{0,.4,0}    % Dark Green
+%\definecolor{ChadRed}{rgb}{.8,.1,.2}    % Too bright
+\definecolor{ChadRed}{rgb}{.5,0,.5}  % purple
+\definecolor{ChadMagenta}{rgb}{.6,0,.6}  % magenta
+\definecolor{webbrown}{rgb}{.1,0,.2}  % magenta
+
+%%% HYPERLINKS %%%%%%%%%%%%%%%%%%%%%
+\usepackage[figure,table]{hypcap}% Correct a problem with hyperref
+\urlstyle{rm} %so it doesn't use a typewriter font for url's.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
+% Fix title, sections, etc.
+
+\let\LaTeXtitle\title
+\renewcommand{\title}[1]{\LaTeXtitle{\color{ChadBlue}{\LARGE #1}}}
+\renewcommand{\abstractname}{\color{ChadBlue}Abstract}
+\renewcommand{\figurename}{\color{ChadBlue}Figure}
+\renewcommand{\tablename}{\color{ChadBlue}Table}
+
+\let\LaTeX@startsection\@startsection 
+\renewcommand{\@startsection}[6]{\LaTeX@startsection%
+{#1}{#2}{#3}{#4}{#5}{\color{ChadBlue}\raggedright #6}} 
+
+%% % Fix periods at end of section numbers
+%% \renewcommand \thesection {\@arabic\c@section.}
+%% \renewcommand\thesubsection   {\thesection\@arabic\c@subsection}%.}
+%% \renewcommand\thesubsubsection{\thesubsection \@arabic\c@subsubsection}%.}
+
+
+% Add a period *only* after Section and *only* in title, not cross ref
+% April 2017
+
+\renewcommand{\@seccntformat}[1]{%
+  \csname the#1\endcsname% Print sectional counter
+  \ifnum\pdfstrcmp{#1}{section}=0 .\fi% If \section, print .
+  \quad% Space between number and title
+}
+
+
+
+
+% Margin, Paragraph Setup
+
+%\textheight=21.5cm \textwidth=14.95cm \topmargin=-5.5mm
+%\oddsidemargin=8mm \evensidemargin=8mm
+\textheight=22.5cm 
+\textwidth=16.35cm 
+\topmargin=0mm
+\oddsidemargin=0mm 
+\evensidemargin=0mm
+%\setlength{\parindent}{0em} 
+%\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+%\setlength{\parsep}{0pt}
+
+
+% This is how to control linespacing using setspace
+% (\singlespacing or doublespacing just call this command)
+
+
+%% Setting up page headers
+
+\rhead[]{\thepage}
+\lhead[\thepage]{}
+\cfoot[]{} 
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\runningheads}[2]{
+   \chead[\color{ChadGreen}{\uppercase {\footnotesize #1}}]  % Author page header
+   {\color{ChadGreen}{\uppercase {\footnotesize #2}}}  % Short title
+  }
+
+% Make hyperlinks jump more accurately
+
+\newcommand{\org@hypertarget}{}
+\let\org@hypertarget\hypertarget
+\renewcommand{\hypertarget}[2]{%
+\Hy@raisedlink{\org@hypertarget{#1}{}}#2%
+}  
+
+
+% Spacing in Tables and Figures
+%\renewcommand{\tabcolsep}{1pt}   % space between columns
+\renewcommand{\arraystretch}{1.5} % space between rows
+\addtolength{\textfloatsep}{0pt} % space between floats and text
+\addtolength{\abovecaptionskip}{0pt} % space above caption
+\addtolength{\belowcaptionskip}{.15in} % space below caption
+
+\newcommand{\spc}[0]{\vspace{.1in}}
+\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\clr}[1]{{\color{ChadBlue} #1}}
+\newcommand{\boxeq}[1]{\boxed{\hspace{.25in} #1 \hspace{.25in}}} 
+
+\newcommand{\bb}[1]{\color{ChadBlue}{#1}}
+\newcommand{\clrg}[1]{\color{ChadGreen}{#1}}
+\newcommand{\gn}[1]{{\color{ChadGreen}{#1}}}
+\newcommand{\gr}[1]{\tiny\textcolor{green4}{#1}}
+\newcommand{\rd}[1]{\textcolor{ChadRed}{#1}}
+\newcommand{\rr}[1]{\textcolor{red}{#1}}
+\newcommand{\imp}[0]{$\Rightarrow \,$} % implies
+
+%% Shortcut commands
+\newcommand{\growth}[1]{\frac{\dot{#1}_t}{{#1}_t}}
+\newcommand{\prtl}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\prtlsec}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\commentno}[2]{\underset{\mbox{#2}}{#1}}
+% \newcommand{\comment}[2]{\underbrace{#1}_{\mbox{{\small \color{ChadGreen}#2}}}}
+\newcommand{\cn}[1]{\citet*{#1}}
+\newcommand{\cnp}[1]{(\citealt{#1})}  % (Jones 2002)
+\newcommand{\up}[0]{\uparrow \hspace{-.5ex}}  % \! is a negative thinspace
+\newcommand{\down}[0]{\downarrow \hspace{-.5ex}}
+\newcommand{\query}[1]{{\it \color{red}[??? #1]}}
+\newcommand{\Ex}[1]{\mbox{ }\mathbb{E}}
+
+% Use of Proof...
+\newcommand{\Proof}[2]{{\hspace{-\parindent} {\color{ChadGreen}\bf Proof of Proposition}~\ref{#1}.}
+{\color{ChadBlue} #2} \vspace{.1in}}
+\newcommand{\Prob}[1]{\mbox{\textnormal{Pr}} \, [#1] }
+\newcommand{\SubSubSection}[1]{\subsubsection{#1} \baselineskip=18pt}
+% \newcommand{\problem}[2]{\hspace{.1in} {{\color{ChadBlue}{\bf #1:} #2}}}
+\newcommand{\proptitle}[1]{\color{ChadBlue} \textnormal{(#1):}}
+
+%\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+%\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+% \newcommand{\definition}[1]{\mbox{\textnormal{Pr}} \, [#1] 
+
+% \newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+% For graphs of networks
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,backgrounds,positioning,fit,graphs.standard}%finish for graphs of networks
+
+\newtheorem{proposition}{\color{ChadGreen} Proposition}
+\newtheorem{definition}{\color{ChadGreen} Definition} 
+\newtheorem{corollary}{\color{ChadGreen} Corollary} 
+\newtheorem{theorem}{\color{ChadGreen} Proposition}
+\newtheorem{lemma}{\color{ChadGreen} Lemma}
+
+\newtheorem{problem}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+
+\newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}  % frac with large paren
+\input{tcilatex.tex}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing double
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Lecture 7: Search in Continuous-Time 
+\end_layout
+
+\begin_layout Section
+Why Search and Matching?
+\end_layout
+
+\begin_layout Standard
+Many assets can be illiquid, not only do to financial frictions, but also
+ because because the environment doesn't allow to materialize gains from
+ trade.
+ A natural reason is that there is a buyer out there, willing to trade with
+ a seller, but they cannot find each other.
+ A natural market where this friction is relevant is the housing market.
+ Search theory is naturally employed in many bilateral relations such as
+ labor markets and the marriage market.
+ However, a market as active as the FED funds market, operates in an 
+\begin_inset Quotes eld
+\end_inset
+
+over-the-counter
+\begin_inset Quotes erd
+\end_inset
+
+ fashion, where agents don't know how much other agents want to trade.
+ There is no centralized system that clears prices and quantities simultaneously
+, as for example, with the stock market.
+\end_layout
+
+\begin_layout Standard
+We will cover a couple of topics in this lecture.
+ First, I begin with a review of Poisson processes, as a starting point
+ to think of Continuous Time events.
+ Then I derive some basic Bellman equations.
+ Then we will study two applications: The first is a variation of the seminal
+ paper by Duffie Garleanu and Pedersen (2005, ECMA).
+ This is a seminal paper that studies search in (Non-Walrasian) in over-the-coun
+ter markets.
+ The theoretical contribution is to present an explicit computation of allocatio
+ns and prices in a setup with dynamic search and bargaining.
+ The model is used to account for a liquidity premium and volumes of trade.
+ The paper is a benchmark in several recent agendas, including work by Rob
+ Shimer, Pierre Olivier Weill and Semih Uslu.
+\end_layout
+
+\begin_layout Standard
+In the second part of the notes, I connect this model with the model of
+ money search of Lagos and Wright.
+\end_layout
+
+\begin_layout Section
+Preliminary: Poisson Processes
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+From Bernoulli to Poisson.
+
+\series default
+ Divide the real line into a sequence of time 
+\begin_inset Formula $t=\left\{ 1,2,3,...,\infty\right\} .$
+\end_inset
+
+ Assume that every periods, there is a chance of an occurrence of a given
+ event.
+ We let the random variable 
+\begin_inset Formula $N_{y}=1$
+\end_inset
+
+ when the event has occurred by time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ This function is a random variable because it is a function defined in
+ an underlying probability space.
+ We let that probability be, 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Because the process is Bernoulli, it is independent by definition.
+ Thus, the probability that an event has not occurred by period 
+\begin_inset Formula $t$
+\end_inset
+
+ is given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Pr\left\{ N_{t}=0\right\} =\left(1-p\right)^{t}
+\]
+
+\end_inset
+
+The chance that the event occurs exactly at time t+1 is:
+\begin_inset Formula 
+\[
+\Pr\left\{ N_{t+1}=1|N_{t}=0\right\} =\left(1-p\right)^{t}p.
+\]
+
+\end_inset
+
+Observe that 
+\begin_inset Formula $\Pr\left\{ N_{t+s}=0|N_{t}=0\right\} =\left(1-p\right)^{t}\left(1-p\right)^{t+s-t}=\left(1-p\right)^{t+s}=\Pr\left\{ N_{t+s}=0|N_{t}=0\right\} .$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, 
+\begin_inset Formula 
+\[
+\frac{\Pr\left\{ N_{t+s}=0|N_{t}=0\right\} }{\Pr\left\{ N_{t}=0\right\} }=\left(1-p\right)^{s}=\Pr\left\{ N_{s}=0\right\} .
+\]
+
+\end_inset
+
+This process is is stationary.
+\end_layout
+
+\begin_layout Standard
+Now, we want to study what happens as we divided the real line into a finer
+ and finer sets of points.
+ Thus, as we set 
+\begin_inset Formula $t=\left\{ \Delta,2\Delta,...\infty\right\} .$
+\end_inset
+
+ However, we study the probability in this problem in a particular way.
+ We cannot simply divide the real line into finer and finer points without
+ adjusting the probability.
+ Otherwise, as we continue doing so, we would eventually have infinite Bernoulli
+ trials in a single period.
+ Instead, we have to be more careful and specify a ratio for the probabilities:
+ we fix a constant 
+\begin_inset Formula 
+\[
+\lambda\Delta=p\left(\Delta\right)
+\]
+
+\end_inset
+
+Thus, as 
+\begin_inset Formula $\Delta\rightarrow0,$
+\end_inset
+
+ the probability shrinks, but the rate at which it does is constant.
+ The date can be divided into the number of intervals via:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t=\Delta n\left(\Delta,t\right).
+\]
+
+\end_inset
+
+Let's now compute the chances of seeing the event at a particular date:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Pr\left\{ N_{t}=1|N_{t-\Delta}=0\right\} =\left(1-p\left(\Delta\right)\right)^{n\left(\Delta,t\right)-\Delta}p\left(\Delta\right).
+\]
+
+\end_inset
+
+Thus, we write this expression as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(1-\lambda\Delta\right)^{n\left(\Delta,t\right)-\Delta}\lambda\Delta.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since as 
+\begin_inset Formula $\Delta\rightarrow0,$
+\end_inset
+
+ the probability of the event becomes a density, we can define the following
+ density:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f\left(t;\lambda\right)=\lim_{\Delta\rightarrow\infty}\frac{\left(1-\lambda\Delta\right)^{n\left(\Delta,t\right)-\Delta}\lambda}{\Delta}\Delta.
+\]
+
+\end_inset
+
+I'm skipping many steps from measure theory that prove the continuity of
+ probabilities.
+ For now, we can compute this object:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{t/\Delta}\left(1-\lambda\Delta\right)^{-\Delta}\lambda\\
+ & = & \left(\lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{1/\Delta}\right)^{t}\lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{-\Delta}
+\end{eqnarray*}
+
+\end_inset
+
+and by definition of e, we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ & = & \left(\lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{1/\Delta}\right)^{t}\lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{-\Delta}\lambda\\
+ & = & \lambda\exp\left(-\lambda t\right).
+\end{eqnarray*}
+
+\end_inset
+
+Let's integrate this density from zero to infinity:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{0}^{\infty}\lambda\exp\left(-\lambda t\right)dt=-\exp\left(-\lambda t\right)|_{0}^{\infty}=-0-\left(-1\right)=1.
+\]
+
+\end_inset
+
+This is the density of the probability that the event occurs at time t.
+ Naturally, the density of the event not occurring by 
+\begin_inset Formula $t$
+\end_inset
+
+ can be obtained in a similar way.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Connection with Poisson Distribution.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Poisson processes are understood as random 
+\begin_inset Formula $N\left(\omega\right)$
+\end_inset
+
+ variable taking values in 
+\begin_inset Formula $Z_{+}$
+\end_inset
+
+.
+ These are the only processes satisfying the conditions of independent increment
+s, stationarity and that expected number of arrivals in a given fraction
+ of time is constant.
+ The distribution of a poisson counting process is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P\left(N=k\right)=\frac{\lambda^{k}e^{-\lambda}}{k!}
+\]
+
+\end_inset
+
+A poisson processes is defined over the real line and there distribution,
+ namely the distribution of an at a point t of time is.
+ That is, it is exactly like the poisson counting process, except that we
+ affect the probability of the counting process by where we are on the real
+ line.
+ Thus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P\left(N_{t}=k\right)=\frac{\left(\lambda t\right)^{k}e^{-\lambda t}}{k!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Additional useful property of the poisson process is its additivity characterist
+ic; namely that X+Y poisson with rates 
+\begin_inset Formula $\lambda_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{y},$
+\end_inset
+
+ it holds that :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N_{t}^{1}+N_{t}^{2}\sim\text{Poisson}(\lambda_{x}+\lambda_{y})
+\]
+
+\end_inset
+
+The stopping time 
+\begin_inset Formula $\tau=\inf\left\{ s:N_{t+s}-N_{t}=1\right\} $
+\end_inset
+
+ has and exponential density with parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, —the same as the parameter of the Poisson process that generated the stopping
+ time:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau\sim\lambda\cdot\exp(-\lambda t)
+\]
+
+\end_inset
+
+so obviously the stopping time 
+\begin_inset Formula $\tau=\min(\tau_{1},\tau_{2})$
+\end_inset
+
+ for two independent poisson processes with rates 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ is associated with the 
+\begin_inset Formula $X_{1}+X_{2}$
+\end_inset
+
+ poisson random variable.
+ Therefore, its distribution is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau\sim\left(\lambda_{1}+\lambda_{2}\right)\cdot\exp(-\left(\lambda_{1}+\lambda_{2}\right)t)
+\]
+
+\end_inset
+
+Finally, 
+\begin_inset Formula $P\left[\tau=\tau_{1}\right]$
+\end_inset
+
+ is computed as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(\tau_{1}=t,N_{t}^{2}=0)=P(\tau_{1}=t)\cdot P(N_{t}^{2}=0)=\left(\lambda_{1}\cdot\exp(-\lambda_{1}t)\right)\cdot\exp\left(-\lambda_{2}t\right).
+\]
+
+\end_inset
+
+which is the probability that 
+\begin_inset Formula $N_{t}^{1}$
+\end_inset
+
+ jumps at t while 
+\begin_inset Formula $N_{t}^{2}$
+\end_inset
+
+ remains at 0.
+ Integrating over the whole domain yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{o}^{\infty}\left(\lambda_{1}\cdot\exp(-\lambda_{1}t)\right)\cdot\exp\left(-\lambda_{2}t\right)dt & = & \int_{o}^{\infty}\exp\left(-\lambda_{2}t\right)dt-\int_{o}^{\infty}\exp\left(-\left(\lambda_{1}+\lambda_{2}\right)t\right)\lambda_{1}dt\\
+ & = & \frac{\lambda_{1}}{\left(\lambda_{1}+\lambda_{2}\right)}
+\end{eqnarray*}
+
+\end_inset
+
+and to check that this is correct we look at 
+\begin_inset Formula $P\left[\tau=\tau_{1}\right]+P\left[\tau=\tau_{2}\right]$
+\end_inset
+
+, by symmetry:
+\begin_inset Formula 
+\[
+\frac{\lambda_{1}}{\left(\lambda_{1}+\lambda_{2}\right)}+\frac{\lambda_{2}}{\left(\lambda_{1}+\lambda_{2}\right)}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Critically, the time between two Poisson events is distributed exponential:
+\begin_inset Formula 
+\[
+\Pr\left[N_{t+\Delta}\ge N_{t}+1|N_{t}\right]=1-\exp\left(-\lambda\Delta\right).
+\]
+
+\end_inset
+
+We make use of this distribution repeatedly below.
+ The density is, of course, 
+\begin_inset Formula 
+\[
+f\left(N_{t+\Delta}\ge N_{t}+1|N_{t}\right)=1-\exp\left(-\lambda\Delta\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hamilton-Jacobi-Bellman Equation 
+\end_layout
+
+\begin_layout Paragraph
+Net present values in continuous time.
+\end_layout
+
+\begin_layout Standard
+We now move on to study the continuous time version of Bellman equations.
+ Let's begin first computing a net present value formula, without the maximizati
+on.
+ We try to compute:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{t}=\sum_{s=0}^{\infty}\beta^{t+s}U\left(c_{t+s}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{t+s}$
+\end_inset
+
+ is a known path.
+ We can conduct the following convenient change of variables and let 
+\begin_inset Formula $\beta=\exp\left(-\rho\right).$
+\end_inset
+
+ Thus, 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is approximately 
+\begin_inset Formula $1-\beta.$
+\end_inset
+
+ Thus, we can write the expression as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{t}=\sum_{s=0}^{\infty}\exp\left(-\rho\left(s\right)\right)U\left(c_{t+s}\right).
+\]
+
+\end_inset
+
+We want to make the same computations as time intervals, become smaller
+ and smaller, as we did with the Bernoulli example above.
+ Naturally, we need to weight utility by the length of the interval 
+\begin_inset Formula $\Delta$
+\end_inset
+
+, to make things consistent.
+ Thus, the value is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V\left(t,\Delta\right)=\sum_{s=0:\Delta:\infty}\exp\left(-\rho\left(t+s\right)\right)U\left(c_{t+s}\right)\Delta.
+\]
+
+\end_inset
+
+Taking the limit yields, by definition of Lebesgue integral, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{\Delta\rightarrow0}V\left(t,\Delta\right)=\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds.
+\]
+
+\end_inset
+
+From now on, abandon the notation that 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ for the time interval and we use it to compute derivatives.
+\end_layout
+
+\begin_layout Standard
+Now, we want to compute how the value changes as a function of calendar
+ time.
+ Thus, we compute:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{V\left(t+\Delta\right)-V\left(t\right)}{\Delta}.
+\]
+
+\end_inset
+
+Why are we interested in this object? Because it will be useful to characterize
+ Continuous Time problems that often do not have solutions in discrete time.
+ By definition we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t+\Delta\right)-V\left(t\right) & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds\\
+ & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds\\
+ & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{0}^{\infty}\exp\left(-\rho\left(z+\Delta\right)\right)U\left(c_{t+z}\right)dz
+\end{eqnarray*}
+
+\end_inset
+
+where the last line is a change of variables 
+\begin_inset Formula $z=s+\Delta.$
+\end_inset
+
+ Thus, we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V\left(t+\Delta\right)-V\left(t\right)=\left(1-\exp\left(-\rho\Delta\right)\right)\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds.
+\]
+
+\end_inset
+
+Then, we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{\Delta\rightarrow0}\frac{V\left(t+\Delta\right)-V\left(t\right)}{\Delta}=\lim_{\Delta\rightarrow0}\frac{\left(1-\exp\left(-\rho\Delta\right)\right)}{\Delta}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\Delta}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The next line just follows a number of definitions.
+ Thus, we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}=\lim_{\Delta\rightarrow0}\frac{\left(1-\exp\left(-\rho\Delta\right)\right)}{\Delta}\cdot\lim_{\Delta\rightarrow0}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{0}^{0}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\Delta}.
+\]
+
+\end_inset
+
+The last term can be evaluated via Leibnitz's rule.
+ First term, is the product of two limits.
+ Note that: 
+\begin_inset Formula 
+\[
+\lim_{\Delta\rightarrow0}\frac{\exp\left(-\rho\Delta\right)-1}{\Delta}\equiv\frac{\partial\exp\left(-\rho\Delta\right)}{\partial\Delta}|_{\Delta=0}=-\rho.
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{0}^{0}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\Delta} & \equiv & \frac{\partial\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\partial\Delta}|_{\Delta=0}\\
+ & = & \exp\left(-\rho\Delta\right)U\left(c_{t+\Delta}\right)|_{s=0}=U\left(c_{t}\right).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{V} & = & \rho\cdot\lim_{\Delta\rightarrow0}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-U\left(c_{t}\right)\rightarrow\\
+\rho V & = & \dot{V}+U\left(c_{t+s}\right).
+\end{eqnarray*}
+
+\end_inset
+
+I assumed to this point that 
+\begin_inset Formula $c$
+\end_inset
+
+ is a constant, then 
+\begin_inset Formula $V_{t}$
+\end_inset
+
+ is a constant, and we have that 
+\begin_inset Formula $\dot{V}=0$
+\end_inset
+
+.
+ In this case, we obtain: 
+\begin_inset Formula 
+\[
+V=U\left(c\right)/\rho.
+\]
+
+\end_inset
+
+This is nothing but the famous net present value function.
+ It's is the continuous-time analogue of 
+\begin_inset Formula $U\left(c\right)/\left(1-\beta\right)$
+\end_inset
+
+.
+ This approximation is exact for 
+\begin_inset Formula $\rho\rightarrow0$
+\end_inset
+
+—although the net-present value is undefined.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Exercise I.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+What if c
+\begin_inset Formula $_{t}$
+\end_inset
+
+ varies with time? Can you find the solution to 
+\begin_inset Formula $V$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Paragraph*
+
+\series bold
+Exercise II.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Derive the corresponding formula when the discount factor is time varying.
+\end_layout
+
+\begin_layout Paragraph
+When Consumption is a function of a State Variable.
+ 
+\end_layout
+
+\begin_layout Standard
+Assume now that 
+\begin_inset Formula $c$
+\end_inset
+
+ is a function of some variable 
+\begin_inset Formula $S$
+\end_inset
+
+ and a function of time as well, rather than a function of time only.
+ Thus 
+\begin_inset Formula $c_{t}=c\left(S_{t},t\right)$
+\end_inset
+
+.
+ In addition, assume that 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ is a known function of time, above.
+ In particular, we assume that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{S}_{t}=\mu\left(S_{t}\right)S_{t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, we define the value function as 
+\begin_inset Formula $V\left(S,t\right)$
+\end_inset
+
+ and do the same calculations as we did above.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t+\Delta\right)-V\left(S_{t},t\right)}{\Delta} & = & \lim_{\Delta\rightarrow0}\frac{\left(1-\exp\left(-\rho\Delta\right)\right)}{\Delta}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds\\
+ & \ldots & -\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\Delta}\\
+ & = & \lim_{\Delta\rightarrow0}\frac{\left(1-\exp\left(-\rho\Delta\right)\right)}{\Delta}\cdot\lim_{\Delta\rightarrow0}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c\left(S_{t+\Delta+s}\right)\right)ds\\
+ & \ldots & -\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(S_{s}\right)\right)ds}{\Delta}.
+\end{eqnarray*}
+
+\end_inset
+
+The term on the right-hand side remains identical.
+ The term on the left is slightly different:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t+\Delta\right)-V\left(S_{t+\Delta},t\right)+V\left(S_{t+\Delta},t\right)-V\left(S,t\right)}{\Delta} & = & \lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t+\Delta\right)-V\left(S_{t+\Delta},t\right)}{\Delta}\\
+ & \ldots & +\frac{V\left(S_{t+\Delta},t\right)-V\left(S,t\right)}{\Delta}\\
+ & = & \frac{\partial V\left(S_{t+\Delta},t+\Delta\right)}{\partial\Delta}|_{\Delta=0}+\frac{\partial V\left(S_{t+\Delta},t\right)}{\partial\Delta}|_{\Delta=0}.\\
+ & = & \dot{V}+V_{s}\dot{S}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, we obtain the following formula:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho V=U\left(c\left(S\right)\right)+V_{s}\dot{S}+\dot{V}.
+\]
+
+\end_inset
+
+When consumption is only a function of 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $V$
+\end_inset
+
+ is no longer a function of time—we need the time formula because it become
+ redundant.
+ Thus, we have: 
+\begin_inset Formula 
+\[
+\rho V=U\left(c\left(S\right)\right)+V_{s}\mu\left(S\right)S.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Example I.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $c\left(S\right)=\bar{c}\cdot S$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu\left(s\right)=\left(r-\bar{c}\right)\cdot S$
+\end_inset
+
+.
+ How do you interpret this terms? Assume 
+\begin_inset Formula $U$
+\end_inset
+
+ is a power utility: 
+\begin_inset Formula 
+\[
+U\left(C\right)=\frac{C^{1-\sigma}-1}{1-\sigma}.
+\]
+
+\end_inset
+
+Show that the value function is of the form:
+\begin_inset Formula 
+\[
+V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are undetermined coefficients.
+ 
+\end_layout
+
+\begin_layout Proof
+The proof is by Guess and Verify where I match coefficients:
+\begin_inset Formula 
+\[
+V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma}.
+\]
+
+\end_inset
+
+Note that under the conjecture:
+\begin_inset Formula 
+\[
+\rho V=\frac{\bar{c}^{1-\sigma}S^{1-\sigma}}{1-\sigma}+AS^{1-\sigma}\left(r-\bar{c}\right)-\frac{1}{1-\sigma}.
+\]
+
+\end_inset
+
+Grouping terms:
+\begin_inset Formula 
+\[
+\rho V=\frac{\left(\bar{c}^{1-\sigma}+\left(1-\sigma\right)\left(r-\bar{c}\right)A\right)}{1-\sigma}S^{1-\sigma}-\frac{1}{1-\sigma}
+\]
+
+\end_inset
+
+What if c
+\begin_inset Formula $_{t}$
+\end_inset
+
+ varies with time? Can you find the solution to 
+\begin_inset Formula $V$
+\end_inset
+
+? Thus, matching coefficients, we obtain:
+\begin_inset Formula 
+\[
+\rho A=\bar{c}^{1-\sigma}+\left(1-\sigma\right)\left(r-\bar{c}\right)A\rightarrow A=\frac{\bar{c}^{1-\sigma}}{\rho-\left(1-\sigma\right)\left(r-\bar{c}\right)}.
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $B=1/\rho$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+When Consumption is Maximized.
+ 
+\end_layout
+
+\begin_layout Standard
+What if consumption is actually maximized.
+ Since the HJB equation is valid for any path of 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+, optimal consumption will maximize:
+\begin_inset Formula 
+\[
+V=\max_{c}U\left(c\right)+V_{s}\mu\left(S,c\right)S+\dot{V}
+\]
+
+\end_inset
+
+if 
+\begin_inset Formula $\mu\left(S,c\right)$
+\end_inset
+
+ is a control variable.
+ This is true because the problem does not depend on past decisions—the
+ principle of optimality.
+ Hence, the reference to Richard Bellman.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Example II.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mu\left(s\right)=r\cdot S-c$
+\end_inset
+
+ but let 
+\begin_inset Formula $c$
+\end_inset
+
+ be now maximized.
+ Assume 
+\begin_inset Formula $U$
+\end_inset
+
+ is a power utility: 
+\begin_inset Formula 
+\[
+U\left(C\right)=\frac{C^{1-\sigma}-1}{1-\sigma}.
+\]
+
+\end_inset
+
+Show that 
+\begin_inset Formula 
+\[
+V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma},
+\]
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\frac{\rho-\left(1-\sigma\right)r}{\sigma}\right)^{-\sigma}$
+\end_inset
+
+ and 
+\begin_inset Formula $B=1/\rho$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The proof is by Guess and Verify where I match coefficients:
+\begin_inset Formula 
+\[
+V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma}.
+\]
+
+\end_inset
+
+Note that under the conjecture:
+\begin_inset Formula 
+\[
+U'\left(c\right)=V_{s}=AS^{-\sigma}\rightarrow c=\left(AS^{-\sigma}\right)^{-1/\sigma}=A^{-1/\sigma}S.
+\]
+
+\end_inset
+
+This implies that the solution to the previous example is identical, but
+ now must solve a fixed point.
+ Namely, it must be that 
+\begin_inset Formula $\bar{c}=A^{-1/\sigma}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Thus, this implies that 
+\begin_inset Formula $\bar{c}=A/\left(1-\sigma\right)$
+\end_inset
+
+ in the previous example.
+ Thus:
+\begin_inset Formula 
+\[
+\rho\frac{A}{1-\sigma}=\frac{A^{1-1/\sigma}}{1-\sigma}+rA-A^{1-1/\sigma}
+\]
+
+\end_inset
+
+Simplifying terms by dividing both sides by 
+\begin_inset Formula $A$
+\end_inset
+
+, we obtain:
+\begin_inset Formula 
+\[
+\frac{\rho}{1-\sigma}=\frac{\sigma}{1-\sigma}A^{-1/\sigma}+r,
+\]
+
+\end_inset
+
+and from here:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+A^{-1/\sigma}=\frac{\rho-\left(1-\sigma\right)r}{\sigma}.
+\]
+
+\end_inset
+
+The proof for 
+\begin_inset Formula $B$
+\end_inset
+
+ is the same as above.
+\end_layout
+
+\begin_layout Standard
+We can connect this term with the Euler Equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{c}=A^{-1/\sigma}\dot{S}=A^{-1/\sigma}\left(r-\bar{c}\right)S=A^{-1/\sigma}\frac{\sigma r-\rho+\left(1-\sigma\right)r}{\sigma}S=A^{-1/\sigma}\frac{r-\rho}{\sigma}S
+\]
+
+\end_inset
+
+The Euler equation will be derived from first principles later, but here
+ note that:
+\begin_inset Formula 
+\[
+\frac{\dot{c}}{c}=\frac{r-\rho}{\sigma}S.
+\]
+
+\end_inset
+
+We will encounter this Euler equation in multiple places.
+ 
+\end_layout
+
+\begin_layout Subsection
+HJB equation with Poisson Events
+\end_layout
+
+\begin_layout Paragraph
+Two Consecutive Events Cannot Happen.
+ 
+\end_layout
+
+\begin_layout Standard
+A first observation regards the possibility of two subsequent events.
+ Recall that the probability that the first Poisson event is exponential.
+ By independence, we can show:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Pr\left[N_{t+\Delta}\geq1|N_{t}=0\right]=1-\exp\left(-\lambda\Delta\right)
+\]
+
+\end_inset
+
+and likewise, the probability that two events happen is:
+\begin_inset Formula 
+\[
+\Pr\left[N_{t+\Delta}\geq2|N_{t}=0\right]=\int_{0}^{\Delta}\lambda\exp\left(-\lambda\tau\right)\cdot\left(1-\exp\left(-\lambda\left(\Delta-\tau\right)\right)\right)d\tau.
+\]
+
+\end_inset
+
+Then, consider:
+\begin_inset Formula 
+\[
+\lim_{\Delta\downarrow0}\frac{\Pr\left[N_{t+\Delta}\geq1\right]}{\Delta}=\lim_{\Delta\downarrow0}\frac{1-\exp\left(-\lambda\Delta\right)}{\Delta}=\lambda.
+\]
+
+\end_inset
+
+But now for 
+\begin_inset Formula $\Pr\left[N_{t+\Delta}\geq2|N_{t}=0\right]$
+\end_inset
+
+, notice that:
+\begin_inset Formula 
+\[
+\lim_{\Delta\downarrow0}\frac{\Pr\left[N_{t+\Delta}\geq2|N_{t}=0\right]}{\Delta}=\lim_{\Delta\downarrow0}\int_{0}^{\Delta}\left(1-\exp\left(-\lambda\tau\right)\right)\cdot\frac{\left(1-\exp\left(-\lambda\left(\Delta-\tau\right)\right)\right)}{\Delta}d\tau=0.
+\]
+
+\end_inset
+
+This can be verified since the term inside cannot blow up.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Consecutive Jumps.
+ 
+\end_layout
+
+\begin_layout Standard
+We now move on to Hamilton-Jacobi-Bellman equation, but allowing Jumps.
+ We compute:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V\left(t,X_{t}\right)=\mathbb{E}\left[\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds|X_{t}\right].
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{t+s}$
+\end_inset
+
+ is a Poisson process.
+ What do we mean by this? It's a process that switches value upon the realizatio
+n of a Poisson event.
+ We can think of 
+\begin_inset Formula $|X_{t}$
+\end_inset
+
+ as the conditioning over a state given by the value before the switch.
+ For example, 
+\begin_inset Formula $X_{t}\in\left\{ L,H\right\} $
+\end_inset
+
+ implies that there are only two states.
+ For simplicity, here I assume it takes high and low values, thus, 
+\begin_inset Formula $c=C\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We start with 
+\begin_inset Formula $X_{t}=H,$
+\end_inset
+
+ for simplicity.
+ The expectation refers to the current state.
+ We compute the value as before, regarding a short time interval.
+ We split the integral between two terms:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t,H\right) & = & \mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{0}=H\right]\\
+ & + & \exp\left(-\rho\Delta\right)\mathbb{E}\left[\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=H\right]|,X_{0}=H\right]\\
+ & + & \exp\left(-\rho\Delta\right)\mathbb{E}\left[\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=L\right]|,X_{0}=H\right].
+\end{eqnarray*}
+
+\end_inset
+
+Consider the probability of only one switch, ignoring the probabilities
+ of more than one switch by 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t,H\right) & = & \mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t+s}\right)\right)ds|X_{0}=H\right]\\
+ & + & \exp\left(-\rho\Delta\right)\exp\left(-\lambda\Delta\right)\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t+s}\right)\right)ds|X_{t+\Delta}=H\right]\\
+ & + & \exp\left(-\rho\Delta\right)\left(1-\exp\left(-\lambda\Delta\right)\right)\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=L\right]+O\left(\Delta\right).
+\end{eqnarray*}
+
+\end_inset
+
+Then, exploiting the Markovian structure:
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t,H\right) & = & \mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t+s}\right)\right)ds|X_{0}=H\right]\\
+ & + & \exp\left(-\left(\rho+\lambda\right)\Delta\right)V\left(t+\Delta,H\right)\\
+ & + & \exp\left(-\rho\Delta\right)\left(1-\exp\left(-\lambda\Delta\right)\right)V\left(t+\Delta,L\right)+O\left(\Delta\right).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We perform the same operation as before, subtracting 
+\begin_inset Formula $V\left(t+\Delta,H\right)$
+\end_inset
+
+ from both sides.
+ We obtain:
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t,H\right)-V\left(t+\Delta,H\right) & = & \mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t+s}\right)\right)ds|X_{0}=H\right]\\
+ & + & \left(\exp\left(-\left(\rho+\lambda\right)\Delta\right)-1\right)V\left(t+\Delta,H\right)+\exp\left(-\rho\Delta\right)\left(1-\exp\left(-\lambda\Delta\right)\right)V\left(t+\Delta,L\right)+O\left(\Delta\right).
+\end{eqnarray*}
+
+\end_inset
+
+Dividing by 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ and taking limits, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\Delta\downarrow0}\frac{V\left(t,H\right)-V\left(t+\Delta,H\right)}{\Delta} & = & \lim_{\Delta\downarrow0}\frac{\mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{0}=H\right]}{\Delta}\\
+ & + & \lim_{\Delta\downarrow0}\frac{\left(\exp\left(-\left(\rho+\lambda\right)\Delta\right)-1\right)}{\Delta}\lim_{\Delta\downarrow0}V\left(t+\Delta,H\right)\\
+ & + & \lim_{\Delta\downarrow0}\exp\left(-\rho\Delta\right)\lim_{\Delta\downarrow0}\frac{\left(1-\exp\left(-\lambda\Delta\right)\right)}{\Delta}\lim_{\Delta\downarrow0}V\left(t+\Delta,L\right)+\lim_{\Delta\downarrow0}\frac{O\left(\Delta\right)}{\Delta}.
+\end{eqnarray*}
+
+\end_inset
+
+From the same arguments used above, we arrive at:
+\begin_inset Formula 
+\[
+\rho V\left(t,H\right)=U\left(c\left(H\right)\right)+\lambda\left[V\left(t,L\right)-V\left(t,H\right)\right]+\dot{V},
+\]
+
+\end_inset
+
+and by analogy:
+\begin_inset Formula 
+\[
+\rho V\left(t,L\right)=U\left(c\left(L\right)\right)+\lambda\left[V\left(t,H\right)-V\left(t,L\right)\right]+\dot{V}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Exercise III.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+What if there is a state variable, show following the same steps that the
+ HJB equation becomes:
+\begin_inset Formula 
+\[
+\rho V\left(t,S,H\right)=U\left(c\left(X,S\right)\right)+V_{s}\mu_{s}+\lambda\left[V\left(t,S,L\right)-V\left(t,S,H\right)\right]+\dot{V},
+\]
+
+\end_inset
+
+and by analogy:
+\begin_inset Formula 
+\[
+\rho V\left(t,S,H\right)=U\left(c\left(X,S\right)\right)+V_{s}\mu_{s}+\lambda\left[V\left(t,S,H\right)-V\left(t,S,L\right)\right]+\dot{V}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Duffie, Garleanu, Pedersen (2005, Econometrica)
+\end_layout
+
+\begin_layout Subsection
+Simplified Model of Liquidity Premia
+\end_layout
+
+\begin_layout Itemize
+Consider an asset that pays of 
+\begin_inset Formula $1$
+\end_inset
+
+ unit of good per unit of time.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+asset holdings are 0 or 1
+\end_layout
+
+\begin_layout Itemize
+furthermore, the mass of the asset is less than 1/2
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There are two types of investors, with unity measure among all.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\ell$
+\end_inset
+
+-type: discounts holding the asset by the amount 
+\begin_inset Formula $\delta$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $h$
+\end_inset
+
+-type: no cost
+\end_layout
+
+\begin_layout Itemize
+agents can transfer utility
+\end_layout
+
+\begin_layout Itemize
+investors switch type according to a Poisson process with probability 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+each mass of agent is the same, since everyone is symmetric
+\end_layout
+
+\begin_layout Itemize
+we can modify the environment to make this probabilities asymmetric
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+When the agent switches type, they agent can go to a market and trade the
+ asset immediately.
+ Let's assume that when this happens, agents can sell assets, but if there
+ is excess demand in one market, the price of the asset corresponds to the
+ value of the side that has excess demand (for selling or buying the asset).
+\end_layout
+
+\begin_layout Standard
+By assumption, sellers must be indifferent between buying or not.
+ For starters, assume that every time agents switch, they can immediately
+ sell or buy the asset.
+ The value function for a high type that owns the asset is:
+\begin_inset Formula 
+\[
+\rho V\left(h,o\right)=U\left(1\right)+\lambda\left[V\left(\ell,o\right)-V\left(h,o\right)\right],
+\]
+
+\end_inset
+
+if the agent does not own the asset: 
+\begin_inset Formula 
+\[
+\rho V\left(h,n\right)=U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The value function captures the idea that when the agent becomes a low type,
+ and owns the asset, it will sell it.
+ Likewise, if it doesn't own the asset, it won't buy it when it becomes
+ a low type.
+ It must be the case that, because the market is Walrasian, and the asset
+ can be sold immediately, this agent must be indifferent between buying
+ and selling.
+ Hence, we obtain:
+\begin_inset Formula 
+\[
+V\left(h,n\right)=V\left(h,o\right)-P.
+\]
+
+\end_inset
+
+The condition for an equilibrium is that the agent be indifferent between
+ buying or not buying the asset.
+ This is because the asset is rationed.
+ Hence, the value for the low type must be:
+\begin_inset Formula 
+\[
+\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[\max\left\{ V\left(h,n\right),V\left(h,o\right)-P\right\} -V\left(\ell,n\right)\right],
+\]
+
+\end_inset
+
+but using the indifference condition above, this equation simplifies to:
+\begin_inset Formula 
+\[
+\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(h,n\right)-V\left(\ell,n\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since, by assumption, all low types sell the asset, and the agent will sell
+ it immediately, if he switches type, the low types must be related as follows:
+\begin_inset Formula 
+\[
+V\left(\ell,n\right)+P\leq V\left(\ell,o\right).
+\]
+
+\end_inset
+
+However, if indeed the asset is sold immediately—as we are in continuous
+ time.
+ Thus, it must be the case that 
+\begin_inset Formula $V\left(\ell,n\right)+P=V\left(\ell,o\right).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+We can subtract the first two valuation equations to obtain a single condition.
+ The condition is:
+\begin_inset Formula 
+\begin{eqnarray*}
+\rho\left(V\left(h,o\right)-V\left(h,n\right)\right) & = & U\left(1\right)-U\left(0\right)+\lambda\left(V\left(\ell,o\right)-V\left(h,o\right)-(V\left(\ell,n\right)-V\left(h,n\right))\right).
+\end{eqnarray*}
+
+\end_inset
+
+Using the relationship with 
+\begin_inset Formula $P$
+\end_inset
+
+, we obtain:
+\begin_inset Formula 
+\[
+P=\frac{U\left(1\right)-U\left(0\right)}{\rho}.
+\]
+
+\end_inset
+
+Thus, the ownership yields the same value regardless of the type switching
+ of types.
+ The ability to buy an sell a scarce asset, yields the valuation of the
+ highest marginal type in society: The value is discounted for time, 
+\begin_inset Formula $\rho$
+\end_inset
+
+, for the value of holding it—the asset cannot be burned or consumed.
+ 
+\end_layout
+
+\begin_layout Standard
+Hence, we obtain that the equilibrium in terms of value satisfies:
+\begin_inset Formula 
+\[
+\rho V\left(h,o\right)=U\left(1\right)+\lambda\left[V\left(\ell,n\right)+\lambda P-V\left(h,o\right)\right],
+\]
+
+\end_inset
+
+if the agent does not own the asset: 
+\begin_inset Formula 
+\[
+\rho V\left(h,n\right)=U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right],
+\]
+
+\end_inset
+
+while for the low state:
+\begin_inset Formula 
+\[
+\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(h,n\right)-V\left(\ell,n\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Subtracting the last two equations:
+\begin_inset Formula 
+\[
+V\left(h,n\right)-V\left(\ell,n\right)=\frac{\left(1-\delta\right)}{\rho}U\left(0\right).
+\]
+
+\end_inset
+
+Thus, 
+\begin_inset Formula 
+\[
+\rho V\left(h,o\right)=U\left(1\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)-P\right]+\lambda P,
+\]
+
+\end_inset
+
+then yields:
+\begin_inset Formula 
+\[
+V\left(h,o\right)=\frac{U\left(1\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right]}{\rho}=\frac{U\left(1\right)}{\rho}+\frac{\lambda}{\rho}\frac{\left(1-\delta\right)}{\rho}U\left(0\right).
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V\left(h,n\right)=V\left(h,o\right)-P=\frac{U\left(0\right)}{\rho}\left[1+\lambda\frac{\left(1-\delta\right)}{\rho}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Trading Frictions.
+ 
+\end_layout
+
+\begin_layout Standard
+Now consider the case where the asset cannot be sold immediately.
+ Rather, they can access the market with intensity 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ We obtain:
+\begin_inset Formula 
+\begin{eqnarray*}
+\rho V\left(h,o\right) & = & U\left(1\right)+\lambda\left[V\left(\ell,o\right)-V\left(h,o\right)\right]\\
+ &  & +\mu\underbrace{\left[\max\left\{ V\left(h,o\right),V\left(h,n\right)+P\right\} -V\left(h,o\right)\right]}_{\text{trading chance}}.
+\end{eqnarray*}
+
+\end_inset
+
+if the agent does not own the asset: 
+\begin_inset Formula 
+\[
+\rho V\left(h,n\right)=U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right]+\mu\left[\max\left\{ V\left(h,o\right)-P,V\left(h,n\right)\right\} -V\left(h,n\right)\right]
+\]
+
+\end_inset
+
+For the low type owning the asset, we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho V\left(\ell,o\right)=\delta U\left(1\right)+\lambda\left[V\left(\ell,o\right)-V\left(h,o\right)\right]+\mu\left[V\left(\ell,n\right)+P-V\left(\ell,o\right)\right].
+\]
+
+\end_inset
+
+Finally, we have the value of the low type that doesn't own the asset:
+\begin_inset Formula 
+\[
+\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right]+\mu\left[\max\left\{ V\left(n,o\right)-P,V\left(\ell,n\right)\right\} -V\left(\ell,n\right)\right].
+\]
+
+\end_inset
+
+Since again, the seller high type accessing the market must be indifferent
+ between having the asset or not (since the asset is scarce)
+\begin_inset Formula 
+\[
+P=V\left(h,o\right)-V\left(h,n\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, the value functions can be written as:
+\begin_inset Formula 
+\[
+\rho V\left(h,o\right)=U\left(1\right)+\lambda\left[V\left(\ell,o\right)-V\left(h,o\right)\right]
+\]
+
+\end_inset
+
+if the agent does not own the asset: 
+\begin_inset Formula 
+\[
+\rho V\left(h,n\right)=U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right].
+\]
+
+\end_inset
+
+For the low type owning the asset, we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho V\left(\ell,o\right)=\delta U\left(1\right)+\lambda\left[V\left(\ell,o\right)-V\left(h,o\right)\right]+\mu\left[V\left(h,o\right)-V\left(h,n\right)-\left(V\left(\ell,o\right)-V\left(\ell,n\right)\right)\right].
+\]
+
+\end_inset
+
+Finally, we have the value of the low type that doesn't own the asset:
+\begin_inset Formula 
+\[
+\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right]+\mu\left[\max\left\{ V\left(n,o\right)-P,V\left(\ell,n\right)\right\} -V\left(\ell,n\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Conjecture again that 
+\begin_inset Formula $\max\left\{ V\left(n,o\right)-P,V\left(\ell,n\right)\right\} =V\left(\ell,n\right).$
+\end_inset
+
+ Thus, we obtain:
+\begin_inset Formula 
+\[
+\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right].
+\]
+
+\end_inset
+
+We can solve this terms, as they are 4 equations with 4 unknowns:
+\begin_inset Formula 
+\[
+\left(\rho+\lambda\right)V\left(h,o\right)=U\left(1\right)+\lambda V\left(\ell,o\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\rho+\lambda\right)V\left(h,n\right)=U\left(0\right)+\lambda V\left(\ell,n\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\rho V\left(\ell,o\right)=\delta U\left(1\right)+\lambda\left[V\left(h,o\right)-V\left(\ell,o\right)\right]+\mu\left[V\left(h,o\right)-V\left(h,n\right)-\left(V\left(\ell,o\right)-V\left(\ell,n\right)\right)\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(h,n\right)-V\left(\ell,n\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We need to solve for the values now.
+ There are four unknowns and for equations.
+ Subtract the fourth from the third equation:
+\begin_inset Formula 
+\[
+\rho\left[V\left(\ell,o\right)-V\left(\ell,n\right)\right]=\delta\left[U\left(1\right)-U\left(0\right)\right]-\lambda\left[V\left(\ell,o\right)-V\left(\ell,n\right)-\left(V\left(h,o\right)-V\left(h,n\right)\right)\right]+\mu\left[V\left(h,o\right)-V\left(h,n\right)-\left(V\left(\ell,o\right)-V\left(\ell,n\right)\right)\right]
+\]
+
+\end_inset
+
+Grouping terms we obtain:
+\begin_inset Formula 
+\[
+\left[V\left(\ell,o\right)-V\left(\ell,n\right)\right]=\delta\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda+\mu\right)}+\frac{\lambda+\mu}{\rho+\lambda+\mu}\left(V\left(h,o\right)-V\left(h,n\right)\right).
+\]
+
+\end_inset
+
+Likewise from the first two equations:
+\begin_inset Formula 
+\[
+V\left(h,o\right)-V\left(h,n\right)=\frac{U\left(1\right)-U\left(0\right)}{\left(\rho+\lambda\right)}+\frac{\lambda}{\left(\rho+\lambda\right)}\left[V\left(\ell,o\right)-V\left(\ell,n\right)\right].
+\]
+
+\end_inset
+
+The system simplifies to a system of two equations and two unknowns.
+ Substituting in:
+\begin_inset Formula 
+\[
+V\left(h,o\right)-V\left(h,n\right)=\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda\right)}\left[1+\frac{\lambda\delta}{\rho+\lambda+\mu}\right]+\frac{\lambda}{\left(\rho+\lambda\right)}\frac{\left(\lambda+\mu\right)}{\left(\rho+\lambda+\mu\right)}\left[V\left(h,o\right)-V\left(h,n\right)\right].
+\]
+
+\end_inset
+
+Arranging term:
+\begin_inset Formula 
+\begin{eqnarray*}
+\left[\frac{\left(\rho+\lambda+\mu\right)\left(\rho+\lambda\right)-\lambda\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right]\left[V\left(h,o\right)-V\left(h,n\right)\right] & = & \frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda\right)}\left[\frac{\rho\left(\rho+\lambda\right)+\rho\left(\lambda+\mu\right)+\lambda\left(\lambda+\mu\right)-\lambda\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right]\\
+ & = & \frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda\right)}\left[\frac{\rho\left(\rho+\lambda\right)+\rho\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right].
+\end{eqnarray*}
+
+\end_inset
+
+The term:
+\begin_inset Formula 
+\[
+\left[\frac{\left(\rho+\lambda+\mu\right)-\lambda\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right]=\left[\frac{\rho\left(\rho+\lambda\right)+\rho\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally we arrive at:
+\begin_inset Formula 
+\[
+P=\left[V\left(h,o\right)-V\left(h,n\right)\right]=\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\rho}\left[\frac{\rho+\left(\delta+1\right)\lambda+\mu}{\rho+2\lambda+\mu}\right].
+\]
+
+\end_inset
+
+Observe several things: 
+\end_layout
+
+\begin_layout Enumerate
+The ability to sell the asset, impairs its value.
+ We can see this immediately because 
+\begin_inset Formula $P$
+\end_inset
+
+ in this case is less than one since 
+\begin_inset Formula $\delta<1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Also, note that as 
+\begin_inset Formula $\mu\rightarrow\infty$
+\end_inset
+
+, we are obtain the original value.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Exercise.
+ 
+\end_layout
+
+\begin_layout Standard
+Conduct the same analysis when the asset for the case where the asset is
+ in short supply.
+\end_layout
+
+\begin_layout Subsection
+The full Model
+\end_layout
+
+\begin_layout Itemize
+Set of investors with 1 risk free bank account.
+ Agent's have bounded wealth 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Over the counter market for a asset consols paying a unit of consumption
+ per year.
+\end_layout
+
+\begin_layout Itemize
+A fraction 
+\begin_inset Formula $s$
+\end_inset
+
+ was originally endowed with the bond.
+\end_layout
+
+\begin_layout Itemize
+Two types of investors:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+l-type: 
+\begin_inset Formula $\delta$
+\end_inset
+
+ cost in units of consumption of holding the asset.
+\end_layout
+
+\begin_layout Itemize
+h-type: no cost.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Investors are switch types at constant rates: 
+\begin_inset Formula $\lambda_{u},$
+\end_inset
+
+ intensity of switches from low to high types and 
+\begin_inset Formula $\lambda_{d}$
+\end_inset
+
+ the analog.
+\end_layout
+
+\begin_layout Itemize
+Thus the state-space is 
+\begin_inset Formula $\tau=\left\{ ho,hn,lo,\ln\right\} .$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Possible Interpretations
+\end_layout
+
+\begin_layout Standard
+Here is a set of possible interpretations to the model, regarding what the
+ preference shocks could represent:
+\end_layout
+
+\begin_layout Itemize
+Low Liquidity.
+\end_layout
+
+\begin_layout Itemize
+High Financing Costs.
+\end_layout
+
+\begin_layout Itemize
+Hedging reasons to sell the Asset.
+\end_layout
+
+\begin_layout Itemize
+Relative Tax advantages.
+\end_layout
+
+\begin_layout Itemize
+Lower Personal use of the Asset (Housing for example) 
+\end_layout
+
+\begin_layout Paragraph*
+Demographic Accounting
+\end_layout
+
+\begin_layout Standard
+Because at all times the populations is constant:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{ho}(t)+%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(t)+%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)+%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{ln}(t)=1
+\]
+
+\end_inset
+
+and since the amount of assets are also constant:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{ho}(t)+%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)=s.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The last condition is very important to determine if the market stays long
+ or short.
+\end_layout
+
+\begin_layout Paragraph*
+Meetings
+\end_layout
+
+\begin_layout Itemize
+Two investors meet at rate 
+\begin_inset Formula $\lambda,$
+\end_inset
+
+ uniform across investors.
+\end_layout
+
+\begin_layout Itemize
+Investors bargain sequentially as find each other.
+\end_layout
+
+\begin_layout Itemize
+Investors meet market makers with intensity 
+\begin_inset Formula $\rho$
+\end_inset
+
+ which can be interpreted as the sum of intensity investors.
+\end_layout
+
+\begin_layout Itemize
+Market makers have a particular ease to meet investors.
+\end_layout
+
+\begin_layout Itemize
+Over the Counter Markets with no intermediaries are treated as 
+\begin_inset Formula $\rho=0.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, the measurability constraints satisfy:
+\begin_inset Formula 
+\[
+\dot{%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+}_{lo}(t)=-(2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(t)%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)+\rho%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{m}(t))-\lambda_{u}%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)+\lambda_{d}%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{ho}(t),
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{m}(t)=min\{%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t),%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(t)\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+An image is worth...
+\end_layout
+
+\begin_layout Standard
+The following picture summerizes the Meeting and Demographic structure:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Diagram_DGP.pdf
+	scale 50
+	rotateAngle 270
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Meetings and Demographic Structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Market Makers
+\end_layout
+
+\begin_layout Itemize
+In equilibrium, low types want to sell and high types want to buy.
+\end_layout
+
+\begin_layout Itemize
+When agents meet, they bargain over the prices.
+ Similarly, investors meet marketmakers and bargain.
+\end_layout
+
+\begin_layout Itemize
+Investors bargaining power depends on outside options.
+\end_layout
+
+\begin_layout Itemize
+Automatic Resolution of Bargaining Problem.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Demographic Accounting
+\end_layout
+
+\begin_layout Standard
+We guess that there is trade from low-type with held assets to high types
+ with no assets.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+}_{lo}(t)=-(2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(t)%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)+\rho%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{m}(t))-\lambda_{u}%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)+\lambda_{d}%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{ho}(t),
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+}_{hn}(t)=-(2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(t)%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)+\rho%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{m}(t))+\lambda_{u}u%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{ln}(t)-\lambda_{d}%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+}_{ho}(t)=(2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(t)%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)+\rho%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{m}(t))+\lambda_{u}%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)-\lambda_{d}%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{ho}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+}_{ln}(t)=(2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(t)%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(t)+%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{m}(t))-\lambda_{u}%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{ln}(t)+\lambda_{d}%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(t).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The elements in each equation refer to trading and intrinsic change of types.
+\end_layout
+
+\begin_layout Paragraph
+Equilibrium
+\end_layout
+
+\begin_layout Paragraph
+Main Result
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proposition}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+Proposition 1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ There exists a unique constant steady-state solution to (1)–(6).
+ From any initial condition 
+\begin_inset Formula $%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+(0)\in\lbrack0,1]^{4}$
+\end_inset
+
+ satisfying (1) and (2), the unique solution 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%TCIMACRO{
+\backslash
+U{b5}}%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%BeginExpansion
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%EndExpansion
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+(t) to (3)–(6) converges to the steady state as 
+\begin_inset Formula $t\rightarrow\infty$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proposition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Sketch of the Proof.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+The Agent's Problem
+\end_layout
+
+\begin_layout Standard
+We now look at conditions that induce trade.
+ The previous section assumed that there is trade
+\end_layout
+
+\begin_layout Standard
+An agent's problem consists on:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U(W_{t},\sigma(t),t)=\sup_{C,\theta},E_{t}\int_{0}^{\infty}e^{-rs}dC_{t+s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+s.t.
+ 
+\begin_inset Formula 
+\[
+dW_{t}=rW_{t}dt-dC_{t}+\theta_{t}\left(1-\delta I_{\left(\sigma^{\theta}\left(t\right)=lo\right)}\right)dt-\hat{P}_{t}d\theta_{t}
+\]
+
+\end_inset
+
+this problem can be written in recursive form and will satisfy:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V(t)(t)=\sup_{\theta}E_{t}\left[\int_{t}^{\infty}e^{-r(s-t)}\left(1-\delta I_{\left(\sigma^{\theta}\left(s\right)=lo\right)}\right)ds-e^{-r(s-t)}\hat{P}_{\theta}d\theta\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\hat{P}_{\theta}\in\left\{ P_{t},A_{t},B_{t}\right\} ,$
+\end_inset
+
+ and is the price that a particular agent can have access to.
+\end_layout
+
+\begin_layout Paragraph*
+In the Value Functions
+\end_layout
+
+\begin_layout Standard
+To compute the time derivative of the value functions we use our digression
+ on the poisson processes.
+ For example, let's concentrate on the second of these equations:
+\begin_inset Formula 
+\begin{eqnarray*}
+V_{ln} & = & E_{t}\left[e^{-r(\tau_{i}-t)}\left(V_{hn}\right)\right]\\
+ & = & \int_{t}^{\infty}e^{-r(\tau_{i}-t)}\left(V_{hn}\right)\lambda_{d}\exp\left(-\lambda_{d}(\tau-t)\right)d\tau\\
+ & = & \lambda_{d}V_{hn}\int_{t}^{\infty}e^{-\left(r+\lambda_{d}\right)(\tau_{i}-t)}d\tau
+\end{eqnarray*}
+
+\end_inset
+
+so deriving with respect to time:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{V}_{ln} & = & -\lambda_{d}V_{hn}+\left(r+\lambda_{d}\right)V_{ln}\\
+ & = & rV_{ln}-\lambda_{d}\left(V_{hn}-V_{ln}\right)
+\end{eqnarray*}
+
+\end_inset
+
+The third equation is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+V_{ho} & = & E_{t}\left[\int_{t}^{\tau_{l}}e^{-r(s-t)}ds+e^{-r(\tau_{i}-t)}\left(V_{lo}\right)\right]\\
+ & = & E_{t}\left[-\frac{1}{r}e^{-r(\tau_{l}-t)}+\frac{1}{r}e^{-r(t-t)}+e^{-r(\tau_{i}-t)}\left(V_{lo}\right)\right]\\
+ & = & E_{t}\left[\frac{1}{r}e^{-r(t-t)}+\left(V_{lo}-\frac{1}{r}\right)e^{-r(\tau_{l}-t)}\right]\\
+ & = & \int_{t}^{\infty}\left[\frac{1}{r}e^{-r(t-t)}-\frac{1}{r}e^{-r(\tau_{l}-t)}+\left(V_{lo}\right)e^{-r(\tau_{l}-t)}\right]\lambda_{d}e^{-\lambda_{d}(\tau_{l}-t)}d\tau_{l}
+\end{eqnarray*}
+
+\end_inset
+
+so deriving with respect to time, by direct analogy of the second equation
+ yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}_{ho}=rV_{ho}-\lambda_{d}(V_{lo}-V_{ho})-1
+\]
+
+\end_inset
+
+The tricky part in this step is to obtain the -1 term in the LHS.
+ This comes from the fact that the term 
+\begin_inset Formula $\frac{1}{r}e^{-r(t-t)}$
+\end_inset
+
+ has to be derived for each t.
+ Because the second one yields the 
+\begin_inset Formula $rV_{ho}$
+\end_inset
+
+ term, the firs one yields the -1 term.
+\end_layout
+
+\begin_layout Standard
+The last value function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{hn}=E_{t}\left[e^{-r(\tau_{l}-t)}V_{\ln}I\left(\tau_{l}=\tau\right)+e^{-r(\tau_{i}-t)}\left(V_{ho}-P\right)I\left(\tau_{i}=\tau\right)+e^{-r(\tau_{m}-t)}\left(V_{ho}-B\right)I\left(\tau_{m}=\tau\right)\right]
+\]
+
+\end_inset
+
+may be broken apart by using the indicator functions as event probabilities.
+ We've seen in the Poisson Processes digression that the probabilities of
+ this events are defined by the ratio of the poisson rates.
+ Also, the events that a stopping time occurs before another are independent
+ of time.
+ This property is a result of the independence of increments in the original
+ poisson process which implies the independence of the occurrence of the
+ stopping time.
+ Thus, that a stopping time occurs before another is independent of the
+ point were we start the process.
+ Hence, the problem may be written as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ & = & E_{t}\left[e^{-r(\tau_{l}-t)}V_{\ln}|\tau_{l}=\tau]\frac{\lambda_{d}}{\lambda_{d}+2\lambda\mu_{hn}+\rho}\right]+\\
+ &  & E_{t}\left[e^{-r(\tau_{i}-t)}\left(V_{ho}-P\right)|\tau_{i}=\tau\right]\frac{2\lambda\mu_{hn}}{\lambda_{d}+2\lambda\mu_{hn}+\rho}\\
+ &  & +E_{t}\left[e^{-r(\tau_{m}-t)}\left(V_{ho}-B\right)|\tau_{m}=\tau\right]\frac{\rho}{\lambda_{d}+2\lambda\mu_{hn}+\rho}
+\end{eqnarray*}
+
+\end_inset
+
+Again deriving the terms inside the expectation with respect to time yields:
+ 
+\begin_inset Formula 
+\[
+rV_{hn}+\left(\lambda_{d}+2\lambda\mu_{hn}+\rho\right)V_{hn}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+because the poisson rate of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\lambda_{d}+2\lambda\mu_{hn}+\rho\right).$
+\end_inset
+
+ The conditional rate of 
+\begin_inset Formula $\tau_{l}|\tau_{l}=\tau$
+\end_inset
+
+ has to be that of 
+\begin_inset Formula $\tau,$
+\end_inset
+
+ so because this density is 
+\begin_inset Formula 
+\[
+\left(\lambda_{d}+2\lambda\mu_{hn}+\rho\right)e^{-\left(\lambda_{d}+2\lambda\mu_{hn}+\rho\right)\left(\tau-t\right)}
+\]
+
+\end_inset
+
+(see above digression on Poisson rates), then by direct application of Leibnitz
+ rule:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}_{hn}=rV_{hn}-\lambda_{d}\left(V_{\ln}-V_{hn}\right)-2\lambda\mu_{hn}\left(\left(V_{ho}-P\right)-V_{hn}\right)-\rho V_{hn}\left(\left(V_{ho}-B\right)-V_{hn}\right)
+\]
+
+\end_inset
+
+Now we turn to the first of the value Functions:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{lo}=E_{t}\left[\int_{t}^{\tau}e^{-r(s-t)}\left(1-\delta\right)ds+e^{-r(\tau_{l}-t)}V_{ho}I\left(\tau_{l}=\tau\right)+e^{-r(\tau_{i}-t)}\left(V_{\ln}+P\right)I\left(\tau_{i}=\tau\right)+e^{-r(\tau_{m}-t)}\left(V_{\ln}+B\right)I\left(\tau_{m}=\tau\right)\right]
+\]
+
+\end_inset
+
+we can simply use an analog argument for every term here as we followed
+ in the previous equation to obtain the derivative w.r.t time of this equation,
+ the result is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{lo}=rV_{lo}-\lambda_{u}\left(V_{ho}-V_{lo}\right)-2\lambda\mu_{hn}\left(V_{\ln}+P-V_{lo}\right)-\rho\left(V_{\ln}+B-V_{lo}\right)-\left(1-\delta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+More Intuitively
+\end_layout
+
+\begin_layout Standard
+We can re-express the agent's problem as a set of Bellman equations: Value
+ functions can be written in a more natural way:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{lo}=E_{t}\left[\int_{t}^{\tau}e^{-r(s-t)}\left(1-\delta\right)ds+e^{-r(\tau_{l}-t)}V_{ho}I\left(\tau_{l}=\tau\right)+e^{-r(\tau_{i}-t)}\left(V_{\ln}+P\right)I\left(\tau_{i}=\tau\right)+e^{-r(\tau_{m}-t)}\left(V_{\ln}+B\right)I\left(\tau_{m}=\tau\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{ln}=E_{t}\left[e^{-r(\tau_{i}-t)}\left(V_{hn}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{ho}=E_{t}\left[\int_{t}^{\tau_{l}}e^{-r(s-t)}ds+e^{-r(\tau_{i}-t)}\left(V_{lo}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{hn}=E_{t}\left[e^{-r(\tau_{l}-t)}V_{\ln}I\left(\tau_{l}=\tau\right)+e^{-r(\tau_{i}-t)}\left(V_{ho}-P\right)I\left(\tau_{i}=\tau\right)+e^{-r(\tau_{m}-t)}\left(V_{ho}-B\right)I\left(\tau_{m}=\tau\right)\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tau=\min\left\{ \tau_{l},\tau_{m},\tau_{i}\right\} .$
+\end_inset
+
+And 
+\begin_inset Formula $\tau_{l},\tau_{i},\tau_{m}$
+\end_inset
+
+ represent type-change and market stopping times respectively.
+\end_layout
+
+\begin_layout Paragraph*
+Characterization of Value Functions
+\end_layout
+
+\begin_layout Standard
+The full characterization of the value functions is given by the following
+ linear differential equations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}_{lo}=rV_{lo}-\lambda_{\mu}(V_{ho}-V_{lo})-2%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}(P+V_{ln}-V_{lo})-\lambda_{d}(B+V_{ln}-V_{lo})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}_{ln}=rV_{ln}-\lambda_{u}(V_{hn}-V_{ln})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}_{ho}=rV_{ho}-\lambda_{d}(V_{lo}-V_{ho})-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}_{hn}=rV_{hn}-\lambda_{d}(V_{ln}-V_{hn})-2%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{ho}(V_{ho}-V_{hn}-P)-\rho(V_{ho}-V_{hn}-A)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Reminder - Nash Bargaining
+\end_layout
+
+\begin_layout Itemize
+Pie's are shared according to a parameter that measures 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+bargaining power
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Equilibrium Concept
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+Equilibrium
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ An equilibrium is defined as a set of price paths 
+\begin_inset Formula $\{P\left(t)\right),A\left(t)\right),B\left(t)\right)\}$
+\end_inset
+
+, and mass paths 
+\begin_inset Formula $\{\mu_{lo},\mu_{ho},\mu_{\ln},\mu_{hn}\}$
+\end_inset
+
+ such that:
+\end_layout
+
+\begin_layout Enumerate
+Given Prices Paths, the Value functions satisfy the Pricing via Nash Bargaining.
+\end_layout
+
+\begin_layout Enumerate
+Given Price paths, the mass paths, satisfy the Demographic restrictions.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Characterization of Equilibrium Prices
+\end_layout
+
+\begin_layout Standard
+Nash Bargaining will result in the following price system:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P=(V_{lo}-V_{ln})(1-q)+(V_{ho}-V_{hn})q.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=(V_{ho}-V_{hn})z+M(1-z)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+B=(V_{lo}-V_{ln})z+M(1-z).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}+(s-%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo})=\lambda_{\mu}+u
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Characterization of the Steady State.
+\end_layout
+
+\begin_layout Standard
+The steady state is given by:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Condition 1
+\series default
+ 
+\begin_inset Formula $s<\lambda_{u}/(\lambda_{u}+\lambda_{d})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{theorem}[Theorem 2]
+\end_layout
+
+\end_inset
+
+ For any given initial mass distribution 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%TCIMACRO{
+\backslash
+U{b5}}%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%BeginExpansion
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%EndExpansion
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+(0), there exists an equilibrium.
+ There is a unique steady-state equilibrium.
+ Under Condition 1,the ask, bid, and inter-investor prices are 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{theorem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(1-q)}{r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}q+\rho(1-z)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(1-q)}{r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}q+\rho(1-z)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P=\frac{1}{r}-\frac{\delta}{r}\frac{\left(1-q\right)r+\lambda_{d}+2%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(1-q)}{r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%
+%BeginExpansion
+{\mu}%EndExpansion
+_{hn}q+\rho(1-z)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $s<\lambda_{u}/(\lambda_{u}+\lambda_{d})$
+\end_inset
+
+.
+ In this case,
+\end_layout
+
+\begin_layout Proof
+Sketch of Proof 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Model of Lagos and Wright
+\end_layout
+
+\begin_layout Itemize
+Choi and Rocheteau (TE,2001 and WP,2002) developed a similar version.
+ 
+\end_layout
+
+\begin_layout Standard
+Consider now the problem of an agent that holds wealth in the form of bonds
+ and cash.
+ Importantly, cash is printed by the government every period—it is outside
+ money—and thus, prone to inflationary taxes.
+ Bonds are real and pay an interest.
+ Money does not.
+ We have that every period, 
+\begin_inset Formula 
+\[
+W_{t}=b_{t}+m_{t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The money and bond account can be traded in every period.
+ For simplicity, let the portfolio weights be given by 
+\begin_inset Formula $\omega^{b}$
+\end_inset
+
+and 
+\begin_inset Formula $\omega^{m}$
+\end_inset
+
+, respectively.
+ We will see that unlike other environments, the portfolio weights depend
+ on wealth.
+ 
+\end_layout
+
+\begin_layout Standard
+Wealth evolves according to:
+\begin_inset Formula 
+\[
+\dot{W}_{t}=r_{t}b_{t}-\pi_{t}m_{t}-c_{t}+h_{t}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\pi_{t}$
+\end_inset
+
+ is the rate of inflation, 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ an equilibrium rate in the bond market, 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ consumption and 
+\begin_inset Formula $h_{t}$
+\end_inset
+
+ hours worked.
+\end_layout
+
+\begin_layout Standard
+Money is clearly a different asset than bonds here.
+ The question is why does it pay different returns? The key assumption is
+ that money can be used for transactions.
+ Namely, with agents can meet other agents with Poisson probability and
+ engage in a transaction over which they will bargain.
+ For now, assume 
+\begin_inset Formula $\mathcal{B}\left(m\right)$
+\end_inset
+
+ is the value of holding money in a transaction.
+ In turn, 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ the value of selling: this just gives a value, some constant number.
+ 
+\end_layout
+
+\begin_layout Standard
+The value function is:
+\begin_inset Formula 
+\[
+\rho V\left(W\right)=\max_{c,h}U\left(c\right)-h+V_{w}\dot{W}+\lambda\left[\mathcal{B}\left(m\right)+V\left(W-t\left(m\right)\right)-V\left(W\right)\right]+\lambda\left[\mathcal{G}+\int_{\tilde{m}}V\left(W-t\left(\tilde{m}\right)\right)-V\left(W\right)\right].
+\]
+
+\end_inset
+
+The objects stand for the optimal transactions.
+ 
+\end_layout
+
+\begin_layout Standard
+A first key step, independent of the value of cash transactions is to establish
+ the linearity of the value function.
+ In particular, the first-order condition of this problem involve:
+\begin_inset Formula 
+\[
+U'\left(c\right)=V_{w},\quad V_{w}=1.
+\]
+
+\end_inset
+
+Thus, I guess and verify that the value function is affine:
+\begin_inset Formula 
+\[
+V\left(W\right)=V_{o}+W.
+\]
+
+\end_inset
+
+If this is indeed the case, we have that:
+\begin_inset Formula 
+\[
+\dot{W}_{t}=r_{t}\left(W_{t}-m_{t}\right)-\pi_{t}m_{t}-c_{t}+h_{t}.
+\]
+
+\end_inset
+
+If the conjecture is to be verified: it must be the case that:
+\begin_inset Formula 
+\[
+r_{t}=\rho.
+\]
+
+\end_inset
+
+Then, the FOC for money balances is given by:
+\begin_inset Formula 
+\[
+\rho+\pi=\mathcal{B}'\left(m\right).
+\]
+
+\end_inset
+
+This equation reflects a liquidity service of money relative to bonds.
+ 
+\end_layout
+
+\begin_layout Standard
+A critical step in translating the model into continuous time is to introduce
+ the wealth account: otherwise we have an issue.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Liquidity Service of Money.
+ 
+\end_layout
+
+\begin_layout Standard
+Next, I delve into the monetary holdings.
+\begin_inset Formula 
+\[
+\mathcal{B}\left(m\right)=\eta\mathcal{S}\left(m\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{G}\left(m\right)=\left(1-\eta\right)\mathcal{S}\left(m\right)
+\]
+
+\end_inset
+
+Where total surplus is:
+\begin_inset Formula 
+\[
+\mathcal{S}\left(m\right)=\max(u(\ell)-t)^{\eta}(-\ell+t)^{1-\eta}
+\]
+
+\end_inset
+
+subject to:
+\begin_inset Formula 
+\[
+t\leq m.
+\]
+
+\end_inset
+
+First order conditions:
+\begin_inset Formula 
+\[
+\frac{\eta}{u(\ell)-t}\cdot\mathcal{S}\left(m\right)=\frac{1-\eta}{t-\ell}\cdot\mathcal{S}\left(m\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore, coupling terms together:
+\begin_inset Formula 
+\[
+\eta\left(u(\ell)-\ell\right)=u(\ell)-t
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(1-\eta\right)\left(u(\ell)-\ell\right)=t-\ell.
+\]
+
+\end_inset
+
+From here, note that:
+\begin_inset Formula 
+\[
+\mathcal{S}\left(m\right)=\eta^{\eta}\left(1-\eta\right)^{1-\eta}\times\left(u(\ell)-\ell\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The way to improve welfare is to first maximize total surplus and the split:
+ in this case, 
+\begin_inset Formula 
+\[
+u'\left(\ell\right)=1
+\]
+
+\end_inset
+
+is enough to maximize the surplus.
+ 
+\end_layout
+
+\begin_layout Standard
+However, surplus cannot be maximized if:
+\begin_inset Formula 
+\[
+\left(1-\eta\right)u(\ell^{*})+\eta\ell^{*}\leq m,
+\]
+
+\end_inset
+
+in which case, the constraint is binding.
+ 
+\end_layout
+
+\begin_layout Standard
+Thus, in that case:
+\begin_inset Formula 
+\[
+\left(1-\eta\right)u(\ell)+\eta\ell=m,
+\]
+
+\end_inset
+
+and thus:
+\begin_inset Formula 
+\[
+\frac{d\ell}{dm}=\frac{1}{\left(\left(1-\eta\right)u'(\ell)+\eta\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Exercise.
+\end_layout
+
+\begin_layout Standard
+Assume 
+\begin_inset Formula $u\left(x\right)=\sqrt{x}.$
+\end_inset
+
+ Solve for 
+\begin_inset Formula $\ell\left(m\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We obtain that:
+\begin_inset Formula 
+\[
+\mathcal{B}\left(m\right)=\eta\mathcal{S}\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{1-\eta}\times\left(u(\ell\left(m\right))-\ell\left(m\right)\right).
+\]
+
+\end_inset
+
+Thus, the marginal value of money is:
+\begin_inset Formula 
+\[
+\mathcal{B}'\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{1-\eta}\times\frac{u'\left(\ell\left(m\right)\right)-1}{1+\left(1-\eta\right)\left(u'\left(\ell\left(m\right)\right)-1\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We need technical assumptions for this relationship to hold.
+ Provided an Innada condition, we have that without money, the marginal
+ utility is:
+\begin_inset Formula 
+\[
+\mathcal{B}'\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{-\eta}.
+\]
+
+\end_inset
+
+This is a finite number.
+ 
+\end_layout
+
+\begin_layout Paragraph
+The Friedman rule.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula 
+\[
+\left(1-\eta\right)u(\ell^{*})+\eta\ell^{*}\leq m,
+\]
+
+\end_inset
+
+then clearly:
+\begin_inset Formula 
+\[
+\mathcal{B}'\left(m\right)=0.
+\]
+
+\end_inset
+
+This implies that the efficient allocation is achieved if:
+\begin_inset Formula 
+\[
+\pi=-\rho.
+\]
+
+\end_inset
+
+For lower rates of inflation, simply, the value of government debt is zero
+ and debt is a dominated asset.
+ For higher values, 
+\begin_inset Formula 
+\[
+\mathcal{B}'\left(m\right)>0
+\]
+
+\end_inset
+
+and there is an economic inefficiency provoked by the lack of funds.
+ 
+\end_layout
+
+\end_body
+\end_document
