@@ -1856,6 +1856,81 @@ V\left(h,n\right)=V\left(h,o\right)-P=\frac{U\left(0\right)}{\rho}\left[1+\lambd
 
 \end_layout
 
+\begin_layout Paragraph*
+No Market Acces.
+\end_layout
+
+\begin_layout Standard
+Consider now the extreme where an agent is forced to hold the asset forever.
+ We compute the the asset without the possibility of trading.
+ If the asset cannot be retraded:
+\begin_inset Formula 
+\[
+\left(\rho+\lambda\right)V\left(h,o\right)=U\left(1\right)+\lambda V\left(\ell,o\right)
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\left(\rho+\lambda\right)V\left(\ell,o\right)=\delta U\left(1\right)+\lambda V\left(h,o\right).
+\]
+
+\end_inset
+
+We have two equations and two unknowns.
+ Then:
+\begin_inset Formula 
+\[
+\left(\rho+\lambda\right)\Delta V=\left(1-\delta\right)U\left(1\right)-\lambda\Delta V.
+\]
+
+\end_inset
+
+Thus:
+\begin_inset Formula 
+\[
+\Delta V=\frac{\left(1-\delta\right)U\left(1\right)}{\rho+2\lambda}.
+\]
+
+\end_inset
+
+Therefore, the value for the high type is:
+\begin_inset Formula 
+\[
+\rho V\left(h,o\right)=U\left(1\right)-\lambda\Delta V
+\]
+
+\end_inset
+
+This then implies:
+\begin_inset Formula 
+\[
+V\left(h,o\right)=\frac{U\left(1\right)}{\rho}\left[1-\frac{\lambda\left(1-\delta\right)}{\left(\rho+2\lambda\right)}\right].
+\]
+
+\end_inset
+
+The term on the right simplifies to:
+\begin_inset Formula 
+\[
+V\left(h,o\right)=\frac{U\left(1\right)}{\rho}\left[\frac{\rho+\lambda\left(1+\delta\right)}{\rho+2\lambda}\right].
+\]
+
+\end_inset
+
+By the same token, the value in the low case will be:
+\begin_inset Formula 
+\[
+V\left(h,n\right)=\frac{U\left(0\right)}{\rho}\left[\frac{\rho+\lambda\left(1+\delta\right)}{\rho+2\lambda}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph
 Trading Frictions.
  
@@ -1868,7 +1943,7 @@ Now consider the case where the asset cannot be sold immediately.
 \end_inset
 
 .
- We obtain:
+ We obtain that the value for the high type that owns the asset is:
 \begin_inset Formula 
 \begin{eqnarray*}
 \rho V\left(h,o\right) & = & U\left(1\right)+\lambda\left[V\left(\ell,o\right)-V\left(h,o\right)\right]\\
@@ -1877,7 +1952,7 @@ Now consider the case where the asset cannot be sold immediately.
 
 \end_inset
 
-if the agent does not own the asset: 
+If the high type does not own own the asset: 
 \begin_inset Formula 
 \[
 \rho V\left(h,n\right)=U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right]+\mu\left[\max\left\{ V\left(h,o\right)-P,V\left(h,n\right)\right\} -V\left(h,n\right)\right]
@@ -1896,6 +1971,10 @@ For the low type owning the asset, we obtain:
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Finally, we have the value of the low type that doesn't own the asset:
 \begin_inset Formula 
 \[
@@ -1933,6 +2012,10 @@ if the agent does not own the asset:
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 For the low type owning the asset, we obtain:
 \end_layout
 
@@ -1956,10 +2039,12 @@ Finally, we have the value of the low type that doesn't own the asset:
 \end_layout
 
 \begin_layout Standard
-Conjecture again that 
+Conjecture that 
 \begin_inset Formula $\max\left\{ V\left(n,o\right)-P,V\left(\ell,n\right)\right\} =V\left(\ell,n\right).$
 \end_inset
 
+ In this case, the idea is that the low type now strictly prefers to sell
+ the asset.
  Thus, we obtain:
 \begin_inset Formula 
 \[
@@ -2000,16 +2085,33 @@ We can solve this terms, as they are 4 equations with 4 unknowns:
 
 \end_inset
 
+To ease the notation, let 
+\begin_inset Formula $\Delta^{h}=V\left(h,o\right)-V\left(h,n\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta^{\ell}=V\left(\ell,o\right)-V\left(\ell,n\right)$
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
-We need to solve for the values now.
- There are four unknowns and for equations.
+We need to solve for the four values.
+ If we solve for the values, we can then use 
+\begin_inset Formula $P=V\left(h,o\right)-V\left(h,n\right),$
+\end_inset
+
+ to obtain a solution.
+ 
+\end_layout
+
+\begin_layout Standard
+There are four unknowns and for equations.
  Subtract the fourth from the third equation:
 \begin_inset Formula 
 \[
-\rho\left[V\left(\ell,o\right)-V\left(\ell,n\right)\right]=\delta\left[U\left(1\right)-U\left(0\right)\right]-\lambda\left[V\left(\ell,o\right)-V\left(\ell,n\right)-\left(V\left(h,o\right)-V\left(h,n\right)\right)\right]+\mu\left[V\left(h,o\right)-V\left(h,n\right)-\left(V\left(\ell,o\right)-V\left(\ell,n\right)\right)\right]
+\rho\left[\Delta^{\ell}\right]=\delta\left[U\left(1\right)-U\left(0\right)\right]+\lambda\left[\Delta^{h}-\Delta^{\ell}\right]+\mu\left[\Delta^{h}-\Delta^{\ell}\right]
 \]
 
 \end_inset
@@ -2017,7 +2119,7 @@ We need to solve for the values now.
 Grouping terms we obtain:
 \begin_inset Formula 
 \[
-\left[V\left(\ell,o\right)-V\left(\ell,n\right)\right]=\delta\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda+\mu\right)}+\frac{\lambda+\mu}{\rho+\lambda+\mu}\left(V\left(h,o\right)-V\left(h,n\right)\right).
+\Delta^{\ell}=\delta\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\rho+\lambda+\mu}+\frac{\lambda+\mu}{\rho+\lambda+\mu}\Delta^{h}.
 \]
 
 \end_inset
@@ -2025,33 +2127,7 @@ Grouping terms we obtain:
 Likewise from the first two equations:
 \begin_inset Formula 
 \[
-V\left(h,o\right)-V\left(h,n\right)=\frac{U\left(1\right)-U\left(0\right)}{\left(\rho+\lambda\right)}+\frac{\lambda}{\left(\rho+\lambda\right)}\left[V\left(\ell,o\right)-V\left(\ell,n\right)\right].
-\]
-
-\end_inset
-
-The system simplifies to a system of two equations and two unknowns.
- Substituting in:
-\begin_inset Formula 
-\[
-V\left(h,o\right)-V\left(h,n\right)=\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda\right)}\left[1+\frac{\lambda\delta}{\rho+\lambda+\mu}\right]+\frac{\lambda}{\left(\rho+\lambda\right)}\frac{\left(\lambda+\mu\right)}{\left(\rho+\lambda+\mu\right)}\left[V\left(h,o\right)-V\left(h,n\right)\right].
-\]
-
-\end_inset
-
-Arranging term:
-\begin_inset Formula 
-\begin{eqnarray*}
-\left[\frac{\left(\rho+\lambda+\mu\right)\left(\rho+\lambda\right)-\lambda\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right]\left[V\left(h,o\right)-V\left(h,n\right)\right] & = & \frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda\right)}\left[\frac{\rho\left(\rho+\lambda\right)+\rho\left(\lambda+\mu\right)+\lambda\left(\lambda+\mu\right)-\lambda\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right]\\
- & = & \frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda\right)}\left[\frac{\rho\left(\rho+\lambda\right)+\rho\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right].
-\end{eqnarray*}
-
-\end_inset
-
-The term:
-\begin_inset Formula 
-\[
-\left[\frac{\left(\rho+\lambda+\mu\right)-\lambda\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right]=\left[\frac{\rho\left(\rho+\lambda\right)+\rho\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right].
+\Delta^{h}=\frac{U\left(1\right)-U\left(0\right)}{\left(\rho+\lambda\right)}+\frac{\lambda}{\left(\rho+\lambda\right)}\Delta^{\ell}.
 \]
 
 \end_inset
@@ -2060,14 +2136,55 @@ The term:
 \end_layout
 
 \begin_layout Standard
-Finally we arrive at:
+The system simplifies to a system of two equations and two unknowns.
+ Substituting in:
 \begin_inset Formula 
 \[
-P=\left[V\left(h,o\right)-V\left(h,n\right)\right]=\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\rho}\left[\frac{\rho+\left(\delta+1\right)\lambda+\mu}{\rho+2\lambda+\mu}\right].
+\Delta^{h}=\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda\right)}\left[1+\frac{\lambda\delta}{\rho+\lambda+\mu}\right]+\frac{\lambda}{\left(\rho+\lambda\right)}\frac{\left(\lambda+\mu\right)}{\left(\rho+\lambda+\mu\right)}\Delta^{h}.
 \]
 
 \end_inset
 
+Arranging terms:
+\begin_inset Formula 
+\begin{eqnarray*}
+\left[\frac{\left(\rho+\lambda+\mu\right)\left(\rho+\lambda\right)-\lambda\left(\lambda+\mu\right)}{\left(\rho+\lambda\right)\left(\rho+\lambda+\mu\right)}\right]\Delta^{h} & = & \frac{\left[U\left(1\right)-U\left(0\right)\right]}{\left(\rho+\lambda\right)}\left[\frac{\rho+\lambda+\mu+\lambda\delta\left(\rho+\lambda\right)}{\rho+\lambda+\mu}\right].
+\end{eqnarray*}
+
+\end_inset
+
+The numerator of the term on the left is:
+\begin_inset Formula 
+\[
+\rho^{2}+2\lambda\rho+\lambda^{2}+\mu\left(\lambda+\rho\right)-\lambda^{2}-\mu\lambda=\rho^{2}+2\lambda\rho+\mu\rho=\rho\left(\rho+2\lambda+\mu\right).
+\]
+
+\end_inset
+
+The numerator on the right is:
+\begin_inset Formula 
+\[
+\rho+\lambda+\mu+\lambda\delta.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence, we arrive at:
+\begin_inset Formula 
+\[
+P=\Delta^{h}=\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\rho}\left[\frac{\rho+\mu+\lambda\left(1+\delta\right)}{\rho+\mu+\lambda2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Observe several things: 
 \end_layout
 
@@ -2089,7 +2206,22 @@ Also, note that as
 \begin_inset Formula $\mu\rightarrow\infty$
 \end_inset
 
-, we are obtain the original value.
+, we are obtain the original value, following L Hospital's rule.
+\end_layout
+
+\begin_layout Enumerate
+When the probability of accessing the market goes to zero, we obtain another
+ value:
+\begin_inset Formula 
+\[
+P=\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\rho}\left[\frac{\rho+\lambda\left(1+\delta\right)}{\rho+2\lambda}\right]<\frac{\left[U\left(1\right)-U\left(0\right)\right]}{\rho}.
+\]
+
+\end_inset
+
+Note that this exactly coincides with the value differences under Autarky.
+ Thus, the price equals the difference in valuations of low and high types
+ under Autarky.
  
 \end_layout
 
@@ -2105,6 +2237,15 @@ Conduct the same analysis when the asset for the case where the asset is
 
 \begin_layout Subsection
 The full Model
+\end_layout
+
+\begin_layout Standard
+The original paper by DGP is interested in bid-ask spreads in markets, and
+ relate them to the market power of dealers.
+ This requires more generality, with some agents dealing with othere instantaneo
+usly, market makers, and others just as we have above.
+ Moreover, in DGP, bargaining plays a critical role.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -2208,19 +2349,7 @@ Because at all times the populations is constant:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{ho}(t)+%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(t)+%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)+%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{ln}(t)=1
+%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ho}(t)+%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t)+%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)+%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ln}(t)=1
 \]
 
 \end_inset
@@ -2231,13 +2360,7 @@ and since the amount of assets are also constant:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{ho}(t)+%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)=s.
+%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ho}(t)+%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)=s.
 \]
 
 \end_inset
@@ -2290,25 +2413,8 @@ Over the Counter Markets with no intermediaries are treated as
 Hence, the measurability constraints satisfy:
 \begin_inset Formula 
 \[
-\dot{%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-}_{lo}(t)=-(2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(t)%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)+\rho%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{m}(t))-\lambda_{u}%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)+\lambda_{d}%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{ho}(t),
+\dot{%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)=-(2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t)%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)+\rho%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{m}(t))-\lambda_{u}%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)+\lambda_{d}%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ho}(t),
+}
 \]
 
 \end_inset
@@ -2319,16 +2425,7 @@ _{ho}(t),
 \begin_layout Standard
 \begin_inset Formula 
 \[
-%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{m}(t)=min\{%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t),%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(t)\}
+%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{m}(t)=min\{%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t),%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t)\}
 \]
 
 \end_inset
@@ -2352,7 +2449,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Diagram_DGP.pdf
+	filename ../Search and Matching/Diagram_DGP.pdf
 	scale 50
 	rotateAngle 270
 
@@ -2416,25 +2513,8 @@ We guess that there is trade from low-type with held assets to high types
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\dot{%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-}_{lo}(t)=-(2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(t)%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)+\rho%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{m}(t))-\lambda_{u}%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)+\lambda_{d}%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{ho}(t),
+\dot{%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)=-(2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t)%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)+\rho%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{m}(t))-\lambda_{u}%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)+\lambda_{d}%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ho}(t),
+}
 \]
 
 \end_inset
@@ -2445,25 +2525,8 @@ _{ho}(t),
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\dot{%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-}_{hn}(t)=-(2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(t)%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)+\rho%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{m}(t))+\lambda_{u}u%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{ln}(t)-\lambda_{d}%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(t)
+\dot{%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t)=-(2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t)%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)+\rho%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{m}(t))+\lambda_{u}u%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ln}(t)-\lambda_{d}%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t)
+}
 \]
 
 \end_inset
@@ -2474,25 +2537,8 @@ _{hn}(t)
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\dot{%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-}_{ho}(t)=(2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(t)%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)+\rho%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{m}(t))+\lambda_{u}%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)-\lambda_{d}%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{ho}(t)
+\dot{%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ho}(t)=(2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t)%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)+\rho%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{m}(t))+\lambda_{u}%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)-\lambda_{d}%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ho}(t)
+}
 \]
 
 \end_inset
@@ -2503,25 +2549,8 @@ _{ho}(t)
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\dot{%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-}_{ln}(t)=(2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(t)%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(t)+%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{m}(t))-\lambda_{u}%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{ln}(t)+\lambda_{d}%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(t).
+\dot{%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ln}(t)=(2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t)%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(t)+%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{m}(t))-\lambda_{u}%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ln}(t)+\lambda_{d}%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(t).
+}
 \]
 
 \end_inset
@@ -2578,10 +2607,8 @@ status collapsed
 
  There exists a unique constant steady-state solution to (1)–(6).
  From any initial condition 
-\begin_inset Formula $%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-(0)\in\lbrack0,1]^{4}$
+\begin_inset Formula $%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion(0)\in\lbrack0,1]^{4}\ensuremath{}
+$
 \end_inset
 
  satisfying (1) and (2), the unique solution 
@@ -2965,10 +2992,7 @@ The full characterization of the value functions is given by the following
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\dot{V}_{lo}=rV_{lo}-\lambda_{\mu}(V_{ho}-V_{lo})-2%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}(P+V_{ln}-V_{lo})-\lambda_{d}(B+V_{ln}-V_{lo})
+\dot{V}_{lo}=rV_{lo}-\lambda_{\mu}(V_{ho}-V_{lo})-2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}(P+V_{ln}-V_{lo})-\lambda_{d}(B+V_{ln}-V_{lo})
 \]
 
 \end_inset
@@ -3001,10 +3025,7 @@ _{hn}(P+V_{ln}-V_{lo})-\lambda_{d}(B+V_{ln}-V_{lo})
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\dot{V}_{hn}=rV_{hn}-\lambda_{d}(V_{ln}-V_{hn})-2%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{ho}(V_{ho}-V_{hn}-P)-\rho(V_{ho}-V_{hn}-A)
+\dot{V}_{hn}=rV_{hn}-\lambda_{d}(V_{ln}-V_{hn})-2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{ho}(V_{ho}-V_{hn}-P)-\rho(V_{ho}-V_{hn}-A)
 \]
 
 \end_inset
@@ -3162,13 +3183,7 @@ B=(V_{lo}-V_{ln})z+M(1-z).
 \begin_layout Standard
 \begin_inset Formula 
 \[
-%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}+(s-%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo})=\lambda_{\mu}+u
+%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}+(s-%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo})=\lambda_{\mu}+u
 \]
 
 \end_inset
@@ -3281,16 +3296,9 @@ end{theorem}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(1-q)}{r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}q+\rho(1-z)}
+A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
+}
+}{}{}
 \]
 
 \end_inset
@@ -3301,16 +3309,9 @@ _{hn}q+\rho(1-z)}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(1-q)}{r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}q+\rho(1-z)}
+B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
+}
+}{}{}
 \]
 
 \end_inset
@@ -3321,16 +3322,9 @@ _{hn}q+\rho(1-z)}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-P=\frac{1}{r}-\frac{\delta}{r}\frac{\left(1-q\right)r+\lambda_{d}+2%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(1-q)}{r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%
-%BeginExpansion
-{\mu}%EndExpansion
-_{hn}q+\rho(1-z)}
+P=\frac{1}{r}-\frac{\delta}{r}\frac{\left(1-q\right)r+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
+}
+}{}{}
 \]
 
 \end_inset
@@ -3343,11 +3337,29 @@ _{hn}q+\rho(1-z)}
 \end_inset
 
 .
- In this case,
+ 
 \end_layout
 
 \begin_layout Proof
-Sketch of Proof 
+Sketch of Proof.
+\end_layout
+
+\begin_layout Paragraph
+Exercise.
+\end_layout
+
+\begin_layout Standard
+Under what conditions do we get the solution to full market access? What
+ is the connection between the assumption 
+\begin_inset Formula $s<\lambda_{u}/(\lambda_{u}+\lambda_{d})$
+\end_inset
+
+ and the condition above that 
+\begin_inset Formula $s<1/2$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3359,6 +3371,14 @@ Sketch of Proof
 
 \begin_layout Section
 The Model of Lagos and Wright
+\end_layout
+
+\begin_layout Standard
+Comment on derivation.
+\end_layout
+
+\begin_layout Subsection
+Continuous Time formulation
 \end_layout
 
 \begin_layout Itemize
@@ -3404,7 +3424,7 @@ and
 Wealth evolves according to:
 \begin_inset Formula 
 \[
-\dot{W}_{t}=r_{t}b_{t}-\pi_{t}m_{t}-c_{t}+h_{t}
+\dot{W}_{t}=r_{t}b_{t}-\pi_{t}m_{t}-c_{t}+h_{t}+\tau_{t}
 \]
 
 \end_inset
@@ -3426,6 +3446,11 @@ where
 \end_inset
 
  hours worked.
+ Finally, 
+\begin_inset Formula $\tau_{t}$
+\end_inset
+
+ represent transfers of money.
 \end_layout
 
 \begin_layout Standard
@@ -3434,16 +3459,6 @@ Money is clearly a different asset than bonds here.
  that money can be used for transactions.
  Namely, with agents can meet other agents with Poisson probability and
  engage in a transaction over which they will bargain.
- For now, assume 
-\begin_inset Formula $\mathcal{B}\left(m\right)$
-\end_inset
-
- is the value of holding money in a transaction.
- In turn, 
-\begin_inset Formula $\mathcal{G}$
-\end_inset
-
- the value of selling: this just gives a value, some constant number.
  
 \end_layout
 
@@ -3451,27 +3466,220 @@ Money is clearly a different asset than bonds here.
 The value function is:
 \begin_inset Formula 
 \[
-\rho V\left(W\right)=\max_{c,h}U\left(c\right)-h+V_{w}\dot{W}+\lambda\left[\mathcal{B}\left(m\right)+V\left(W-t\left(m\right)\right)-V\left(W\right)\right]+\lambda\left[\mathcal{G}+\int_{\tilde{m}}V\left(W-t\left(\tilde{m}\right)\right)-V\left(W\right)\right].
+\rho V\left(W\right)=\max_{c,h}U\left(c\right)-h+V_{w}\dot{W}+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[V\left(W-t\left(m,\tilde{m}\right)\right)+U\left(\ell\left(m,\tilde{m}\right)\right)-V\left(W\right)\right]}^{\text{buyer value}}+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[V\left(W-t\left(m,\tilde{m}\right)\right)-\ell\left(m,\tilde{m}\right)-V\left(W\right)\right]}^{\text{seller value}}.
 \]
 
 \end_inset
 
-The objects stand for the optimal transactions.
+The objects stand for the bargainaed transactions terms: 
+\begin_inset Formula $t\left(m,\tilde{m}\right)$
+\end_inset
+
+ is the cash transfer and 
+\begin_inset Formula $\ell\left(m,\tilde{m}\right)$
+\end_inset
+
+ an amount of labor.
+ The arguments represents the agent's own holdings whereas 
+\begin_inset Formula $\tilde{m}$
+\end_inset
+
+ represents the holdings of a counterpart.
+ Finally,
+\begin_inset Formula $\mathbb{E}_{\tilde{m}}$
+\end_inset
+
+ stands for the conditional expectation.
+\end_layout
+
+\begin_layout Standard
+For now, assume 
+\begin_inset Formula $\mathcal{B}\left(m,\tilde{m}\right)$
+\end_inset
+
+ is the value of buying in a transaction.
+ In turn, 
+\begin_inset Formula $\mathcal{G}\left(m,\tilde{m}\right)$
+\end_inset
+
+ the value of selling: this just gives a value, some constant number.
+ We will derive these values.
+ Importantly, let:
+\begin_inset Formula 
+\[
+\mathcal{S}\left(m,\tilde{m}\right)=\max_{\ell,t}\left[V\left(W-t\left(m,\tilde{m}\right)\right)+U\left(\ell\left(m,\tilde{m}\right)\right)-V\left(W\right)\right]^{\eta}\left[V\left(W-t\left(m,\tilde{m}\right)\right)-\ell\left(m,\tilde{m}\right)-V\left(W\right)\right]^{1-\eta},
+\]
+
+\end_inset
+
+subject to:
+\begin_inset Formula 
+\[
+t\left(m,\tilde{m}\right)\leq m
+\]
+
+\end_inset
+
+be the surplus of a match.
  
+\end_layout
+
+\begin_layout Paragraph*
+Government Budget.
+ 
+\end_layout
+
+\begin_layout Standard
+The household block is real.
+ But the government here must provide transfers to inject money.
+ Transfer at 
+\begin_inset Formula $T_{t}$
+\end_inset
+
+ are given by:
+\begin_inset Formula 
+\[
+\tau_{t}\equiv\frac{T_{t}}{P_{t}}.
+\]
+
+\end_inset
+
+The government supplies transfers according to:
+\begin_inset Formula 
+\[
+T_{t}=\dot{M}_{t}\rightarrow\dot{T}_{t}=?
+\]
+
+\end_inset
+
+representing the growth in the money supply.
+ Using the first equation:
+\begin_inset Formula 
+\[
+\dot{\tau}{}_{t}\equiv\frac{T_{t}}{P_{t}}\left(\frac{\dot{T}}{T_{t}}-\frac{\dot{P}_{t}}{P_{t}}\right)=\tau_{t}\left[-\pi_{t}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Clearing conditions in Centralized Markets.
+\end_layout
+
+\begin_layout Standard
+The clearing in the bond market requires:
+\begin_inset Formula 
+\[
+\int_{0}^{1}b^{i}di=0.
+\]
+
+\end_inset
+
+In the market for currency, we have:
+\begin_inset Formula 
+\[
+\int_{0}^{1}m_{t}^{i}di=\frac{M_{t}}{P_{t}}.
+\]
+
+\end_inset
+
+The goods market clearing requires:
+\begin_inset Formula 
+\[
+\int_{0}^{1}c_{t}^{i}di=\int_{0}^{1}h_{t}^{i}di.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Characterization
+\end_layout
+
+\begin_layout Standard
+Define:
+\begin_inset Formula 
+\[
+\mathcal{B}\left(m,\tilde{m}\right)=V\left(W-t\left(m,\tilde{m}\right)\right)+U\left(\ell\left(m,\tilde{m}\right)\right)-V\left(W\right),
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\mathcal{G}\left(m,\tilde{m}\right)=V\left(W+t\left(m,\tilde{m}\right)\right)-\ell\left(m,\tilde{m}\right)-V\left(W\right).
+\]
+
+\end_inset
+
+Using the law of motion for wealth:
+\begin_inset Formula 
+\[
+\dot{W}_{t}=r_{t}\left(W_{t}-m_{t}\right)-\pi_{t}m_{t}-c_{t}+h_{t}+\tau_{t}.
+\]
+
+\end_inset
+
+Back in the HJB equation, notice that we can obtain:
+\begin_inset Formula 
+\[
+\rho V\left(W\right)=\max_{c,h}U\left(c\right)-h+V_{w}\left(W_{t}-\left(\pi_{t}+r_{t}\right)m_{t}+h+\tau_{t}\right)+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[\mathcal{B}\left(m,\tilde{m}\right)\right]}^{\text{buyer value}}+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[\mathcal{G}\left(m,\tilde{m}\right)\right]}^{\text{seller value}}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 A first key step, independent of the value of cash transactions is to establish
  the linearity of the value function.
- In particular, the first-order condition of this problem involve:
+ Replacing the law of motion of wealth, 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If this is indeed the case, we have that:
 \begin_inset Formula 
 \[
-U'\left(c\right)=V_{w},\quad V_{w}=1.
+\dot{W}_{t}=r_{t}\left(W_{t}-m_{t}\right)-\pi_{t}m_{t}-c_{t}+h_{t}+\tau_{t}.
 \]
 
 \end_inset
 
-Thus, I guess and verify that the value function is affine:
+
+\end_layout
+
+\end_inset
+
+, into the expression, we obtain.
+ In particular, the first-order condition of this problem involve:
+\begin_inset Formula 
+\[
+c:U'\left(c\right)=V_{w},\quad
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+h:V_{w}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This tells us that the value function must be affine.
+ Thus,
 \begin_inset Formula 
 \[
 V\left(W\right)=V_{o}+W.
@@ -3479,15 +3687,58 @@ V\left(W\right)=V_{o}+W.
 
 \end_inset
 
-If this is indeed the case, we have that:
+Moreover, it must be the case that:
 \begin_inset Formula 
 \[
-\dot{W}_{t}=r_{t}\left(W_{t}-m_{t}\right)-\pi_{t}m_{t}-c_{t}+h_{t}.
+\mathcal{B}\left(m,\tilde{m}\right)=U\left(\ell\left(m,\tilde{m}\right)\right)-t\left(m,\tilde{m}\right)
 \]
 
 \end_inset
 
-If the conjecture is to be verified: it must be the case that:
+and
+\begin_inset Formula 
+\[
+\mathcal{G}\left(m,\tilde{m}\right)=t\left(m,\tilde{m}\right)-\ell\left(m,\tilde{m}\right).
+\]
+
+\end_inset
+
+Thus:
+\begin_inset Formula 
+\[
+\mathcal{S}\left(m,\tilde{m}\right)=\max_{\ell,t}\left[U\left(\ell\left(m,\tilde{m}\right)\right)-t\left(m,\tilde{m}\right)\right]^{\eta}\left[t\left(m,\tilde{m}\right)-\ell\left(m,\tilde{m}\right)\right]^{1-\eta}
+\]
+
+\end_inset
+
+and since the solutions are independent of 
+\begin_inset Formula $\tilde{m}$
+\end_inset
+
+, we have that 
+\begin_inset Formula $t\left(m\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\ell\left(m\right)$
+\end_inset
+
+ are only functions of the buyer's holdigns.
+\end_layout
+
+\begin_layout Standard
+Replacing terms:
+\begin_inset Formula 
+\[
+\rho V_{0}=\max_{m}U\left(\left[U'\right]^{-1}\left(1\right)\right)+\left(r-\rho\right)W_{t}-\left(\pi_{t}+r_{t}\right)m_{t}+\tau_{t}+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[\mathcal{B}\left(m,\tilde{m}\right)\right]}^{\text{buyer value}}+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[\mathcal{G}\left(m,\tilde{m}\right)\right]}^{\text{seller value}}
+\]
+
+\end_inset
+
+Because the value function must be satisfied:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
 r_{t}=\rho.
@@ -3498,7 +3749,7 @@ r_{t}=\rho.
 Then, the FOC for money balances is given by:
 \begin_inset Formula 
 \[
-\rho+\pi=\mathcal{B}'\left(m\right).
+\rho+\pi=\mathcal{B}'\left(m\right)-t'\left(m\right).
 \]
 
 \end_inset
@@ -3520,6 +3771,7 @@ Liquidity Service of Money.
 
 \begin_layout Standard
 Next, I delve into the monetary holdings.
+ I guess and verify that the solution to the bargaining problem is:
 \begin_inset Formula 
 \[
 \mathcal{B}\left(m\right)=\eta\mathcal{S}\left(m\right)
@@ -3535,7 +3787,7 @@ Next, I delve into the monetary holdings.
 
 \end_inset
 
-Where total surplus is:
+where total surplus is:
 \begin_inset Formula 
 \[
 \mathcal{S}\left(m\right)=\max(u(\ell)-t)^{\eta}(-\ell+t)^{1-\eta}
@@ -3551,10 +3803,26 @@ t\leq m.
 
 \end_inset
 
-First order conditions:
+
+\end_layout
+
+\begin_layout Standard
+To prove this conjecture, I first take the first order conditions with respect
+ to 
+\begin_inset Formula $t$
+\end_inset
+
+, assuming that the constraint does not bind.
+ The idea is that if the constraint does not bind, then we can substitute
+ in terms into the objective and maximized over 
+\begin_inset Formula $\ell$
+\end_inset
+
+.
+ Taking first-order conditinos yields:
 \begin_inset Formula 
 \[
-\frac{\eta}{u(\ell)-t}\cdot\mathcal{S}\left(m\right)=\frac{1-\eta}{t-\ell}\cdot\mathcal{S}\left(m\right).
+\frac{\eta}{u(\ell)-t}\cdot\mathcal{S}\left(m\right)-\frac{1-\eta}{t-\ell}\cdot\mathcal{S}\left(m\right)-\gamma.
 \]
 
 \end_inset
@@ -3563,10 +3831,10 @@ First order conditions:
 \end_layout
 
 \begin_layout Standard
-Therefore, coupling terms together:
+But then, employing the definitions:
 \begin_inset Formula 
 \[
-\eta\left(u(\ell)-\ell\right)=u(\ell)-t
+\eta\mathcal{S}\left(m\right)=u(\ell)-t
 \]
 
 \end_inset
@@ -3574,11 +3842,39 @@ Therefore, coupling terms together:
 
 \begin_inset Formula 
 \[
-\left(1-\eta\right)\left(u(\ell)-\ell\right)=t-\ell.
+\left(1-\eta\right)\mathcal{S}\left(m\right)=t-\ell,
 \]
 
 \end_inset
 
+and adding terms yields:
+\begin_inset Formula 
+\[
+\mathcal{S}\left(m\right)=u(\ell)-t.
+\]
+
+\end_inset
+
+Thereby:
+\begin_inset Formula 
+\[
+\eta\left(u(\ell)-t\right)=u(\ell)-t
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\left(1-\eta\right)\left(t-\ell\right)=t-\ell.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 From here, note that:
 \begin_inset Formula 
 \[
@@ -3626,7 +3922,7 @@ Thus, in that case:
 
 \end_inset
 
-and thus:
+and, thus, using the implicit function theorem:
 \begin_inset Formula 
 \[
 \frac{d\ell}{dm}=\frac{1}{\left(\left(1-\eta\right)u'(\ell)+\eta\right)}.
@@ -3664,9 +3960,26 @@ We obtain that:
 \end_inset
 
 Thus, the marginal value of money is:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
-\mathcal{B}'\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{1-\eta}\times\frac{u'\left(\ell\left(m\right)\right)-1}{1+\left(1-\eta\right)\left(u'\left(\ell\left(m\right)\right)-1\right)}.
+\mathcal{B}'\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{1-\eta}\times\left(\frac{u'\left(\ell\left(m\right)\right)-1}{1+\left(1-\eta\right)\left(u'\left(\ell\left(m\right)\right)-1\right)}\right)\frac{d\ell}{dm}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{B}'\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{1-\eta}\times\left[u'\left(\ell\left(m\right)\right)-1\right]\frac{d\ell}{dm}.
 \]
 
 \end_inset
@@ -3680,13 +3993,21 @@ We need technical assumptions for this relationship to hold.
  utility is:
 \begin_inset Formula 
 \[
-\mathcal{B}'\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{-\eta}.
+\mathcal{B}'\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{-\eta}\frac{u'\left(\ell\left(m\right)\right)-1}{1+\left(1-\eta\right)\left(u'\left(\ell\left(m\right)\right)-1\right)}\frac{d\ell}{dm}.
 \]
 
 \end_inset
 
 This is a finite number.
- 
+ In turn, the transfers are given by:
+\begin_inset Formula 
+\[
+t'\left(m\right)=\left[\left(1-\eta\right)u'(\ell)+\eta\right]\frac{d\ell}{dm}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -3705,7 +4026,7 @@ Let
 then clearly:
 \begin_inset Formula 
 \[
-\mathcal{B}'\left(m\right)=0.
+\mathcal{B}'\left(m\right)-t'\left(m\right)=0.
 \]
 
 \end_inset
@@ -3723,7 +4044,7 @@ For lower rates of inflation, simply, the value of government debt is zero
  For higher values, 
 \begin_inset Formula 
 \[
-\mathcal{B}'\left(m\right)>0
+\mathcal{B}'\left(m\right)-t'\left(m\right)>0
 \]
 
 \end_inset
@@ -3733,7 +4054,42 @@ and there is an economic inefficiency provoked by the lack of funds.
 \end_layout
 
 \begin_layout Standard
-We want to take the right limits here.
+\begin_inset Formula 
+\[
+\mathcal{B}'\left(m\right)-t'\left(m\right)=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Comment.
+\end_layout
+
+\begin_layout Standard
+Is the Friedman rule a limiting result?
+\end_layout
+
+\begin_layout Standard
+The left derivative is given by:
+\begin_inset Formula 
+\[
+\frac{d\ell}{dm}=\lim_{m^{-}\rightarrow m^{*}}\frac{1}{\left(\left(1-\eta\right)u'(\ell)+\eta\right)}=1.
+\]
+
+\end_inset
+
+Then, to the left of the optimal quantity of real balances:
+\begin_inset Formula 
+\[
+\lim_{m^{-}\rightarrow m^{*}}\mathcal{B}'\left(m\right)=\lim_{m^{-}\rightarrow m^{*}}\left(u'(\ell)\frac{d\ell}{dm}-1\right)=\frac{u'(\ell)}{\left(\left(1-\eta\right)u'(\ell)+\eta\right)}-1=0.
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_body
