@@ -29,10 +29,10 @@ Students are meant to make edits to the LyX file and use Git for version control
 3. On [Download Git](https://git-scm.com/downloads) select your operating system under Downloads
 	1. *Windows:* Under Standalone Installer, click "64-bit Git for Windows Setup". Click on the downloaded exe file. The defaults in the installer are generally fine so you can click next several times until it is installed.
 	2. *Recommended Mac:* 
-			* Install [Homebrew](https://brew.sh/). See the website for more details.
-			* Install Git. Open terminal and type `brew install git`
-			* Install Git credential manager. Open terminal and type `brew tap microsoft/git` followed by `brew install --cask git-credential-manager-core`
-	3. **Alternative Mac**: If you don't want to do the above, visit [Downloads for MacOS](https://git-scm.com/download/mac) and just click on the "Binary Installer". After downloading, right click on the file and click install. You will have to do a more complicated set up for connecting with Github later on. Then follow [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token0). You will need this personal access token when Git asks for your password.
+		1. Install [Homebrew](https://brew.sh/). See the website for more details.
+		2. Install Git. Open terminal and type `brew install git`
+		3. Install Git credential manager. Open terminal and type `brew tap microsoft/git` followed by `brew install --cask git-credential-manager-core`
+	3. *Alternative Mac*: If you don't want to do the above, visit [Downloads for MacOS](https://git-scm.com/download/mac) and just click on the "Binary Installer". After downloading, right click on the file and click install. You will have to do a more complicated set up for connecting with Github later on. Then follow [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token0). You will need this personal access token when Git asks for your password.
 	4. If you don't want to use the command line, install [Github Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop). *Note:* this guide will provide no support for this option.
 4. [Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
 	1. In particular focus on "Set your username in Git" and "Set your commit email address in Git"
@@ -45,16 +45,14 @@ Students are meant to make edits to the LyX file and use Git for version control
 5. Clone this repo
 	1. Navigate to the directory that you will want to store the folder containing these notes (i.e. in Windows Explorer or Finder)
 	2. Right click and select
-		* *Windows*: Git Bash Here. This will open up a black terminal program allowing you to access the "Git" command.
-		* *Mac*: Open Terminal to this folder
+		1. *Windows*: Git Bash Here. This will open up a black terminal program allowing you to access the "Git" command.
+		2. *Mac*: Open Terminal to this folder (*Note:* you have to right click the folder itself in Finder, then click New Terminal At Folder. If your version of MacOS is a bit older, the option may be in the Services submenu after right clicking)
 	3. Run `git clone https://github.com/alihaiderismail/Money-and-Banking-Theory-Notes.git` on the command line
-		* *If following the recommended installation*: You can type in your Github username and password, and two-factor authentication if you set it up.
-		* *If not*: Type in your Github username and *personal access token* (see 3.3).
 6. [Download the LyX document processor](https://www.lyx.org/)
 7. [How to use Lyx](https://wiki.lyx.org/LyX/Tutorials)
-	+ You should navigate to Tools->Preferences->Identity and put in your name and email
+	1. You should navigate to Tools->Preferences->Identity and put in your name and email
 8. [Set up Lyx to use Git](https://www.lyx.org/HowToUseGIT)
-	+ This essentially boils down to using the File->Version Control menu in LyX which makes interacting with Git very easy.
+	1. This essentially boils down to using the File->Version Control menu in LyX which makes interacting with Git very easy.
 
 ## Workflow 
 
@@ -64,13 +62,16 @@ The workflow should look like
 	2. Run `git pull` to get the most up-to-date notes, authenticating if necessary.
 2. Edit the Lyx file(s)
 3. Click on File->Version Control->Check in Changes
-	* If prompted "save your changes"
+	1. If prompted "save your changes"
 4. You will be prompted with "LyX VC: Log Message". Fill in a short 50 character description of what you did. Then click Ok.
-	* Please actually describe the changes. "*Updated notes*" is not an appropriate commit message. 
+	2. Please actually describe the changes. "*Updated notes*" is not an appropriate commit message. 
 5. In the terminal program, type `git push` to send your changes back to Github
+	1. *If following the recommended installation*: You can type in your Github username and password, and two-factor authentication if you set it up.
+	2. *If not*: Type in your Github username and *personal access token* (see 3.3).
 
-## Optional Links
-* [Software Carpentry's Intro to Git](https://swcarpentry.github.io/git-novice/)
+## Tutorial on Using Git
+
+[Software Carpentry's Intro to Git](https://swcarpentry.github.io/git-novice/) is a nice tutorial to learn step by step how Git works. Check it out to learn more.
 
 # Course Website
 
