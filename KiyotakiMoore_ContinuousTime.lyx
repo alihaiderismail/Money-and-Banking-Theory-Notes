@@ -1,0 +1,1469 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\special{papersize=8.5in,11in}
+%\usepackage{palatino,amssymb,amsfonts,amsmath,latexsym,setspace}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+% \usepackage[dvips]{graphicx}
+
+\usepackage{fancyhdr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{lscape}
+% \usepackage{color}
+\usepackage{colortbl}
+ \usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subfig}
+% \usepackage{subcaption}
+\usepackage{sidecap}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{hyperref}
+
+
+\setcounter{MaxMatrixCols}{10}
+%  Chad's style file for nice paper format.
+%  Various ideas for this style are taken from
+%    -- Matthias Doepke and Michele Tertilt
+%    -- Tony Roberts
+
+% Hyperstuff
+\hypersetup{citecolor=ChadMagenta,linkcolor=ChadDarkBlue,urlcolor=ChadDarkBlue}
+
+% example file to change the style of LaTeX
+% first colour for latex or pdflatex
+%\ifx\pdfoutput\@undefined\usepackage[usenames,dvips]{color}
+% \else\usepackage[usenames,dvipsnames]{color}
+% and fix pdf colour problems
+% \IfFileExists{pdfcolmk.sty}{\usepackage{pdfcolmk}}{} 
+%\fi
+
+% Chad's colors:
+% See http://web.njit.edu/~kevin/rgb.txt.html for possibilities
+\definecolor{ChadDarkBlue}{rgb}{.1,0,.2}  
+\definecolor{ChadBlue}{rgb}{.1,.1,.5}  
+\definecolor{ChadRoyal}{rgb}{.2,.2,.8}  
+%\definecolor{ChadGreen}{rgb}{0,.35,.1}
+%\definecolor{ChadGreen}{rgb}{0,.5,.25}  % Too bright
+%\definecolor{ChadGreen}{rgb}{0,.4,.2}    % Still too bright
+\definecolor{ChadGreen}{rgb}{0,.4,0}    % Dark Green
+%\definecolor{ChadRed}{rgb}{.8,.1,.2}    % Too bright
+\definecolor{ChadRed}{rgb}{.5,0,.5}  % purple
+\definecolor{ChadMagenta}{rgb}{.6,0,.6}  % magenta
+\definecolor{webbrown}{rgb}{.1,0,.2}  % magenta
+
+%%% HYPERLINKS %%%%%%%%%%%%%%%%%%%%%
+\usepackage[figure,table]{hypcap}% Correct a problem with hyperref
+\urlstyle{rm} %so it doesn't use a typewriter font for url's.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
+% Fix title, sections, etc.
+
+\let\LaTeXtitle\title
+\renewcommand{\title}[1]{\LaTeXtitle{\color{ChadBlue}{\LARGE #1}}}
+\renewcommand{\abstractname}{\color{ChadBlue}Abstract}
+\renewcommand{\figurename}{\color{ChadBlue}Figure}
+\renewcommand{\tablename}{\color{ChadBlue}Table}
+
+\let\LaTeX@startsection\@startsection 
+\renewcommand{\@startsection}[6]{\LaTeX@startsection%
+{#1}{#2}{#3}{#4}{#5}{\color{ChadBlue}\raggedright #6}} 
+
+%% % Fix periods at end of section numbers
+%% \renewcommand \thesection {\@arabic\c@section.}
+%% \renewcommand\thesubsection   {\thesection\@arabic\c@subsection}%.}
+%% \renewcommand\thesubsubsection{\thesubsection \@arabic\c@subsubsection}%.}
+
+
+% Add a period *only* after Section and *only* in title, not cross ref
+% April 2017
+
+\renewcommand{\@seccntformat}[1]{%
+  \csname the#1\endcsname% Print sectional counter
+  \ifnum\pdfstrcmp{#1}{section}=0 .\fi% If \section, print .
+  \quad% Space between number and title
+}
+
+
+
+
+% Margin, Paragraph Setup
+
+%\textheight=21.5cm \textwidth=14.95cm \topmargin=-5.5mm
+%\oddsidemargin=8mm \evensidemargin=8mm
+\textheight=22.5cm 
+\textwidth=16.35cm 
+\topmargin=0mm
+\oddsidemargin=0mm 
+\evensidemargin=0mm
+%\setlength{\parindent}{0em} 
+%\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+%\setlength{\parsep}{0pt}
+
+
+% This is how to control linespacing using setspace
+% (\singlespacing or doublespacing just call this command)
+
+
+%% Setting up page headers
+
+\rhead[]{\thepage}
+\lhead[\thepage]{}
+\cfoot[]{} 
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\runningheads}[2]{
+   \chead[\color{ChadGreen}{\uppercase {\footnotesize #1}}]  % Author page header
+   {\color{ChadGreen}{\uppercase {\footnotesize #2}}}  % Short title
+  }
+
+% Make hyperlinks jump more accurately
+
+\newcommand{\org@hypertarget}{}
+\let\org@hypertarget\hypertarget
+\renewcommand{\hypertarget}[2]{%
+\Hy@raisedlink{\org@hypertarget{#1}{}}#2%
+}  
+
+
+% Spacing in Tables and Figures
+%\renewcommand{\tabcolsep}{1pt}   % space between columns
+\renewcommand{\arraystretch}{1.5} % space between rows
+\addtolength{\textfloatsep}{0pt} % space between floats and text
+\addtolength{\abovecaptionskip}{0pt} % space above caption
+\addtolength{\belowcaptionskip}{.15in} % space below caption
+
+\newcommand{\spc}[0]{\vspace{.1in}}
+\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\clr}[1]{{\color{ChadBlue} #1}}
+\newcommand{\boxeq}[1]{\boxed{\hspace{.25in} #1 \hspace{.25in}}} 
+
+\newcommand{\bb}[1]{\color{ChadBlue}{#1}}
+\newcommand{\clrg}[1]{\color{ChadGreen}{#1}}
+\newcommand{\gn}[1]{{\color{ChadGreen}{#1}}}
+\newcommand{\gr}[1]{\tiny\textcolor{green4}{#1}}
+\newcommand{\rd}[1]{\textcolor{ChadRed}{#1}}
+\newcommand{\rr}[1]{\textcolor{red}{#1}}
+\newcommand{\imp}[0]{$\Rightarrow \,$} % implies
+
+%% Shortcut commands
+\newcommand{\growth}[1]{\frac{\dot{#1}_t}{{#1}_t}}
+\newcommand{\prtl}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\prtlsec}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\commentno}[2]{\underset{\mbox{#2}}{#1}}
+% \newcommand{\comment}[2]{\underbrace{#1}_{\mbox{{\small \color{ChadGreen}#2}}}}
+\newcommand{\cn}[1]{\citet*{#1}}
+\newcommand{\cnp}[1]{(\citealt{#1})}  % (Jones 2002)
+\newcommand{\up}[0]{\uparrow \hspace{-.5ex}}  % \! is a negative thinspace
+\newcommand{\down}[0]{\downarrow \hspace{-.5ex}}
+\newcommand{\query}[1]{{\it \color{red}[??? #1]}}
+\newcommand{\Ex}[1]{\mbox{ }\mathbb{E}}
+
+% Use of Proof...
+\newcommand{\Proof}[2]{{\hspace{-\parindent} {\color{ChadGreen}\bf Proof of Proposition}~\ref{#1}.}
+{\color{ChadBlue} #2} \vspace{.1in}}
+\newcommand{\Prob}[1]{\mbox{\textnormal{Pr}} \, [#1] }
+\newcommand{\SubSubSection}[1]{\subsubsection{#1} \baselineskip=18pt}
+% \newcommand{\problem}[2]{\hspace{.1in} {{\color{ChadBlue}{\bf #1:} #2}}}
+\newcommand{\proptitle}[1]{\color{ChadBlue} \textnormal{(#1):}}
+
+%\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+%\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+% \newcommand{\definition}[1]{\mbox{\textnormal{Pr}} \, [#1] 
+
+% \newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+% For graphs of networks
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,backgrounds,positioning,fit,graphs.standard}%finish for graphs of networks
+
+\newtheorem{proposition}{\color{ChadGreen} Proposition}
+\newtheorem{definition}{\color{ChadGreen} Definition} 
+\newtheorem{corollary}{\color{ChadGreen} Corollary} 
+\newtheorem{theorem}{\color{ChadGreen} Proposition}
+\newtheorem{lemma}{\color{ChadGreen} Lemma}
+
+\newtheorem{problem}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+\newtheorem{exercise}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+
+\newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}  % frac with large paren
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing double
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+Lecture 2: Limited Enforcement and Investment
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+These notes the model of Nobuhiro Kiyotaki and John Moore (2012).
+ That model studies the role of limited enforcement and exogenous shocks
+ to the liquidity of assets that serve as collateral or can be sold.
+ A second asset, money, has the property of being fully collateralizeable.
+ I simplify the model to abstract from the labor supply decisions.
+\end_layout
+
+\begin_layout Section
+
+\series bold
+Environment 
+\end_layout
+
+\begin_layout Itemize
+The economy is again in continuous time
+\end_layout
+
+\begin_layout Itemize
+Agents have CRRA preferences over consumption goods
+\end_layout
+
+\begin_layout Itemize
+The only input for production is capital
+\end_layout
+
+\begin_layout Itemize
+The key friction is that agents can create capital, only sporadically, when
+ a random opportunity emerges.
+\end_layout
+
+\begin_layout Itemize
+In addition, they face a limited enforcement constraint, to be detailed
+ below
+\end_layout
+
+\begin_layout Section
+
+\series bold
+Environment 
+\end_layout
+
+\begin_layout Standard
+All households have the following utility function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U\left(c_{t}\right)=\frac{c_{t}^{1-1/\theta}}{1-1/\theta}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+the wealth of each household is composed of its individua capital 
+\begin_inset Formula $k_{t}$
+\end_inset
+
+ and real balances of money assets 
+\begin_inset Formula $m_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Households can either buy capital or invest directly
+\end_layout
+
+\begin_layout Itemize
+to invest directly, households must have an investment opportunity, which
+ occurs with Poisson intensity 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is convenient at this state to specify the budget constraint first in
+ discrete time, using the delta notation to find the continuous time limit:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+c_{t}+q_{t+\Delta}k_{t+\Delta}+m_{t+\Delta}=\underbrace{\Delta\cdot r_{t}k_{t}+q_{t+\Delta}\left(1-\Delta\delta\right)k_{t}}_{\text{Capital Earnings}}+m_{t}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $q_{t}$
+\end_inset
+
+ is the price of capital, 
+\begin_inset Formula $A_{t}$
+\end_inset
+
+ the return per-unit-of capital, 
+\begin_inset Formula $\delta$
+\end_inset
+
+ the net depreciation of capital.
+ For simplicity, we can assume capital is operated directly.
+ 
+\end_layout
+
+\begin_layout Standard
+The continous time represenation of this budget constraint is:
+\begin_inset Formula 
+\[
+q_{t}\dot{k}_{t}+\dot{m}_{t}=\frac{\left[r_{t}-\delta\right]}{q_{t}}q_{t}k_{t}-\pi_{t}m_{t}-\bar{c}_{t}W_{t}
+\]
+
+\end_inset
+
+Total wealth is 
+\begin_inset Formula $W_{t}=q_{t}k_{t}+m_{t}.$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\dot{q}_{t}k_{t}+q_{t}\dot{k}_{t}+\dot{m}_{t}
+\]
+
+\end_inset
+
+Thus, the budget constraint becomes:
+\begin_inset Formula 
+\[
+\dot{W}_{t}=\frac{\left[r_{t}-\delta+\dot{q}_{t}\right]}{q_{t}}q_{t}k_{t}-\pi_{t}m_{t}-\bar{c}_{t}W_{t}.
+\]
+
+\end_inset
+
+In terms of portfolio weights, we obtain:
+\begin_inset Formula 
+\[
+\dot{W}_{t}=\frac{\left[r_{t}-\delta+\dot{q}_{t}\right]}{q_{t}}\omega^{k}W_{t}-\pi_{t}\omega^{m}W_{t}-\bar{c}_{t}W_{t}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\omega^{m}=m_{t}/W_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega^{k}=q_{t}k_{t}/W_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For agents that can invest, their capital will jump on impact to:
+\begin_inset Formula 
+\[
+k_{t}^{'}=\underbrace{i_{t}-i_{t}^{s}}_{\text{kept investment}}+\underbrace{k_{t}}_{\text{kept capital}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Technology.
+\end_layout
+
+\begin_layout Standard
+Investment requires goods and creates a unit of capital one for one.
+\end_layout
+
+\begin_layout Paragraph*
+
+\series bold
+Limited Enforcement.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Note that when the an agent produces capital, it requires consumption goods
+ it does not posses.
+ There is a hidden timing aspect that is not spelled out in the typical
+ business cycle model without frictions.
+ Consumption goods are an intermediate input.
+ To introduce limited enforcement in a tractable way, assume that capital
+ to invest is obtained by selling 
+\begin_inset Formula $\phi k_{t}$
+\end_inset
+
+ fraction of the capital.
+ 
+\end_layout
+
+\begin_layout Standard
+A loan contract is a promise to deliver 
+\begin_inset Formula $i^{s}$
+\end_inset
+
+ capital goods in exchange for consumption goods that are used for investment.
+ This loan is subject to limited enforcement: In particular, the firm has
+ 
+\shape italic
+a technology 
+\shape default
+to divert funds
+\shape italic
+.
+ 
+\shape default
+In particular it can run away with a fraction 
+\begin_inset Formula $1-\theta_{t\text{ }}$
+\end_inset
+
+of the production of 
+\begin_inset Formula $i_{t}$
+\end_inset
+
+ capital goods.
+ This possibility imposes some constraints on the contracts that can be
+ signed.
+\end_layout
+
+\begin_layout Standard
+There are two equivalent arrangements.
+ In the one arrangement the firm can use a fraction 
+\begin_inset Formula $\phi_{t}$
+\end_inset
+
+ of the capital stock as collateral.
+ In the other arrangement, the firm sells the capital immediately against
+ consumption goods.
+ Let's show that both enviroments are isomorphic from the standpoint of
+ the firm.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Financial Contracts - Capital as Collateral.
+ 
+\end_layout
+
+\begin_layout Standard
+When the firm pledges the fraction 
+\begin_inset Formula $\phi_{t}$
+\end_inset
+
+ as collateral, it essentially sells claims in amount 
+\begin_inset Formula $i^{s}$
+\end_inset
+
+ against its future output (in terms of capital).
+ If the price of capital is 
+\begin_inset Formula $q_{t}$
+\end_inset
+
+, the firm obtains 
+\begin_inset Formula $q_{t}i^{s}$
+\end_inset
+
+ in consumption goods it can use to finance the production costs.
+ If the firm runs away with the fraction 
+\begin_inset Formula $\theta_{t}$
+\end_inset
+
+ of its output, then the fraction 
+\begin_inset Formula $\phi_{t}$
+\end_inset
+
+ of the current capital is lost.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{problem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The capital producing firm solves the following problem:
+\begin_inset Formula 
+\[
+R_{t}^{K}\left(k_{t}\right)=\max_{i,i^{s}}i_{t}-i_{t}^{s}
+\]
+
+\end_inset
+
+subject to: 
+\begin_inset Formula 
+\begin{equation}
+q_{t}i^{s}=\varphi\left(i_{t},k_{t}\right)\tag{ (Resource Constraint)}
+\end{equation}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{equation}
+i_{t}-i_{t}^{s}+\phi_{t}\lambda k_{t}+m_{t}\geq\left(1-\theta_{t}\right)i_{t}.\tag{ (Incentive Compatibility)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{problem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first constraint states that promises are sold at the market price for
+ capital and that generates some amount of investment goods.
+ The second is the incentive compatibility constraint induced by limited
+ liability.
+ It states that the contract must be such that the firm is better-off staying
+ in the contract than running away.
+ The right-hand side is what the borrower gets to keep if he stays in the
+ contract.
+ That's the difference between total investment minus his promise, plus
+ the fraction of collateral that can be pledged.
+ Here, 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ represents an adjsustment cost of capital, a function that is homogeneous
+ of degree one in both arguments.
+\end_layout
+
+\begin_layout Standard
+No lender would lend out to if will not receive any proceeds from the investment.
+ If we get rid of 
+\begin_inset Formula $i^{s},$
+\end_inset
+
+ the problem translates into:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{problem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+\begin_inset Formula 
+\[
+R_{t}^{K}\left(k\right)=\max_{i}i-\frac{\varphi\left(i_{t},k_{t}\right)}{q_{t}}
+\]
+
+\end_inset
+
+subject to: 
+\begin_inset Formula 
+\[
+i_{t}\theta+\phi_{t}k_{t}+\frac{m_{t}}{q_{t}}\geq\frac{\varphi\left(i,k\right)}{q_{t}}.
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{problem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Before we solve this problem, we show what happens when the firm sells part
+ of the old capital stock in advance instead of pledging capital as collateral.
+\end_layout
+
+\begin_layout Paragraph*
+
+\series bold
+Financial Contracts - Capital Sales.
+ 
+\end_layout
+
+\begin_layout Standard
+When the firm sells the fraction 
+\begin_inset Formula $\phi_{t}$
+\end_inset
+
+ of its capital stock to obtain consumption goods for its investment projects,
+ it relaxes the financial constraints imposed by limited enforcement.
+ Assume thus that the firm sells that fraction at price 
+\begin_inset Formula $q_{t}$
+\end_inset
+
+.
+ Together with those sales, it also sells claims in amount 
+\begin_inset Formula $i^{s}$
+\end_inset
+
+ against its future output.
+ The firm obtains 
+\begin_inset Formula $q_{t}\left(i^{s}+\phi_{t}\lambda k_{t}\right)$
+\end_inset
+
+ in consumption goods it can use to finance the production costs.
+ Again, If the firm runs away with the fraction 
+\begin_inset Formula $\theta_{t\text{ }}$
+\end_inset
+
+ of its output, then the fraction 
+\begin_inset Formula $\phi_{t}$
+\end_inset
+
+ of the current capital is lost.
+\end_layout
+
+\begin_layout Problem
+Using capital sales, the capital producing firm solves the following problem:
+\begin_inset Formula 
+\[
+R_{t}^{i}\left(k_{t}\right)=\max_{i,i^{s}}i-i^{s}-\phi_{t}\lambda k_{t}
+\]
+
+\end_inset
+
+subject to: 
+\begin_inset Formula 
+\[
+q_{t}\left(i^{s}+\phi_{t}\lambda k_{t}\right)=\varphi\left(i,k\right)
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+i-i^{s}\geq\left(1-\theta_{t}\right)i.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that in this case, the objective has changed to incorporate the fact
+ that when the firm sells capital, it loses the fraction sold from its capital
+ stock.
+ However, the enforcement constraint has changed because there is no capital
+ left-over as collateral.
+ Again, I can get rid of 
+\begin_inset Formula $i^{s}$
+\end_inset
+
+ by using the resource constraint of the firm.
+ Substituting 
+\begin_inset Formula $i^{s}$
+\end_inset
+
+ out of the objective one obtains: 
+\begin_inset Formula $i-\varphi\left(i,k\right)/q_{t}$
+\end_inset
+
+ as the objective.
+ Replacing the same object into the incentive constraint, one obtains: 
+\begin_inset Formula $i\theta+\phi_{t}k\geq\frac{\varphi\left(i,k\right)}{q_{t}}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{exercise}
+\end_layout
+
+\end_inset
+
+ Show that when capital is sold, the total sales of capital (including both,
+ existing capital and promises of capital) equals the amount of future capital
+ in the version where capital is pledged as collateral.
+ Show that when capital is sold, the firm retains the same amount of capital
+ as when the firm pledges capital as collateral.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{exercise}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{exercise}
+\end_layout
+
+\end_inset
+
+ Show that using funds (money) to buy capital is identical to pledging it..
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{exercise}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{remark}
+\end_layout
+
+\end_inset
+
+ We have shown that selling capital or pledging capital as collateral is
+ isomorphic.
+ In particular, the firms solves the same problem of investment scale and
+ the supply of capital by the firm is the same.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{remark}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+
+\series bold
+Linear Returns to Investment.
+ 
+\end_layout
+
+\begin_layout Standard
+Note that both the objective and the constraint faced by the capital producing
+ firms are linear functions of the pledgeable funds 
+\begin_inset Formula $\phi_{t}k_{t}+m_{t}$
+\end_inset
+
+.
+ Thus,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{t}^{i}\left(k\right)=r_{t}^{i}\left[\phi_{t}k_{t}+m_{t}\right]
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+r_{t}^{i}=\max_{\iota}\left[\iota-\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}\right]
+\]
+
+\end_inset
+
+subject to: 
+\begin_inset Formula 
+\[
+\iota\theta+\phi_{t}\omega^{k}+\frac{\omega^{m}}{q_{t}}\geq\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}.
+\]
+
+\end_inset
+
+Given an equilibrium 
+\begin_inset Formula $q_{t}$
+\end_inset
+
+, if the constraint is not binding, then, 
+\begin_inset Formula $\frac{\varphi^{\prime}\left(\iota,\omega^{k}\right)}{q_{t}}=1$
+\end_inset
+
+.
+ Otherwise, if constraints is not binding: 
+\begin_inset Formula $\iota\theta+\phi_{t}\omega^{k}+\omega^{m}=\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}$
+\end_inset
+
+.
+ We can summarize the result as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proposition}
+\end_layout
+
+\end_inset
+
+ Given an equilibrium 
+\begin_inset Formula $q_{t}$
+\end_inset
+
+ the investment rate of the firm is given by: 
+\begin_inset Formula 
+\[
+\iota=\min\left\{ \left(\varphi_{\iota}^{\prime}\right)^{-1}\left(\frac{1}{q_{t}}\right),\iota^{cons}\right\} 
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\iota^{cons}$
+\end_inset
+
+ is the weakly positive solution of 
+\begin_inset Formula $\iota\theta+\phi_{t}\omega^{k}+\frac{\omega^{m}}{q_{t}}=\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proposition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By assumption of convexity, there always exists a positive root in the solution
+ 
+\begin_inset Formula $\iota^{cons}$
+\end_inset
+
+.
+ It is worth to describe graphically what is going on.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement tbp
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ../Limited Enforcement/Kiyotaki and Moore/F_Unconstrained.pdf
+	width 300pt
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+label{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Unconstrained Solution for Capital Producing Firm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement tbp
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ../Limited Enforcement/Kiyotaki and Moore/F_Constrained.pdf
+	width 300pt
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+label{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Constrained Solution for Capital Producing Firm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Naturally, in the special case of 
+\begin_inset Formula $\varphi\left(i,k\right)=i$
+\end_inset
+
+, we have that:
+\begin_inset Formula 
+\[
+\iota=\begin{cases}
+\iota^{cons} & \text{ if  }q_{t}>1\\
+\left[0,\iota^{cons}\right] & \text{ if }q_{t}=1\\
+0 & \text{ if }q_{t}<1.
+\end{cases}
+\]
+
+\end_inset
+
+Moreover, we obtain that: 
+\begin_inset Formula 
+\[
+\frac{q_{t}}{1-\theta q_{t}}\left(\phi_{t}\frac{\omega^{k}}{q_{t}}+\frac{\omega^{m}}{q_{t}}\right)=\iota.
+\]
+
+\end_inset
+
+Thereby, we have that:
+\begin_inset Formula 
+\[
+r_{t}^{i}=\left[\frac{q_{t}-1}{q_{t}}\right]\frac{\iota}{\left(\phi_{t}\frac{\omega^{k}}{q_{t}}+\frac{\omega^{m}}{q_{t}}\right)}=\left[\frac{q_{t}-1}{1-\theta q_{t}}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+
+\series bold
+Jump in Capital.
+\end_layout
+
+\begin_layout Standard
+Upon an investment opportunity, the capital then jumps by:
+\begin_inset Formula 
+\[
+k_{t}^{'}=r_{t}^{i}+k.
+\]
+
+\end_inset
+
+But we can also express this us a jump in wealth:
+\begin_inset Formula 
+\[
+W_{t}^{'}=q_{t}\left[r_{t}^{i}+k\right]+m_{t}=\left[\left[\frac{q_{t}-1}{1-\theta q_{t}}\right]\left(\phi_{t}\omega^{k}+\omega^{m}\right)+\omega^{k}+\omega^{m}\right]W_{t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+HJB equation.
+\end_layout
+
+\begin_layout Standard
+The HJB equation for the household is:
+\begin_inset Formula 
+\[
+\rho V\left(W\right)=\max_{\left\{ \bar{c}_{t}\right\} }U\left(\bar{c}_{t}W\right)+V_{w}\left(\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}q_{t}k_{t}-\pi_{t}m_{t}-\bar{c}_{t}\right)W_{t}+\lambda\left[V\left(W_{t}^{'}\right)-V\left(k\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Guess and verify:
+\begin_inset Formula 
+\[
+V\left(W\right)=\frac{\bar{v}^{1-\gamma}W^{1-\gamma}-1/\rho}{1-\gamma}
+\]
+
+\end_inset
+
+For that we use:
+\begin_inset Formula 
+\[
+\rho\frac{\bar{v}^{1-\gamma}W^{1-\gamma}-1/\rho}{1-\gamma}=\max_{\left\{ \bar{c}_{t},\omega_{t}^{k},\omega_{t}^{m}\right\} }U\left(\bar{c}_{t}\right)+V_{w}\left(\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}\omega_{t}^{k}-\pi_{t}\omega_{t}^{m}-\bar{c}_{t}\right)W_{t}+\lambda\left[V\left(\left[r_{t}^{i}\left(\phi_{t}\omega^{k}+\omega^{m}\right)+\omega^{k}+\omega^{m}\right]W\right)-V\left(W\right)\right]
+\]
+
+\end_inset
+
+The intercept is verified.
+ Since 
+\begin_inset Formula $V_{w}=\bar{v}^{1-\gamma}W^{-\gamma}$
+\end_inset
+
+, then all the terms of order 
+\begin_inset Formula $W^{1-\gamma}$
+\end_inset
+
+ vanish.
+ Hence, we verify that:
+\begin_inset Formula 
+\[
+\rho\frac{\bar{v}^{1-\gamma}-1/\rho}{1-\gamma}=\max_{\left\{ \bar{c}_{t},\omega_{t}^{k},\omega_{t}^{m}\right\} }U\left(\bar{c}_{t}\right)+\frac{\bar{v}^{1-\gamma}}{1-\gamma}\left(\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}\omega_{t}^{k}-\pi_{t}\omega_{t}^{m}-\bar{c}_{t}\right)+\lambda\left[\frac{\bar{v}^{1-\gamma}}{1-\gamma}\left(\left[\left(r_{t}^{i}\phi_{t}+1\right)\omega^{k}+\left(r_{t}^{i}+1\right)\omega^{m}\right]\right)^{1-\gamma}-\frac{\bar{v}^{1-\gamma}}{1-\gamma}\right]
+\]
+
+\end_inset
+
+subject to:
+\begin_inset Formula 
+\[
+\omega_{t}^{k}+\omega_{t}^{m}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first-order conditions require:
+\begin_inset Formula 
+\[
+U'\left(\bar{c}_{t}\right)=\frac{\bar{v}^{1-\gamma}}{1-\gamma}.
+\]
+
+\end_inset
+
+And furthermore:
+\begin_inset Formula 
+\[
+\left[\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}+\pi_{t}\right]=\bar{v}^{1-\gamma}\left(\left[r_{t}^{i}\left(\phi_{t}+1\right)\omega^{k}+\left(r_{t}^{i}+1\right)\omega^{m}\right]\right)^{-\gamma}\left(1-\phi_{t}\right)r_{t}^{i}.
+\]
+
+\end_inset
+
+This expression is a liquidity primium of money:
+\begin_inset Formula 
+\[
+\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}=\bar{v}^{1-\gamma}\left(\left[r_{t}^{i}\left(\phi_{t}+1\right)\left(1-\omega^{m}\right)+\left(r_{t}^{i}+1\right)\omega^{m}\right]\right)^{-\gamma}\left(1-\phi_{t}\right)r_{t}^{i}-\pi_{t}.
+\]
+
+\end_inset
+
+The idea is that money is dominated in return, but has an additional value
+ as collateral, captured by the term:
+\begin_inset Formula 
+\[
+\left(1-\phi_{t}\right)r_{t}^{i}
+\]
+
+\end_inset
+
+ The term: 
+\begin_inset Formula $r_{t}^{i}$
+\end_inset
+
+ captures the levered return on your investment, 
+\begin_inset Formula $\left(1-\phi_{t}\right)$
+\end_inset
+
+ the collateral value of money, the term:
+\begin_inset Formula 
+\[
+\bar{v}^{1-\gamma}\left(\left[r_{t}^{i}\left(\phi_{t}+1\right)\left(1-\omega^{m}\right)+\left(r_{t}^{i}+1\right)\omega^{m}\right]\right)^{-\gamma}
+\]
+
+\end_inset
+
+captures the relative jump in marginal utilities when money increases.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+
+\series bold
+Markets.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Enumerate
+There's a market for capital goods that clears are price 
+\begin_inset Formula $\left\{ q_{t}\right\} .$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+There's a market for collateralized investment loan contracts.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Loan contracts satisfy the incentive compatibility constraint.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Clearing in the market for investment requires:
+\begin_inset Formula 
+\[
+\underbrace{\lim_{\Delta\rightarrow0}\frac{\left(1-\exp\left(-\lambda\Delta\right)\right)}{\Delta}\int_{0}^{\infty}i^{s}\left(W\right)f\left(W\right)dW}_{\text{supply }}=\underbrace{\lim_{\Delta\rightarrow0}\frac{\exp\left(-\lambda\Delta\right)}{\left(\Delta\right)}\int_{0}^{\infty}\left(k_{t+\Delta}-k_{t}\right)\left(W\right)f\left(W\right)dW}_{\text{demand}}.
+\]
+
+\end_inset
+
+We can write this expression, using the independence assumptions as:
+\begin_inset Formula 
+\[
+\underbrace{\lambda\frac{\iota}{q}W}_{\text{supply }}=\underbrace{\frac{\dot{k}}{k}\frac{k}{W}}_{\text{demand}}
+\]
+
+\end_inset
+
+Thereby, obtaining:
+\begin_inset Formula 
+\[
+\underbrace{\frac{\lambda}{1-\theta q_{t}}\left(\phi_{t}\frac{\omega^{k}}{q_{t}}+\frac{\omega^{m}}{q_{t}}\right)W}_{\text{supply }}=\underbrace{\frac{\dot{K}}{K}\omega^{k}\frac{W}{q_{t}}}_{\text{demand}}
+\]
+
+\end_inset
+
+Using that in a stationary environment:
+\begin_inset Formula 
+\[
+\left(\frac{\dot{q}}{q}+\frac{\dot{K}}{K}\right)\omega^{k}-\pi\omega^{m}=\frac{\dot{W}}{W}
+\]
+
+\end_inset
+
+the equation above becomes:
+\begin_inset Formula 
+\[
+\underbrace{\frac{\lambda}{1-\theta q_{t}}\left(\phi_{t}\omega^{k}+\omega^{m}\right)}_{\text{supply }}=\underbrace{\left(\frac{\dot{W}}{W}+\pi\omega^{m}-\frac{\dot{q}}{q}\omega^{k}\right)}_{\text{demand}}
+\]
+
+\end_inset
+
+Finally, sungint that
+\begin_inset Formula 
+\[
+\frac{\dot{W}}{W}=\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}\omega_{t}^{k}-\pi_{t}\omega_{t}^{m}-\bar{c}_{t}
+\]
+
+\end_inset
+
+we obtain:
+\begin_inset Formula 
+\[
+\underbrace{\lambda\frac{\phi_{t}\omega^{k}+\omega^{m}}{1-\theta q_{t}}}_{\text{investment supply}}=\underbrace{\frac{\left[r_{t}-\delta\right]}{q_{t}}\omega_{t}^{k}-\bar{c}_{t}}_{\text{savings per unit of wealth}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\series bold
+Equilibrium
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Definition.
+ 
+\series default
+A sequential equilibrium is a sequence of prices 
+\begin_inset Formula $\left\{ q_{t},\pi_{t}\right\} $
+\end_inset
+
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{exercise}
+\end_layout
+
+\end_inset
+
+ Caracterize a statinoary solution as much as possible.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{exercise}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
