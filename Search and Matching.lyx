@@ -736,7 +736,7 @@ on.
 \begin_layout Standard
 \begin_inset Formula 
 \[
-V_{t}=\sum_{s=0}^{\infty}\beta^{t+s}U\left(c_{t+s}\right)
+V_{t}=\sum_{s=0}^{\infty}\beta^{s}U\left(c_{t+s}\right)
 \]
 
 \end_inset
@@ -764,7 +764,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \[
-V_{t}=\sum_{s=0}^{\infty}\exp\left(-\rho\left(s\right)\right)U\left(c_{t+s}\right).
+V_{t}=\sum_{s=0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right).
 \]
 
 \end_inset
@@ -782,7 +782,7 @@ We want to make the same computations as time intervals, become smaller
 \begin_layout Standard
 \begin_inset Formula 
 \[
-V\left(t,\Delta\right)=\sum_{s=0:\Delta:\infty}\exp\left(-\rho\left(t+s\right)\right)U\left(c_{t+s}\right)\Delta.
+V\left(t,\Delta\right)=\sum_{s=0:\Delta:\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)\Delta.
 \]
 
 \end_inset
@@ -829,15 +829,64 @@ Why are we interested in this object? Because it will be useful to characterize
 \begin{eqnarray*}
 V\left(t+\Delta\right)-V\left(t\right) & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds\\
  & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds\\
- & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{0}^{\infty}\exp\left(-\rho\left(z+\Delta\right)\right)U\left(c_{t+z}\right)dz
+ & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{0}^{\infty}\exp\left(-\rho\left(z+\Delta\right)\right)U\left(c_{t+\Delta+z}\right)dz
 \end{eqnarray*}
 
 \end_inset
 
 where the last line is a change of variables 
-\begin_inset Formula $z=s+\Delta.$
+\begin_inset Formula $z=s-\Delta$
 \end_inset
 
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $z=s-\Delta$
+\end_inset
+
+, then 
+\begin_inset Formula $dz=ds,$
+\end_inset
+
+
+\begin_inset Formula $z\rvert_{s=\Delta}=0,z\rvert_{s=\infty}=\infty$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\end_layout
+
+\end_inset
+
+.
  Thus, we have:
 \end_layout
 
@@ -3298,7 +3347,7 @@ end{theorem}
 \[
 A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}
+}{}{}{}
 \]
 
 \end_inset
@@ -3311,7 +3360,7 @@ A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansi
 \[
 B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}
+}{}{}{}
 \]
 
 \end_inset
@@ -3324,7 +3373,7 @@ B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpa
 \[
 P=\frac{1}{r}-\frac{\delta}{r}\frac{\left(1-q\right)r+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}
+}{}{}{}
 \]
 
 \end_inset
