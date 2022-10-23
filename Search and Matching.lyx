@@ -3347,7 +3347,7 @@ end{theorem}
 \[
 A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}{}{}{}{}
+}{}{}{}{}{}{}{}{}{}
 \]
 
 \end_inset
@@ -3360,7 +3360,7 @@ A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansi
 \[
 B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}{}{}{}{}
+}{}{}{}{}{}{}{}{}{}
 \]
 
 \end_inset
@@ -3373,7 +3373,7 @@ B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpa
 \[
 P=\frac{1}{r}-\frac{\delta}{r}\frac{\left(1-q\right)r+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}{}{}{}{}
+}{}{}{}{}{}{}{}{}{}
 \]
 
 \end_inset
@@ -4038,11 +4038,11 @@ status open
 
 \begin_layout Standard
 We need technical assumptions for this relationship to hold.
- Provided an Innada condition, we have that without money, the marginal
- utility is:
+ Provided an Inada condition, we have that without money, the marginal utility
+ is:
 \begin_inset Formula 
 \[
-\mathcal{B}'\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{-\eta}\frac{u'\left(\ell\left(m\right)\right)-1}{1+\left(1-\eta\right)\left(u'\left(\ell\left(m\right)\right)-1\right)}\frac{d\ell}{dm}.
+\mathcal{B}'\left(m\right)=\eta^{\eta+1}\left(1-\eta\right)^{1-\eta}\frac{u'\left(\ell\left(m\right)\right)-1}{1+\left(1-\eta\right)\left(u'\left(\ell\left(m\right)\right)-1\right)}.
 \]
 
 \end_inset
