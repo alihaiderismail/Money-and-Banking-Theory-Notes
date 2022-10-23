@@ -1845,7 +1845,7 @@ Thus, the ownership yields the same value regardless of the type switching
 Hence, we obtain that the equilibrium in terms of value satisfies:
 \begin_inset Formula 
 \[
-\rho V\left(h,o\right)=U\left(1\right)+\lambda\left[V\left(\ell,n\right)+\lambda P-V\left(h,o\right)\right],
+\rho V\left(h,o\right)=U\left(1\right)+\lambda\left[V\left(\ell,n\right)+P-V\left(h,o\right)\right],
 \]
 
 \end_inset
@@ -3347,7 +3347,7 @@ end{theorem}
 \[
 A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}
+}{}{}{}{}{}
 \]
 
 \end_inset
@@ -3360,7 +3360,7 @@ A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansi
 \[
 B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}
+}{}{}{}{}{}
 \]
 
 \end_inset
@@ -3373,7 +3373,7 @@ B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpa
 \[
 P=\frac{1}{r}-\frac{\delta}{r}\frac{\left(1-q\right)r+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}
+}{}{}{}{}{}
 \]
 
 \end_inset
