@@ -1095,8 +1095,8 @@ The term on the right-hand side remains identical.
 \begin_inset Formula 
 \begin{eqnarray*}
 \lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t+\Delta\right)-V\left(S_{t+\Delta},t\right)+V\left(S_{t+\Delta},t\right)-V\left(S,t\right)}{\Delta} & = & \lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t+\Delta\right)-V\left(S_{t+\Delta},t\right)}{\Delta}\\
- & \ldots & +\frac{V\left(S_{t+\Delta},t\right)-V\left(S,t\right)}{\Delta}\\
- & = & \frac{\partial V\left(S_{t+\Delta},t+\Delta\right)}{\partial\Delta}|_{\Delta=0}+\frac{\partial V\left(S_{t+\Delta},t\right)}{\partial\Delta}|_{\Delta=0}.\\
+ & \ldots & +\lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t\right)-V\left(S,t\right)}{\Delta}\\
+ & = & \frac{\partial V\left(S_{t+\Delta},t+\Delta\right)}{\partial\Delta}|_{\Delta=0}+\frac{\partial V\left(S_{t+\Delta},t\right)}{\partial\Delta}|_{\Delta=0}\\
  & = & \dot{V}+V_{s}\dot{S}.
 \end{eqnarray*}
 
@@ -1215,8 +1215,8 @@ Grouping terms:
 
 \end_inset
 
-What if c
-\begin_inset Formula $_{t}$
+What if 
+\begin_inset Formula $c_{t}$
 \end_inset
 
  varies with time? Can you find the solution to 
@@ -1463,7 +1463,7 @@ But now for
 , notice that:
 \begin_inset Formula 
 \[
-\lim_{\Delta\downarrow0}\frac{\Pr\left[N_{t+\Delta}\geq2|N_{t}=0\right]}{\Delta}=\lim_{\Delta\downarrow0}\int_{0}^{\Delta}\left(1-\exp\left(-\lambda\tau\right)\right)\cdot\frac{\left(1-\exp\left(-\lambda\left(\Delta-\tau\right)\right)\right)}{\Delta}d\tau=0.
+\lim_{\Delta\downarrow0}\frac{\Pr\left[N_{t+\Delta}\geq2|N_{t}=0\right]}{\Delta}=\lim_{\Delta\downarrow0}\int_{0}^{\Delta}\lambda\exp\left(-\lambda\tau\right)\cdot\frac{\left(1-\exp\left(-\lambda\left(\Delta-\tau\right)\right)\right)}{\Delta}d\tau=0.
 \]
 
 \end_inset
@@ -1721,7 +1721,7 @@ we can modify the environment to make this probabilities asymmetric
 
 \end_deeper
 \begin_layout Standard
-When the agent switches type, they agent can go to a market and trade the
+When the agent switches type, the agent can go to a market and trade the
  asset immediately.
  Let's assume that when this happens, agents can sell assets, but if there
  is excess demand in one market, the price of the asset corresponds to the
@@ -3347,7 +3347,7 @@ end{theorem}
 \[
 A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}
+}{}{}{}{}
 \]
 
 \end_inset
@@ -3360,7 +3360,7 @@ A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansi
 \[
 B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}
+}{}{}{}{}
 \]
 
 \end_inset
@@ -3373,7 +3373,7 @@ B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpa
 \[
 P=\frac{1}{r}-\frac{\delta}{r}\frac{\left(1-q\right)r+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}
+}{}{}{}{}
 \]
 
 \end_inset
