@@ -408,7 +408,7 @@ Total wealth is
  
 \begin_inset Formula 
 \[
-\dot{q}_{t}k_{t}+q_{t}\dot{k}_{t}+\dot{m}_{t}
+\dot{W}_{t}=\dot{q}_{t}k_{t}+q_{t}\dot{k}_{t}+\dot{m}_{t}
 \]
 
 \end_inset
@@ -735,7 +735,7 @@ When the firm sells the fraction
 \end_inset
 
  in consumption goods it can use to finance the production costs.
- Again, If the firm runs away with the fraction 
+ Again, if the firm runs away with the fraction 
 \begin_inset Formula $\theta_{t\text{ }}$
 \end_inset
 
@@ -957,8 +957,8 @@ Given an equilibrium
 \end_inset
 
 .
- Otherwise, if constraints is not binding: 
-\begin_inset Formula $\iota\theta+\phi_{t}\omega^{k}+\omega^{m}=\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}$
+ Otherwise, if constraints is binding: 
+\begin_inset Formula $\iota\theta+\phi_{t}\omega^{k}+\frac{\omega^{m}}{q_{t}}=\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}$
 \end_inset
 
 .
@@ -1156,7 +1156,7 @@ Naturally, in the special case of
 \begin_inset Formula 
 \[
 \iota=\begin{cases}
-\iota^{cons} & \text{ if  }q_{t}>1\\
+\iota^{cons} & \text{ if }q_{t}>1\\
 \left[0,\iota^{cons}\right] & \text{ if }q_{t}=1\\
 0 & \text{ if }q_{t}<1.
 \end{cases}
