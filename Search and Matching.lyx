@@ -2027,7 +2027,7 @@ For the low type owning the asset, we obtain:
 Finally, we have the value of the low type that doesn't own the asset:
 \begin_inset Formula 
 \[
-\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right]+\mu\left[\max\left\{ V\left(n,o\right)-P,V\left(\ell,n\right)\right\} -V\left(\ell,n\right)\right].
+\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right]+\mu\left[\max\left\{ V\left(\ell,o\right)-P,V\left(\ell,n\right)\right\} -V\left(\ell,n\right)\right].
 \]
 
 \end_inset
@@ -2079,7 +2079,7 @@ For the low type owning the asset, we obtain:
 Finally, we have the value of the low type that doesn't own the asset:
 \begin_inset Formula 
 \[
-\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right]+\mu\left[\max\left\{ V\left(n,o\right)-P,V\left(\ell,n\right)\right\} -V\left(\ell,n\right)\right].
+\rho V\left(\ell,n\right)=\delta U\left(0\right)+\lambda\left[V\left(\ell,n\right)-V\left(h,n\right)\right]+\mu\left[\max\left\{ V\left(\ell,o\right)-P,V\left(\ell,n\right)\right\} -V\left(\ell,n\right)\right].
 \]
 
 \end_inset
@@ -2089,7 +2089,7 @@ Finally, we have the value of the low type that doesn't own the asset:
 
 \begin_layout Standard
 Conjecture that 
-\begin_inset Formula $\max\left\{ V\left(n,o\right)-P,V\left(\ell,n\right)\right\} =V\left(\ell,n\right).$
+\begin_inset Formula $\max\left\{ V\left(\ell,o\right)-P,V\left(\ell,n\right)\right\} =V\left(\ell,n\right).$
 \end_inset
 
  In this case, the idea is that the low type now strictly prefers to sell
@@ -3347,7 +3347,7 @@ end{theorem}
 \[
 A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}{}
+}{}{}{}{}{}{}
 \]
 
 \end_inset
@@ -3360,7 +3360,7 @@ A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansi
 \[
 B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}{}
+}{}{}{}{}{}{}
 \]
 
 \end_inset
@@ -3373,7 +3373,7 @@ B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpa
 \[
 P=\frac{1}{r}-\frac{\delta}{r}\frac{\left(1-q\right)r+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}{}
+}{}{}{}{}{}{}
 \]
 
 \end_inset
