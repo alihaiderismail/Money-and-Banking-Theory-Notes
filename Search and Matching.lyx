@@ -3347,7 +3347,7 @@ end{theorem}
 \[
 A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}{}{}{}
+}{}{}{}{}{}{}{}{}
 \]
 
 \end_inset
@@ -3360,7 +3360,7 @@ A=\frac{1}{r}-\frac{\delta}{r}\frac{\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansi
 \[
 B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}{}{}{}
+}{}{}{}{}{}{}{}{}
 \]
 
 \end_inset
@@ -3373,7 +3373,7 @@ B=\frac{1}{r}-\frac{\delta}{r}\frac{zr+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpa
 \[
 P=\frac{1}{r}-\frac{\delta}{r}\frac{\left(1-q\right)r+\lambda_{d}+2%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q){r+\lambda_{d}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{lo}(1-q)+\lambda_{u}+2\lambda%TCIMACRO{\U{b5}}%%BeginExpansion{\mu}%EndExpansion_{hn}q+\rho(1-z)
 }
-}{}{}{}{}{}{}{}
+}{}{}{}{}{}{}{}{}
 \]
 
 \end_inset
@@ -3520,7 +3520,7 @@ The value function is:
 
 \end_inset
 
-The objects stand for the bargainaed transactions terms: 
+The objects stand for the bargained transactions terms: 
 \begin_inset Formula $t\left(m,\tilde{m}\right)$
 \end_inset
 
@@ -3779,7 +3779,7 @@ and since the solutions are independent of
 Replacing terms:
 \begin_inset Formula 
 \[
-\rho V_{0}=\max_{m}U\left(\left[U'\right]^{-1}\left(1\right)\right)+\left(r-\rho\right)W_{t}-\left(\pi_{t}+r_{t}\right)m_{t}+\tau_{t}+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[\mathcal{B}\left(m,\tilde{m}\right)\right]}^{\text{buyer value}}+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[\mathcal{G}\left(m,\tilde{m}\right)\right]}^{\text{seller value}}
+\rho V_{0}=\max_{m}U\left(\left[U'\right]^{-1}\left(1\right)\right)+\left(r_{t}-\rho\right)W_{t}-\left(\pi_{t}+r_{t}\right)m_{t}+\tau_{t}+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[\mathcal{B}\left(m,\tilde{m}\right)\right]}^{\text{buyer value}}+\lambda\mathbb{E}_{\tilde{m}}\overbrace{\left[\mathcal{G}\left(m,\tilde{m}\right)\right]}^{\text{seller value}}
 \]
 
 \end_inset
@@ -3868,7 +3868,7 @@ To prove this conjecture, I first take the first order conditions with respect
 \end_inset
 
 .
- Taking first-order conditinos yields:
+ Taking first-order conditions yields:
 \begin_inset Formula 
 \[
 \frac{\eta}{u(\ell)-t}\cdot\mathcal{S}\left(m\right)-\frac{1-\eta}{t-\ell}\cdot\mathcal{S}\left(m\right)-\gamma.
@@ -3899,7 +3899,7 @@ But then, employing the definitions:
 and adding terms yields:
 \begin_inset Formula 
 \[
-\mathcal{S}\left(m\right)=u(\ell)-t.
+\mathcal{S}\left(m\right)=u(\ell)-\ell.
 \]
 
 \end_inset
@@ -3907,7 +3907,7 @@ and adding terms yields:
 Thereby:
 \begin_inset Formula 
 \[
-\eta\left(u(\ell)-t\right)=u(\ell)-t
+\eta\left(u(\ell)-\ell\right)=u(\ell)-t
 \]
 
 \end_inset
@@ -3915,7 +3915,7 @@ Thereby:
 and
 \begin_inset Formula 
 \[
-\left(1-\eta\right)\left(t-\ell\right)=t-\ell.
+\left(1-\eta\right)\left(u(\ell)-\ell\right)=t-\ell.
 \]
 
 \end_inset
