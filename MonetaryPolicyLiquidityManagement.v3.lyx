@@ -1,0 +1,3658 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\special{papersize=8.5in,11in}
+%\usepackage{palatino,amssymb,amsfonts,amsmath,latexsym,setspace}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+% \usepackage[dvips]{graphicx}
+
+\usepackage{fancyhdr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{lscape}
+% \usepackage{color}
+\usepackage{colortbl}
+ \usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subfig}
+% \usepackage{subcaption}
+\usepackage{sidecap}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{hyperref}
+
+
+\setcounter{MaxMatrixCols}{10}
+%  Chad's style file for nice paper format.
+%  Various ideas for this style are taken from
+%    -- Matthias Doepke and Michele Tertilt
+%    -- Tony Roberts
+
+% Hyperstuff
+\hypersetup{citecolor=ChadMagenta,linkcolor=ChadDarkBlue,urlcolor=ChadDarkBlue}
+
+% example file to change the style of LaTeX
+% first colour for latex or pdflatex
+%\ifx\pdfoutput\@undefined\usepackage[usenames,dvips]{color}
+% \else\usepackage[usenames,dvipsnames]{color}
+% and fix pdf colour problems
+% \IfFileExists{pdfcolmk.sty}{\usepackage{pdfcolmk}}{} 
+%\fi
+
+% Chad's colors:
+% See http://web.njit.edu/~kevin/rgb.txt.html for possibilities
+\definecolor{ChadDarkBlue}{rgb}{.1,0,.2}  
+\definecolor{ChadBlue}{rgb}{.1,.1,.5}  
+\definecolor{ChadRoyal}{rgb}{.2,.2,.8}  
+%\definecolor{ChadGreen}{rgb}{0,.35,.1}
+%\definecolor{ChadGreen}{rgb}{0,.5,.25}  % Too bright
+%\definecolor{ChadGreen}{rgb}{0,.4,.2}    % Still too bright
+\definecolor{ChadGreen}{rgb}{0,.4,0}    % Dark Green
+%\definecolor{ChadRed}{rgb}{.8,.1,.2}    % Too bright
+\definecolor{ChadRed}{rgb}{.5,0,.5}  % purple
+\definecolor{ChadMagenta}{rgb}{.6,0,.6}  % magenta
+\definecolor{webbrown}{rgb}{.1,0,.2}  % magenta
+
+%%% HYPERLINKS %%%%%%%%%%%%%%%%%%%%%
+\usepackage[figure,table]{hypcap}% Correct a problem with hyperref
+\urlstyle{rm} %so it doesn't use a typewriter font for url's.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
+% Fix title, sections, etc.
+
+\let\LaTeXtitle\title
+\renewcommand{\title}[1]{\LaTeXtitle{\color{ChadBlue}{\LARGE #1}}}
+\renewcommand{\abstractname}{\color{ChadBlue}Abstract}
+\renewcommand{\figurename}{\color{ChadBlue}Figure}
+\renewcommand{\tablename}{\color{ChadBlue}Table}
+
+\let\LaTeX@startsection\@startsection 
+\renewcommand{\@startsection}[6]{\LaTeX@startsection%
+{#1}{#2}{#3}{#4}{#5}{\color{ChadBlue}\raggedright #6}} 
+
+%% % Fix periods at end of section numbers
+%% \renewcommand \thesection {\@arabic\c@section.}
+%% \renewcommand\thesubsection   {\thesection\@arabic\c@subsection}%.}
+%% \renewcommand\thesubsubsection{\thesubsection \@arabic\c@subsubsection}%.}
+
+
+% Add a period *only* after Section and *only* in title, not cross ref
+% April 2017
+
+\renewcommand{\@seccntformat}[1]{%
+  \csname the#1\endcsname% Print sectional counter
+  \ifnum\pdfstrcmp{#1}{section}=0 .\fi% If \section, print .
+  \quad% Space between number and title
+}
+
+
+
+
+% Margin, Paragraph Setup
+
+%\textheight=21.5cm \textwidth=14.95cm \topmargin=-5.5mm
+%\oddsidemargin=8mm \evensidemargin=8mm
+\textheight=22.5cm 
+\textwidth=16.35cm 
+\topmargin=0mm
+\oddsidemargin=0mm 
+\evensidemargin=0mm
+%\setlength{\parindent}{0em} 
+%\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+%\setlength{\parsep}{0pt}
+
+
+% This is how to control linespacing using setspace
+% (\singlespacing or doublespacing just call this command)
+
+
+%% Setting up page headers
+
+\rhead[]{\thepage}
+\lhead[\thepage]{}
+\cfoot[]{} 
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\runningheads}[2]{
+   \chead[\color{ChadGreen}{\uppercase {\footnotesize #1}}]  % Author page header
+   {\color{ChadGreen}{\uppercase {\footnotesize #2}}}  % Short title
+  }
+
+% Make hyperlinks jump more accurately
+
+\newcommand{\org@hypertarget}{}
+\let\org@hypertarget\hypertarget
+\renewcommand{\hypertarget}[2]{%
+\Hy@raisedlink{\org@hypertarget{#1}{}}#2%
+}  
+
+
+% Spacing in Tables and Figures
+%\renewcommand{\tabcolsep}{1pt}   % space between columns
+\renewcommand{\arraystretch}{1.5} % space between rows
+\addtolength{\textfloatsep}{0pt} % space between floats and text
+\addtolength{\abovecaptionskip}{0pt} % space above caption
+\addtolength{\belowcaptionskip}{.15in} % space below caption
+
+\newcommand{\spc}[0]{\vspace{.1in}}
+\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\clr}[1]{{\color{ChadBlue} #1}}
+\newcommand{\boxeq}[1]{\boxed{\hspace{.25in} #1 \hspace{.25in}}} 
+
+\newcommand{\bb}[1]{\color{ChadBlue}{#1}}
+\newcommand{\clrg}[1]{\color{ChadGreen}{#1}}
+\newcommand{\gn}[1]{{\color{ChadGreen}{#1}}}
+\newcommand{\gr}[1]{\tiny\textcolor{green4}{#1}}
+\newcommand{\rd}[1]{\textcolor{ChadRed}{#1}}
+\newcommand{\rr}[1]{\textcolor{red}{#1}}
+\newcommand{\imp}[0]{$\Rightarrow \,$} % implies
+
+%% Shortcut commands
+\newcommand{\growth}[1]{\frac{\dot{#1}_t}{{#1}_t}}
+\newcommand{\prtl}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\prtlsec}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\commentno}[2]{\underset{\mbox{#2}}{#1}}
+% \newcommand{\comment}[2]{\underbrace{#1}_{\mbox{{\small \color{ChadGreen}#2}}}}
+\newcommand{\cn}[1]{\citet*{#1}}
+\newcommand{\cnp}[1]{(\citealt{#1})}  % (Jones 2002)
+\newcommand{\up}[0]{\uparrow \hspace{-.5ex}}  % \! is a negative thinspace
+\newcommand{\down}[0]{\downarrow \hspace{-.5ex}}
+\newcommand{\query}[1]{{\it \color{red}[??? #1]}}
+\newcommand{\Ex}[1]{\mbox{ }\mathbb{E}}
+
+% Use of Proof...
+\newcommand{\Proof}[2]{{\hspace{-\parindent} {\color{ChadGreen}\bf Proof of Proposition}~\ref{#1}.}
+{\color{ChadBlue} #2} \vspace{.1in}}
+\newcommand{\Prob}[1]{\mbox{\textnormal{Pr}} \, [#1] }
+\newcommand{\SubSubSection}[1]{\subsubsection{#1} \baselineskip=18pt}
+% \newcommand{\problem}[2]{\hspace{.1in} {{\color{ChadBlue}{\bf #1:} #2}}}
+\newcommand{\proptitle}[1]{\color{ChadBlue} \textnormal{(#1):}}
+
+%\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+%\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+% \newcommand{\definition}[1]{\mbox{\textnormal{Pr}} \, [#1] 
+
+% \newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+% For graphs of networks
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,backgrounds,positioning,fit,graphs.standard}%finish for graphs of networks
+
+\newtheorem{proposition}{\color{ChadGreen} Proposition}
+\newtheorem{definition}{\color{ChadGreen} Definition} 
+\newtheorem{corollary}{\color{ChadGreen} Corollary} 
+\newtheorem{theorem}{\color{ChadGreen} Proposition}
+\newtheorem{lemma}{\color{ChadGreen} Lemma}
+
+\newtheorem{problem}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+\newtheorem{assumption}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+
+\newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}  % frac with large paren
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing double
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes true
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author -91792538 "Saki & Claudia"
+\author 457768546 "sbigio"
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Lecture 6: Monetary Policy and Liquidity Management 
+\end_layout
+
+\begin_layout Section
+Motivation: Monetary Policy and Liquidity Management
+\end_layout
+
+\begin_layout Standard
+Ben Bernanke, the former US Fed chairman, famously joked that 
+\begin_inset Quotes eld
+\end_inset
+
+The problem with QE is it works in practice, but it doesn't work in theory.
+\begin_inset Quotes erd
+\end_inset
+
+ These notes show conditions under which it works in theory.
+ The goal is to identify key elasticities where the theory can predict where
+ is it that it works in practice.
+ 
+\end_layout
+
+\begin_layout Standard
+To motivate the notes, jokes aside, the quote is very telling of the evolution
+ of monetary theory, actually.
+ In response to the financial crises of 2008, Bernanke lead the Federal
+ Reserve during an unprecedented program of reductin of policy rates to
+ almost zero and continuously purchased private paper in an open attempt
+ to preserve nancial stability and reinvigorate bank lending.
+ These large purchases of assets are called quantitative easing (QE).
+ During the 2008, in reaction to these unprecedented policy interventions,
+ banks accumulated central bank reserves without renewing their lending
+ activities.
+ During the time, many practioners discussed the possibility that large-scale
+ open market operations could lead to splurges in inflation.
+ To some extent, Bernanke is right that many theories predict that QE does
+ not work at all.
+ 
+\end_layout
+
+\begin_layout Standard
+Indeed, during the time of QE, there were few models that take into account
+ that monetary policy is implemented through the banking system, as occurs
+ in practice.
+ Instead, most macroeconomic models assumed that Central Banks control interest
+ rates or monetary aggregates and abstract from how the transmission of
+ monetary policy may depend on the conditions of banks.
+ These lecture notes address the following questions: when is QE inflationary
+ and when does it stimulate lending? Critically, to answer these questions,
+ we need to be serious about how the transmission of monetary policy depends
+ on portfolio decisions of banks.
+ 
+\end_layout
+
+\begin_layout Standard
+These notes simplify the model of Bianchi and Bigio (2022) and extend them
+ along several dimensions.
+ In the model, the central bank has access to various tools.
+ A first set of instruments are reserve requirements, discount rates and
+ interests on reserves which in uence the costs of being short of reserves.
+ This set of instruments affects the demand for reserves directly.
+ This occurs through the effects on the interbank market and the liquidity
+ premia learned in the previous section.
+ A second set of instruments are open-market operations (OMO) and direct
+ lending to banks.
+ This latter set of instruments, alters the real balances of reserves in
+ the system.
+ Both types of instruments may carry real effects by tilting the liquidity
+ management tradeoff.
+ Macroeconomic effects result from their indirect eect on aggregate lending
+ and interest rates.
+ However, as much as a Central Bank can influence bank decisions, this influence
+ depends on how easy it is for banks to substitute deposit funding and how
+ easy it is for firms to substitute bank loans.
+\end_layout
+
+\begin_layout Standard
+As futher motivation, observe how the last has been a decade of tremendous
+ innovation in the toolkit used by central banks.
+ Indeed, the last decade has witnessed dramatic increases in their balance
+ sheets—see the Figure below.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MajorCB"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{-4cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "b"
+hor_pos "l"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "33line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../Credit and Monetary Policy/New Draft/CMIP.MajorCentralBank.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:flowchart"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Total Asset Holdings of Major Central Banks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Environment
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Perhaps better to work with continuum of shocks.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Notation.
+\end_layout
+
+\begin_layout Standard
+We use 
+\begin_inset Formula $R^{x}$
+\end_inset
+
+ to denote a gross real rate.
+ We use 
+\begin_inset Formula $r^{x}$
+\end_inset
+
+ to denote its net rate and 
+\begin_inset Formula $i^{x}$
+\end_inset
+
+ to denote its nominal counterpart.
+\end_layout
+
+\begin_layout Paragraph
+Information.
+\end_layout
+
+\begin_layout Standard
+For simplicity, we assume that the environment is deterministic.
+ Furthermore, everything from 
+\begin_inset Formula $t+1$
+\end_inset
+
+ onwards is fixed.
+ Moreover, all assets are real expect for real balances and some predeterined
+ equity poisitions.
+ The nominal interest rate on reserves is fixed to 
+\begin_inset Formula $i^{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Savers and Borrowers
+\end_layout
+
+\begin_layout Standard
+We focuse on the problem of a bank.
+ For now, we assume that a representative saver supplies real balances of
+ deposit 
+\begin_inset Formula $D$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+A representative borrower demands real loans
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ The supply and demand 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+schedules are: 
+\begin_inset Formula 
+\begin{eqnarray}
+d & = & \bar{d}\left(R^{d}\right)^{\epsilon^{D}}\label{eq:(1)}\\
+\ell & = & \left(R^{\textrm{\ensuremath{\ell}}}\right)^{\epsilon^{B}}\label{eq:(2)}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $R^{d}$
+\end_inset
+
+ and 
+\begin_inset Formula $R^{\textrm{\ensuremath{\ell}}}$
+\end_inset
+
+ are the deposit and loan rates and 
+\begin_inset Formula $\epsilon^{D}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\epsilon^{B}<0$
+\end_inset
+
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ We take these static schedules as given, but Bianchi and Bigio (2022)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+update reference
+\end_layout
+
+\end_inset
+
+ show how they can be mirco-founded .
+\end_layout
+
+\begin_layout Subsection
+Banks
+\end_layout
+
+\begin_layout Standard
+A continuum of identical banks intermediate between the saver and the borrower.
+ Each bank is endowed with an initial portfolio of assets and liabilities
+ that pay of at the beginning of period 0: real and nominal loans 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+(
+\begin_inset Formula $\ell_{0}^{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ell_{0}^{n}$
+\end_inset
+
+), real and nominal deposits (
+\begin_inset Formula $d_{0}^{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{0}^{n}$
+\end_inset
+
+), reserve holdings 
+\begin_inset Formula $M_{0}$
+\end_inset
+
+.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+can't we summarize this into equity.
+\end_layout
+
+\end_inset
+
+ We distinguish between real and nominal loans, to explain the role of inflation
+ary surprises.
+ Furthermore, the bank receives a lump-sum transfer of reserves 
+\begin_inset Formula $T$
+\end_inset
+
+ from the central bank—the transfer is used to neutralize certain effects.
+ 
+\begin_inset Formula $P$
+\end_inset
+
+ denotes the price level.
+ The bank's equity 
+\begin_inset Formula $e^{b}$
+\end_inset
+
+, can be express in real terms real terms, hence is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+e^{b}\left(P\right) & \equiv & \underbrace{e^{r,b}}_{\text{Real net assets}e_{0}^{r}}+\underbrace{e^{n,b}(P)}_{\text{Nominal net asstes excl. M}e_{0}^{n}}+\frac{M_{0}}{P}+\frac{T}{P}\label{eq:networth1}
+\end{eqnarray}
+
+\end_inset
+
+After the initial payments are settled, the bank chooses its new portfolio
+ of nominal loans 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\ell$
+\end_inset
+
+, reserve holdings 
+\begin_inset Formula $M$
+\end_inset
+
+, and deposits 
+\begin_inset Formula $d$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ and how much dividends 
+\begin_inset Formula $div$
+\end_inset
+
+ to pay.
+ Its budget constraint is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+e^{b}\left(P\right)+d^{b}-div & = & \frac{M}{P}+\ell^{b}.\label{eq:bank.budget}
+\end{eqnarray}
+
+\end_inset
+
+Initial reserve holdings and current reserve holdings differ by 
+\begin_inset Formula $M-M_{0}=\Delta M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+we may want to say something about the surprise in the policy after time
+ zero.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After the bank has chosen its balance sheet, it is affected by liquidity
+ shocks: depositors transfer funds from one bank to another, and banks need
+ to settle these payments in reserves.
+ In particular, we assume that a bank either faces a net outflow or inflow
+ of deposits, such that the reserve holdings after settling these transfers
+ are
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+the continuum could be better.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+s=\begin{cases}
+m-\delta d & \text{with probability 0.5}\\
+m & \text{with probability 0.5}
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+there's a cleaner way to do this, isolating the withdrawal inflow from the
+ surplus part as in Bigio Sannikov...I changed this here, but we need to clarify
+ the point
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{equation}
+m\equiv\frac{M}{P}.\label{eq:def.m}
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Banks must maintain positive reserve balances at the end of the period.
+ Hence, if this surplus is negative, banks need to borrow additional reserves.
+ At the same time other banks will have a positive surplus which they may
+ lend.
+ This is the role of the interbank market.
+ We model this market as an OTC market with matching frictions, following
+ Bianchi and Bigio (2022).
+ Without going into the details, in this market banks that find trading
+ partners trade at the (average) interbank rate 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $R^{ib}$
+\end_inset
+
+, while banks that fail to find a trading partner need to either lend to
+ the central bank in form of excess reserves at rate 
+\begin_inset Formula $R^{m}$
+\end_inset
+
+ or borrow from the central bank at the discount window at rate 
+\begin_inset Formula $R^{dw}$
+\end_inset
+
+.
+ The match finding probability depends on market tightness, defined as 
+\family default
+\series default
+\shape default
+\size small
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{equation}
+\theta=-\underbrace{\frac{\overbrace{m-\delta d}^{\text{deficit }}}{m}}_{\substack{\text{surplus}}
+}
+\end{equation}
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Depending on whether banks need to borrow or lend, the expected return or
+ cost of this refinancing operation is 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{equation}
+\chi(s;\theta)=\begin{cases}
+\chi^{-}\cdot s & \text{if }s\leq0\\
+\chi^{+}\cdot s & \text{if }s>0
+\end{cases}
+\end{equation}
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\begin{eqnarray*}
+{\color{brown}\chi^{+}} & \equiv & \psi^{+}\left(\theta\right)\left(R^{ib}\left(\theta\right)-R^{m}\right)\\
+{\color{brown}\chi^{-}} & \equiv & \psi^{-}\left(\theta\right)\left(R^{ib}\left(\theta\right)-R^{m}\right)+\left(1-\psi^{-}\left(\theta\right)\right)\left(R^{dw}-R^{m}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In period 1, the banks assets and liabilities pay off and the bank consumes
+ its net worth the net payoff, which is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\underbrace{R^{\ell}\ell+R^{m}m-R^{d}d}_{\text{Expected Portfolio Returns}}+\underbrace{\mathbb{E}\left[\chi(s|\theta)\right]}_{\text{Expected }\text{Settlement Costs}}
+\]
+
+\end_inset
+
+The bank maximizes expected discounted dividends, taking prices as given.
+ Its problem hence is
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Added curvature to current and future dividends:
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{problem}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\max_{\ell,m,d,div}U\left(div\right)+\beta\mathbb{CE}\left[\left(n\left(\omega\right)\right)\right].
+\]
+
+\end_inset
+
+subject to:
+\begin_inset Formula 
+\[
+n\left(\omega\right)=\underbrace{R^{\ell}\ell+R^{m}m-R^{d}d}_{\text{Expected Portfolio Returns}}+\underbrace{\mathbb{E}\left[\chi(s|\theta)\right]}_{\text{Expected }\text{Settlement Costs}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+e^{b}\left(P\right)+d-div & = & m+\ell^{b}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{problem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The idea is that 
+\begin_inset Formula $\mathbb{CE}$
+\end_inset
+
+ is a certainty equivalent operator, under some risk-aversion framework.
+ Below, we work with a specific formulation.
+ Furthermore:
+\begin_inset Formula 
+\[
+U\left(x\right)\equiv\frac{x^{1-1/\psi}-1}{1-1/\psi}
+\]
+
+\end_inset
+
+is the marginal utility.
+ This specification is important, as 
+\begin_inset Formula $1/\psi$
+\end_inset
+
+ governs the elasticity of equity funding to rates of return.
+ The parameter is critical to make a connection with Modigliani-Miller.
+\end_layout
+
+\begin_layout Subsection
+Central bank
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+should we use g or cb?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The central bank controls the nominal IOER, 
+\begin_inset Formula $i^{m}$
+\end_inset
+
+, the nominal discount window rate 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $i^{dw}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ Prices are flexible today but the central bank commits to a price level
+ target at 
+\begin_inset Formula $t+1$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+I think the timing could be clearer.
+ Is today, time zero or beginning of time zero?
+\end_layout
+
+\end_inset
+
+For simplicity, we start with a fully funded central bank.
+ Its balance sheet is given by 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+can we use w for window loans?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\ell^{g}=\frac{M_{0}+\Delta M}{P}+\frac{T}{P}.\label{eq:gov.budget}
+\end{equation}
+
+\end_inset
+
+ where 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $T$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+After the period is realized, discount loans satisfy:
+\begin_inset Formula 
+\[
+S^{-}=W=\left(\delta d-m\right)
+\]
+
+\end_inset
+
+The profits for the central bank stemming from the discount window are:
+\begin_inset Formula 
+\[
+\left(\chi^{-}-\chi^{+}\right)W=\left(\chi^{-}-\chi^{+}\right)\left(\delta d-m\right)
+\]
+
+\end_inset
+
+With this, we can compute the central bank's next period earnings:
+\begin_inset Formula 
+\[
+R^{\ell}\ell^{g}+\left(\chi^{-}-\chi^{+}\right)W-R^{m}\frac{M_{0}+\Delta M}{P}=\Pi.
+\]
+
+\end_inset
+
+For simplicity, we can assume these earnings are distributed.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Balance Sheet Instruments.
+\end_layout
+
+\begin_layout Standard
+The central bank also controls the nominal quantity of reserves by issuing
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Delta M$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ of reserves between at the beginning of the period.
+ It can increase the reserve supply by either multiplying the banks reserves
+ by a constant with transfers (helicopter drops to banks or households)
+ or by purchasing loans (open market operations, OMOs).
+ In the case of helicopter drops, the CB makes a nominal transfer 
+\begin_inset Formula $T$
+\end_inset
+
+ to banks:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+dT & = & d\Delta M\\
+d\ell^{g} & = & 0
+\end{eqnarray*}
+
+\end_inset
+
+In the latter case it uses new reserves to purchase loans 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\ell^{g}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ and the previous equations are replaced by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+d\frac{\Delta M}{P} & = & d\ell^{g}\\
+dT & = & 0.
+\end{eqnarray*}
+
+\end_inset
+
+Here, 
+\begin_inset Formula $dX$
+\end_inset
+
+ stands for a differential, not to be confused with 
+\begin_inset Formula $d$
+\end_inset
+
+ for deposits.
+ 
+\end_layout
+
+\begin_layout Subsection
+Market clearing and Equilibrium
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta M$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Market clearing for reserves and loans requires:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+M & = & M_{0}+\Delta M.\label{eq:market.M}
+\end{eqnarray}
+
+\end_inset
+
+Market clearing for loans is given by:
+\begin_inset Formula 
+\begin{equation}
+\ell^{g}+\ell^{b}=\ell.\label{eq:market.l}
+\end{equation}
+
+\end_inset
+
+Finally, market clearing for deposits is given by:
+\begin_inset Formula 
+\[
+d^{b}=d.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Equilibrium
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:(1)"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ - 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:market.l"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ define an equilibrium in the following 15 variables 
+\begin_inset Formula 
+\[
+R^{m},R^{dw},R^{l},R^{d},\theta,\chi,m,d,d^{b},\ell,\ell^{b},\ell^{g},e^{b},div,P,T,M
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Delta M$
+\end_inset
+
+ and 
+\begin_inset Formula $i^{m}$
+\end_inset
+
+ and 
+\begin_inset Formula $i^{dw}$
+\end_inset
+
+ are exogenous policy variables.
+ The bank has 3 degrees of freedom.
+ With these three instruments the central bank can simultaneously control
+ 3 instruments, 
+\begin_inset Formula $i^{m}$
+\end_inset
+
+,
+\begin_inset Formula $i^{dw}$
+\end_inset
+
+ and the amount of reserves 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ We can show that at, moving two instruments, it can target the nominal
+ price level 
+\begin_inset Formula $P$
+\end_inset
+
+ and the volume of credit 
+\begin_inset Formula $\ell$
+\end_inset
+
+.
+ The system features 15 equations for 15 unknowns, but the system can be
+ reduced to an autonomous sub-system with less unknowns, depending on the
+ case.
+\end_layout
+
+\begin_layout Section
+Risk Neutral Banks
+\end_layout
+
+\begin_layout Standard
+In this section, we study policies when the bank is risk-neutral.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{assumption}
+\end_layout
+
+\end_inset
+
+No fiscal support:
+\begin_inset Formula 
+\[
+T=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Self-funded central bank:
+\begin_inset Formula 
+\[
+\ell^{g}=\frac{M}{P}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{assumption}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover, we work with the assumption of an inelastic real supply of deposits:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{assumption}
+\end_layout
+
+\end_inset
+
+Inelastic deposit supply: 
+\begin_inset Formula 
+\[
+d=\bar{d}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{assumption}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Policy Differentials.
+ 
+\end_layout
+
+\begin_layout Standard
+Let's consider the case without credit risk first.
+ Also, in this section we assume no fiscal support at the time of the policy
+ and that the central bank is self-funded.
+ 
+\end_layout
+
+\begin_layout Standard
+Under the assumptions of no fiscal support and a self-funded central bank,
+ we have that:
+\begin_inset Formula 
+\[
+\ell^{g}=m
+\]
+
+\end_inset
+
+and in differential form:
+\begin_inset Formula 
+\[
+d\ell^{g}=\left(\frac{dM}{M}-\frac{dP}{P^{2}}\right)\rightarrow\frac{d\ell^{g}}{\ell^{g}}=\frac{dM}{M}-\frac{dP}{P}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Bank Equilibrium Conditions.
+ 
+\end_layout
+
+\begin_layout Standard
+We can substitute out the banks dividends and the law of motion of bank
+ equity to obtain:
+\begin_inset Formula 
+\[
+\max_{\ell,m,d}U\left(e^{b}(P)+d-m+\ell^{b}\right)+\beta\left(\mathbb{E}\left[R^{\ell}\ell+R^{m}m-R^{d}d+\mathbb{E}\left[\chi(s|\theta)\right]\right]\right).
+\]
+
+\end_inset
+
+In this expression there is only liquidity risk.
+ The bank's first-order conditions are given by the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\ell^{b}:\beta^{-1}U'\left(e^{b}+d-m+\ell^{b}\right) & = & R^{\ell}\label{eq:foc.loans}\\
+m:\beta^{-1}U'\left(e^{b}+d-m+\ell^{b}\right) & = & R^{m}+\frac{1}{2}\underbrace{\Big[\chi^{+}+\chi^{-}\Big]}_{\text{liquidity service}\text{\ensuremath{\mathcal{L}^{m}}}}\label{eq:foc.m}\\
+d:\beta^{-1}U'\left(e^{b}+d-m+\ell^{b}\right) & = & R^{d}-\underbrace{\frac{\delta}{2}\chi^{-}}_{\text{liquidity risk}\text{\ensuremath{\mathcal{L}^{d}}}}.\label{eq:foc.d}
+\end{eqnarray}
+
+\end_inset
+
+Banks require the loan rate to be equal to the discount factor.
+ We thus can express the first-order conditions of deposits and reserves
+ as spreads relative to the rate on loans:
+\begin_inset Formula 
+\[
+R^{\ell}=R^{m}+\frac{1}{2}\mathcal{L}^{m}
+\]
+
+\end_inset
+
+and likewise for deposits
+\begin_inset Formula 
+\[
+R^{\ell}=R^{d}-\frac{\delta}{2}\mathcal{L}^{d}.
+\]
+
+\end_inset
+
+The bank must be indifferent between making loans and issuing reserves on
+ the margin.
+ Thus, the rate on reserves plus the liquidity service provided by them
+ must equal the rate on loans.
+ Likewise, the rate on deposits minus a compensation for the liquidity risk
+ they imply.
+ Let be explicity about what variables enter the liquidity serives (or liquidity
+ yield) function:
+\begin_inset Formula 
+\[
+\mathcal{L}^{m}\left(\theta,P\right)=\frac{1}{2}\left(\chi^{+}\left(\theta,P\right)+\chi^{-}\left(\theta,P\right)\right).
+\]
+
+\end_inset
+
+The function depends on prices because the rates 
+\begin_inset Formula $R^{w}$
+\end_inset
+
+ and 
+\begin_inset Formula $R^{m}$
+\end_inset
+
+ are real rates, where policy sets 
+\begin_inset Formula $i^{m}$
+\end_inset
+
+ and 
+\begin_inset Formula $i^{w}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+With the system of equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:foc.loans"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:foc.d"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) we have three equilibrium conditions from the bank's side.
+ The bank's budget constraint gives us a fourth equation.
+ The rest of the equilibrium conditions are given by the equations that
+ we already presented earlier.
+ In particular, we can substitute out interest rates 
+\begin_inset Formula $R^{d}$
+\end_inset
+
+ and 
+\begin_inset Formula $R^{\ell}.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Equilibrium Conditions in Differential form.
+\end_layout
+
+\begin_layout Standard
+Consider the loans market, equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:market.l"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ We can express it in it's differential form:
+\begin_inset Formula 
+\[
+d\ell=d\ell^{g}+d\ell^{b}.
+\]
+
+\end_inset
+
+Thus, we can express this equation again as:
+\begin_inset Formula 
+\[
+\frac{d\ell}{\ell}=\frac{\ell^{g}}{\ell}\frac{d\ell^{g}}{\ell^{g}}+\frac{\ell^{b}}{\ell}\frac{d\ell^{b}}{\ell^{g}}
+\]
+
+\end_inset
+
+or more condendsedly as:
+\begin_inset Formula 
+\[
+\frac{d\ell}{\ell}=\left(1-\zeta^{b}\right)\frac{d\ell^{g}}{\ell^{g}}+\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}.
+\]
+
+\end_inset
+
+where we define
+\begin_inset Formula 
+\[
+\zeta^{b}=\frac{\ell^{b}}{\ell},
+\]
+
+\end_inset
+
+as the share of private credit loans held by banks.
+\end_layout
+
+\begin_layout Standard
+Likewise, we can apply the differential form to the budget constraint of
+ the bank:
+\begin_inset Formula 
+\begin{equation}
+\frac{d\left[div\right]}{div}=\omega_{e}\frac{e^{b}'(P)P}{e^{b}(P)}\frac{dP}{P}+\omega_{m}\frac{dm}{m}+\omega_{\ell}\frac{d\ell^{b}}{\ell^{b}}+\omega_{d}d\left[\frac{d^{b}}{d^{b}}\right],\label{eq:diff.budget}
+\end{equation}
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\omega_{e}=\frac{1}{div/e^{b}(P)},\text{ }\omega_{m}=-\frac{m/e^{b}(P)}{div/e^{b}(P)},\text{ }\omega_{\ell}=-\frac{\ell^{b}/e^{b}(P)}{div/e^{b}(P)},\text{ and }\omega_{d}=\frac{d/e^{b}(P)}{div/e^{b}(P)}.
+\]
+
+\end_inset
+
+For references below, I use:
+\begin_inset Formula 
+\[
+\epsilon_{P}^{b}=\frac{e^{b}'(P)P}{e^{b}(P)}
+\]
+
+\end_inset
+
+to denot the exposure of bank equity to inflation.
+\end_layout
+
+\begin_layout Standard
+Th coefficient 
+\begin_inset Formula $\omega_{e}$
+\end_inset
+
+ represents the bank's inverse dividend rate; the subsequent coefficients
+ are the portfolio weights relative to the the dividend rate.
+ This equation governs the payout rate.
+ Also, note that:
+\begin_inset Formula 
+\[
+\omega_{e}+\omega_{m}+\omega_{\ell}+\omega_{d}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next, we work with the first-order condition system (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:foc.loans"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:foc.d"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) in its differential form.
+ For example, working on equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:foc.loans"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) leads to:
+\begin_inset Formula 
+\[
+dR^{\ell}=\beta^{-1}U''\left(div\right)d\left[div\right].
+\]
+
+\end_inset
+
+Thereby, manipulating terms:
+\begin_inset Formula 
+\begin{equation}
+dR^{\ell}=\beta^{-1}U'\left(div\right)\frac{U''\left(div\right)div}{U'\left(div\right)}\frac{d\left[div\right]}{div}.\label{eq:diff.loans}
+\end{equation}
+
+\end_inset
+
+Thus, re-arranging terms we have that:
+\begin_inset Formula 
+\[
+\frac{dR^{\ell}}{R^{\ell}}=-\frac{1}{\psi}\frac{d\left[div\right]}{div}
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\frac{U''\left(div\right)div}{U'}=-\frac{1}{\psi}.
+\]
+
+\end_inset
+
+represents the intertemporal-elasticity of sbustitution for divdends.
+ Here, there are no wealth effects so higher rates induce a decrease in
+ dividends—or can represent equity injections if we transform dividends
+ to be net-dividends.
+ 
+\end_layout
+
+\begin_layout Standard
+In turn, we have that if we replace the loan clearing condition into the
+ loan demand equation, we obtain:
+\begin_inset Formula 
+\begin{equation}
+\frac{dR^{\ell}}{R^{\ell}}=\frac{1}{\epsilon^{B}}\left[\left(1-\zeta^{b}\right)\frac{d\ell^{g}}{\ell^{g}}+\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}\right].\label{eq:diff.loanrate}
+\end{equation}
+
+\end_inset
+
+Hence, combining (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:diff.budget"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:diff.loanrate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), and (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:diff.loans"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{\epsilon^{B}}\left[\left(1-\zeta^{b}\right)\frac{d\ell^{g}}{\ell^{g}}+\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}\right]=-\frac{1}{\psi}\left[\omega_{e}\epsilon_{P}^{b}\frac{dP}{P}+\omega_{m}\frac{d\ell^{g}}{\ell^{g}}+\omega_{\ell}\frac{d\ell^{b}}{\ell^{b}}+\omega_{d}\frac{d\left[d\right]}{d}\right]\label{eq:diff.fundamental.loans}
+\end{equation}
+
+\end_inset
+
+where I also used 
+\begin_inset Formula $\ell^{g}=m,$
+\end_inset
+
+ following the earlier the assumption of no fiscal support.
+ 
+\end_layout
+
+\begin_layout Standard
+Consider now the differential form of the reserve demand equation (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:foc.m"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+dR^{\ell}=\overbrace{\left[\frac{1+i^{m}}{\mathbb{E}\left[P\right]}P+\mathcal{L}^{m}\left(\theta\left(M/P\right),P\right)\right]}^{R^{\ell}}\frac{dP}{P}+\mathcal{L}^{m}\left(\theta\left(M/P\right),P\right)\frac{\mathcal{L}_{\theta}^{m}\left(\theta\left(M/P\right),P\right)\theta}{\mathcal{L}^{m}\left(\theta\left(M/P\right),P\right)}\frac{d\theta}{\theta}.
+\]
+
+\end_inset
+
+This equation uses that:
+\begin_inset Formula 
+\[
+R^{m}=\frac{1+i^{m}}{\mathbb{E}\left[P'\right]}P,
+\]
+
+\end_inset
+
+and treats expectations as constant.
+ Hence:
+\begin_inset Formula 
+\[
+dR^{m}=\frac{1+i^{m}}{\mathbb{E}\left[P'\right]}P\frac{dP}{P}.
+\]
+
+\end_inset
+
+Likewise, the discount window rate is affected:
+\begin_inset Formula 
+\[
+dR^{dw}=\frac{1+i^{dw}}{\mathbb{E}\left[P'\right]}P\frac{dP}{P}.
+\]
+
+\end_inset
+
+Since each 
+\begin_inset Formula $\chi$
+\end_inset
+
+ term has the form 
+\begin_inset Formula 
+\[
+\chi=\left(R^{dw}-R^{m}\right)g\left(\theta\right).
+\]
+
+\end_inset
+
+It must be the case that:s
+\begin_inset Formula 
+\[
+d\chi=\left(R^{dw}-R^{m}\right)g\left(\theta\right)\frac{dP}{P}.
+\]
+
+\end_inset
+
+Hence, the effect of prices on the liquidity premium is:
+\begin_inset Formula 
+\[
+d\mathcal{L}^{m}=\mathcal{L}^{m}\left(\theta\left(M/P\right),P\right)\frac{dP}{P}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Re-arranging terms, we obtain:
+\begin_inset Formula 
+\[
+\frac{dR^{\ell}}{R^{\ell}}=\frac{dP}{P}+\frac{\mathcal{L}^{m}\left(\theta\left(M/P\right),P\right)}{R^{\ell}}\frac{\mathcal{L}_{\theta}^{m}\left(\theta\left(M/P\right),P\right)\theta}{\mathcal{L}^{m}\left(\theta\left(M/P\right),P\right)}\frac{d\theta}{\theta}.
+\]
+
+\end_inset
+
+The rate on loans increases in real terms as the valuation of reserves increases.
+ A response of current prices decreases inflation, so it provokes an increase
+ in the loans rates.
+ The second term captures how the liquidity yield, relative to the loan
+ rate reponds to the change in the interbank-market conditions.
+ Now recall that applying the differentials to the market tightness leads
+ to:
+\begin_inset Formula 
+\[
+\theta\equiv\frac{\delta d-\ell^{g}}{\ell^{g}}
+\]
+
+\end_inset
+
+where I again used 
+\begin_inset Formula $\ell^{g}=m$
+\end_inset
+
+.
+ Therefore, we have that:
+\begin_inset Formula 
+\begin{eqnarray*}
+d\theta & = & -\theta\left[\frac{d\ell^{g}-\delta d\left[d\right]}{\delta d-\ell^{g}}+\frac{d\ell^{g}}{\ell^{g}}\right]=-\theta\left[\frac{1}{\delta d-\ell^{g}}+\frac{1}{\delta d+\ell^{g}}\right]\left[\ell^{g}\frac{d\ell^{g}}{\ell^{g}}\right]+\theta\left[\frac{\delta d}{\delta d-\ell^{g}}\right]\frac{d\left[d\right]}{d}.\\
+ & = & -\theta\left[1+\frac{1}{\theta^{-1}}\right]\frac{\ell^{g}}{\delta d+\ell^{g}}\frac{d\ell^{g}}{\ell^{g}}+\theta\left[\frac{\delta d}{\delta d-\ell^{g}}\right]\frac{d\left[d\right]}{d}
+\end{eqnarray*}
+
+\end_inset
+
+Thus, we have that the market tightness reponds to the open-market operation
+ by:
+\begin_inset Formula 
+\[
+\frac{d\theta}{\theta}=-\left[1+\frac{1}{\theta^{-1}}\right]\frac{\ell^{g}}{\delta d+\ell^{g}}\frac{d\ell^{g}}{\ell^{g}}+\left[\frac{\delta d}{\delta d-\ell^{g}}\right]\frac{d\left[d\right]}{d},
+\]
+
+\end_inset
+
+and obserive that 
+\begin_inset Formula $\frac{\ell^{g}}{\delta d+\ell^{g}}$
+\end_inset
+
+ is the ration of deficits in the interbank market relative to surplusses.
+ For convenience, define the elasticity of the liquidity yield to the market
+ tightness, 
+\begin_inset Formula 
+\[
+\mathbb{\epsilon}_{\theta}^{\mathcal{L}^{m}}=\frac{\mathcal{L}_{\theta}^{m}\left(\theta\left(M/P\right),P\right)\theta}{\mathcal{L}^{m}\left(\theta\left(M/P\right),P\right)}.
+\]
+
+\end_inset
+
+From here we obtain the exposure of the liquidity premium to the change
+ in real balances:
+\begin_inset Formula 
+\[
+\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\equiv-\mathbb{\epsilon}_{\theta}^{\mathcal{L}^{m}}\left[1+\frac{1}{\theta^{-1}}\right]\frac{\ell^{g}}{m+\delta\bar{d}}.
+\]
+
+\end_inset
+
+and likewise, we have that:
+\begin_inset Formula 
+\[
+\epsilon_{d}^{\mathcal{L}}\equiv\mathbb{\epsilon}_{\theta}^{\mathcal{L}^{m}}\frac{\delta d}{\delta d-\ell^{g}},
+\]
+
+\end_inset
+
+This elasticities are clearly negative and positive respectively because
+ 
+\begin_inset Formula $\mathbb{\epsilon}_{\theta}^{\mathcal{L}}<0$
+\end_inset
+
+.
+ To finalize the differential representation, we use (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:diff.loanrate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{\epsilon^{B}}\left[\left(1-\zeta^{b}\right)\frac{d\ell^{g}}{\ell^{g}}+\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}\right]=\frac{dP}{P}+\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\frac{d\ell^{g}}{\ell^{g}}+\epsilon_{d}^{\mathcal{L}^{m}}\frac{d\left[d\right]}{d}.\label{eq:fundamental.reserves}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, we can consider the differential form of the deposit demand equation
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:foc.d"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ We should can follow analog steps to obtain:
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{\epsilon^{B}}\left[\left(1-\zeta^{b}\right)\frac{d\ell^{g}}{\ell^{g}}+\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}\right]=\frac{1}{\epsilon^{d}}\frac{d\left[d\right]}{d}+\epsilon_{\ell^{g}}^{\mathcal{L}^{d}}\frac{d\ell^{g}}{\ell^{g}}+\epsilon_{d}^{\mathcal{L}^{d}}\frac{d\left[d\right]}{d}.\label{eq:fundamental.deposits}
+\end{equation}
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\mathbb{\epsilon}_{\theta}^{\mathcal{L}^{d}}=\frac{\mathcal{L}_{\theta}^{d}\left(\theta\left(M/P\right),P\right)\theta}{\mathcal{L}^{d}\left(\theta\left(M/P\right),P\right)}.
+\]
+
+\end_inset
+
+From here we obtain the exposure of the liquidity premium to the change
+ in real balances:
+\begin_inset Formula 
+\[
+\epsilon_{\ell^{g}}^{\mathcal{L}^{d}}\equiv-\mathbb{\epsilon}_{\theta}^{\mathcal{L}^{d}}\left[1+\frac{1}{\theta^{-1}}\right]\frac{\ell^{g}}{m+\delta d}.
+\]
+
+\end_inset
+
+and likewise, we have that:
+\begin_inset Formula 
+\[
+\epsilon_{d}^{\mathcal{L}^{d}}\equiv\mathbb{\epsilon}_{\theta}^{\mathcal{L}^{d}}\frac{\delta d}{\delta d-\ell^{g}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Summary System.
+\end_layout
+
+\begin_layout Standard
+We have thus found an equlibrium system given by 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:diff.fundamental.loans"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fundamental.reserves"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fundamental.deposits"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ This system includes three unknowsn 
+\begin_inset Formula $\frac{d\ell^{b}}{\ell^{b}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{dd^{b}}{d^{b}}$
+\end_inset
+
+, and 
+\begin_inset Formula $\frac{dP}{P}$
+\end_inset
+
+ and the effect on the price level and the effect on private bank credit
+ and bank funding.
+ We can then express the system in matrix form to obtain:
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{ccc}
+-\frac{\omega_{e}}{\psi}\epsilon_{P}^{b} & -\frac{\omega_{\ell}}{\psi}-\frac{\zeta^{b}}{\epsilon^{B}} & 0\\
+1 & -\frac{\zeta^{b}}{\epsilon^{B}} & \epsilon_{d}^{\mathcal{L}^{m}}\\
+1 & -\frac{\zeta^{b}}{\epsilon^{B}} & \epsilon_{d}^{\mathcal{L}^{m}}
+\end{array}\right]\left[\begin{array}{c}
+\frac{dP}{P}\\
+\frac{d\ell^{b}}{\ell^{b}}\\
+\frac{d\left[d\right]}{d}
+\end{array}\right]=\left[\begin{array}{c}
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}+\frac{\omega_{m}}{\psi}\\
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\\
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{d}}
+\end{array}\right]\frac{d\ell^{g}}{\ell^{g}}.\label{eq:system.fundamental}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This system beautifully encompasses the effects of open-market operations
+ on intermediation.
+ It captures multiple channels, as we describe below.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Remarks.
+\end_layout
+
+\begin_layout Standard
+Next, we should make two important remarks regarding prices and inflation.
+ First, observe that
+\end_layout
+
+\begin_layout Remark*
+The response of the price level, 
+\begin_inset Formula $\frac{dP}{P}$
+\end_inset
+
+ is not inflation.
+ In particular, note that inflation is given by:
+\begin_inset Formula 
+\[
+\left(1+\pi\right)=\frac{\mathbb{E}\left[P'\right]}{P}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+Hence, 
+\begin_inset Formula 
+\[
+\frac{d\pi}{1+\pi}=-\frac{dP}{P}.
+\]
+
+\end_inset
+
+That is, inflation responds inversely to the response of the price level.
+ 
+\end_layout
+
+\begin_layout Standard
+The second remark is that we are isolating the effect of inflation expectations,
+ i.e., forward guidance:
+\end_layout
+
+\begin_layout Remark*
+The model doesn't feature forward guidance since
+\begin_inset Formula 
+\[
+\frac{d\mathbb{E}\left[P'\right]}{\mathbb{E}\left[P'\right]}=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+In general, for this, we need multiple conditions.
+ First, the central bank must have the ability to commit to future inflation
+ and it must have the fiscal capacity to do so.
+ Furthermore, policies, holding fixed a fiscal rule, will have an effect
+ on expected inflation.
+\end_layout
+
+\begin_layout Standard
+We will make some remarks on expected inflation below.
+ Next, we derive some key results.
+\end_layout
+
+\begin_layout Subsection
+Inelastic Deposit Funding
+\end_layout
+
+\begin_layout Standard
+We can consider the limit as the funding supply of deposits is inelastic.
+ This limit is easier to work with since 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:system.fundamental"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ drops the last equation block.
+ Note that 
+\begin_inset Formula $\frac{d\left[d\right]}{d}=0$
+\end_inset
+
+ but the last equation is not valid since it uses the equation 
+\begin_inset Formula $R^{d}=\bar{d}d^{\epsilon^{d}}=\bar{d}$
+\end_inset
+
+.
+ The terms: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\epsilon_{d}^{\mathcal{L}}=0$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ The deposit rate must be solved as a residual of the system, from the bank's
+ first-order condition.
+ Hence, we have that: the equilibrium system boils down to:
+\begin_inset Formula 
+\[
+\left[\begin{array}{cc}
+-\frac{\omega_{e}}{\psi}\epsilon_{P}^{b} & -\left(\frac{\omega_{\ell}}{\psi}+\frac{\zeta^{b}}{\epsilon^{B}}\right)\\
+1 & -\frac{\zeta^{b}}{\epsilon^{B}}
+\end{array}\right]\left[\begin{array}{c}
+\frac{dP}{P}\\
+\frac{d\ell^{b}}{\ell^{b}}
+\end{array}\right]=\left[\begin{array}{c}
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}+\frac{\omega_{m}}{\psi}\\
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}
+\end{array}\right]\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+This is a system of two equations and two unknowns.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proposition}
+\end_layout
+
+\end_inset
+
+ The responses of loans and prices are given by:
+\begin_inset Formula 
+\[
+\frac{d\ell^{b}}{\ell^{b}}=\epsilon_{\ell^{g}}^{\ell b}\frac{d\ell^{g}}{\ell^{g}},
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\frac{dP}{P}=\epsilon_{\ell^{g}}^{P}\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+where:
+\begin_inset Formula 
+\[
+\epsilon_{\ell^{g}}^{\ell b}=-\frac{\left(1-\zeta^{b}\right)\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}+\epsilon^{B}\omega_{m}-\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\epsilon_{\ell^{g}}^{P}=\frac{1}{\epsilon^{B}}\left[\frac{\zeta^{b}\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}+\left(1-\zeta^{b}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\epsilon^{B}\right)\epsilon^{B}\omega_{\ell}-\zeta^{b}\omega_{m}-\left(\psi+\omega_{e}\right)\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\zeta^{b}\epsilon^{B}\epsilon_{P}^{b}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, the effect on total loans is given by:
+\begin_inset Formula 
+\[
+\frac{d\ell}{\ell}=\left[\left(1-\zeta^{b}\right)+\zeta^{b}\epsilon_{\ell^{g}}^{\ell b}\right]\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proposition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the response of credit an prices depends on the responses of the
+ holdings of loans by the central bank.
+ The term 
+\begin_inset Formula $\epsilon_{\ell^{g}}^{\ell b}$
+\end_inset
+
+ is negative, capturing that central bank loans crowd out bank loans.
+ The effect on prices captures how the interest on reserves in real terms
+ has to adjust to equate the loans market, conditional on the respone of
+ the liquidity premium.
+ Next, we develop polar cases.
+\end_layout
+
+\begin_layout Subsection
+Polar cases.
+\end_layout
+
+\begin_layout Standard
+A standard result on irrelevance of open market operations by Neil Wallace
+ relates to the Modigliani-Miller Theorem of firm and bank finance.
+ This is akin to banks whose primary focus is to provide liquidity services,
+ as we can separate the lending side with the funding side without effects
+ on rates.
+ We produce two results with that regard.
+\end_layout
+
+\begin_layout Paragraph
+Bank Equity is Perfectly Elastic.
+ 
+\end_layout
+
+\begin_layout Standard
+Note that:
+\begin_inset Formula 
+\[
+\lim_{\psi\rightarrow\infty}\epsilon_{\ell^{g}}^{\ell b}=-\lim_{\psi\rightarrow\infty}\left[\frac{\left(1-\zeta^{b}\right)\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}+\epsilon^{B}\omega_{m}-\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}\right]=-\frac{1-\zeta^{b}}{\zeta^{b}}.
+\]
+
+\end_inset
+
+For the result, we used L'Hospital's rule.
+ Therefore, we have that:
+\begin_inset Formula 
+\[
+\lim_{\psi\rightarrow\infty}\left[\frac{d\ell}{\ell}\right]=\left[\zeta^{b}\left(-\frac{1-\zeta^{b}}{\zeta^{b}}\right)+1-\zeta^{b}\right]\frac{d\ell^{g}}{\ell^{g}}=0.
+\]
+
+\end_inset
+
+Thus, if bank equity can finance banks very rapidly—or banks can cut on
+ dividends quickly—the open-market operation is irrelevant.
+ Bank loans are crowded out perfectly.
+ Note that if this is the case,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d\ell}{\ell}=0\rightarrow\frac{dR^{\ell}}{R^{\ell}}=0\rightarrow\frac{dP}{P}+\epsilon_{\ell^{g}}^{\mathcal{L}}=0.
+\]
+
+\end_inset
+
+We can verify this condition using the price equation:
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\psi\rightarrow\infty}\epsilon_{\ell^{g}}^{P} & = & \frac{1}{\epsilon^{B}}\lim_{\psi\rightarrow\infty}\left[\frac{\zeta^{b}\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}+\left(1-\zeta^{b}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\epsilon^{B}\right)\epsilon^{B}\omega_{\ell}-\zeta^{b}\omega_{m}-\left(\psi+\omega_{e}\right)\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\zeta^{b}\epsilon^{B}\epsilon_{P}^{b}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}\right]\\
+ & = & \frac{1}{\epsilon^{B}}\lim_{\psi\rightarrow\infty}\left[\frac{-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\epsilon_{P}^{b}\zeta^{b}\epsilon^{B}}{\epsilon_{P}^{b}\zeta^{b}}\right]\\
+ &  & =-\epsilon_{\ell^{g}}^{\mathcal{L}},
+\end{eqnarray*}
+
+\end_inset
+
+where we used L'Hospital's rule.
+ We have that the effect on the price level is positive,
+\begin_inset Formula 
+\[
+\frac{dP}{P}/\frac{d\ell^{g}}{\ell^{g}}=-\epsilon_{\ell^{g}}^{\mathcal{L}}.
+\]
+
+\end_inset
+
+The intution for the result is that since there is more liquidity among
+ banks, the return on reserves has to increase and this effect requires
+ a decrease in inflation.
+ 
+\end_layout
+
+\begin_layout Paragraph
+The Loans Market.
+ 
+\end_layout
+
+\begin_layout Standard
+We now study the opposite extreme, when loans have also an zero elasticity
+ of subustitution:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{\epsilon^{B}\rightarrow0}\epsilon_{\ell^{g}}^{\ell b}=\lim_{\epsilon^{B}\rightarrow0}\frac{\left(1-\zeta^{b}\right)\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}/\epsilon^{B}+\omega_{m}-\omega_{e}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}/\epsilon^{B}+\omega_{\ell}}=-\frac{\left(1-\zeta^{b}\right)}{\zeta^{b}}.
+\]
+
+\end_inset
+
+Again, we used L'Hospital's rule and this expression shows that there is
+ perfect crowding out: 
+\begin_inset Formula $\frac{d\ell^{g}}{\ell^{g}}=0$
+\end_inset
+
+.
+ This shows that if firms can substitute loans with other sources of funding,
+ there are again no effects.
+ Next, 
+\end_layout
+
+\begin_layout Standard
+We can verify this condition using the price equation:
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\epsilon^{B}\rightarrow0}\epsilon_{\ell^{g}}^{P} & = & \lim_{\epsilon^{B}\rightarrow0}\frac{\zeta^{b}\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}+\left(1-\zeta^{b}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\epsilon^{B}\right)\epsilon^{B}\omega_{\ell}-\zeta^{b}\omega_{m}-\left(\psi+\omega_{e}\right)\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\zeta^{b}\epsilon^{B}\epsilon_{P}^{b}}{\epsilon^{B}\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\left(\epsilon^{B}\right)^{2}\omega_{\ell}}\\
+ & = & -\epsilon_{\ell^{g}}^{\mathcal{L}}.
+\end{eqnarray*}
+
+\end_inset
+
+again by L'Hospital.
+ 
+\end_layout
+
+\begin_layout Remark*
+For Open-Market-Operations to have an effect, it is essential that some
+ form of segmentation be present.
+ Either bank loans cannot be perfectly substitutable or bank funding is
+ not easily substituable with reductions in dividends or equity.
+\end_layout
+
+\begin_layout Standard
+Now study the opposite extreme, when loans have an infinite elasticity of
+ subustitution:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{\epsilon^{B}\rightarrow\infty}\epsilon_{\ell^{g}}^{\ell b}=\lim_{\epsilon^{B}\rightarrow\infty}\frac{\left(1-\zeta^{b}\right)\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}/\epsilon^{B}+\omega_{m}-\omega_{e}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}/\epsilon^{B}+\omega_{\ell}}=-\frac{\omega_{m}-\omega_{e}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\omega_{\ell}}.
+\]
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+For the price, this termi becomes: 
+\begin_inset Formula 
+\[
+\lim_{\epsilon^{B}\rightarrow\infty}\epsilon_{\ell^{g}}^{P}=\left(\frac{1-\zeta^{b}}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}}\right)+\frac{\zeta^{b}}{\epsilon^{B}}\lim_{\epsilon_{\ell^{g}}^{\mathcal{L}}\rightarrow0}\epsilon_{\ell^{g}}^{\ell b}=\frac{1}{\epsilon^{B}}\left[\left(\frac{1-\zeta^{b}}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}}\right)+\frac{\zeta^{b}}{\epsilon^{B}}\frac{\omega_{m}-\omega_{e}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\omega_{\ell}}\right].
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Recall that:
+\begin_inset Formula 
+\[
+\frac{\zeta^{b}}{1-\zeta^{b}}=\frac{\ell^{b}}{\ell^{g}}=\frac{\ell^{b}}{m}=\frac{\omega_{\ell}}{\omega_{m}}.
+\]
+
+\end_inset
+
+Thus, we have that:
+\begin_inset Formula 
+\[
+\left(1-\zeta^{b}\right)\omega_{\ell}=\zeta^{b}\omega_{m},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Hence, in the particular case when 
+\begin_inset Formula $\epsilon_{P}^{b}=0$
+\end_inset
+
+, we have no effects.
+ Since 
+\begin_inset Formula 
+\[
+\lim_{\epsilon^{B}\rightarrow\infty}\epsilon_{\ell^{g}}^{P}=-\epsilon_{\ell^{g}}^{\mathcal{L}}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\lim_{\epsilon^{B}\rightarrow\infty}\epsilon_{\ell^{g}}^{\ell b}=-\frac{\left(1-\zeta^{b}\right)}{\zeta^{b}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+When the demand for loans is perfectly elastic, there are only effect if
+ there is an effect on bank equity through prices.
+\end_layout
+
+\begin_layout Paragraph
+Satiation (Liquidity Trap).
+\end_layout
+
+\begin_layout Standard
+A common condition for monetary models to have no effects is the liquidity
+ trap, when money and other assets earn the same rate of interest.
+ Here, we conduct the following limit exercise: we take 
+\begin_inset Formula $\epsilon_{\ell^{g}}^{\mathcal{L}}\rightarrow0$
+\end_inset
+
+ but we note that this limit only makes sense if 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is not binary.
+ 
+\end_layout
+
+\begin_layout Standard
+Under this limit, we obtain: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\epsilon_{\ell^{g}}^{\mathcal{L}}\rightarrow0}\epsilon_{\ell^{g}}^{\ell b} & = & -\frac{\left(1-\zeta^{b}\right)\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}+\epsilon^{B}\omega_{m}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}.
+\end{eqnarray*}
+
+\end_inset
+
+But now recall that:
+\begin_inset Formula 
+\[
+\frac{\zeta^{b}}{1-\zeta^{b}}=\frac{\ell^{b}}{\ell^{g}}=\frac{\ell^{b}}{m}=\frac{\omega_{\ell}}{\omega_{m}}.
+\]
+
+\end_inset
+
+Thus, we have that:
+\begin_inset Formula 
+\[
+\left(1-\zeta^{b}\right)\omega_{\ell}=\zeta^{b}\omega_{m},
+\]
+
+\end_inset
+
+and therefore:
+\begin_inset Formula 
+\[
+\lim_{\epsilon_{\ell^{g}}^{\mathcal{L}}\rightarrow0}\epsilon_{\ell^{g}}^{\ell b}=-\frac{\left(1-\zeta^{b}\right)}{\zeta^{b}}\frac{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}+\epsilon^{B}\omega_{m}/\left(1-\zeta^{b}\right)}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}+\epsilon^{B}\omega_{\ell}/\zeta^{b}}=-\frac{\left(1-\zeta^{b}\right)}{\zeta^{b}}.
+\]
+
+\end_inset
+
+Again no effects on loans overall, when this elasticity holds, 
+\begin_inset Formula $\frac{d\ell^{g}}{\ell^{g}}=0$
+\end_inset
+
+.
+ From here we compute the effect on prices:
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\epsilon_{\ell^{g}}^{\mathcal{L}}\rightarrow0}\epsilon_{\ell^{g}}^{P} & = & \left(\frac{1-\zeta^{b}}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}}\right)+\frac{\zeta^{b}}{\epsilon^{B}}\lim_{\epsilon_{\ell^{g}}^{\mathcal{L}}\rightarrow0}\epsilon_{\ell^{g}}^{\ell b}\\
+ & = & \left[\frac{1-\zeta^{b}}{\epsilon^{B}}-\frac{\zeta^{b}}{\epsilon^{B}}\frac{\left(1-\zeta^{b}\right)}{\zeta^{b}}\right]=0.
+\end{eqnarray*}
+
+\end_inset
+
+ Thus, we conclude with the following remark.
+ 
+\end_layout
+
+\begin_layout Remark*
+When the liquidity yield function is close to zero, there are no effects
+ of open-market operations, regardless of the amount of financing structure
+ of banks or firms.
+ In essence, under a liquidity trap scenario, open-market operations are
+ swaps of identical-payoff assets.
+\end_layout
+
+\begin_layout Paragraph
+The legacy position.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TBA.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, we ask, what about the legacy position 
+\begin_inset Formula $e^{n,p}(P)$
+\end_inset
+
+? Is it necessary?
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\epsilon_{\ell^{g}}^{\ell b}=-\frac{\left(1-\zeta^{b}\right)\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}+\epsilon^{B}\omega_{m}-\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\epsilon_{\ell^{g}}^{P}=\frac{1}{\epsilon^{B}}\left[\frac{\zeta^{b}\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}+\left(1-\zeta^{b}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\epsilon^{B}\right)\epsilon^{B}\omega_{\ell}-\zeta^{b}\omega_{m}-\left(\psi+\omega_{e}\right)\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\zeta^{b}\epsilon^{B}\epsilon_{P}^{b}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ One way to see this effect is through the elasticity of the bank's exposure:
+\begin_inset Formula 
+\[
+\lim_{\epsilon_{P}^{b}\rightarrow0}\epsilon_{\ell^{g}}^{\ell b}=-\frac{\epsilon^{B}\omega_{m}-\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}.
+\]
+
+\end_inset
+
+Again this imples no effects on the loans rate.
+ But now, let's look at the effect on the price level:
+\begin_inset Formula 
+\[
+\lim_{\epsilon_{P}^{b}\rightarrow0}\epsilon_{\ell^{g}}^{P}=\left(\frac{1-\zeta^{b}}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}}\right)+\frac{\zeta^{b}}{\epsilon^{B}}\epsilon_{\ell^{g}}^{\ell b}.
+\]
+
+\end_inset
+
+There are no oddities with this part of the system, but the issue is that
+ the central bank must obtain some form of revenues to buy more loans.
+ The problem will emerge from the government's budget constraint:
+\begin_inset Formula 
+\[
+d\ell^{g}=d\left(M0+\Delta M\right)-dP.
+\]
+
+\end_inset
+
+The central bank must obtain revenues.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Exercise.
+ 
+\end_layout
+
+\begin_layout Standard
+Substantiate the claim that the legacy position is needed.
+ 
+\change_inserted 457768546 1668720146
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 457768546 1668720164
+Persistent Shocks
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 457768546 1668720394
+Assume that we have persistent shocks that keep inflation constant.
+ Then, the key equilibrium equations (xxx) are modified to:
+\begin_inset Formula 
+\[
+dR^{\ell}=\mathcal{L}^{m}\left(\theta\left(M/P\right),P\right)\frac{\mathcal{L}_{\theta}^{m}\left(\theta\left(M/P\right),P\right)\theta}{\mathcal{L}^{m}\left(\theta\left(M/P\right),P\right)}\frac{d\theta}{\theta},
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+dR^{\ell}=\mathcal{L}^{d}\left(\theta\left(M/P\right),P\right)\frac{\mathcal{L}_{\theta}^{d}\left(\theta\left(M/P\right),P\right)\theta}{\mathcal{L}^{d}\left(\theta\left(M/P\right),P\right)}\frac{d\theta}{\theta},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 457768546 1668720472
+Hence, in differential forms, these equations are modified:
+\begin_inset Formula 
+\[
+\frac{1}{\epsilon^{B}}\left[\left(1-\zeta^{b}\right)\frac{d\ell^{g}}{\ell^{g}}+\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}\right]=\frac{dP}{P}+\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\frac{d\ell^{g}}{\ell^{g}}+\epsilon_{d}^{\mathcal{L}^{m}}\frac{d\left[d\right]}{d}.
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\frac{1}{\epsilon^{B}}\left[\left(1-\zeta^{b}\right)\frac{d\ell^{g}}{\ell^{g}}+\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}\right]=\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\frac{d\ell^{g}}{\ell^{g}}+\epsilon_{d}^{\mathcal{L}^{m}}\frac{d\left[d\right]}{d}.
+\]
+
+\end_inset
+
+The differential form for the law of motion for dividends becomes:
+\begin_inset Formula 
+\[
+\frac{1}{\epsilon^{B}}\left[\left(1-\zeta^{b}\right)\frac{d\ell^{g}}{\ell^{g}}+\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}\right]=-\frac{1}{\psi}\left[\omega_{e}\epsilon_{P}^{b}\frac{dP}{P}+\omega_{m}\frac{d\ell^{g}}{\ell^{g}}+\omega_{\ell}\frac{d\ell^{b}}{\ell^{b}}+\omega_{d}\frac{d\left[d\right]}{d}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 457768546 1668720572
+We thus obtain the following equilibrium system:
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{ccc}
+-\frac{\omega_{e}}{\psi}\epsilon_{P}^{b} & -\frac{\omega_{\ell}}{\psi}-\frac{\zeta^{b}}{\epsilon^{B}} & 0\\
+0 & -\frac{\zeta^{b}}{\epsilon^{B}} & \epsilon_{d}^{\mathcal{L}^{m}}\\
+0 & -\frac{\zeta^{b}}{\epsilon^{B}} & \epsilon_{d}^{\mathcal{L}^{m}}
+\end{array}\right]\left[\begin{array}{c}
+\frac{dP}{P}\\
+\frac{d\ell^{b}}{\ell^{b}}\\
+\frac{d\left[d\right]}{d}
+\end{array}\right]=\left[\begin{array}{c}
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}+\frac{\omega_{m}}{\psi}\\
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\\
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{d}}
+\end{array}\right]\frac{d\ell^{g}}{\ell^{g}}.\label{eq:system.fundamental-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+
+\change_inserted 457768546 1668720687
+This exercise reveals that if expected inflation is kept constant, the response
+ of the price level does not enter on the equations that govern the effect
+ on loans or deposit funding.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 457768546 1668721732
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 457768546 1668720687
+
+
+\backslash
+begin{proposition}
+\end_layout
+
+\end_inset
+
+ (OMO with Inflation Target) 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 457768546 1668721705
+Let the deposit supply be perfectly inelastic, then
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 457768546 1668721701
+should be generalized
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\frac{d\ell^{b}}{\ell^{b}}=\frac{\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}-\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}}{\frac{\zeta^{b}}{\epsilon^{B}}}\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+The response of loans and deposit funding under inflation targetting is:
+\begin_inset Formula 
+\[
+\frac{d\ell^{b}}{\ell^{b}}=\frac{\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\epsilon_{d}^{\mathcal{L}^{m}}-\frac{\zeta^{b}}{\epsilon^{B}}\right)}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\frac{d\left[d\right]}{d}=\frac{\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\epsilon_{d}^{\mathcal{L}^{m}}-\frac{\zeta^{b}}{\epsilon^{B}}\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 457768546 1668720940
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 457768546 1668721069
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\left(a+b\right)\left(\epsilon_{d}^{\mathcal{L}^{m}}-\frac{\zeta^{b}}{\epsilon^{B}}\right)=-\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}+\text{\left(\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}+\epsilon_{\ell^{g}}^{\mathcal{L}^{d}}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 457768546 1668721130
+\begin_inset Formula $\left(a-b\right)\left(\epsilon_{d}^{\mathcal{L}^{m}}-\frac{\zeta^{b}}{\epsilon^{B}}\right)=\text{-\ensuremath{\left(\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{d}}\right)}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 457768546 1668721131
+\begin_inset Formula 
+\[
+a=-\frac{\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}+\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\epsilon_{d}^{\mathcal{L}^{m}}-\frac{\zeta^{b}}{\epsilon^{B}}\right)},\text{ }b=-\frac{\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}+\epsilon_{\ell^{g}}^{\mathcal{L}^{d}}}{2\left(\epsilon_{d}^{\mathcal{L}^{m}}-\frac{\zeta^{b}}{\epsilon^{B}}\right)}
+\]
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 457768546 1668720687
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 457768546 1668720687
+
+
+\backslash
+end{proposition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Shocks to the quantities of reserves
+\end_layout
+
+\begin_layout Paragraph*
+Exercise (Helicopter Drop).
+ 
+\end_layout
+
+\begin_layout Standard
+Compute the effects of a helicopter drop.
+\end_layout
+
+\begin_layout Paragraph*
+Exercise (Bank Runs).
+ 
+\end_layout
+
+\begin_layout Standard
+We now modify the money supply equation, to include the holdings of household
+ currency.
+ Then, we would have:
+\begin_inset Formula 
+\begin{eqnarray}
+M & +M^{h}= & M_{0}+\Delta M.\label{eq:market.M-1}
+\end{eqnarray}
+
+\end_inset
+
+We consider the effects of withdrawals of deposits for currency.
+ Consider the possibility of an exogenous shock to 
+\begin_inset Formula $\bar{d}$
+\end_inset
+
+.
+ This exercise asks you to produce the following results.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Argue that if deposits can be withdrawn one for one against currency, we
+ would have that:
+\begin_inset Formula 
+\[
+dm^{h}=-d\bar{d}.
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+m^{h}=M^{h}/P.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Suppose the money supply is held fix, then argue that:
+\begin_inset Formula 
+\[
+dm^{h}=-dm.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Argue then that:
+\begin_inset Formula 
+\[
+d\left[\bar{d}\right]=dm
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Argue that the effect on market tightness is:
+\begin_inset Formula 
+\[
+d\theta=-\theta\left[1+\frac{1}{\theta^{-1}}\right]\frac{m}{\delta d+m}\frac{dm}{m}+\theta\left[\frac{\delta\bar{d}}{\delta\bar{d}-m}\right]\frac{d\left[\bar{d}\right]}{\bar{d}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Argue that the equation for dividend payouts will turn to become:
+\begin_inset Formula 
+\[
+\frac{1}{\epsilon^{B}}\left[\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}\right]=-\frac{1}{\psi}\left[\omega_{e}\epsilon_{P}^{b}\frac{dP}{P}+\omega_{m}\frac{dm}{m}+\omega_{\ell}\frac{d\ell^{b}}{\ell^{b}}+\omega_{d}\frac{d\left[d\right]}{d}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Finally, the equation for the demand for reserves will become:
+\begin_inset Formula 
+\[
+\frac{1}{\epsilon^{B}}\left[+\zeta^{b}\frac{d\ell^{b}}{\ell^{g}}\right]=\frac{dP}{P}+\epsilon_{\ell^{m}}^{\mathcal{L}^{m}}\frac{dm}{m}+\epsilon_{d}^{\mathcal{L}^{m}}\frac{d\left[d\right]}{d}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\epsilon_{\ell^{m}}^{\mathcal{L}^{m}}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\epsilon_{d}^{\mathcal{L}^{m}}
+\]
+
+\end_inset
+
+are elasticities you have to solve for.
+ 
+\end_layout
+
+\begin_layout Section
+Risk-Absorption Mechanisms
+\end_layout
+
+\begin_layout Standard
+Now, consider that:
+\begin_inset Formula 
+\[
+\mathbb{CE}_{\omega}=\log\left(\mathbb{E}_{\omega}\left[\gamma\exp\left(-\frac{x\left(\omega\right)}{\gamma}\right)\right]\right).
+\]
+
+\end_inset
+
+This term affects the demand for loan condition.
+ It is substituted by 
+\begin_inset Formula 
+\[
+\beta^{-1}U'\left(e^{b}+d-m+\ell^{b}\right)=R^{\ell}+\rho
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is a risk adjustment.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Exercise.
+ 
+\end_layout
+
+\begin_layout Standard
+Derive 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Effects that interact with bank regulation 
+\end_layout
+
+\begin_layout Paragraph*
+Exercise (reserve requirements).
+ 
+\end_layout
+
+\begin_layout Standard
+Assume that reserves must satisfy: 
+\begin_inset Formula 
+\[
+m-\rho d\geq0.
+\]
+
+\end_inset
+
+Modify the market-tightness in this case.
+ Write a system of equations that capture the effect of an increase in reserve
+ requirements.
+\end_layout
+
+\begin_layout Paragraph*
+Exercise.
+ 
+\end_layout
+
+\begin_layout Standard
+Assume that now deposits are capped.
+ In particular:
+\begin_inset Formula 
+\[
+d\leq\kappa e^{b}\left(P\right).
+\]
+
+\end_inset
+
+Assume that the equation is binding.
+ What are the effects of open-market operations in this case? How does this
+ equation alter the equilibrium.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Exercise.
+ 
+\end_layout
+
+\begin_layout Standard
+Assume instead that loans carry a 
+\begin_inset Quotes eld
+\end_inset
+
+risk weight.
+\begin_inset Quotes erd
+\end_inset
+
+ Let
+\begin_inset Formula 
+\[
+d\leq\bar{v}\ell.
+\]
+
+\end_inset
+
+Assume that the equation is binding.
+ What are the effects of open-market operations? What are the effects? 
+\end_layout
+
+\begin_layout Paragraph*
+Exercise.
+ 
+\end_layout
+
+\begin_layout Standard
+Assume instead that loans carry a 
+\begin_inset Quotes eld
+\end_inset
+
+risk weight
+\begin_inset Quotes erd
+\end_inset
+
+ that must satisfy a liquidity coverage ratio:
+\begin_inset Formula 
+\[
+m\leq\bar{v}\ell.
+\]
+
+\end_inset
+
+Assume that the equation is binding.
+ What are the effects of open-market operations? What are the effects? 
+\change_inserted -91792538 1668731201
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -91792538 1668731213
+Multiple Regions
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -91792538 1668731291
+Another application considers the case where the interbank market, the loans
+ market and the deposit market are segmented by location.
+ Locations only interact through the market for reserves.
+ An important application is to use this market structure to say something
+ about the local demand elasticities.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Section
+Multiple Asset Classes - Directed Monetary Policy
+\end_layout
+
+\begin_layout Paragraph*
+Exercise (Identical Loan Demand).
+ 
+\end_layout
+
+\begin_layout Standard
+Assume that monetary policy can target multiple types of loans.
+ In particular, there is a family of loan demand conditions:
+\begin_inset Formula 
+\[
+\ell^{j}=\left(R^{j,\ensuremath{\ell}}\right)^{\epsilon_{j}^{B}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $j$
+\end_inset
+
+ index a form of loans.
+ In addition, 
+\begin_inset Formula $\epsilon_{j}^{B}$
+\end_inset
+
+ is a different loan demand elasticity.
+ Represent the effect of open-market operations in matrix form.
+ Argue that you can represent it as: 
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{ccc}
+-\frac{\omega_{e}}{\psi}\epsilon_{P}^{b} & -\left(\frac{\omega_{\ell}^{j}}{\psi}+\frac{\zeta^{b,j}}{\epsilon^{B}}\right) & -\left(\frac{\omega_{\ell}^{i}}{\psi}+\frac{\zeta^{b,i}}{\epsilon^{B}}\right)\\
+1 & -\frac{\zeta^{b,i}}{\epsilon^{B}} & 0\\
+1 & 0 & -\frac{\zeta^{b,i}}{\epsilon^{B}}
+\end{array}\right]\left[\begin{array}{c}
+\frac{dP}{P}\\
+\frac{d\ell^{b,j}}{\ell^{b,j}}\\
+\frac{d\ell^{b,i}}{\ell^{b,i}}
+\end{array}\right]=\left[\begin{array}{c}
+\frac{\left(1-\zeta^{b,j}\right)}{\epsilon^{B}}+\frac{\omega_{m}}{\psi}\\
+\frac{\left(1-\zeta^{b,j}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g,j}}^{\mathcal{L}^{m}}\\
+0
+\end{array}\right]\frac{d\ell^{g}}{\ell^{g}}.\label{eq:}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Semi-Liquid Assets.
+\end_layout
+
+\begin_layout Standard
+Bianchi and Bigio (2022) show that if we have a set of assets that can be
+ used in the interbank market, their first-order condtion is:
+\begin_inset Formula 
+\[
+R^{b}=R^{m}+\chi^{+}\left(\theta\right).
+\]
+
+\end_inset
+
+Introduce such an asset with an elastic supply schedule.
+ What are the effects of open-market operation on that assets.
+\end_layout
+
+\begin_layout Standard
+Next, assume that only a fraction of the asset can be used to trade, that
+ is, let 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ be the fraction that can be sold in the interbank-market.
+ Then, the asset will be worth:
+\begin_inset Formula 
+\[
+R^{b}=R^{m}+\lambda\chi^{+}\left(\theta\right).
+\]
+
+\end_inset
+
+Based on this representation, price the loans, assuming that a fraction
+ of the loans can be used to trade.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Proofs
+\end_layout
+
+\begin_layout Standard
+We have that: the equilibrium system boils down to:
+\begin_inset Formula 
+\[
+\left[\begin{array}{cc}
+-\frac{\omega_{e}}{\psi}\epsilon_{P}^{b} & -\left(\frac{\omega_{\ell}}{\psi}+\frac{\zeta^{b}}{\epsilon^{B}}\right)\\
+1 & -\frac{\zeta^{b}}{\epsilon^{B}}
+\end{array}\right]\left[\begin{array}{c}
+\frac{dP}{P}\\
+\frac{d\ell^{b}}{\ell^{g}}
+\end{array}\right]=\left[\begin{array}{c}
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}+\frac{\omega_{m}}{\psi}\\
+\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}
+\end{array}\right]\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+This is a system of two equations and two unknowns.
+ We can quickly solve the system by multiplying the second row by 
+\begin_inset Formula $\frac{\omega_{e}}{\psi}\epsilon_{P}^{b}$
+\end_inset
+
+ and adding both rows, following the steps of classic Schur decompositions.
+\begin_inset Formula 
+\[
+-\left[\left(1+\frac{\omega_{e}}{\psi}\epsilon_{P}^{b}\right)\frac{\zeta^{b}}{\epsilon^{B}}+\frac{\omega_{\ell}}{\psi}\right]\frac{d\ell^{b}}{\ell^{b}}=\left[\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}\left(1+\frac{\omega_{e}}{\psi}\epsilon_{P}^{b}\right)+\frac{\omega_{m}}{\psi}-\frac{\omega_{e}}{\psi}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\right]\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+Hence, we obtain:
+\begin_inset Formula 
+\[
+\frac{d\ell^{b}}{\ell^{b}}=-\frac{\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}\left(1+\frac{\omega_{e}}{\psi}\epsilon_{P}^{b}\right)+\frac{\omega_{m}}{\psi}-\frac{\omega_{e}}{\psi}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left[\left(1+\frac{\omega_{e}}{\psi}\epsilon_{P}^{b}\right)\frac{\zeta^{b}}{\epsilon^{B}}+\frac{\omega_{\ell}}{\psi}\right]}\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+We multiply the top and bottom rows to obtain suppress terms:
+\begin_inset Formula 
+\[
+\frac{d\ell^{b}}{\ell^{b}}=-\frac{\left(1-\zeta^{b}\right)\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}+\epsilon^{B}\omega_{m}-\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+Using the second equation:
+\begin_inset Formula 
+\[
+\frac{dP}{P}=\left[\frac{\left(1-\zeta^{b}\right)}{\epsilon^{B}}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}-\frac{\zeta^{b}}{\epsilon^{B}}\frac{\left(1-\zeta^{b}\right)\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}+\epsilon^{B}\omega_{m}-\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}\right]\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+This equation simpliefies to:
+\begin_inset Formula 
+\[
+\frac{dP}{P}=\frac{1}{\epsilon^{B}}\left[\frac{\zeta^{b}\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}+\left(1-\zeta^{b}-\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\epsilon^{B}\right)\epsilon^{B}\omega_{\ell}-\zeta^{b}\epsilon^{B}\omega_{m}-\left(\psi+\omega_{e}\right)\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}\zeta^{b}\epsilon^{B}\epsilon_{P}^{b}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}\right]\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, we compue the effeect on total loans:
+\begin_inset Formula 
+\[
+\frac{d\ell}{\ell}=\left(1-\zeta^{b}\right)\frac{d\ell^{g}}{\ell^{g}}+\zeta^{b}\frac{d\ell^{b}}{\ell^{b}}
+\]
+
+\end_inset
+
+which simpliefies to:
+\begin_inset Formula 
+\[
+\frac{d\ell}{\ell}=\left[\frac{\zeta^{b}\omega_{e}\epsilon^{B}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}+\left(1-\zeta^{b}\right)\epsilon^{B}\omega_{\ell}-\zeta^{b}\epsilon^{B}\omega_{m}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}\right]\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+We should simplify this to:
+\begin_inset Formula 
+\[
+\frac{d\ell}{\ell}=\left[\frac{\zeta^{b}\epsilon^{B}\left(\omega_{e}\epsilon_{P}^{b}\epsilon_{\ell^{g}}^{\mathcal{L}^{m}}-\omega_{\ell}-\omega_{m}\right)+\epsilon^{B}\omega_{\ell}}{\left(\psi+\omega_{e}\right)\epsilon_{P}^{b}\zeta^{b}+\epsilon^{B}\omega_{\ell}}\right]\frac{d\ell^{g}}{\ell^{g}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
