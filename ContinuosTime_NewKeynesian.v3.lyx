@@ -1,0 +1,3920 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\special{papersize=8.5in,11in}
+%\usepackage{palatino,amssymb,amsfonts,amsmath,latexsym,setspace}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+% \usepackage[dvips]{graphicx}
+
+\usepackage{fancyhdr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{lscape}
+% \usepackage{color}
+\usepackage{colortbl}
+ \usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subfig}
+% \usepackage{subcaption}
+\usepackage{sidecap}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{hyperref}
+
+
+\setcounter{MaxMatrixCols}{10}
+%  Chad's style file for nice paper format.
+%  Various ideas for this style are taken from
+%    -- Matthias Doepke and Michele Tertilt
+%    -- Tony Roberts
+
+% Hyperstuff
+\hypersetup{citecolor=ChadMagenta,linkcolor=ChadDarkBlue,urlcolor=ChadDarkBlue}
+
+% example file to change the style of LaTeX
+% first colour for latex or pdflatex
+%\ifx\pdfoutput\@undefined\usepackage[usenames,dvips]{color}
+% \else\usepackage[usenames,dvipsnames]{color}
+% and fix pdf colour problems
+% \IfFileExists{pdfcolmk.sty}{\usepackage{pdfcolmk}}{} 
+%\fi
+
+% Chad's colors:
+% See http://web.njit.edu/~kevin/rgb.txt.html for possibilities
+\definecolor{ChadDarkBlue}{rgb}{.1,0,.2}  
+\definecolor{ChadBlue}{rgb}{.1,.1,.5}  
+\definecolor{ChadRoyal}{rgb}{.2,.2,.8}  
+%\definecolor{ChadGreen}{rgb}{0,.35,.1}
+%\definecolor{ChadGreen}{rgb}{0,.5,.25}  % Too bright
+%\definecolor{ChadGreen}{rgb}{0,.4,.2}    % Still too bright
+\definecolor{ChadGreen}{rgb}{0,.4,0}    % Dark Green
+%\definecolor{ChadRed}{rgb}{.8,.1,.2}    % Too bright
+\definecolor{ChadRed}{rgb}{.5,0,.5}  % purple
+\definecolor{ChadMagenta}{rgb}{.6,0,.6}  % magenta
+\definecolor{webbrown}{rgb}{.1,0,.2}  % magenta
+
+%%% HYPERLINKS %%%%%%%%%%%%%%%%%%%%%
+\usepackage[figure,table]{hypcap}% Correct a problem with hyperref
+\urlstyle{rm} %so it doesn't use a typewriter font for url's.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
+% Fix title, sections, etc.
+
+\let\LaTeXtitle\title
+\renewcommand{\title}[1]{\LaTeXtitle{\color{ChadBlue}{\LARGE #1}}}
+\renewcommand{\abstractname}{\color{ChadBlue}Abstract}
+\renewcommand{\figurename}{\color{ChadBlue}Figure}
+\renewcommand{\tablename}{\color{ChadBlue}Table}
+
+\let\LaTeX@startsection\@startsection 
+\renewcommand{\@startsection}[6]{\LaTeX@startsection%
+{#1}{#2}{#3}{#4}{#5}{\color{ChadBlue}\raggedright #6}} 
+
+%% % Fix periods at end of section numbers
+%% \renewcommand \thesection {\@arabic\c@section.}
+%% \renewcommand\thesubsection   {\thesection\@arabic\c@subsection}%.}
+%% \renewcommand\thesubsubsection{\thesubsection \@arabic\c@subsubsection}%.}
+
+
+% Add a period *only* after Section and *only* in title, not cross ref
+% April 2017
+
+\renewcommand{\@seccntformat}[1]{%
+  \csname the#1\endcsname% Print sectional counter
+  \ifnum\pdfstrcmp{#1}{section}=0 .\fi% If \section, print .
+  \quad% Space between number and title
+}
+
+
+
+
+% Margin, Paragraph Setup
+
+%\textheight=21.5cm \textwidth=14.95cm \topmargin=-5.5mm
+%\oddsidemargin=8mm \evensidemargin=8mm
+\textheight=22.5cm 
+\textwidth=16.35cm 
+\topmargin=0mm
+\oddsidemargin=0mm 
+\evensidemargin=0mm
+%\setlength{\parindent}{0em} 
+%\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+%\setlength{\parsep}{0pt}
+
+
+% This is how to control linespacing using setspace
+% (\singlespacing or doublespacing just call this command)
+
+
+%% Setting up page headers
+
+\rhead[]{\thepage}
+\lhead[\thepage]{}
+\cfoot[]{} 
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\runningheads}[2]{
+   \chead[\color{ChadGreen}{\uppercase {\footnotesize #1}}]  % Author page header
+   {\color{ChadGreen}{\uppercase {\footnotesize #2}}}  % Short title
+  }
+
+% Make hyperlinks jump more accurately
+
+\newcommand{\org@hypertarget}{}
+\let\org@hypertarget\hypertarget
+\renewcommand{\hypertarget}[2]{%
+\Hy@raisedlink{\org@hypertarget{#1}{}}#2%
+}  
+
+
+% Spacing in Tables and Figures
+%\renewcommand{\tabcolsep}{1pt}   % space between columns
+\renewcommand{\arraystretch}{1.5} % space between rows
+\addtolength{\textfloatsep}{0pt} % space between floats and text
+\addtolength{\abovecaptionskip}{0pt} % space above caption
+\addtolength{\belowcaptionskip}{.15in} % space below caption
+
+\newcommand{\spc}[0]{\vspace{.1in}}
+\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\clr}[1]{{\color{ChadBlue} #1}}
+\newcommand{\boxeq}[1]{\boxed{\hspace{.25in} #1 \hspace{.25in}}} 
+
+\newcommand{\bb}[1]{\color{ChadBlue}{#1}}
+\newcommand{\clrg}[1]{\color{ChadGreen}{#1}}
+\newcommand{\gn}[1]{{\color{ChadGreen}{#1}}}
+\newcommand{\gr}[1]{\tiny\textcolor{green4}{#1}}
+\newcommand{\rd}[1]{\textcolor{ChadRed}{#1}}
+\newcommand{\rr}[1]{\textcolor{red}{#1}}
+\newcommand{\imp}[0]{$\Rightarrow \,$} % implies
+
+%% Shortcut commands
+\newcommand{\growth}[1]{\frac{\dot{#1}_t}{{#1}_t}}
+\newcommand{\prtl}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\prtlsec}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\commentno}[2]{\underset{\mbox{#2}}{#1}}
+% \newcommand{\comment}[2]{\underbrace{#1}_{\mbox{{\small \color{ChadGreen}#2}}}}
+\newcommand{\cn}[1]{\citet*{#1}}
+\newcommand{\cnp}[1]{(\citealt{#1})}  % (Jones 2002)
+\newcommand{\up}[0]{\uparrow \hspace{-.5ex}}  % \! is a negative thinspace
+\newcommand{\down}[0]{\downarrow \hspace{-.5ex}}
+\newcommand{\query}[1]{{\it \color{red}[??? #1]}}
+\newcommand{\Ex}[1]{\mbox{ }\mathbb{E}}
+
+% Use of Proof...
+\newcommand{\Proof}[2]{{\hspace{-\parindent} {\color{ChadGreen}\bf Proof of Proposition}~\ref{#1}.}
+{\color{ChadBlue} #2} \vspace{.1in}}
+\newcommand{\Prob}[1]{\mbox{\textnormal{Pr}} \, [#1] }
+\newcommand{\SubSubSection}[1]{\subsubsection{#1} \baselineskip=18pt}
+% \newcommand{\problem}[2]{\hspace{.1in} {{\color{ChadBlue}{\bf #1:} #2}}}
+\newcommand{\proptitle}[1]{\color{ChadBlue} \textnormal{(#1):}}
+
+%\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+%\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+% \newcommand{\definition}[1]{\mbox{\textnormal{Pr}} \, [#1] 
+
+% \newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+% For graphs of networks
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,backgrounds,positioning,fit,graphs.standard}%finish for graphs of networks
+
+\newtheorem{proposition}{\color{ChadGreen} Proposition}
+\newtheorem{definition}{\color{ChadGreen} Definition} 
+\newtheorem{corollary}{\color{ChadGreen} Corollary} 
+\newtheorem{theorem}{\color{ChadGreen} Proposition}
+\newtheorem{lemma}{\color{ChadGreen} Lemma}
+
+\newtheorem{problem}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+\newtheorem{assumption}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+
+\newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)} 
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing double
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Lecture 8: The New Keynesian Model
+\end_layout
+
+\begin_layout Section
+Dynamics in the New Keynesian Model
+\end_layout
+
+\begin_layout Standard
+Let me start with the three equation representation of the New-Keynesian
+ model.
+ The IS equation is the combination of the Euler equation and the goods
+ market clearing condition:
+\begin_inset Formula 
+\begin{equation}
+IS:\dot{x}=\frac{i-\pi-r}{\sigma}+\varepsilon^{x}\left(t\right),\label{eq:ISequation}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $r$
+\end_inset
+
+ is natural rate produced by the model with flexible prices, possibly a
+ time varying rate, 
+\begin_inset Formula $i$
+\end_inset
+
+ is a nominal policy rate and 
+\begin_inset Formula $\pi$
+\end_inset
+
+ inflation.
+ Then, we have the Phillips curve:
+\begin_inset Formula 
+\begin{equation}
+PC:\rho\pi=\kappa x+\dot{\pi}+\varepsilon^{\pi}\left(t\right),\label{eq:PhillipsCurve}
+\end{equation}
+
+\end_inset
+
+both equations will be derived later.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally, we have the Taylor rule, or any rule:
+\begin_inset Formula 
+\[
+TR:i=i^{*}+\phi\pi+\phi_{x}x+\varepsilon^{i}\left(t\right).
+\]
+
+\end_inset
+
+The Taylor rule specifies a target rate 
+\begin_inset Formula $i^{*}$
+\end_inset
+
+ and two responsiveness coefficients: 
+\begin_inset Formula $\left\{ \phi,\phi_{x}\right\} $
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In all cases, 
+\begin_inset Formula $\varepsilon^{z}\left(t\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $z\in\left\{ i,x,\pi\right\} $
+\end_inset
+
+ represents an deterministic shock.
+ We impose only that 
+\begin_inset Formula $\lim_{t\rightarrow\infty}\varepsilon^{z}\left(t\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Steady State.
+ 
+\end_layout
+
+\begin_layout Standard
+The steady-state of the model is given by 
+\begin_inset Formula $\left\{ \dot{x},\dot{\pi}\right\} =\left\{ 0,0\right\} $
+\end_inset
+
+.
+ In this case, we obtain:
+\begin_inset Formula 
+\[
+\pi_{ss}=i-r.
+\]
+
+\end_inset
+
+Then, for the output gap:
+\begin_inset Formula 
+\[
+x_{ss}=\frac{\rho}{\kappa}\left(i-r\right).
+\]
+
+\end_inset
+
+Finally, we conclude with:
+\begin_inset Formula 
+\[
+i-i^{*}=\frac{\phi+\phi_{x}\frac{\rho}{\kappa}}{1-\left(\phi+\phi_{x}\frac{\rho}{\kappa}\right)}\left(i^{*}-r\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A zero inflation, zero gap equation involves is obtained when 
+\begin_inset Formula $i=r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Dynamical System Representation.
+\end_layout
+
+\begin_layout Standard
+We substitute in Taylor to obtain:
+\begin_inset Formula 
+\[
+\dot{x}=\frac{i^{*}+\left(\phi-1\right)\pi+\phi_{x}x-r}{\sigma}
+\]
+
+\end_inset
+
+and re-arrange the system:
+\begin_inset Formula 
+\[
+\dot{\pi}=-\kappa x+\rho\pi.
+\]
+
+\end_inset
+
+This is the classic, two equation version of the model.
+ It's a system of linear first order ODE's.
+ It can therefore be written as in matrix form:
+\begin_inset Formula 
+\[
+\dot{X}=AX+B\left(t\right)
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{cc}
+\phi_{x} & \phi-1\\
+-\kappa & \rho
+\end{array}\right]
+\]
+
+\end_inset
+
+with inhomogeneous block given by:
+\begin_inset Formula 
+\[
+B\left(t\right)=\left[\begin{array}{c}
+\frac{i^{*}\left(t\right)-r\left(t\right)}{\sigma}-\varepsilon^{x}\left(t\right)+\frac{1}{\sigma}\varepsilon^{i}\left(t\right)\\
+-\varepsilon^{\pi}\left(t\right)
+\end{array}\right].
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\dot{X}=\left[\begin{array}{c}
+\dot{x}\\
+\dot{\pi}
+\end{array}\right].
+\]
+
+\end_inset
+
+Next, we solve the system with two methods.
+ First, by substitution and construction of a second-order differential
+ equation, Second, by working out a solution in system, following methods
+ for systems of linear ODEs.
+ There are plenty of methods to do so.
+ Some information is contained in Kamien and Schwartz and Seierstad and
+ Sydsæter.
+\end_layout
+
+\begin_layout Subsection
+Solution via method of second-order ODE.
+\end_layout
+
+\begin_layout Standard
+Take the time derivative of the PC to yield:
+\begin_inset Formula 
+\[
+\ddot{\pi}-\rho\dot{\pi}+\kappa\dot{x}=\dot{\varepsilon}^{\pi}\left(t\right),
+\]
+
+\end_inset
+
+and replace the IS to obtain:
+\begin_inset Formula 
+\[
+\ddot{\pi}-\rho\dot{\pi}+\kappa\frac{i^{*}+\left(\phi-1\right)\pi+\phi_{x}x-r}{\sigma}=-\left(\dot{\varepsilon}^{\pi}\left(t\right)+\kappa\left(\varepsilon^{x}\left(t\right)+\frac{1}{\sigma}\varepsilon^{i}\left(t\right)\right)\right).
+\]
+
+\end_inset
+
+
+\begin_inset Formula $x$
+\end_inset
+
+ appears again, because of the component in the Taylor rule.
+ For this, it is convenient to use the Phillips curve in levels:
+\begin_inset Formula 
+\[
+x=\frac{\dot{\pi}+\rho\pi}{\kappa}
+\]
+
+\end_inset
+
+in the equation above yields:
+\begin_inset Formula 
+\[
+\ddot{\pi}-\rho\dot{\pi}+\kappa\frac{i^{*}-r+\phi_{x}\left(\frac{\dot{\pi}+\rho\pi}{\kappa}\right)}{\sigma}+\kappa\frac{\phi-1}{\sigma}\pi=0.
+\]
+
+\end_inset
+
+Thus, re-arranging terms, we obtain:
+\begin_inset Formula 
+\[
+\ddot{\pi}-\rho\left(1-\frac{\kappa}{\sigma}\phi_{x}\right)\dot{\pi}+\frac{\kappa\left(\phi-1\right)+\phi_{x}\rho}{\sigma}\pi=-\left(\dot{\varepsilon}^{\pi}\left(t\right)+\kappa\left(\varepsilon^{x}\left(t\right)+\frac{1}{\sigma}\varepsilon^{i}\left(t\right)+\frac{i^{*}-r\left(t\right)}{\sigma}\right)\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This equation is of the form:
+\begin_inset Formula 
+\begin{equation}
+\ddot{\pi}+\gamma_{1}\dot{\pi}+\gamma_{0}\pi=h_{0}\left(t\right)\label{eq:fundamental}
+\end{equation}
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\gamma_{1}=-\rho\left(1-\frac{\kappa}{\sigma}\phi_{x}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\gamma_{0}=\frac{\kappa\left(\phi-1\right)+\phi_{x}\rho}{\sigma}
+\]
+
+\end_inset
+
+and the inhomogeneous block is given by:
+\begin_inset Formula 
+\[
+h_{0}\left(t\right)=-\dot{\varepsilon}^{\pi}\left(t\right)+\kappa\left(\varepsilon^{x}\left(t\right)+\frac{1}{\sigma}\varepsilon^{i}\left(t\right)+\frac{i^{*}-r\left(t\right)}{\sigma}\right).
+\]
+
+\end_inset
+
+A function that satisfies (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fundamental"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) at all 
+\begin_inset Formula $t$
+\end_inset
+
+ is called the particular solution.
+ In general, there are concrete solutions to the particular solution (the
+ solution to the homogenous case) when it is a constant, a step function
+ or a trigonemetric function, or polynomials.
+ The proof is related to the connection between polynomials, trigonemetric
+ functions and the exponential.
+ This equation can be solved as a system, or directly, by guess and verify.
+ For example, to deal with the constant, note that to any solution with
+ zero, provided that 
+\begin_inset Formula $i^{*}-r\left(t\right)$
+\end_inset
+
+ is also constant and there are no shocks, we could add the constant 
+\begin_inset Formula 
+\[
+-\frac{h_{0}}{\gamma_{0}}
+\]
+
+\end_inset
+
+and be done: this would solve the equation at all 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+To solve for the actual path of inflation, we invoke the superposition principle.
+ That is, any solution 
+\begin_inset Formula $\pi^{g}$
+\end_inset
+
+ that solves:
+\begin_inset Formula 
+\begin{equation}
+\ddot{\pi}+\gamma_{1}\dot{\pi}+\gamma_{0}\pi=0\label{eq:general}
+\end{equation}
+
+\end_inset
+
+can be added to another solution 
+\begin_inset Formula $\pi^{p}$
+\end_inset
+
+ that solves the fundamental equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fundamental"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) to produce a path for inflation.
+ The equation above, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:general"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, is called general solution.
+ A general solution can involve a linear combination of such solutions,
+ a particular solution, and any arbitrary number of generic solutions 
+\begin_inset Formula $\pi^{g}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Solving the General Solution.
+ 
+\end_layout
+
+\begin_layout Standard
+Conjecture that the solution to the general solution 
+\begin_inset Formula $\pi^{g}$
+\end_inset
+
+ to the equation is: 
+\begin_inset Formula 
+\[
+K\exp\left(\lambda\right).
+\]
+
+\end_inset
+
+Then, we would have that a solution is:
+\begin_inset Formula 
+\[
+\left(\lambda\right)^{2}K\exp\left(\lambda\right)+\gamma_{1}\lambda K\exp\left(\lambda\right)+\gamma_{0}K\exp\left(\lambda\right)=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Canceling terms, we obtain the characteristic polynomial:
+\begin_inset Formula 
+\[
+\lambda_{1}=\frac{-\gamma_{1}+\sqrt{\gamma_{1}^{2}-4\gamma_{0}}}{2}=\frac{\rho\left(1-\frac{\kappa}{\sigma}\phi_{x}\right)+\sqrt{\rho^{2}\left(1-\frac{\kappa}{\sigma}\phi_{x}\right)^{2}-4\frac{\kappa\left(\phi-1\right)+\phi_{x}\rho}{\sigma}}}{2}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\lambda_{2}=\frac{-\gamma_{1}-\sqrt{\gamma_{1}^{2}-4\gamma_{0}}}{2}=\frac{\rho\left(1-\frac{\kappa}{\sigma}\phi_{x}\right)-\sqrt{\rho^{2}\left(1-\frac{\kappa}{\sigma}\phi_{x}\right)^{2}-4\frac{\kappa\left(\phi-1\right)+\phi_{x}\rho}{\sigma}}}{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ignoring the case of equal roots, and the case of imaginary roots, we obtain
+ roots of opposite sign if:
+\begin_inset Formula 
+\[
+\kappa\left(\phi-1\right)+\phi_{x}\rho>0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\phi>1-\frac{\rho\phi_{x}}{\kappa}>0,
+\]
+
+\end_inset
+
+one of the roots satisfies the Taylor principle.
+ Thus, the value of 
+\begin_inset Formula $\phi_{x}$
+\end_inset
+
+ relaxes the Taylor principle, but the idea is the same.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Determining the Constants: Indeterminacy and the Taylor Principle.
+ 
+\end_layout
+
+\begin_layout Standard
+Clearly the math gets cluttered by the term 
+\begin_inset Formula $\phi_{x}$
+\end_inset
+
+, but it is simplified setting: 
+\begin_inset Formula $\phi_{x}=0$
+\end_inset
+
+.
+ In the latter case, we have that:
+\begin_inset Formula 
+\[
+\lambda_{1}=\frac{\rho+\sqrt{\rho^{2}-4\kappa\frac{\phi-1}{\sigma}}}{2}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\lambda_{2}=\frac{\rho-\sqrt{\rho^{2}-4\kappa\frac{\phi-1}{\sigma}}}{2}.
+\]
+
+\end_inset
+
+The theory of ODE's guarantees that no other solutions exist (e.g., Oliver
+ and Boyd; also check Kamien and Schwartz).
+ Then, it's a matter of finding the right initial conditions to determine
+ the weights.
+ The general solution is:
+\begin_inset Formula 
+\[
+\pi^{g}\left(t\right)=K_{1}\exp\left(\lambda_{1}t\right)+K_{2}\exp\left(\lambda_{2}t\right).
+\]
+
+\end_inset
+
+Key to the new-Keynesian model, inflation is not a state variable.
+ It can jump at any minute—prices are a state variable.
+ If inflation can jump, so can consumption and since prices cannot adjust,
+ the same is true about output.
+ Therefore, we have that we cannot use inflation nor output as initial condition
+s.
+ Instead, we must use information regarding the terminal condition: a steady-sta
+te condition.
+ If the central bank wants to target the zero-zero equilibrium, we could
+ use this as a terminal condition.
+ 
+\end_layout
+
+\begin_layout Standard
+Let there be only positive discriminants:
+\begin_inset Formula 
+\[
+\rho^{2}>4\kappa\frac{\phi-1}{\sigma}.
+\]
+
+\end_inset
+
+Clearly, this is true unless 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is too large.
+ 
+\end_layout
+
+\begin_layout Standard
+If the Taylor principle is violated, 
+\begin_inset Formula $\phi\leq1$
+\end_inset
+
+.
+ Then, in that case, at least one of the solutions is negative, and the
+ other is positive.
+ Our terminal conditions become:
+\begin_inset Formula 
+\[
+\pi_{ss}=0=\lim_{t\rightarrow\infty}K_{1}\exp\left(\lambda_{1}t\right)+K_{2}\exp\left(\lambda_{2}t\right)=K_{2}\lim_{t\rightarrow0}\exp\left(\lambda_{2}t\right).
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $\lambda_{1}>0$
+\end_inset
+
+, we immediately have that 
+\begin_inset Formula $K_{1}=0$
+\end_inset
+
+.
+ Therefore, we can observe that the condition is solved for any 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+.
+ If the Taylor principle is violated, we have the possibility of multiplicity—in
+cluding the possibility of sunspot equilibria that lead to jumps in inflation
+ over time.
+ In other words, if 
+\begin_inset Formula $\lambda_{2}<0$
+\end_inset
+
+, then we have a problem.
+ Since any 
+\begin_inset Formula $\pi\left(0\right)$
+\end_inset
+
+ is a solution, we have that any solution is possible.
+ Solutions may even oscillate if further conditions are not met: see Benhabib,
+ Schmitt-Grohe and Uribe.
+ If 
+\begin_inset Formula $\lambda_{2}=0$
+\end_inset
+
+, we must always fall in a steady state as an initial condition.
+ 
+\end_layout
+
+\begin_layout Standard
+If the Taylor principle is satisfied, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\phi>1.
+\]
+
+\end_inset
+
+then we have two explosive roots—since 
+\begin_inset Formula $\lambda_{1},\lambda_{2}>0$
+\end_inset
+
+.
+ In that case, we have that:
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow\infty}\pi\left(t\right)=K_{1}\lim_{t\rightarrow\infty}\exp\left(\lambda_{1}t\right)+K_{2}\lim_{t\rightarrow\infty}\exp\left(\lambda_{2}t\right)
+\]
+
+\end_inset
+
+must necessarily involve 
+\begin_inset Formula $K_{1},K_{2}=0$
+\end_inset
+
+ if inflation is to be stationary.
+ Hence, the particular solution is 
+\begin_inset Formula $\left\{ \pi\left(0\right),\pi'\left(0\right),x\left(0\right)\right\} $
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+What is going on? In the new-Keynesian model, inflation is not predetermined.
+ Firms can chose to deviate from the zero-zero equilibrium, but the point
+ is that this would lead to an implosion or explosion of inflation.
+ As long as the Taylor rule is satisfied, we avoid multiplicity, through
+ a threat of destruction of the economy.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+In-homogeneous Case.
+ 
+\end_layout
+
+\begin_layout Standard
+We are left with finding the solution that includes the 
+\shape italic
+particular
+\shape default
+ term, corresponding to the in-homogeneous solution: 
+\begin_inset Formula 
+\[
+z\left(t\right)=-\left(\kappa\frac{i^{*}-r\left(t\right)}{\sigma}+\dot{\varepsilon}^{\pi}\left(t\right)+\kappa\left(\varepsilon^{x}\left(t\right)+\frac{1}{\sigma}\varepsilon^{i}\left(t\right)+\frac{i^{*}-r\left(t\right)}{\sigma}\right)\right).
+\]
+
+\end_inset
+
+It is most convenient to work with solution that are of the form:
+\begin_inset Formula 
+\[
+z\left(t\right)=\exp\left(-\eta t\right)z_{0}+\left(1-\exp\left(-\eta t\right)\right)\cdot\exp\left(-\nu t\right),
+\]
+
+\end_inset
+
+which covers a broad range of time functions.
+\end_layout
+
+\begin_layout Standard
+We work with the method of undetermined coefficients, for any: 
+\begin_inset Formula 
+\[
+g\left(t\right)=A\exp\left(-\nu\cdot t\right)
+\]
+
+\end_inset
+
+Then, observe that by Leibniz's rule:
+\begin_inset Formula 
+\[
+g'\left(t\right)=-\zeta g\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+g''\left(t\right)=\zeta^{2}g\left(t\right).
+\]
+
+\end_inset
+
+Thus, in our solution, we obtain the following result about the particular
+ solution:
+\begin_inset Formula 
+\[
+A\left(\eta^{2}g\left(t\right)-\eta\gamma_{1}g\left(t\right)+\gamma_{0}g\left(t\right)\right)=g\left(t\right).
+\]
+
+\end_inset
+
+Thus, it must be that:
+\begin_inset Formula 
+\[
+A=\frac{1}{\nu^{2}-\nu\gamma_{1}+\gamma_{0}}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+g\left(t\right)=\frac{\exp\left(-\nu\cdot t\right)}{\nu^{2}-\nu\gamma_{1}+\gamma_{0}}
+\]
+
+\end_inset
+
+Likewise, for the term:
+\begin_inset Formula 
+\[
+h\left(t\right)=Bz_{0}\exp\left(-\eta\cdot t\right).
+\]
+
+\end_inset
+
+Following the same steps, we obtain:
+\begin_inset Formula 
+\[
+h\left(t\right)=z_{0}\frac{\exp\left(-\eta\cdot t\right)}{\eta^{2}-\eta\gamma_{1}+\gamma_{0}}.
+\]
+
+\end_inset
+
+And finally:
+\begin_inset Formula 
+\[
+k\left(t\right)=-\frac{\exp\left(-\left(\eta+\nu\right)\cdot t\right)}{\left(\eta+\nu\right)^{2}-\left(\eta+\nu\right)\gamma_{1}+\gamma_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence, we obtain the following particular solution:
+\begin_inset Formula 
+\[
+\pi^{p}\left(t\right)=g\left(t\right)+h\left(t\right)+k\left(t\right)
+\]
+
+\end_inset
+
+Thus, we have that inflation has a particular solution given by:
+\begin_inset Formula 
+\[
+\pi^{p}\left(t\right)=\frac{\exp\left(-\nu\cdot t\right)}{\nu^{2}-\nu\gamma_{1}+\gamma_{0}}+z_{0}\frac{\exp\left(-\eta\cdot t\right)}{\eta^{2}-\eta\gamma_{1}+\gamma_{0}}-\frac{\exp\left(-\left(\eta+\nu\right)\cdot t\right)}{\left(\eta+\nu\right)^{2}-\left(\eta+\nu\right)\gamma_{1}+\gamma_{0}}.
+\]
+
+\end_inset
+
+Coupling both solutions, we obtain the path:
+\begin_inset Formula 
+\[
+\pi\left(t\right)=\pi^{g}\left(t\right)+\pi^{p}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Standard Solution Employed in New-Keynesian Modeling.
+\end_layout
+
+\begin_layout Standard
+Let's now consider the standard solution of the NK model.
+ We must have that 
+\begin_inset Formula 
+\[
+\pi\left(t\right)=\pi^{p}\left(t\right)=\frac{\exp\left(-\nu\cdot t\right)}{\nu^{2}-\nu\gamma_{1}+\gamma_{0}}+c_{0}\frac{\exp\left(-\eta\cdot t\right)}{\eta^{2}-\eta\gamma_{1}+\gamma_{0}}-\frac{\exp\left(-\left(\eta+\nu\right)\cdot t\right)}{\left(\eta+\nu\right)^{2}-\left(\eta+\nu\right)\gamma_{1}+\gamma_{0}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Piecewise-Blocks.
+\end_layout
+
+\begin_layout Standard
+We can also super impose solutions with intervals.
+ Take for example, the event, which is anticipated, such that at 
+\begin_inset Formula $T$
+\end_inset
+
+ there is an expected jump event.
+ The term 
+\begin_inset Formula $c\left(t\right)$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+c\left(t\right)=\begin{cases}
+a & t>T\\
+\\
+0 & t\leq T.
+\end{cases}
+\]
+
+\end_inset
+
+What would be the solution after this anticipation? We can conjecture that
+ by time 
+\begin_inset Formula $T$
+\end_inset
+
+, the solution is of the form 
+\begin_inset Formula $\left\{ \pi\left(0\right),\pi'\left(0\right),x\left(0\right)\right\} $
+\end_inset
+
+.
+ Then, the questions is what happens along the path.
+ As we noted, along the path, inflation will be positive, as the particular
+ solution with a constant is non-zero.
+ We just have to track the particular solution.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+The Zero-Lower Bound.
+\end_layout
+
+\begin_layout Standard
+Here, we consider the ZLB, and showcase the range of solutions in Cochrane
+ and contrast that with the equilibrium in Werning.
+ Maliar also solves this problem, in more general terms.
+ We obtain the following: at the ZLB, the interest rate rule cannot respond.
+ We first consider the solution in Werning 2015.
+ Thus, the ODE for inflation has coefficients:
+\begin_inset Formula 
+\[
+\gamma_{1}=-\rho
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\gamma_{0}=-\frac{\kappa}{\sigma}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, the term 
+\begin_inset Formula $\phi=0$
+\end_inset
+
+, and we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{1}=\frac{\rho+\sqrt{\rho^{2}-4\frac{\kappa}{\sigma}}}{2}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\lambda_{2}=\frac{\rho-\sqrt{\rho^{2}-4\frac{\kappa}{\sigma}}}{2}.
+\]
+
+\end_inset
+
+We have two additional roots.
+ We thus need two conditions during the transition to the ZLB:
+\begin_inset Formula 
+\[
+\pi^{g}\left(t\right)=K_{1}^{LT}\exp\left(\lambda_{1}t\right)+K_{2}^{LT}\exp\left(\lambda_{2}t\right),\text{ }t\in\left[0,T\right].
+\]
+
+\end_inset
+
+Thus, consider the particular solution where 
+\begin_inset Formula 
+\[
+z\left(t\right)=\begin{cases}
+-a & t>T\\
+\\
+0 & t\leq T.
+\end{cases}
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $a$
+\end_inset
+
+ some negative number.
+ The particular solution in this case is:
+\begin_inset Formula 
+\[
+\pi^{p}\left(t\right)=\begin{cases}
+-a/\gamma_{0} & t>T\\
+\\
+0 & t\leq T.
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now solve the model, but we need the two terminal conditions:
+\begin_inset Formula 
+\[
+\pi\left(T^{-}\right)=0,\text{ }x\left(T\right)=0.
+\]
+
+\end_inset
+
+The solution need 
+\begin_inset Formula $\pi\left(T^{+}\right)=0\rightarrow\pi^{g}\left(T\right)=0.$
+\end_inset
+
+ We therefore need to solve:
+\begin_inset Formula 
+\[
+K_{1}^{LT}\exp\left(\lambda_{1}T\right)+K_{2}^{LT}\exp\left(\lambda_{2}T\right)=0,
+\]
+
+\end_inset
+
+and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+0=x\left(T\right)\Longleftrightarrow\dot{\pi}\left(T\right)=0.
+\]
+
+\end_inset
+
+Hence, we have obtained that:
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\[
+\lambda_{1}K_{1}^{LT}\exp\left(\lambda_{1}T\right)+\lambda_{2}K_{2}^{LT}\exp\left(\lambda_{2}T\right)=\rho\frac{a}{\gamma_{0}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Taken, together we have that:
+\begin_inset Formula 
+\[
+\left[\begin{array}{cc}
+1 & 1\\
+\lambda_{1} & \lambda_{2}
+\end{array}\right]\left[\begin{array}{c}
+K_{1}^{LT}\exp\left(\lambda_{1}T\right)\\
+K_{2}^{LT}\exp\left(\lambda_{2}T\right)
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+\rho\frac{a}{\gamma_{0}}
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Solution of Second-Order ODE as a Matrix [TBC]
+\end_layout
+
+\begin_layout Standard
+Suppose we want to solve:
+\begin_inset Formula 
+\[
+\ddot{\pi}+\gamma_{1}\dot{\pi}+\gamma_{0}\pi=c\left(t\right).
+\]
+
+\end_inset
+
+We use a change of variables:
+\begin_inset Formula 
+\[
+y\equiv\dot{\pi}.
+\]
+
+\end_inset
+
+Thus, the system is:
+\begin_inset Formula 
+\[
+\dot{y}+\gamma_{1}y+\gamma_{0}\pi=c\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y=\dot{\pi}.
+\]
+
+\end_inset
+
+Thus, it becomes a system:
+\begin_inset Formula 
+\[
+\dot{X}=AX+B\left(t\right)
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+X=\left[\begin{array}{c}
+\pi\\
+y
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{cc}
+0 & 1\\
+-\gamma_{0} & -\gamma_{1}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B\left(t\right)=\left[\begin{array}{c}
+c\left(t\right)\\
+0
+\end{array}\right].
+\]
+
+\end_inset
+
+Then, we ask what is the solution to this linear system.
+ From the perspective of the second term:
+\begin_inset Formula 
+\[
+y=\dot{\pi}\rightarrow\pi\left(t\right)=\int_{0}^{t}y\left(s\right)ds
+\]
+
+\end_inset
+
+or if we need it, we can work with the forward version:
+\begin_inset Formula 
+\[
+\rightarrow\pi\left(t\right)=-\int_{t}^{\infty}y\left(s\right)ds.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next, what is the general solution to 
+\begin_inset Formula 
+\[
+\dot{y}+\gamma_{1}y=c\left(t\right)-\gamma_{0}\pi\left(t\right)
+\]
+
+\end_inset
+
+The inhomogeneous solution is:
+\begin_inset Formula 
+\[
+y\left(t\right)=C_{1}\exp\left(-\gamma_{1}t\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, conjecture:
+\begin_inset Formula 
+\[
+y=\int_{0}^{t}\exp\left(-\gamma_{1}\left(t-\tau\right)\right)\left(\int_{s}^{\infty}c\left(\tau\right)-\gamma_{0}\pi\left(\tau\right)ds\right)d\tau.
+\]
+
+\end_inset
+
+Verification:
+\begin_inset Formula 
+\[
+y'=-\gamma_{1}\int_{0}^{t}\exp\left(-\gamma_{1}\left(t-\tau\right)\right)\left(c\left(\tau\right)-\gamma_{0}\pi\left(\tau\right)\right)d\tau+C_{1}\left(c\left(t\right)-\gamma_{0}\pi\left(t\right)\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus adding terms:
+\begin_inset Formula 
+\[
+y'+\gamma_{1}y=\left(c\left(t\right)-\gamma_{0}\pi\left(t\right)\right).
+\]
+
+\end_inset
+
+Thus, we obtained that:
+\begin_inset Formula 
+\[
+y\left(t\right)=\int_{0}^{t}\exp\left(-\gamma_{1}\left(t-\tau\right)\right)\left(\int_{s}^{\infty}c\left(\tau\right)-\gamma_{0}\pi\left(\tau\right)ds\right)d\tau,
+\]
+
+\end_inset
+
+but the same is true about:
+\begin_inset Formula 
+\[
+y\left(t\right)=\int_{t}^{\infty}\exp\left(-\gamma_{1}\left(t-\tau\right)\right)\left(\int_{s}^{\infty}c\left(\tau\right)-\gamma_{0}\pi\left(\tau\right)ds\right)d\tau.
+\]
+
+\end_inset
+
+The key difference is the sign of 
+\begin_inset Formula $\gamma_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+However, since 
+\begin_inset Formula 
+\[
+y\left(t\right)=\dot{\pi}
+\]
+
+\end_inset
+
+we thus have that:
+\begin_inset Formula 
+\[
+\dot{\pi}\left(t\right)=\int_{0}^{t}\exp\left(-\gamma_{1}\left(t-\tau\right)\right)\left(\int_{s}^{\infty}\gamma_{0}\pi\left(\tau\right)ds\right)d\tau+\int_{0}^{t}\exp\left(-\gamma_{1}\left(t-\tau\right)\right)\int_{s}^{\infty}c\left(\tau\right)dsd\tau.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Furthermore, if 
+\begin_inset Formula $\pi\left(t\right)$
+\end_inset
+
+ is a solution of the form:
+\end_layout
+
+\begin_layout Section
+The Standard Formulation of the New-Keynesian Model
+\end_layout
+
+\begin_layout Standard
+This derivation is slightly different from the usual derivation.
+ In its standard formulation, the New-Keynesian model is to feature households
+ that supply labor and consume goods.
+ Their value function is given by:
+\begin_inset Formula 
+\[
+\rho V\left(X,b\right)=U\left(c\right)-H\left(\ell\right)+V_{x}\mu^{X}+V_{b}\mu^{b}+\dot{V}.
+\]
+
+\end_inset
+
+The drift of personal savings 
+\begin_inset Formula $b$
+\end_inset
+
+ is:
+\begin_inset Formula 
+\[
+\dot{b}=rb+w\cdot\ell-c.
+\]
+
+\end_inset
+
+Everything is deterministic from their perspective: 
+\begin_inset Formula $c$
+\end_inset
+
+ is consumption, 
+\begin_inset Formula $\ell$
+\end_inset
+
+ is the labor supply and 
+\begin_inset Formula $X$
+\end_inset
+
+ is an aggregate state.
+ The model will feature an Euler equation identical to the one we studied
+ before.
+ To see this, the first-order conditions with respect to savings are:
+\begin_inset Formula 
+\[
+U'\left(c\right)=V_{b}
+\]
+
+\end_inset
+
+and labor 
+\begin_inset Formula 
+\[
+H'\left(\ell\right)=wV_{b}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence, the labor supply condition is given by:
+\begin_inset Formula 
+\[
+wU'\left(c\right)=H'\left(\ell\right).
+\]
+
+\end_inset
+
+Then, we take time derivatives into the first-order condition for consumption:
+\begin_inset Formula 
+\[
+U''\left(c\right)c\frac{\dot{c}}{c}=V_{bb}\mu^{b}+V_{bX}\mu^{X}+\dot{V}_{b}.
+\]
+
+\end_inset
+
+We take the derivative of the value function with respect to 
+\begin_inset Formula $b$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\rho V_{b}=U'\left(c\right)c'\left(b\right)-H'\left(\ell\right)\ell'\left(b\right)+V_{xb}\mu^{X}+V_{b}\left(r-c'\left(b\right)+w\ell'\left(b\right)\right)+V_{bb}\mu_{b}+\dot{V}_{b}
+\]
+
+\end_inset
+
+Thus, using the first-order conditions, (the envelope theorem) we obtain:
+\begin_inset Formula 
+\[
+\rho U'\left(c\right)=V_{xb}\mu^{X}+U'\left(c\right)r+V_{bb}\mu^{b}+\dot{V}_{b}.
+\]
+
+\end_inset
+
+Hence, we obtain that:
+\begin_inset Formula 
+\[
+\left(\rho-r\right)U'\left(c\right)=V_{xb}\mu^{X}+U'\left(c\right)r+V_{bb}\mu^{b}+\dot{V}_{b}.
+\]
+
+\end_inset
+
+Back in the Euler condition (xxx) we obtain:
+\begin_inset Formula 
+\[
+U''\left(c\right)c\frac{\dot{c}}{c}=\left(\rho-r\right)U'\left(c\right)\Longrightarrow\frac{\dot{c}}{c}=\frac{r-\rho}{\sigma}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is the CRRA exponent.
+ The Euler condition holds nicely in this setting.
+ 
+\end_layout
+
+\begin_layout Standard
+Next, consider the first-order condition for the labor supply.
+ We obtain:
+\begin_inset Formula 
+\[
+wU'\left(c\right)=H'\left(\ell\right).
+\]
+
+\end_inset
+
+In equilibrium, we will satisfy market clearing conditions that imply:
+\begin_inset Formula 
+\[
+C=Y.
+\]
+
+\end_inset
+
+If labor is the only input, 
+\begin_inset Formula $Y=\ell$
+\end_inset
+
+.
+ Thus:
+\begin_inset Formula 
+\[
+w=\frac{H'\left(Y\right)}{U'\left(Y\right)}=Y^{\nu+\sigma}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\nu$
+\end_inset
+
+ is the coefficient in the labor supply.
+\end_layout
+
+\begin_layout Paragraph*
+Retailers
+\end_layout
+
+\begin_layout Standard
+There is a continuum of retailers, 
+\begin_inset Formula $j\in[0,1]$
+\end_inset
+
+.
+ Retailers purchases intermediate inputs which it converts into a differentiated
+ final good that is sold to households.
+ 
+\end_layout
+
+\begin_layout Standard
+The production function of retailer 
+\begin_inset Formula $j$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+y_{j,t}=x_{j,t}.
+\]
+
+\end_inset
+
+In the expression, 
+\begin_inset Formula $y_{j,t}$
+\end_inset
+
+ is the output of retailer 
+\begin_inset Formula $j$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{j,t}$
+\end_inset
+
+ it's choice of goods.
+ Retailer 
+\begin_inset Formula $j$
+\end_inset
+
+ chooses the change in its individual price 
+\begin_inset Formula $\dot{p}_{j,t}$
+\end_inset
+
+ to maximize
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+q\left(p,t\right)=\max_{\left\{ \dot{p}_{j,\tau}\right\} }\int_{t}^{\infty}\exp\left(-r\left(\tau\right)\right)\left[\frac{p_{j,\tau}y_{j,\tau}-p_{\tau}x_{j,\tau}}{P_{\tau}}-\frac{\Theta}{2}\left(\frac{\dot{p}_{j,\tau}}{p_{j,\tau}}\right)^{2}Y_{\tau}\right]d\tau,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s.t.\quad y_{j,\tau}=p_{j,t}^{-\epsilon}P_{t}^{\epsilon}Y_{t}.
+\]
+
+\end_inset
+
+The only state variable for this firm is its price.
+ In this problem, there are distinct prices.
+ 
+\begin_inset Formula $p_{j,\tau}$
+\end_inset
+
+ denotes the price of the final good, 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ the price of the intermediate good, and 
+\begin_inset Formula $P_{t}$
+\end_inset
+
+ the price of the aggregate production bundle.
+ These are nominal objects.
+ In real terms, the price of intermediate inputs is 
+\begin_inset Formula $mc_{t}$
+\end_inset
+
+, a real marginal cost measured in terms of final goods.
+ The marginal cost in real terms appears in the following Phillips curve.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The path of prices satisfies the following Phillips curve:
+\begin_inset Formula 
+\begin{eqnarray}
+\left(r\left(\tau\right)-\frac{\dot{Y}_{t}}{Y_{t}}\right)\pi_{t} & = & \frac{\epsilon}{\Theta}\left(mc_{t}-\frac{\epsilon-1}{\epsilon}\right)+\dot{\pi}_{t}\label{eq:NKPC-1}
+\end{eqnarray}
+
+\end_inset
+
+In present value form, it is 
+\begin_inset Formula 
+\[
+\pi_{t}=\frac{\epsilon}{\Theta}\int_{t}^{\infty}e^{-\left(s-t\right)\rho}\frac{Y_{s}}{Y_{t}}\left(mc_{s}-\frac{\epsilon-1}{\epsilon}\right)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This Phillips curve is standard.
+ In this version, retailers make profits.
+ We need to make sure they are distributed, which we do by assuming they
+ are fully taxed.
+ Also, we need to make sure that the price adjustment requires the usage
+ of final resource.
+ The final goods market clearing condition is
+\begin_inset Formula 
+\[
+Y_{t}=C_{t}+\frac{\Theta}{2}\pi_{t}^{2}Y_{t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We want to simplify terms from the Phillips curve:
+\begin_inset Formula 
+\[
+\rho=r-\sigma\frac{\dot{Y}}{Y}.
+\]
+
+\end_inset
+
+Thus, the Phillips curve can be simplified to:
+\begin_inset Formula 
+\[
+\left(\rho+\left(\sigma-1\right)\frac{\dot{Y}_{t}}{Y_{t}}\right)\pi_{t}=\frac{\epsilon}{\Theta}\left(mc_{t}-\frac{\epsilon-1}{\epsilon}\right)+\dot{\pi}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The output gap.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y^{n}$
+\end_inset
+
+ be the output that we would obtain without price frictions.
+ Then, define 
+\begin_inset Formula 
+\[
+\mathcal{X}=\ln Y-\ln Y^{n}.
+\]
+
+\end_inset
+
+The term 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ is the output gap, the deviation of output relative to it's ideal.
+ Then, we have that any variable 
+\begin_inset Formula $z=f\left(Y\right)$
+\end_inset
+
+ has the property that: 
+\begin_inset Formula 
+\[
+x=f\left(\ln\left(Y\right)\right)
+\]
+
+\end_inset
+
+is approximated by:
+\begin_inset Formula 
+\[
+\tilde{x}=f(Y^{n})+f'\left(\log\left(Y^{n}\right)\right)(\ln Y-\ln Y^{n}).
+\]
+
+\end_inset
+
+For example, consider the wage equation:
+\begin_inset Formula 
+\[
+w=\exp\left(\ln Y\right)^{\nu+\sigma}=.
+\]
+
+\end_inset
+
+Assuming that 
+\begin_inset Formula $w^{n}=\frac{\epsilon-1}{\epsilon}$
+\end_inset
+
+ is a wage in the flexible world:
+\begin_inset Formula 
+\[
+\tilde{w}-w^{n}=\left(\nu+\sigma\right)Y^{\nu+\sigma-1}\times Y\times(\ln Y-\ln Y^{n}).
+\]
+
+\end_inset
+
+Thus,
+\begin_inset Formula 
+\[
+\frac{\tilde{w}-w^{n}}{w^{n}}=\left(\nu+\sigma\right)\times(\ln Y-\ln Y^{n}).
+\]
+
+\end_inset
+
+ Thus, from here we obtain that:
+\begin_inset Formula 
+\[
+mc_{t}-\frac{\epsilon-1}{\epsilon}=\frac{\epsilon-1}{\epsilon}\left(\nu+\sigma\right)\left(\frac{\dot{Y}}{Y}-\frac{\dot{Y}^{n}}{Y^{n}}\right)=\frac{\epsilon-1}{\epsilon}\left(\nu+\sigma\right)\mathcal{X}.
+\]
+
+\end_inset
+
+Note that:
+\begin_inset Formula 
+\[
+\frac{\dot{Y}}{Y}-\frac{\dot{Y}^{n}}{Y^{n}}=\dot{\mathcal{X}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence, combining previous steps, we arrive at:
+\begin_inset Formula 
+\[
+\left(\rho+\left(\sigma-1\right)\left(\dot{\mathcal{X}}+\frac{\dot{Y}^{n}}{Y^{n}}\right)\right)\pi_{t}=\left(\nu+\sigma\right)\frac{\epsilon-1}{\Theta}\mathcal{X}+\dot{\pi}_{t}.
+\]
+
+\end_inset
+
+Thus, we summarize the classic new-Keynesian Phillips curve as:
+\begin_inset Formula 
+\[
+\rho\pi_{t}=\left(\nu+\sigma\right)\frac{\epsilon-1}{\Theta}\mathcal{X}+\dot{\pi}_{t}-\left(\sigma-1\right)\left(\dot{\mathcal{X}}+\frac{\dot{Y}^{n}}{Y^{n}}\right).
+\]
+
+\end_inset
+
+Setting, 
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+, the formulas simplify.
+ Note that technology shocks or any other real shock will enter in the term:
+ 
+\begin_inset Formula $\frac{\dot{Y}^{n}}{Y^{n}}$
+\end_inset
+
+.
+ The term 
+\begin_inset Formula $\left(\sigma-1\right)$
+\end_inset
+
+ captures how the IES changes the desire to smooth prices changes over time.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally, we approximate the Euler equation to express it in terms of the
+ output gap:
+\begin_inset Formula 
+\[
+\frac{\dot{c}}{c}=\dot{\mathcal{X}}+\frac{\dot{Y}^{n}}{Y^{n}}=\frac{r\left(t\right)-\rho}{\sigma}.
+\]
+
+\end_inset
+
+Re-arranging terms:
+\begin_inset Formula 
+\[
+\dot{\mathcal{X}}=\frac{r\left(t\right)-\rho}{\sigma}-\frac{\dot{Y}^{n}}{Y^{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Firms and the Labor Market 
+\end_layout
+
+\begin_layout Subsection
+Motivation
+\end_layout
+
+\begin_layout Standard
+The new-Keynesian model operates entirely through the intensive margin of
+ labor.
+ Households move along their supply schedules.
+ This is unappealing because much action happens with unemployment during
+ business cycles.
+ Furthermore, it seems that labor wedges are important, but this is not
+ a property of the standard new-Keynesian model: households are always on
+ their supply schedules.
+ 
+\end_layout
+
+\begin_layout Standard
+Here, I modify the original formulation to focus on unemployment.
+ The idea here is that there is a fringe of monopolistically competing final
+ goods producers.
+ Final goods producers face price adjustment costs.
+ They have a desired markup 
+\begin_inset Formula $\left(\epsilon-1\right)/\epsilon$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+switch from varespilon to epsilon which is standard notation in the NK model
+\end_layout
+
+\end_inset
+
+ relative to in intermediate input, the only production input.
+ The intermediate input is supplied by competitive intermediate producers.
+ Intermediate producers have linear production technology.
+ Thus the supply of the input is perfectly inelastic in the short run, as
+ determined by the number of workers.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+the amount of hired workers is pre-determined.
+ So for practical pursposes, it's fixed in the short run.
+\end_layout
+
+\end_inset
+
+ The number of workers will vary slowly over time, as intermediate goods
+ firms hire more or less of them.
+ The price of the intermediate input is determined in a Walrasian equilibrium.
+ 
+\end_layout
+
+\begin_layout Standard
+Importantly, workers are fired with an exogenous intensity.
+ To hire workers, intermediate input firms post vacancies.
+ The cost of each vacancy is constant.
+ The success in hiring workers depends on the number of vacancies and unemployed
+, as given by a matching function.
+ The real wage setting is determined by ex-post bargaining, whose outcome
+ is to have workers earn a fraction of the intermediate input.
+ 
+\end_layout
+
+\begin_layout Standard
+Both, intermediate good firms and final goods firms make revenues.
+ To simplify things and avoid introducing an asset market, we take the limit
+ as vacancy posting costs and the share of revenues of intermediate input
+ firms goes to zero.
+ We make the assumption that final goods firms are fully taxed by the government.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We make parameter assumptions so that their profits vanish.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To understand the workings of the supply side of the model, let's first
+ consider a steady state.
+ Steady state is consistent with production under flexible prices.
+ Think of the price of final goods as the numeraire.
+ If final good firms are able to charge their ideal markup, the relative
+ price of intermediate inputs 
+\begin_inset Formula $p$
+\end_inset
+
+ to final goods is the inverse of the markup.
+ Since intermediate good firms earn a fraction of the sales price, a fraction
+ of 
+\begin_inset Formula $p$
+\end_inset
+
+ is the flow of profits per unit of worker.
+ Thus, when a worker is hired, he generates an NPV that has that fraction
+ of profits as a flow, and is discounted at some interest rate plus the
+ exogenous firing rate.
+ The NPV of a worker, multiplied by the success rate in hiring workers—the
+ job filling rate—equals the vacancy posting costs in equilibrium.
+ 
+\end_layout
+
+\begin_layout Standard
+Let's consider a transition after a shock, under flexible prices.
+ So long as the price of intermediate goods—in real terms—is constant, output
+ is still determined by a single supply condition.
+ In equilibrium, real interest rates would adjust to guarantee that supply
+ equals demand.
+ Moreover, even if nominal rates where constant, a decline in the final
+ goods price followed by inflation back to steady state would guarantee
+ a decline in rates necessary to equilibrate the goods market.
+ This would be immaterial for job flows along the transition, as long as
+ the intermediate good price in real terms remain equal to the inverse gross
+ markup.
+\end_layout
+
+\begin_layout Standard
+By contrast, we can consider what happens under price rigidity.
+ With price rigidity, final-good prices cannot drop to clear the goods market
+ unless, off course, the final goods firm is induced to change prices via
+ large reductions in the relative price of intermediate goods.
+ When this happens, the value of hiring workers by the intermediate goods
+ firm drops substantially, and this provokes a decline in vacancy postings.
+ Since workers are not replaced, this slowly provokes an increase in unemploymen
+t and a hump-shaped response in output.
+ 
+\end_layout
+
+\begin_layout Subsection
+Formulation.
+ 
+\end_layout
+
+\begin_layout Standard
+Following Walsh (2005), Thomas (2008), Trigari (2009), and several others,
+ we distinguish between two types of firms: retailers ad intermediate good
+ firms.
+ Intermediate good firms produce intermediate goods sold competitive markets
+ using labor as their sole input.
+ They sell their output to retailers who are monopolistically competitive.
+ Retailers sell final goods to the households.
+ Price adjustment costs arise at the retail level, while search frictions
+ and a hold up problem occur in the intermediate good sector.
+\end_layout
+
+\begin_layout Paragraph*
+Retailers
+\end_layout
+
+\begin_layout Standard
+There is a continuum of retailers, 
+\begin_inset Formula $j\in[0,1]$
+\end_inset
+
+.
+ Retailers purchases intermediate inputs which it converts into a differentiated
+ final good that is sold to households.
+ The formulation is identical to the original formulation of the new-Keynesian
+ model for the retailers with one distinction.
+ The objective is given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+q\left(p,t\right)=\max_{\left\{ \dot{p}_{j,\tau}\right\} }\int_{t}^{\infty}\exp\left(-\rho\right)\left[\frac{p_{j,\tau}y_{j,\tau}-p_{\tau}x_{j,\tau}}{P_{\tau}}-\frac{\Theta}{2}\left(\frac{\dot{p}_{j,\tau}}{p_{j,\tau}}\right)^{2}Y_{\tau}\right]d\tau,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s.t.\quad y_{j,\tau}=p_{j,t}^{-\epsilon}P_{t}^{\epsilon}Y_{t}.
+\]
+
+\end_inset
+
+The difference is that the retailer uses his internal discount factor.
+ The only state variable for this firm is its price.
+ In this problem, there are distinct prices.
+ 
+\begin_inset Formula $p_{j,\tau}$
+\end_inset
+
+ denotes the price of the final good, 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ the price of the intermediate good, and 
+\begin_inset Formula $P_{t}$
+\end_inset
+
+ the price of the aggregate production bundle.
+ These are nominal objects.
+ In real terms, the price of intermediate inputs is 
+\begin_inset Formula $mc_{t}$
+\end_inset
+
+, a real marginal cost measured in terms of final goods.
+ The marginal cost in real terms appears in the following Phillips curve.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The path of prices satisfies the following Phillips curve:
+\begin_inset Formula 
+\begin{eqnarray}
+\left(\rho-\frac{\dot{Y}_{t}}{Y_{t}}\right)\pi_{t} & = & \frac{\epsilon}{\Theta}\left(mc_{t}-\frac{\epsilon-1}{\epsilon}\right)+\dot{\pi}_{t}\label{eq:NKPC-1-2}
+\end{eqnarray}
+
+\end_inset
+
+In present value form, it is 
+\begin_inset Formula 
+\[
+\pi_{t}=\frac{\epsilon}{\Theta}\int_{t}^{\infty}e^{-\left(s-t\right)\rho}\frac{Y_{s}}{Y_{t}}\left(mc_{s}-\frac{\epsilon-1}{\epsilon}\right)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In particular:
+\begin_inset Formula 
+\begin{eqnarray}
+\left(\rho-\frac{\dot{Y}_{t}}{Y_{t}}\right)\pi_{t} & = & \frac{\epsilon}{\Theta}\left(mc_{t}-\frac{\epsilon-1}{\epsilon}\right)+\dot{\pi}_{t}\label{eq:NKPC-1-1}
+\end{eqnarray}
+
+\end_inset
+
+In present value form, it is 
+\begin_inset Formula 
+\[
+\pi_{t}=\frac{\epsilon}{\Theta}\int_{t}^{\infty}e^{-\left(s-t\right)\rho}\frac{Y_{s}}{Y_{t}}\left(mc_{s}-\frac{\epsilon-1}{\epsilon}\right)ds
+\]
+
+\end_inset
+
+This Phillips curve is agains standard.
+ In this version, retailers make profits.
+ We need to make sure they are distributed, which we do by assuming they
+ are fully taxed.
+ Also, we need to make sure that the price adjustment requires the usage
+ of final resource.
+ The final goods market clearing condition is
+\begin_inset Formula 
+\[
+Y_{t}=C_{t}+\frac{\Theta}{2}\pi_{t}^{2}Y_{t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Intermediate Good Firms.
+\end_layout
+
+\begin_layout Standard
+There is a representative intermediate good firm uses labor to produce and
+ sells the intermediate input it to retailers in competitive markets.
+ The maximization problem of the intermediate good firm is as follows:
+\begin_inset Formula 
+\[
+G\left(n,t\right)=\max_{\left\{ v_{\tau}\right\} }\int_{t}^{\infty}\exp\left(-\rho\tau\right)\left[\frac{p_{\tau}^{i}x_{\tau}}{P_{\tau}}-\frac{w_{\tau}}{P_{\tau}}n_{\tau}-v_{\tau}\mu\right]d\tau,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s.t.\quad x_{\tau}=n_{\tau},\quad\dot{n}_{\tau}=j_{\tau}v_{\tau}-\xi n_{\tau}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $p_{t}^{i}$
+\end_inset
+
+ is the price of intermediate input, 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ is the output of intermediate input, 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ the ex-post negotiated nominal wage, 
+\begin_inset Formula $n_{t}$
+\end_inset
+
+ is the number of workers used for production at time 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $v_{t}$
+\end_inset
+
+ is an amount of job vacancy postings, 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is a fixed amount of job hiring costs per vacancy, 
+\begin_inset Formula $j_{t}$
+\end_inset
+
+ is the job filling rate, and 
+\begin_inset Formula $\xi$
+\end_inset
+
+ an exogenous job separation rate.
+ The only state of the intermediate goods firm is the number of workers
+\end_layout
+
+\begin_layout Standard
+Notice that the flow of workers is equal to the increase in new hires (
+\begin_inset Formula $j_{t}v_{t}$
+\end_inset
+
+) minus the decrease in the existing workers (
+\begin_inset Formula $\xi n_{t}$
+\end_inset
+
+).
+ 
+\begin_inset Formula $G$
+\end_inset
+
+ is the value of the intermediate goods firm.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Intermediate Good Market.
+ 
+\end_layout
+
+\begin_layout Standard
+Clearing in intermediate goods requires:
+\begin_inset Formula 
+\[
+\int_{0}^{1}x_{t}^{i}di=x_{t}
+\]
+
+\end_inset
+
+for all dates.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Ex-post hold up problem.
+ 
+\end_layout
+
+\begin_layout Standard
+Different from labor market models, here, wages are negotiated ex post.
+ We assume that the worker can abscond a fraction 
+\begin_inset Formula $\eta$
+\end_inset
+
+ of output if she is not paid.
+ The firm values each worker, and cannot credibly threat to fire workers,
+ beyond the exogenous job destruction.
+ Thus, 
+\begin_inset Formula 
+\[
+w_{t}=\left(1-\eta\right)p_{\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Job Transition Probabilities.
+\end_layout
+
+\begin_layout Standard
+We assume that matching function is given by 
+\begin_inset Formula $\Xi\left(u_{t},v_{t}\right)$
+\end_inset
+
+, which is homogeneous of degree 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Then, the job filing probability 
+\begin_inset Formula $j_{t}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{align*}
+j_{t} & =\frac{\Xi\left(u_{t},v_{t}\right)}{v_{t}}\\
+ & =\Xi\left(\frac{u_{t}}{v_{t}},1\right).
+\end{align*}
+
+\end_inset
+
+With the filing rate, we obtain the following solution for the equilibrium
+ vacancies:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In an equilibrium, vacancies are satisfy: 
+\begin_inset Formula 
+\begin{equation}
+g\left(t\right)j\left(t\right)=\mu\label{eq:small-g-1}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $g\left(t\right)$
+\end_inset
+
+ is the value per worker of the intermediate goods firm, which is given
+ by:
+\begin_inset Formula 
+\[
+g\left(t\right)=\int_{t}^{\infty}\exp\left(-\left(\tau-t\right)\left(\rho+\xi\right)\right)\left(\frac{p_{\tau}^{i}}{P_{\tau}}-\frac{w_{\tau}}{P_{\tau}}\right)d\tau.
+\]
+
+\end_inset
+
+The instantaneous job transition probabilities between employment and unemployme
+nt are given:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+NOTE: TYPO HERE
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Gamma_{t}=\left[\begin{array}{c}
+\Gamma_{t}^{eu}\\
+\Gamma_{t}^{ue}
+\end{array}\right]=\left[\begin{array}{c}
+\Xi\left(1,\left(\frac{u_{t}}{v_{t}}\right)^{-1}\right)\\
+\xi
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Algorithm for the Stationary Distribution (Production Side is Solved Analyticall
+y)
+\end_layout
+
+\begin_layout Paragraph
+Supply Side Block
+\end_layout
+
+\begin_layout Enumerate
+We assume that monetary policy targets zero inflation rate, i.e., 
+\begin_inset Formula $\pi_{ss}=0$
+\end_inset
+
+.
+ Nominal policy rate adjusts accordingly to achieve 
+\begin_inset Formula $\pi_{ss}=0$
+\end_inset
+
+.
+ At the stationary distribution, equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:NKPC"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) can be transformed as follows:
+\begin_inset Formula 
+\[
+\left(\rho-\frac{\dot{Y}_{t}}{Y_{t}}\right)\pi_{t}=\frac{\epsilon}{\Theta}\left(mc_{t}-\frac{\epsilon-1}{\epsilon}\right)+\dot{\pi}_{t}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow0=\frac{\epsilon}{\Theta}\left(mc_{ss}-\frac{\epsilon-1}{\epsilon}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longrightarrow mc_{ss}=\frac{\epsilon-1}{\epsilon}.
+\]
+
+\end_inset
+
+We can pin down 
+\begin_inset Formula $mc_{ss}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+We know that the marginal cost is represented by
+\begin_inset Formula 
+\[
+mc_{t}=\frac{g\left(t\right)\left(\rho+\xi\right)-\dot{g}\left(t\right)}{1-\eta}.
+\]
+
+\end_inset
+
+At the stationary distribution,
+\begin_inset Formula 
+\[
+mc_{ss}=g_{ss}\frac{\rho+\xi}{1-\eta}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow g_{ss}=mc_{ss}\frac{1-\eta}{\rho+\xi}.
+\]
+
+\end_inset
+
+We can pin down 
+\begin_inset Formula $g_{ss}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+By using (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:small-g"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and the above expression for 
+\begin_inset Formula $g_{ss}$
+\end_inset
+
+, we can pin down 
+\begin_inset Formula $j_{ss}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+g_{ss}=\frac{\mu}{j_{ss}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow j_{ss}=\frac{g_{ss}}{\mu}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow j_{ss}=mc_{ss}\frac{1-\eta}{\mu}\frac{1}{\rho+\xi}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow j_{ss}=\frac{\epsilon-1}{\epsilon}\frac{1-\eta}{\mu}\frac{1}{\rho+\xi}.
+\]
+
+\end_inset
+
+We consider a limiting case where 
+\begin_inset Formula $\eta\rightarrow1$
+\end_inset
+
+, 
+\begin_inset Formula $\mu\rightarrow0$
+\end_inset
+
+, and 
+\begin_inset Formula $\frac{1-\eta}{\mu}\rightarrow\kappa^{i}>0$
+\end_inset
+
+ hold so that we don't have to consider profits by the intermediate good
+ producers.
+ Under this limiting case, real wage is equal to real marginal cost, i.e.,
+ 
+\begin_inset Formula $\frac{W_{ss}}{P_{ss}}=mc_{ss}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+We know that the job filling probability is given by 
+\begin_inset Formula 
+\[
+\Xi\left(\frac{u_{ss}}{v_{ss}},1\right)=j_{ss}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow\frac{u_{ss}}{v_{ss}}=\Xi^{-1}\left(j_{ss}\right).
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\frac{u_{ss}}{v_{ss}}$
+\end_inset
+
+ is pinned down.
+\end_layout
+
+\begin_layout Enumerate
+The evolution of the number of unemployed workers is given by
+\begin_inset Formula 
+\begin{align*}
+\dot{u} & =\xi\left(1-u_{t}\right)-\Xi\left(u_{t},v_{t}\right)\\
+ & =\xi\left(1-u_{t}\right)-u_{t}\Xi\left(1,\frac{v_{t}}{u_{t}}\right)
+\end{align*}
+
+\end_inset
+
+At the stationary distribution, we have
+\begin_inset Formula 
+\[
+0=\xi\left(1-u_{ss}\right)-u_{ss}\Xi\left(1,\left(\frac{u_{ss}}{v_{ss}}\right)^{-1}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow u_{ss}=\frac{\xi}{\xi+\Xi\left(1,\left(\frac{u_{ss}}{v_{ss}}\right)^{-1}\right)}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula $u_{ss}$
+\end_inset
+
+ is pinned down.
+\begin_inset Formula 
+\[
+\Longleftrightarrow u_{ss}=\frac{\xi}{\xi+\Xi\left(1,\left(\Xi^{-1}\left(\frac{\epsilon-1}{\epsilon}\frac{1-\eta}{\mu}\frac{1}{\rho+\xi}\right)\right)^{-1}\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $e_{ss}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+e_{ss}=1-u_{ss}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Aggregate output is given by
+\begin_inset Formula 
+\[
+Y_{ss}=e_{ss}
+\]
+
+\end_inset
+
+which implies that output in terms of parameters is:
+\begin_inset Formula 
+\[
+Y_{ss}=\frac{\Xi\left(1,\left(\Xi^{-1}\left(\frac{\epsilon-1}{\epsilon}\frac{1-\eta}{\mu}\frac{1}{\rho+\xi}\right)\right)^{-1}\right)}{\xi+\Xi\left(1,\left(\Xi^{-1}\left(\frac{\epsilon-1}{\epsilon}\frac{1-\eta}{\mu}\frac{1}{\rho+\xi}\right)\right)^{-1}\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Demand Side Block
+\end_layout
+
+\begin_layout Standard
+To solve the rest of the equilibrium, we search for the real interest rate
+ 
+\begin_inset Formula $r^{a}$
+\end_inset
+
+ such that consumption of goods is equal to the production of goods.
+ Since we know all the relevant prices, we can solve household's problem
+ and derive aggregate demand.
+ Notice that there are flow profits by retailers represented by 
+\begin_inset Formula $\left(1-mc_{ss}\right)Y_{ss}$
+\end_inset
+
+.
+ We assume that these profits are paid out uniformly to all households,
+ via the government's lump sum rebate.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Algorithm (Transitions)
+\end_layout
+
+\begin_layout Enumerate
+We conjecture the sequence for 
+\begin_inset Formula $\Gamma_{t}^{eu}$
+\end_inset
+
+ hiring rate.
+\end_layout
+
+\begin_layout Enumerate
+The evolution of the unemployed workers is 
+\begin_inset Formula 
+\begin{align*}
+\dot{u} & =\xi\left(1-u_{t}\right)-u_{t}\Gamma_{t}^{eu}.
+\end{align*}
+
+\end_inset
+
+This is an autonomous ODE, with initial condition 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+.
+ Given the initial guess, 
+\begin_inset Formula $\Gamma_{t}^{eu}$
+\end_inset
+
+ it produces an entire sequence of 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Using 
+\begin_inset Formula $Y_{t}=n_{t}=1-u_{t}$
+\end_inset
+
+, the solution to step 2 produces a sequence of output.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+this step also produce a series for 
+\begin_inset Formula $\frac{\dot{Y}_{t}}{Y_{t}}=\frac{\dot{n}_{t}}{n_{t}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+We backout the number of vacancies using 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Xi\left(1,\frac{v_{t}}{u_{t}}\right)=\Gamma_{t}^{eu}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Using 
+\begin_inset Formula $\Xi\left(\frac{u_{t}}{v_{t}},1\right)=j_{t}$
+\end_inset
+
+ we obtain a sequence of job filling rates.
+\end_layout
+
+\begin_layout Enumerate
+By using (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:small-g"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we get the sequence of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $g\left(t\right)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ valuations of filled jobs by the firm: 
+\begin_inset Formula 
+\[
+g_{t}=\frac{\mu}{j_{t}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We use the ODE representation of 
+\begin_inset Formula $g_{t}$
+\end_inset
+
+ to generate a sequence for the intermediate good price: 
+\begin_inset Formula 
+\[
+p_{t}=\frac{g_{t}\left(\rho+\xi\right)-\dot{g}\left(t\right)}{1-\eta}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We use the backward solution to the (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:NKPC"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+),
+\begin_inset Formula 
+\[
+r^{n}\pi_{t}=\frac{\epsilon}{\Theta}\left(p_{t}-\frac{\epsilon-1}{\epsilon}\right)+\dot{\pi}_{t}
+\]
+
+\end_inset
+
+to solve for inflation 
+\begin_inset Formula $\pi_{t}$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+\pi_{t}=\frac{\epsilon}{\Theta}\int_{t}^{\infty}\exp\left(-r^{n}\left(\tau-t\right)\right)\left(p_{\tau}-\frac{\epsilon-1}{\epsilon}\right)d\tau
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+r^{n}\equiv\left(\rho-\frac{\dot{Y}_{t}}{Y_{t}}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To numerically solve the forwards equation.
+ We treat the transition as lasting for T discrete time intervals.
+ And treat the 
+\begin_inset Formula $T$
+\end_inset
+
+ part as if we have reached steady state 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Using the Taylor rule, we generate a sequence of nominal rates (because
+ we know 
+\begin_inset Formula $\pi_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{Y}_{t}/Y_{t}$
+\end_inset
+
+).
+ The combination of 
+\begin_inset Formula $i_{t}^{m}$
+\end_inset
+
+ and inflation, gives us a sequence for 
+\begin_inset Formula $r_{t}^{m}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+We pin down a liquidity ratio using a desired spread 
+\begin_inset Formula $\Delta r_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+We obtain: 
+\begin_inset Formula $r_{t}^{a}$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{t}^{\ell}$
+\end_inset
+
+ as given by the liquidity ratio and 
+\begin_inset Formula $i_{t}^{m}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Given 
+\begin_inset Formula $r_{t}^{a}$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $r_{t}^{\ell}$
+\end_inset
+
+ we obtain a sequence of aggregate demand 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+wages are pinned down by 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+we also know the sequence of price adjustment costs
+\end_layout
+
+\begin_layout Enumerate
+we also know sequence of transfer due to firm profits.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+We iterate over the 
+\begin_inset Formula $\Gamma_{t}^{eu}$
+\end_inset
+
+ to solve for the goods or asset market clearing condition.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Dynamical System Reinterpretation.
+\end_layout
+
+\begin_layout Standard
+We now obtain a simplified version, as in the standard new-Keynesian model.
+ We use:
+\begin_inset Formula 
+\[
+\Xi\left(\frac{u_{t}}{v_{t}},1\right)=j_{t}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\Gamma_{t}^{eu}=\Xi\left(\frac{1}{\Xi^{-1}\left(j_{t}\right)},1\right).
+\]
+
+\end_inset
+
+Hence, the law for unemployment is:
+\begin_inset Formula 
+\[
+\dot{u}=\xi\left(1-u_{t}\right)-u_{t}\Xi\left(\frac{1}{\Xi^{-1}\left(j_{t}\right)},1\right).
+\]
+
+\end_inset
+
+We also have that:
+\begin_inset Formula 
+\[
+g_{t}=\frac{\mu}{j_{t}}\rightarrow\frac{\dot{g}_{t}}{g_{t}}=-\frac{\dot{j}}{j_{t}}.
+\]
+
+\end_inset
+
+Thus, we can write unemployment flows in terms of the value per worker:
+\begin_inset Formula 
+\[
+\dot{u}=\xi\left(1-u_{t}\right)-u_{t}\Xi\left(\frac{1}{\Xi^{-1}\left(\frac{\mu}{g_{t}}\right)},1\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The value per worker relates to the price sold by the firm.
+ In that case:
+\begin_inset Formula 
+\[
+p_{t}=\frac{g_{t}\left(\rho+\xi\right)-\dot{g}\left(t\right)}{1-\eta}.
+\]
+
+\end_inset
+
+Finally, the Phillips curve is given by:
+\begin_inset Formula 
+\[
+r^{n}\pi_{t}=\frac{\epsilon}{\Theta}\left(p_{t}-\frac{\epsilon-1}{\epsilon}\right)+\dot{\pi}_{t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Proofs
+\end_layout
+
+\begin_layout Paragraph*
+Derivation of the Retailers of Phillips Curve.
+ 
+\end_layout
+
+\begin_layout Standard
+We factor out the aggregate price level 
+\begin_inset Formula $P_{\tau}$
+\end_inset
+
+ from the instantaneous return in the expression 
+\begin_inset Formula $q\left(p,t\right)$
+\end_inset
+
+.
+ With this, we obtain:
+\begin_inset Formula 
+\[
+q\left(p,t\right)=\max_{\left\{ \dot{p}_{j,\tau}\right\} }\int_{t}^{\infty}\frac{\exp\left(-\rho\tau\right)}{P_{\tau}}\left(\left(p_{j,\tau}-p_{t}^{i}\right)y_{j,\tau}-P_{\tau}\frac{\Theta}{2}\left(\frac{\dot{p}_{j,\tau}}{p_{j,\tau}}\right)^{2}Y_{\tau}\right)d\tau,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s.t.\quad y_{j,\tau}=p_{j,t}^{-\epsilon}P_{t}^{\epsilon}Y_{t}
+\]
+
+\end_inset
+
+Then, we use the fact that:
+\begin_inset Formula 
+\[
+P_{\tau}=P_{t}\exp\left(\int_{t}^{\tau}\pi_{s}ds\right),
+\]
+
+\end_inset
+
+to express the objective as:
+\begin_inset Formula 
+\[
+q\left(p,t\right)P_{t}=\max_{\left\{ \dot{p}_{j,\tau}\right\} }\int_{t}^{\infty}\exp\left(\int_{t}^{\tau}\left(-\pi_{s}-\rho\right)ds\right)\left(\left(p_{j,\tau}-p_{t}^{i}\right)y_{j,\tau}-P_{\tau}\frac{\Theta}{2}\left(\frac{\dot{p}_{j,\tau}}{p_{j,\tau}}\right)^{2}Y_{\tau}\right)d\tau.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s.t.\quad y_{j,\tau}=p_{j,t}^{-\epsilon}P_{t}^{\epsilon}Y_{t}
+\]
+
+\end_inset
+
+This expression leads to the following HJB equation for the nominal value
+ of the manager's problem, 
+\begin_inset Formula $Q\left(p,t\right)\equiv q\left(p,t\right)P_{t}.$
+\end_inset
+
+ The corresponding equation is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\rho+\pi_{t}\right)Q\left(p,t\right)=\max_{\left\{ \dot{p}_{j,t}\right\} }\left(p_{j,t}-p_{t}^{i}\right)p_{j,t}^{-\epsilon}P_{t}^{\epsilon}Y_{t}-P_{t}\frac{\Theta}{2}\left(\frac{\dot{p}_{j,t}}{p_{j,t}}\right)^{2}Y_{t}+Q_{p}\dot{p}_{j,t}+\dot{Q}.
+\]
+
+\end_inset
+
+Next, we obtain the first-order condition:
+\begin_inset Formula 
+\begin{equation}
+Q_{p}-\Theta\frac{\dot{p}_{j,t}}{p_{j,t}^{2}}P_{t}Y_{t}=0.\label{eq:foc-1}
+\end{equation}
+
+\end_inset
+
+Deriving this condition with respect to time yields:
+\begin_inset Formula 
+\begin{equation}
+Q_{pp}\dot{p}+\dot{Q}_{p}=\Theta\left(\frac{\ddot{p}_{j,t}}{p_{j,t}^{2}}P_{t}Y_{t}-2\left(\frac{\dot{p}_{j,t}}{p_{j,t}}\right)^{2}\frac{P_{t}}{p_{j,t}}Y_{t}\right)+\Theta\frac{\dot{p}_{j,t}}{p_{j,t}^{2}}\dot{P_{t}}Y_{t}+\Theta\frac{\dot{p}_{j,t}}{p_{j,t}^{2}}P_{t}\dot{Y_{t}}.\label{eq:time.variation-1}
+\end{equation}
+
+\end_inset
+
+Next, we produce the envelope condition.
+ For that, we take the derivative of 
+\begin_inset Formula $Q\left(p,t\right)$
+\end_inset
+
+ with respect to the individual price 
+\begin_inset Formula $p_{j}$
+\end_inset
+
+.
+ We obtain: 
+\begin_inset Formula 
+\begin{equation}
+\left(\rho+\pi_{t}\right)Q_{p}=-\epsilon\left(p_{j,t}-p_{t}^{i}\right)p_{j,t}^{-\epsilon-1}P_{t}^{\epsilon}Y_{t}+p_{j,t}^{-\epsilon}P_{t}^{\epsilon}Y_{t}+\Theta\left(\frac{\dot{p}_{j,t}}{p_{j,t}}\right)^{2}\frac{P_{t}}{p_{j,t}}Y_{t}+Q_{pp}\dot{p}_{j,t}+\dot{Q}_{p}.\label{eq:envelope-1}
+\end{equation}
+
+\end_inset
+
+Substituting (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:time.variation-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:foc-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:envelope-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we obtain:
+\begin_inset Formula 
+\[
+\left(\rho+\pi_{t}\right)\Theta\frac{\dot{p}_{j,t}}{p_{j,t}^{2}}P_{t}Y_{t}=-\epsilon\left(p_{j,t}-p_{t}^{i}\right)p_{j,t}^{-1}y_{j,t}+y_{j,t}+\Theta\left(\frac{\dot{p}_{j,t}}{p_{j,t}}\right)^{2}\frac{P_{t}}{p_{j,t}}Y_{t}+\Theta\left(\frac{\ddot{p}_{j,t}}{p_{j,t}^{2}}P_{t}Y_{t}-2\left(\frac{\dot{p}_{j,t}}{p_{j,t}}\right)^{2}\frac{P_{t}}{p_{j,t}}Y_{t}\right)+\Theta\frac{\dot{p}_{j,t}}{p_{j,t}^{2}}\dot{P_{t}}Y_{t}+\Theta\frac{\dot{p}_{j,t}}{p_{j,t}^{2}}P_{t}\dot{Y_{t}}.
+\]
+
+\end_inset
+
+Simplifying terms, we obtain:
+\begin_inset Formula 
+\[
+\left(\rho+\pi_{t}\right)\Theta\frac{\dot{p}_{j,t}}{p_{j,t}^{2}}P_{t}Y_{t}=-\epsilon\left(p_{j,t}-p_{t}^{i}\right)p_{j,t}^{-1}y_{j,t}+y_{j,t}+\Theta\left(\frac{\ddot{p}_{j,t}}{p_{j,t}^{2}}P_{t}Y_{t}-\left(\frac{\dot{p}_{j,t}}{p_{j,t}}\right)^{2}\frac{P_{t}}{p_{j,t}}Y_{t}\right)+\Theta\frac{\dot{p}_{j,t}}{p_{j,t}^{2}}\dot{P_{t}}Y_{t}+\Theta\frac{\dot{p}_{j,t}}{p_{j,t}^{2}}P_{t}\dot{Y_{t}}.
+\]
+
+\end_inset
+
+Now, using that all managers act identically, we substitute, 
+\begin_inset Formula $p_{j,t}=P_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{j,t}=Y_{t}$
+\end_inset
+
+, and obtain:
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(\rho+\pi_{t}\right)\Theta\frac{\dot{P_{t}}}{P_{t}^{2}}P_{t}Y_{t} & = & -\epsilon\left(P_{t}-p_{t}^{i}\right)P_{t}^{-1}Y_{t}+Y_{t}+\Theta\left(\frac{\ddot{P_{t}}}{P_{t}^{2}}P_{t}Y_{t}-\left(\frac{\dot{P_{t}}}{P_{t}}\right)^{2}Y_{t}\right)+\Theta\frac{\dot{P_{t}}}{P_{t}^{2}}\dot{P_{t}}Y_{t}+\Theta\frac{\dot{P_{t}}}{P_{t}^{2}}P_{t}\dot{Y_{t}}.
+\end{eqnarray*}
+
+\end_inset
+
+Recall that inflation and the price acceleration are:
+\begin_inset Formula 
+\[
+\pi_{t}=\frac{\dot{P}_{t}}{P_{t}},
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\dot{\pi}_{t}=\left(\frac{\ddot{P_{t}}}{P_{t}}-\left(\frac{\dot{P_{t}}}{P_{t}}\right)^{2}\right).
+\]
+
+\end_inset
+
+Replacing these conditions, in the condition above, we arrive that the following
+ condition:
+\begin_inset Formula 
+\begin{eqnarray*}
+\rho\Theta\pi_{t}Y_{t}+\Theta\pi_{t}^{2}Y_{t} & = & \left\{ 1-\epsilon\left(1-\frac{p_{t}^{i}}{P_{t}}\right)\right\} Y_{t}+\Theta\dot{\pi}_{t}Y_{t}+\Theta\pi_{t}^{2}Y_{t}+\Theta\pi_{t}\dot{Y}_{t}
+\end{eqnarray*}
+
+\end_inset
+
+Equivalently
+\begin_inset Formula 
+\begin{eqnarray*}
+\rho\pi_{t} & = & \frac{1-\epsilon\left(1-\frac{p_{t}^{i}}{P_{t}}\right)}{\Theta}+\dot{\pi}_{t}+\pi_{t}\frac{\dot{Y}_{t}}{Y_{t}}
+\end{eqnarray*}
+
+\end_inset
+
+Denote 
+\begin_inset Formula $mc_{t}\equiv\frac{p_{t}^{i}}{P_{t}}$
+\end_inset
+
+ which is real marginal cost for retailers.
+ Then, we arrive at the Phillips curve:
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(\rho-\frac{\dot{Y}_{t}}{Y_{t}}\right)\pi_{t} & = & \frac{\epsilon}{\Theta}\left(\frac{1}{\epsilon}-1+mc_{t}\right)+\dot{\pi}_{t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+\Longleftrightarrow\left(\rho-\frac{\dot{Y}_{t}}{Y_{t}}\right)\pi_{t} & = & \frac{\epsilon}{\Theta}\left(mc_{t}-\frac{\epsilon-1}{\epsilon}\right)+\dot{\pi}_{t}\label{eq:NKPC}
+\end{eqnarray}
+
+\end_inset
+
+In present value form, it is represented by
+\begin_inset Formula 
+\[
+\pi_{t}=\frac{\epsilon}{\Theta}\int_{t}^{\infty}e^{-\left(s-t\right)\rho}\frac{Y_{s}}{Y_{t}}\left(mc_{s}-\frac{\epsilon-1}{\epsilon}\right)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the current framework, retailers make positive profits.
+ Flow real profit in the symmetric equilibrium is given by
+\begin_inset Formula 
+\[
+\left(\frac{p_{j,t}}{P_{t}}-\frac{p_{t}^{i}}{P_{t}}\right)y_{j,t}-\frac{\Theta}{2}\left(\frac{\dot{p}_{j,t}}{p_{j,t}}\right)^{2}Y_{t}=\left(1-mc_{t}-\frac{\Theta}{2}\pi_{t}^{2}\right)Y_{t}
+\]
+
+\end_inset
+
+Following Schaab (2020), we assume that profits earned by retailers are
+ paid out uniformly to all households, via the government's lump sum rebate
+ 
+\begin_inset Formula $\tau_{t}^{lump}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Derivation of the value per worker.
+\end_layout
+
+\begin_layout Standard
+Substituting for output, we have that the maximization problem is
+\begin_inset Formula 
+\[
+G\left(n,t\right)=\max_{\left\{ v_{\tau}\right\} }\int_{t}^{\infty}\exp\left(-\rho\tau\right)\left[\frac{p_{\tau}^{i}n_{\tau}}{P_{\tau}}-\frac{w_{\tau}}{P_{\tau}}n_{\tau}-v_{\tau}\mu\right]d\tau,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s.t.\quad\dot{n}_{\tau}=j_{\tau}v_{\tau}-\xi n_{\tau}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We factor out the aggregate price level 
+\begin_inset Formula $P_{\tau}$
+\end_inset
+
+ from the instantaneous return.
+\begin_inset Formula 
+\[
+G\left(n,t\right)=\max_{\left\{ v_{\tau}\right\} }\int_{t}^{\infty}\frac{\exp\left(-\rho\tau\right)}{P_{\tau}}\left(p_{\tau}^{i}n_{\tau}-w_{\tau}n_{\tau}-v_{\tau}\mu P_{\tau}\right)d\tau,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s.t.\quad\dot{n}_{\tau}=j_{\tau}v_{\tau}-\xi n_{\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Then, we use the fact that:
+\begin_inset Formula 
+\[
+P_{\tau}=P_{t}\exp\left(\int_{t}^{\tau}\pi_{s}ds\right),
+\]
+
+\end_inset
+
+to express the objective as:
+\begin_inset Formula 
+\[
+G\left(n,t\right)P_{t}=\max_{\left\{ v_{\tau}\right\} }\int_{t}^{\infty}\exp\left(\int_{t}^{\tau}\left(-\pi_{s}-\rho\right)ds\right)\left(p_{\tau}^{i}n_{\tau}-w_{\tau}n_{\tau}-v_{\tau}\mu P_{\tau}\right)d\tau.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s.t.\quad\dot{n}_{\tau}=j_{\tau}v_{\tau}-\xi n_{\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+This expression leads to the following HJB equation for the intermediate
+ good firm.
+ The corresponding equation is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho G\left(n,t\right)=\max_{\left\{ v_{t}\right\} }\left(\frac{p_{t}^{i}}{P_{t}}-\frac{w_{t}}{P_{t}}\right)n_{t}-v_{t}\mu+G_{n}\dot{n}_{t}+\dot{G}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s.t.\quad\dot{n}_{t}=j_{t}v_{t}-\xi n_{t}
+\]
+
+\end_inset
+
+And substituting the law of motion obtains: 
+\begin_inset Formula 
+\[
+\rho G\left(n,t\right)=\max_{\left\{ v_{t}\right\} }\left(\frac{p_{t}^{i}}{P_{t}}-\frac{w_{t}}{P_{t}}\right)n_{t}-v_{t}\mu+G_{n}\left(j_{t}v_{t}-\xi n_{t}\right)+\dot{G}.
+\]
+
+\end_inset
+
+The first-order condition with respect to 
+\begin_inset Formula $v_{t}$
+\end_inset
+
+ is: 
+\begin_inset Formula 
+\[
+-\mu+G_{n}j_{t}=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\Longleftrightarrow j_{t}G_{n}=\mu.\label{eq:foc-2}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The derivative with respect to time give us
+\begin_inset Formula 
+\[
+\left(\dot{G}_{n}+G_{nn}\dot{n}\right)j_{t}+G_{n}\dot{j}_{t}=\mu\dot{P}_{t}
+\]
+
+\end_inset
+
+By using 
+\begin_inset Formula $\dot{n}_{t}=j_{t}v_{t}-\xi n_{t}$
+\end_inset
+
+, we get
+\begin_inset Formula 
+\[
+\dot{G}_{n}+G_{nn}\left(j_{t}v_{t}-\xi n_{t}\right)+G_{n}\frac{\dot{j}_{t}}{j_{t}}=\frac{\mu}{j_{t}}\dot{P}_{t}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\Longleftrightarrow\dot{G}_{n}+G_{nn}\left(j_{t}v_{t}-\xi n_{t}\right)=\frac{\mu}{j_{t}}\dot{P}_{t}-G_{n}\frac{\dot{j}_{t}}{j_{t}}\label{eq:time.variation-2}
+\end{equation}
+
+\end_inset
+
+The envelop condition give us
+\begin_inset Formula 
+\begin{equation}
+\left(\rho+\pi_{t}\right)G_{n}=p_{t}^{i}-w_{t}-G_{n}\xi+G_{nn}\left(j_{t}v_{t}-\xi n_{t}\right)+\dot{G}_{n}.\label{eq:envelope-2}
+\end{equation}
+
+\end_inset
+
+Substituting (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:time.variation-2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:foc-2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:envelope-2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we obtain:
+\begin_inset Formula 
+\[
+\left(\rho+\pi_{t}\right)\frac{\mu P_{t}}{j_{t}}=p_{t}^{i}-w_{t}-\frac{\mu P_{t}}{j_{t}}\xi+\frac{\mu}{j_{t}}\dot{P}_{t}-\frac{\mu P_{t}}{j_{t}}\frac{\dot{j}_{t}}{j_{t}}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow\left(\rho+\pi_{t}\right)\frac{\mu}{j_{t}}=\frac{p_{t}^{i}}{P_{t}}-\frac{w_{t}}{P_{t}}-\frac{\mu}{j_{t}}\xi+\frac{\mu}{j_{t}}\underbrace{\frac{\dot{P}_{t}}{P_{t}}}_{\dot{\pi}_{t}}-\frac{\mu}{j_{t}}\frac{\dot{j}_{t}}{j_{t}}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow\rho\frac{\mu}{j_{t}}=\frac{p_{t}^{i}}{P_{t}}-\frac{w_{t}}{P_{t}}-\frac{\mu}{j_{t}}\xi-\frac{\mu}{j_{t}}\frac{\dot{j}_{t}}{j_{t}}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow\frac{p_{t}^{i}}{P_{t}}=\rho\frac{\mu}{j_{t}}+\frac{w_{t}}{P_{t}}+\frac{\mu}{j_{t}}\xi+\frac{\mu}{j_{t}}\frac{\dot{j}_{t}}{j_{t}}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+\Longleftrightarrow\frac{p_{t}^{i}}{P_{t}}-\frac{w_{t}}{P_{t}} & =\rho\frac{\mu}{j_{t}}+\frac{\mu}{j_{t}}\xi+\frac{\mu}{j_{t}}\frac{\dot{j}_{t}}{j_{t}}\nonumber \\
+ & =\frac{\mu}{j_{t}}\left(\rho+\xi\right)+\frac{\mu}{j_{t}}\frac{\dot{j}_{t}}{j_{t}}\label{eq:labor-1}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We conjecture the value function as follows:
+\begin_inset Formula 
+\begin{equation}
+G\left(n,t\right)=g\left(t\right)n_{t}\label{eq:value_function_guess}
+\end{equation}
+
+\end_inset
+
+We verify this guess later.
+ Under this assumption, we have
+\begin_inset Formula 
+\[
+G_{n}=\frac{\mu}{j_{t}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\Longleftrightarrow g\left(t\right)=\frac{\mu}{j_{t}}\label{eq:small-g}
+\end{equation}
+
+\end_inset
+
+This relationship which must hold in a solution with finite vacancies.
+ Then, We replace the condition into the HJB equation and using our guess
+ obtain:
+\begin_inset Formula 
+\[
+\left(\rho+\xi\right)g\left(t\right)n_{t}=\left(\frac{p_{t}^{i}}{P_{t}}-\frac{w_{t}}{P_{t}}\right)n_{t}+\dot{g}\left(t\right)n_{t},
+\]
+
+\end_inset
+
+which verifies the conjecture.
+ Hence, we obtain:
+\begin_inset Formula 
+\[
+\left(\rho+\xi\right)g\left(t\right)n_{t}=\left(\frac{p_{t}^{i}}{P_{t}}-\frac{w_{t}}{P_{t}}\right)+\dot{g}\left(t\right),
+\]
+
+\end_inset
+
+and we compute its integral solution.
+\begin_inset Formula 
+\[
+g\left(t\right)=\int_{t}^{\infty}\exp\left(-\left(\tau-t\right)\left(\rho+\xi\right)\right)\left(\frac{p_{\tau}^{i}}{P_{\tau}}-\frac{w_{\tau}}{P_{\tau}}\right)d\tau.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+By taking the derivative with respect to time, we get
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\Longleftrightarrow\dot{g}\left(t\right)=-\frac{\mu}{j_{t}}\frac{\dot{j_{t}}}{j_{t}}.\label{eq:time.variation-3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+In turn, substituting (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:small-g"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:time.variation-3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) we obtain:
+\begin_inset Formula 
+\begin{equation}
+\dot{g}\left(t\right)=\frac{g\left(t\right)}{P_{t}}\left(\rho+\xi\right)-\frac{\dot{g}\left(t\right)}{P_{t}}+\frac{\dot{P}_{t}}{P_{t}^{2}}g\left(t\right)\label{eq:forward-g}
+\end{equation}
+
+\end_inset
+
+We know 
+\begin_inset Formula $\frac{\dot{P}_{t}}{P_{t}}=\pi_{t}$
+\end_inset
+
+.
+ Therefore, we get
+\begin_inset Formula 
+\begin{align*}
+\Longleftrightarrow p_{t}^{i}-w_{t}+\dot{g}\left(t\right) & =g\left(t\right)\left(\rho+\xi\right)+\pi_{t}g\left(t\right)\\
+ & =g\left(t\right)\left(\rho+\xi+\pi_{t}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow g\left(t\right)=\int_{t}^{\infty}\exp\left(-\int_{t}^{\tau}\left(\rho+\xi+\pi_{s}\right)ds\right)\left(p_{\tau}^{i}-w_{\tau}\right)d\tau
+\]
+
+\end_inset
+
+Then, we use the fact that:
+\begin_inset Formula 
+\[
+P_{\tau}=P_{t}\exp\left(\int_{t}^{\tau}\pi_{s}ds\right),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow P_{\tau}^{-1}=P_{t}^{-1}\exp\left(-\int_{t}^{\tau}\pi_{s}ds\right),
+\]
+
+\end_inset
+
+Now we get
+\begin_inset Formula 
+\[
+g\left(t\right)P_{t}^{-1}=\int_{t}^{\infty}P_{t}^{-1}\exp\left(\int_{t}^{\tau}\left(-\rho-\xi-\pi_{s}\right)ds\right)\left(p_{\tau}^{i}-w_{\tau}\right)d\tau
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow g\left(t\right)P_{t}^{-1}=\int_{t}^{\infty}\exp\left(\int_{t}^{\tau}\left(-\rho-\xi\right)ds\right)\left(P_{\tau}^{-1}p_{\tau}^{i}-P_{\tau}^{-1}w_{\tau}\right)d\tau
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Longleftrightarrow g\left(t\right)=\int_{t}^{\infty}\exp\left(-\left(\tau-t\right)\left(\rho+\xi\right)\right)\left(\frac{p_{\tau}^{i}}{P_{\tau}}-\frac{w_{\tau}}{P_{\tau}}\right)d\tau.
+\]
+
+\end_inset
+
+This equation says that the real value of each worker is the net present
+ value of real profits generated by the worker generate discounted at 
+\begin_inset Formula $\rho$
+\end_inset
+
+ scaled by 
+\begin_inset Formula $\xi$
+\end_inset
+
+ which is the probability of job separation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming an ex-post hold up problem by workers in the intermediate firm,
+ we obtain that 
+\begin_inset Formula $\frac{w_{\tau}}{P_{\tau}}=\eta\frac{p_{\tau}^{i}}{P_{\tau}}$
+\end_inset
+
+ because of the holdup problem.
+ Under this assumption, the real value of each worker is given by
+\begin_inset Formula 
+\[
+g\left(t\right)=\int_{t}^{\infty}\exp\left(-\left(\tau-t\right)\left(\rho+\xi\right)\right)\left(1-\eta\right)\frac{p_{\tau}^{i}}{P_{\tau}}d\tau
+\]
+
+\end_inset
+
+ Using the definition of marginal cost relative to final goods, 
+\begin_inset Formula $mc_{t}\equiv\frac{p_{t}^{i}}{P_{t}}$
+\end_inset
+
+, we get
+\begin_inset Formula 
+\[
+g\left(t\right)=\int_{t}^{\infty}\exp\left(-\left(\tau-t\right)\left(\rho+\xi\right)\right)\left(1-\eta\right)mc_{\tau}d\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
