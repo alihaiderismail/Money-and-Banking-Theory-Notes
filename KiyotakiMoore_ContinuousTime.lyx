@@ -195,12 +195,16 @@
 \newtheorem{theorem}{\color{ChadGreen} Proposition}
 \newtheorem{lemma}{\color{ChadGreen} Lemma}
 
-\newtheorem{problem}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
-\newtheorem{exercise}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+\newtheorem{problem}{\color{ChadBlue} Problem} 
+\newtheorem{exercise}{\color{ChadBlue} Problem}
+\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
 
 \newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}  % frac with large paren
 \end_preamble
 \use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -669,7 +673,7 @@ begin{problem}
 
 \end_layout
 
-\begin_layout Problem
+\begin_layout Standard
 \begin_inset Formula 
 \[
 R_{t}^{K}\left(k\right)=\max_{i}i-\frac{\varphi\left(i_{t},k_{t}\right)}{q_{t}}
@@ -746,7 +750,7 @@ When the firm sells the fraction
  of the current capital is lost.
 \end_layout
 
-\begin_layout Problem
+\begin_layout Standard
 Using capital sales, the capital producing firm solves the following problem:
 \begin_inset Formula 
 \[
@@ -871,40 +875,12 @@ end{exercise}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{remark}
-\end_layout
-
-\end_inset
-
- We have shown that selling capital or pledging capital as collateral is
+\begin_layout Remark*
+We have shown that selling capital or pledging capital as collateral is
  isomorphic.
  In particular, the firms solves the same problem of investment scale and
  the supply of capital by the firm is the same.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{remark}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph*
