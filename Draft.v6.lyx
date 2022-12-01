@@ -203,6 +203,10 @@
 
 \def \AggS {X_t}
 \def \sign {\text{sign}}
+
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\usepackage{placeins}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -284,6 +288,7 @@ todonotes
 \author -91792538 "Saki & Claudia"
 \author 274139119 "sakib"
 \author 457768546 "sbigio"
+\author 1108245468 "Ali Haider Ismail" ali.haider.ismail@gmail.com
 \end_header
 
 \begin_body
@@ -519,12 +524,16 @@ where should the figure go?
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 1108245468 1669856172
 \begin_inset CommandInset include
 LatexCommand input
 filename "intro.lyx"
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -5618,7 +5627,7 @@ status collapsed
 
  
 \begin_inset Graphics
-	filename D:/Dropbox (CBS)/Settlements_portfolio/Notes/MatchingEfficiency1-eps-converted-to.pdf
+	filename MatchingEfficiency1-eps-converted-to.pdf
 	width 100line%
 
 \end_inset
@@ -5690,7 +5699,7 @@ status collapsed
 
  
 \begin_inset Graphics
-	filename D:/Dropbox (CBS)/Settlements_portfolio/Notes/MatchingEfficiency100-eps-converted-to.pdf
+	filename MatchingEfficiency100-eps-converted-to.pdf
 	width 100line%
 
 \end_inset
