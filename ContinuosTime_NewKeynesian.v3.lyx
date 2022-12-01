@@ -195,8 +195,9 @@
 \newtheorem{theorem}{\color{ChadGreen} Proposition}
 \newtheorem{lemma}{\color{ChadGreen} Lemma}
 
-\newtheorem{problem}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
-\newtheorem{assumption}{\color{ChadBlue} Problem}\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+\newtheorem{problem}{\color{ChadBlue} Problem}
+\newtheorem{assumption}{\color{ChadBlue} Problem}
+\newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
 
 \newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)} 
 \end_preamble
