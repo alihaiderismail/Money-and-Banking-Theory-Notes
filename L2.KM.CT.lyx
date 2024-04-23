@@ -285,11 +285,12 @@ Lecture 2: Limited Enforcement and Investment
 \end_layout
 
 \begin_layout Standard
-These notes the model of Nobuhiro Kiyotaki and John Moore (2012).
+These notes the model of Nobuhiro Kiyotaki, John Moore, and Wei Cui (2021).
  That model studies the role of limited enforcement and exogenous shocks
  to the liquidity of assets that serve as collateral or can be sold.
  A second asset, money, has the property of being fully collateralizeable.
  I simplify the model to abstract from the labor supply decisions.
+ The goal is to obtain a money demand equation.
 \end_layout
 
 \begin_layout Section
@@ -342,15 +343,51 @@ U\left(c_{t}\right)=\frac{c_{t}^{1-1/\theta}}{1-1/\theta}.
 \end_layout
 
 \begin_layout Itemize
-the wealth of each household is composed of its individua capital 
+the wealth of each household is composed of its individual capital 
 \begin_inset Formula $k_{t}$
 \end_inset
 
  and real balances of money assets 
-\begin_inset Formula $m_{t}$
+\begin_inset Formula $\xi_{t}m_{t}$
 \end_inset
 
 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+here 
+\begin_inset Formula $\xi_{t}$
+\end_inset
+
+ is the inverse of the price level
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Capital has a price 
+\begin_inset Formula $q_{t}$
+\end_inset
+
+, with 
+\begin_inset Formula $r_{t}^{a}$
+\end_inset
+
+ the return per-unit-of capital, 
+\begin_inset Formula $\delta$
+\end_inset
+
+ the net depreciation of capital.
+ 
+\end_layout
+
+\begin_layout Itemize
+Thus, capital produces 
+\begin_inset Formula $r^{a}$
+\end_inset
+
+ units of good per instant of time.
+ Think of this rate as the physical return on capital
 \end_layout
 
 \begin_layout Itemize
@@ -366,89 +403,156 @@ to invest directly, households must have an investment opportunity, which
 
 \end_layout
 
+\begin_layout Itemize
+wealth is stored is the sum of capital and monetary holdings
+\end_layout
+
 \begin_layout Standard
 It is convenient at this state to specify the budget constraint first in
- discrete time, using the delta notation to find the continuous time limit:
+ discrete time, using the delta notation, intervals of size 
+\begin_inset Formula $\Delta$
+\end_inset
+
+, to find the continuous-time limit:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-c_{t}+q_{t+\Delta}k_{t+\Delta}+m_{t+\Delta}=\underbrace{\Delta\cdot r_{t}k_{t}+q_{t+\Delta}\left(1-\Delta\delta\right)k_{t}}_{\text{Capital Earnings}}+m_{t}
+q_{t+\Delta}k_{t+\Delta}+\xi_{t+\Delta}m_{t+\Delta}=\underbrace{\Delta\cdot r^{a}k_{t}-\delta q_{t+\Delta}k_{t}+q_{t+\Delta}\left(1-\Delta\delta\right)k_{t}}_{\text{Capital Earnings}}+\underbrace{\xi_{t+\Delta}m_{t}}_{\text{Revaluation of Monney}}-c_{t}.
 \]
 
 \end_inset
 
-where 
-\begin_inset Formula $q_{t}$
+This equation is also the evolution of wealth.
+ Define total wealth as:
+\begin_inset Formula 
+\[
+W_{t}\equiv q_{t}k_{t}+\xi_{t}m_{t}.
+\]
+
 \end_inset
 
- is the price of capital, 
-\begin_inset Formula $A_{t}$
-\end_inset
 
- the return per-unit-of capital, 
-\begin_inset Formula $\delta$
-\end_inset
-
- the net depreciation of capital.
- For simplicity, we can assume capital is operated directly.
- 
 \end_layout
 
 \begin_layout Standard
-The continous time represenation of this budget constraint is:
+Taking the continuous time limit of this process you will obtain:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
-q_{t}\dot{k}_{t}+\dot{m}_{t}=\frac{\left[r_{t}-\delta\right]}{q_{t}}q_{t}k_{t}-\pi_{t}m_{t}-\bar{c}_{t}W_{t}
+\dot{W}_{t}=\underbrace{r_{t}^{k}q_{t}k_{t}+r_{t}^{m}\xi_{t}m_{t}}_{\text{wealth return (gross)}}-c_{t}
 \]
 
 \end_inset
 
-Total wealth is 
-\begin_inset Formula $W_{t}=q_{t}k_{t}+m_{t}.$
-\end_inset
-
- 
+where the rates of return are:
 \begin_inset Formula 
-\[
-\dot{W}_{t}=\dot{q}_{t}k_{t}+q_{t}\dot{k}_{t}+\dot{m}_{t}
-\]
+\begin{equation}
+r_{t}^{k}=\frac{r^{a}-\delta q_{t}+\dot{q_{t}}}{q_{t}},\quad r_{t}^{m}=\frac{\dot{\xi}_{t}}{\xi_{t}}\equiv-\pi_{t}.\label{eq:returns}
+\end{equation}
 
 \end_inset
 
-Thus, the budget constraint becomes:
+Notice the distinction between the return on capital and its output.
+ The return on capital includes depreciation converting into net terms,
+ but there is also a term associated with the capital gains.
+ In terms of portfolio weights, we obtain:
 \begin_inset Formula 
 \[
-\dot{W}_{t}=\frac{\left[r_{t}-\delta+\dot{q}_{t}\right]}{q_{t}}q_{t}k_{t}-\pi_{t}m_{t}-\bar{c}_{t}W_{t}.
-\]
-
-\end_inset
-
-In terms of portfolio weights, we obtain:
-\begin_inset Formula 
-\[
-\dot{W}_{t}=\frac{\left[r_{t}-\delta+\dot{q}_{t}\right]}{q_{t}}\omega^{k}W_{t}-\pi_{t}\omega^{m}W_{t}-\bar{c}_{t}W_{t}
+\dot{W}_{t}=\left(r_{t}^{k}\omega^{k}+r_{t}^{m}\omega^{m}\right)W_{t}-\bar{c}_{t}W_{t}
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\omega^{m}=m_{t}/W_{t}$
+\begin_inset Formula $\omega^{m}=\xi_{t}m_{t}/W_{t}$
 \end_inset
 
  and 
 \begin_inset Formula $\omega^{k}=q_{t}k_{t}/W_{t}$
 \end_inset
 
-.
+ and 
+\begin_inset Formula $\bar{c}_{t}$
+\end_inset
+
+ is the consumption ratio.
+ 
 \end_layout
 
 \begin_layout Standard
-For agents that can invest, their capital will jump on impact to:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{exercise}
+\end_layout
+
+\end_inset
+
+ Derive the law of motion for 
+\begin_inset Formula $\dot{W}_{t}$
+\end_inset
+
+ filling in the missing steps.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{exercise}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The evolution of wealth follows this path, along continuous paths.
+ This budget constraint would hold always in a model without investment.
+ Here, some agents will be able to increase their capital stock according
+ to Poisson events that arrive with probability 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ We will show that their capital will jump according to:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
-k_{t}^{'}=\underbrace{i_{t}-i_{t}^{s}}_{\text{kept investment}}+\underbrace{k_{t}}_{\text{kept capital}}
+k_{t}^{'}=\underbrace{i_{t}-i_{t}^{s}}_{\text{kept investment}}+\underbrace{\left(1-\phi\right)k_{t}}_{\text{kept capital}}\rightarrow k_{t}^{'}=k_{t}+J_{t}^{k}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+m_{t}^{'}=0.
+\]
+
+\end_inset
+
+leading to a process of wealth accumulation with jumps.
+ Namely, we will obtain:
+\begin_inset Formula 
+\[
+dW_{t}=\dot{W}_{t}=\left(r_{t}^{k}\omega^{k}+r_{t}^{m}\omega^{m}\right)W_{t}-\bar{c}_{t}W_{t}+\lambda\left[q_{t}J_{t}^{k}-\xi_{t}m_{t}\right]dN_{t}.
 \]
 
 \end_inset
@@ -459,31 +563,37 @@ k_{t}^{'}=\underbrace{i_{t}-i_{t}^{s}}_{\text{kept investment}}+\underbrace{k_{t
 \begin_layout Paragraph
 
 \series bold
-Technology.
+Technology to Invest and Limited Enforcement.
 \end_layout
 
 \begin_layout Standard
-Investment requires goods and creates a unit of capital one for one.
-\end_layout
+Investment requires goods to create units of capital.
+ The technology is such that we require 
+\begin_inset Formula $\varphi\left(i_{t},k_{t}\right)$
+\end_inset
 
-\begin_layout Paragraph*
+ goods to increase capital by 
+\begin_inset Formula $i_{t}$
+\end_inset
 
-\series bold
-Limited Enforcement.
+.
+ Here, 
+\begin_inset Formula $\varphi$
+\end_inset
 
-\series default
- 
-\end_layout
-
-\begin_layout Standard
-Note that when the an agent produces capital, it requires consumption goods
- it does not posses.
- There is a hidden timing aspect that is not spelled out in the typical
- business cycle model without frictions.
+ represents an adjustment cost of capital, a function that is homogeneous
+ of degree one in both arguments.
+ It is inessential for the theory, but interesting to contrast it with model's
+ where Tobin's Q plays a role.
+ The entrepreneur can invest on behalf of the rest of the population.
+ Note that when the an agent produces capital, it requires consumption goods
+ it does not have because consumption is a flow—there would not be a way
+ to have his capital stock jump: There is a hidden timing aspect that is
+ not spelled out in the typical business cycle model without frictions.
  Consumption goods are an intermediate input.
  To introduce limited enforcement in a tractable way, assume that capital
  to invest is obtained by selling 
-\begin_inset Formula $\phi k_{t}$
+\begin_inset Formula $\phi_{t}k_{t}$
 \end_inset
 
  fraction of the capital.
@@ -528,7 +638,7 @@ There are two equivalent arrangements.
  of the capital stock as collateral.
  In the other arrangement, the firm sells the capital immediately against
  consumption goods.
- Let's show that both enviroments are isomorphic from the standpoint of
+ Let's show that both environments are isomorphic from the standpoint of
  the firm.
 \end_layout
 
@@ -605,7 +715,7 @@ q_{t}i^{s}=\varphi\left(i_{t},k_{t}\right)\tag{ (Resource Constraint)}
 and 
 \begin_inset Formula 
 \begin{equation}
-i_{t}-i_{t}^{s}+\phi_{t}\lambda k_{t}+m_{t}\geq\left(1-\theta_{t}\right)i_{t}.\tag{ (Incentive Compatibility)}
+i_{t}-i_{t}^{s}+\phi_{t}k_{t}+\frac{\xi_{t}m_{t}}{q_{t}}\geq\left(1-\theta_{t}\right)i_{t}.\tag{ (Incentive Compatibility)}
 \end{equation}
 
 \end_inset
@@ -632,6 +742,12 @@ end{problem}
 \begin_layout Standard
 The first constraint states that promises are sold at the market price for
  capital and that generates some amount of investment goods.
+ The sold shares of capital 
+\begin_inset Formula $i_{t}^{s}$
+\end_inset
+
+ are multiplied by the price because the lender should be indifferent between
+ buying second hand capital and new capital.
  The second is the incentive compatibility constraint induced by limited
  liability.
  It states that the contract must be such that the firm is better-off staying
@@ -640,17 +756,21 @@ The first constraint states that promises are sold at the market price for
  contract.
  That's the difference between total investment minus his promise, plus
  the fraction of collateral that can be pledged.
- Here, 
-\begin_inset Formula $\varphi$
-\end_inset
-
- represents an adjsustment cost of capital, a function that is homogeneous
- of degree one in both arguments.
+ No lender would lend out to if will not receive any proceeds from the investmen
+t.
+ 
 \end_layout
 
 \begin_layout Standard
-No lender would lend out to if will not receive any proceeds from the investment.
- If we get rid of 
+The second constraint is written in terms of capital whereas the resource
+ constraint in terms of goods.
+ We can think of this contracting problem as stemming from an optimal contract
+ where all the bargaining power is at the hands of the consumer.
+ 
+\end_layout
+
+\begin_layout Standard
+If we get rid of sold shares of capital 
 \begin_inset Formula $i^{s},$
 \end_inset
 
@@ -670,7 +790,7 @@ begin{problem}
 
 \end_inset
 
-
+The optimal investment is given by:
 \end_layout
 
 \begin_layout Standard
@@ -684,7 +804,7 @@ R_{t}^{K}\left(k\right)=\max_{i}i-\frac{\varphi\left(i_{t},k_{t}\right)}{q_{t}}
 subject to: 
 \begin_inset Formula 
 \[
-i_{t}\theta+\phi_{t}k_{t}+\frac{m_{t}}{q_{t}}\geq\frac{\varphi\left(i,k\right)}{q_{t}}.
+i_{t}\theta+\phi_{t}k_{t}+\frac{\xi_{t}m_{t}}{q_{t}}\geq\frac{\varphi\left(i,k\right)}{q_{t}}.
 \]
 
 \end_inset
@@ -775,10 +895,6 @@ i-i^{s}\geq\left(1-\theta_{t}\right)i.
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Note that in this case, the objective has changed to incorporate the fact
  that when the firm sells capital, it loses the fraction sold from its capital
  stock.
@@ -855,7 +971,7 @@ begin{exercise}
 
 \end_inset
 
- Show that using funds (money) to buy capital is identical to pledging it..
+ Show that using funds (money) to buy capital is identical to pledging it.
  
 \end_layout
 
@@ -883,35 +999,51 @@ We have shown that selling capital or pledging capital as collateral is
  
 \end_layout
 
+\begin_layout Standard
+A note on the literature.
+\end_layout
+
+\begin_layout Remark*
+Bigio (2015) provides a microfoundation for 
+\begin_inset Formula $\phi_{t}$
+\end_inset
+
+ based on private information.
+ Bigio and Shi (2024) show that it is more convenient to pledge capital
+ than to sell it.
+ .
+ 
+\end_layout
+
 \begin_layout Paragraph*
 
 \series bold
-Linear Returns to Investment.
+Returns to Investment.
  
 \end_layout
 
 \begin_layout Standard
 Note that both the objective and the constraint faced by the capital producing
  firms are linear functions of the pledgeable funds 
-\begin_inset Formula $\phi_{t}k_{t}+m_{t}$
+\begin_inset Formula $d_{t}=\phi_{t}k_{t}+\xi_{t}m_{t}/q_{t}=1/q_{t}\left(\phi_{t}\omega^{k}+\omega^{m}\right)W_{t}$
 \end_inset
 
-.
+—note these are translated into capital units.
  Thus,
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-R_{t}^{i}\left(k\right)=r_{t}^{i}\left[\phi_{t}k_{t}+m_{t}\right]
+R_{t}^{i}\left(d_{t}\right)=R_{t}^{i}d_{t}
 \]
 
 \end_inset
 
-where
+where we obtain the multiplier:
 \begin_inset Formula 
 \[
-r_{t}^{i}=\max_{\iota}\left[\iota-\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}\right]
+R_{t}^{i}=\max_{\iota}\left[\iota-\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}\right]
 \]
 
 \end_inset
@@ -919,7 +1051,7 @@ r_{t}^{i}=\max_{\iota}\left[\iota-\frac{\varphi\left(\iota,\omega^{k}\right)}{q_
 subject to: 
 \begin_inset Formula 
 \[
-\iota\theta+\phi_{t}\omega^{k}+\frac{\omega^{m}}{q_{t}}\geq\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}.
+\iota\theta_{t}+d_{t}\geq\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}.
 \]
 
 \end_inset
@@ -934,7 +1066,7 @@ Given an equilibrium
 
 .
  Otherwise, if constraints is binding: 
-\begin_inset Formula $\iota\theta+\phi_{t}\omega^{k}+\frac{\omega^{m}}{q_{t}}=\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}$
+\begin_inset Formula $\iota\theta+d_{t}=\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}$
 \end_inset
 
 .
@@ -971,11 +1103,14 @@ where
 \end_inset
 
  is the weakly positive solution of 
-\begin_inset Formula $\iota\theta+\phi_{t}\omega^{k}+\frac{\omega^{m}}{q_{t}}=\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}$
+\begin_inset Formula $\iota\theta+d_{t}=\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}$
 \end_inset
 
 .
  
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -1023,7 +1158,7 @@ centering
 
  
 \begin_inset Graphics
-	filename ../Limited Enforcement/Kiyotaki and Moore/F_Unconstrained.pdf
+	filename F_Unconstrained.pdf
 	width 300pt
 
 \end_inset
@@ -1067,7 +1202,7 @@ Unconstrained Solution for Capital Producing Firm
 placement tbp
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -1084,7 +1219,7 @@ centering
 
  
 \begin_inset Graphics
-	filename ../Limited Enforcement/Kiyotaki and Moore/F_Constrained.pdf
+	filename F_Constrained.pdf
 	width 300pt
 
 \end_inset
@@ -1123,6 +1258,10 @@ Constrained Solution for Capital Producing Firm
 
 \end_layout
 
+\begin_layout Paragraph*
+The linear case.
+\end_layout
+
 \begin_layout Standard
 Naturally, in the special case of 
 \begin_inset Formula $\varphi\left(i,k\right)=i$
@@ -1140,19 +1279,43 @@ Naturally, in the special case of
 
 \end_inset
 
-Moreover, we obtain that: 
+That is, the constraint will always be binding.
+ Moreover, in the linear capital cost case, we obtain that: 
 \begin_inset Formula 
 \[
-\frac{q_{t}}{1-\theta q_{t}}\left(\phi_{t}\frac{\omega^{k}}{q_{t}}+\frac{\omega^{m}}{q_{t}}\right)=\iota.
+\frac{1}{1/q_{t}-\theta}d_{t}=\iota,
 \]
 
 \end_inset
 
-Thereby, we have that:
+or in terms of primitives:
 \begin_inset Formula 
 \[
-r_{t}^{i}=\left[\frac{q_{t}-1}{q_{t}}\right]\frac{\iota}{\left(\phi_{t}\frac{\omega^{k}}{q_{t}}+\frac{\omega^{m}}{q_{t}}\right)}=\left[\frac{q_{t}-1}{1-\theta q_{t}}\right].
+\iota=\frac{q_{t}}{1-\theta q_{t}}\frac{1}{q_{t}}\left(\phi_{t}\omega^{k}+\omega^{m}\right)
 \]
+
+\end_inset
+
+Plugging in this amount in the objective we obtain that:
+\begin_inset Formula 
+\begin{equation}
+R_{t}^{i}=\left[\frac{q_{t}-1}{q_{t}}\right]\frac{q_{t}}{1-\theta q_{t}}=\left[\frac{q_{t}-1}{1-\theta q_{t}}\right].\label{eq:leverage.multiplier}
+\end{equation}
+
+\end_inset
+
+Recall that we worked out the case with pledgeable wealth—if we work with
+ sales, the return is higher, but we have to account for the reduction in
+ wealth do to the sale.
+ 
+\end_layout
+
+\begin_layout Standard
+Regarding the constract, note that the fraction of sold capital is:
+\begin_inset Formula 
+\begin{equation}
+i_{t}^{s}=\iota\theta_{t}=\frac{\theta_{t}}{1-\theta q_{t}}\left(\phi_{t}\omega^{k}+\omega^{m}\right).\label{eq:sold.cap}
+\end{equation}
 
 \end_inset
 
@@ -1162,22 +1325,34 @@ r_{t}^{i}=\left[\frac{q_{t}-1}{q_{t}}\right]\frac{\iota}{\left(\phi_{t}\frac{\om
 \begin_layout Paragraph*
 
 \series bold
-Jump in Capital.
+Jump in Wealth after an investment Opportunity.
 \end_layout
 
 \begin_layout Standard
-Upon an investment opportunity, the capital then jumps by:
+Upon an investment opportunity, the entrepreneur can sell part of its wealth,
+ 
+\begin_inset Formula $q_{t}d_{t}$
+\end_inset
+
+ and obtain 
+\begin_inset Formula $q_{t}R_{t}^{i}$
+\end_inset
+
+ its wealth going forward.
+ Thus, upon any investment opportunity, his wealth jumps accordingly to
+ 
 \begin_inset Formula 
 \[
-k_{t}^{'}=r_{t}^{i}+k.
+R_{t}^{i}\left(\phi_{t}\omega^{k}+\omega^{m}\right),
 \]
 
 \end_inset
 
-But we can also express this us a jump in wealth:
+and the collateral is returned.
+ We can also express this us a jump in wealth:
 \begin_inset Formula 
 \[
-W_{t}^{'}=q_{t}\left[r_{t}^{i}+k\right]+m_{t}=\left[\left[\frac{q_{t}-1}{1-\theta q_{t}}\right]\left(\phi_{t}\omega^{k}+\omega^{m}\right)+\omega^{k}+\omega^{m}\right]W_{t}.
+W_{t}^{'}=\left[R_{t}^{i}\left(\phi_{t}\omega^{k}+\omega^{m}\right)+\omega^{k}+\omega^{m}\right]W_{t}.
 \]
 
 \end_inset
@@ -1190,10 +1365,18 @@ HJB equation.
 \end_layout
 
 \begin_layout Standard
-The HJB equation for the household is:
+The HJB equation for the entrepreneur is:
 \begin_inset Formula 
 \[
-\rho V\left(W\right)=\max_{\left\{ \bar{c}_{t}\right\} }U\left(\bar{c}_{t}W\right)+V_{w}\left(\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}q_{t}k_{t}-\pi_{t}m_{t}-\bar{c}_{t}\right)W_{t}+\lambda\left[V\left(W_{t}^{'}\right)-V\left(k\right)\right].
+\rho V\left(W,t\right)=\max_{\left\{ \bar{c},\omega^{k}\right\} }U\left(\bar{c}W\right)+V_{w}\left(\left(r_{t}^{k}\omega^{k}+r_{t}^{m}\left(1-\omega^{k}\right)\right)-\bar{c}\right)W+\lambda\left[V\left(W'\right)-V\left(W\right)\right]+\dot{V},
+\]
+
+\end_inset
+
+where I used:
+\begin_inset Formula 
+\[
+\omega_{t}^{k}+\omega_{t}^{m}=1.
 \]
 
 \end_inset
@@ -1205,7 +1388,7 @@ The HJB equation for the household is:
 Guess and verify:
 \begin_inset Formula 
 \[
-V\left(W\right)=\frac{\bar{v}^{1-\gamma}W^{1-\gamma}-1/\rho}{1-\gamma}
+V\left(W,t\right)=\frac{\bar{v}\left(t\right)^{1-\gamma}W^{1-\gamma}-1/\rho}{1-\gamma}
 \]
 
 \end_inset
@@ -1213,7 +1396,7 @@ V\left(W\right)=\frac{\bar{v}^{1-\gamma}W^{1-\gamma}-1/\rho}{1-\gamma}
 For that we use:
 \begin_inset Formula 
 \[
-\rho\frac{\bar{v}^{1-\gamma}W^{1-\gamma}-1/\rho}{1-\gamma}=\max_{\left\{ \bar{c}_{t},\omega_{t}^{k},\omega_{t}^{m}\right\} }U\left(\bar{c}_{t}\right)+V_{w}\left(\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}\omega_{t}^{k}-\pi_{t}\omega_{t}^{m}-\bar{c}_{t}\right)W_{t}+\lambda\left[V\left(\left[r_{t}^{i}\left(\phi_{t}\omega^{k}+\omega^{m}\right)+\omega^{k}+\omega^{m}\right]W\right)-V\left(W\right)\right]
+\rho\frac{\bar{v}\left(t\right)^{1-\gamma}W^{1-\gamma}-1/\rho}{1-\gamma}=\max_{\left\{ \bar{c},\omega^{k}\right\} }U\left(\bar{c}\right)+V_{w}\left(\left(r_{t}^{k}\omega^{k}+r_{t}^{m}\left(1-\omega^{k}\right)\right)-\bar{c}\right)W_{t}+\lambda\left[V\left(\left[R_{t}^{i}\left(1-(1-\phi_{t})\omega^{k}\right)+1\right]W\right)-V\left(W\right)\right]+\dot{V}
 \]
 
 \end_inset
@@ -1231,15 +1414,7 @@ The intercept is verified.
  Hence, we verify that:
 \begin_inset Formula 
 \[
-\rho\frac{\bar{v}^{1-\gamma}-1/\rho}{1-\gamma}=\max_{\left\{ \bar{c}_{t},\omega_{t}^{k},\omega_{t}^{m}\right\} }U\left(\bar{c}_{t}\right)+\frac{\bar{v}^{1-\gamma}}{1-\gamma}\left(\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}\omega_{t}^{k}-\pi_{t}\omega_{t}^{m}-\bar{c}_{t}\right)+\lambda\left[\frac{\bar{v}^{1-\gamma}}{1-\gamma}\left(\left[\left(r_{t}^{i}\phi_{t}+1\right)\omega^{k}+\left(r_{t}^{i}+1\right)\omega^{m}\right]\right)^{1-\gamma}-\frac{\bar{v}^{1-\gamma}}{1-\gamma}\right]
-\]
-
-\end_inset
-
-subject to:
-\begin_inset Formula 
-\[
-\omega_{t}^{k}+\omega_{t}^{m}=1.
+\rho\frac{\bar{v}^{1-\gamma}-1/\rho}{1-\gamma}=\max_{\left\{ \bar{c},\omega^{k}\right\} }U\left(\bar{c}\right)+\frac{\bar{v}^{1-\gamma}}{1-\gamma}\left(\left(r_{t}^{k}\omega^{k}+r_{t}^{m}\left(1-\omega^{k}\right)\right)-\bar{c}\right)+\lambda\left[\frac{\bar{v}^{1-\gamma}}{1-\gamma}\left(\left[\left[R_{t}^{i}\left(1-(1-\phi_{t})\omega^{k}\right)+1\right]W\right]\right)^{1-\gamma}-\frac{\bar{v}^{1-\gamma}}{1-\gamma}\right]+\left(1-\gamma\right)\left(\bar{v}\right)^{1-\gamma}\frac{\dot{\bar{v}}}{\bar{v}}.
 \]
 
 \end_inset
@@ -1248,7 +1423,7 @@ subject to:
 \end_layout
 
 \begin_layout Standard
-The first-order conditions require:
+The first-order conditions requires:
 \begin_inset Formula 
 \[
 U'\left(\bar{c}_{t}\right)=\frac{\bar{v}^{1-\gamma}}{1-\gamma}.
@@ -1256,48 +1431,75 @@ U'\left(\bar{c}_{t}\right)=\frac{\bar{v}^{1-\gamma}}{1-\gamma}.
 
 \end_inset
 
-And furthermore:
+After replacing the solutions, this equation is for practical purposes an
+ ODE.
+ 
+\end_layout
+
+\begin_layout Standard
+Furthermore, we obtain a liquidity premium for the capital share in wealth:
 \begin_inset Formula 
 \[
-\left[\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}+\pi_{t}\right]=\bar{v}^{1-\gamma}\left(\left[r_{t}^{i}\left(\phi_{t}+1\right)\omega^{k}+\left(r_{t}^{i}+1\right)\omega^{m}\right]\right)^{-\gamma}\left(1-\phi_{t}\right)r_{t}^{i}.
+\left[r_{t}^{k}-r_{t}^{m}\right]=\left(1-\gamma\right)\left(R_{t}^{i}\left(1-(1-\phi_{t})\omega^{k}\right)+1\right)^{-\gamma}\left(1-\phi_{t}\right)R_{t}^{i}.
 \]
 
 \end_inset
 
-This expression is a liquidity primium of money:
+
+\end_layout
+
+\begin_layout Paragraph*
+Specializing to the log case.
+\end_layout
+
+\begin_layout Standard
+In the log case, the first-order condition is taken after the limit to 
+\begin_inset Formula $\gamma\rightarrow1$
+\end_inset
+
+ is taken.
+ Therefore:
 \begin_inset Formula 
 \[
-\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}=\bar{v}^{1-\gamma}\left(\left[r_{t}^{i}\left(\phi_{t}+1\right)\left(1-\omega^{m}\right)+\left(r_{t}^{i}+1\right)\omega^{m}\right]\right)^{-\gamma}\left(1-\phi_{t}\right)r_{t}^{i}-\pi_{t}.
+\left[r_{t}^{k}-r_{t}^{m}\right]=\frac{1-\phi_{t}}{R_{t}^{i}\left(1-(1-\phi_{t})\omega^{k}\right)+1}R_{t}^{i}.
 \]
 
 \end_inset
 
-The idea is that money is dominated in return, but has an additional value
+
+\end_layout
+
+\begin_layout Standard
+This expression is a liquidity premium.
+ The idea is that money is dominated in return, but has an additional value
  as collateral, captured by the term:
 \begin_inset Formula 
 \[
-\left(1-\phi_{t}\right)r_{t}^{i}
+\frac{\left(1-\gamma\right)}{\left(R_{t}^{i}\left(1-(1-\phi_{t})\omega^{k}\right)+1\right)^{^{-\gamma}}}\left(\left(1-\phi_{t}\right)R_{t}^{i}\right)
 \]
 
 \end_inset
 
- The term: 
-\begin_inset Formula $r_{t}^{i}$
+or in the log case:
+\begin_inset Formula 
+\begin{equation}
+\left[r_{t}^{k}-r_{t}^{m}\right]=\frac{\left(1-\phi_{t}\right)R_{t}^{i}}{R_{t}^{i}\left(1-(1-\phi_{t})\omega^{k}\right)+1}.\label{eq:portfolio.cond}
+\end{equation}
+
+\end_inset
+
+The numerator captures the advantages in terms of levered returns.
+ The term 
+\begin_inset Formula $R_{t}^{i}$
 \end_inset
 
  captures the levered return on your investment, 
 \begin_inset Formula $\left(1-\phi_{t}\right)$
 \end_inset
 
- the collateral value of money, the term:
-\begin_inset Formula 
-\[
-\bar{v}^{1-\gamma}\left(\left[r_{t}^{i}\left(\phi_{t}+1\right)\left(1-\omega^{m}\right)+\left(r_{t}^{i}+1\right)\omega^{m}\right]\right)^{-\gamma}
-\]
-
-\end_inset
-
-captures the relative jump in marginal utilities when money increases.
+ the collateral value of money.
+ The denominator captures the relative jump in marginal utilities when money
+ increases.
  
 \end_layout
 
@@ -1312,10 +1514,10 @@ Markets.
 
 \begin_layout Enumerate
 There's a market for capital goods that clears are price 
-\begin_inset Formula $\left\{ q_{t}\right\} .$
+\begin_inset Formula $q_{t}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -1328,7 +1530,6 @@ Loan contracts satisfy the incentive compatibility constraint.
  
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 Clearing in the market for investment requires:
 \begin_inset Formula 
@@ -1341,47 +1542,227 @@ Clearing in the market for investment requires:
 We can write this expression, using the independence assumptions as:
 \begin_inset Formula 
 \[
-\underbrace{\lambda\frac{\iota}{q}W}_{\text{supply }}=\underbrace{\frac{\dot{k}}{k}\frac{k}{W}}_{\text{demand}}
+\underbrace{\lambda i^{s}W}_{\text{supply }}=\underbrace{\frac{\dot{K}}{K}\frac{K}{W}}_{\text{demand}}.
 \]
 
 \end_inset
 
-Thereby, obtaining:
+For the linear case, substituing (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sold.cap"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we obtain:
 \begin_inset Formula 
 \[
-\underbrace{\frac{\lambda}{1-\theta q_{t}}\left(\phi_{t}\frac{\omega^{k}}{q_{t}}+\frac{\omega^{m}}{q_{t}}\right)W}_{\text{supply }}=\underbrace{\frac{\dot{K}}{K}\omega^{k}\frac{W}{q_{t}}}_{\text{demand}}
+\underbrace{\lambda\frac{\theta}{1-\theta q_{t}}\left(\phi_{t}\omega^{k}+\omega^{m}\right)W}_{\text{supply }}=\underbrace{\frac{\dot{K}}{K}\omega^{k}\frac{W}{q_{t}}}_{\text{demand}}.
 \]
 
 \end_inset
 
-Using that in a stationary environment:
+It is convenient to replace 
+\begin_inset Formula $g_{t}=\dot{K}/K$
+\end_inset
+
+ to denote the growth of the capital stock.
+ Then:
+\begin_inset Formula 
+\begin{equation}
+\underbrace{\lambda\frac{\theta q_{t}}{1-\theta q_{t}}\left(1-\left(1-\phi_{t}\right)\omega^{k}\right)}_{\text{investment supply }}=\underbrace{g_{t}\omega^{k}}_{\text{investment demand}}.\label{eq:investment.clearing}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Next, we have that by the goods clearing condition:
 \begin_inset Formula 
 \[
-\left(\frac{\dot{q}}{q}+\frac{\dot{K}}{K}\right)\omega^{k}-\pi\omega^{m}=\frac{\dot{W}}{W}
+\underbrace{r^{a}\frac{\omega^{k}}{q}W_{t}}_{\text{output }}=\underbrace{\bar{c}_{t}W_{t}}_{\text{consumption}}+\underbrace{\varphi\left(\iota,\omega^{k}\right)W_{t}}_{\text{investment}}
 \]
 
 \end_inset
 
-the equation above becomes:
+so clearing 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+:
 \begin_inset Formula 
 \[
-\underbrace{\frac{\lambda}{1-\theta q_{t}}\left(\phi_{t}\omega^{k}+\omega^{m}\right)}_{\text{supply }}=\underbrace{\left(\frac{\dot{W}}{W}+\pi\omega^{m}-\frac{\dot{q}}{q}\omega^{k}\right)}_{\text{demand}}
+\underbrace{r^{a}\frac{\omega^{k}}{q}}_{\text{output }}=\underbrace{\bar{c}_{t}}_{\text{consumption}}+\underbrace{\varphi\left(\iota,\omega^{k}\right)}_{\text{investment}}.
 \]
 
 \end_inset
 
-Finally, sungint that
+
+\end_layout
+
+\begin_layout Itemize
+Money demand clearing is:
 \begin_inset Formula 
 \[
-\frac{\dot{W}}{W}=\frac{\left[r_{t}+\dot{q}_{t}-\delta\right]}{q_{t}}\omega_{t}^{k}-\pi_{t}\omega_{t}^{m}-\bar{c}_{t}
+\xi_{t}M_{t}=\left(1-\omega^{k}\right)W_{t}.
 \]
 
 \end_inset
 
-we obtain:
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Using the law of motion for wealth:
+\begin_inset Formula 
+\begin{equation}
+\frac{\dot{W_{t}}}{W_{t}}=\left(\left(r^{k}-r^{m}\right)\omega^{k}+r^{m}\right)-\bar{c}_{t}\label{eq:wealth.growth}
+\end{equation}
+
+\end_inset
+
+we can connect with 
+\begin_inset Formula $g_{t}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+\left(\frac{\dot{q}_{t}}{q}+g_{t}\right)=\frac{\dot{\omega}^{k}}{\omega^{k}}+\frac{\dot{W_{t}}}{W_{t}}\label{eq:capital.growth}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Stationary Environment- Log and Linear Investment.
+ 
+\end_layout
+
+\begin_layout Standard
+We summarize the equilibrium system in this special case.
+ In a stationary environment, we have that 
+\begin_inset Formula $M_{t}=M$
+\end_inset
+
+ is constant, so 
+\begin_inset Formula $\xi_{t}$
+\end_inset
+
+ changes over time.
+ One unknown is the 
+\begin_inset Formula $\pi_{t}$
+\end_inset
+
+, the inflation rate.
+ Other unknowns are 
+\begin_inset Formula $\left\{ q,\omega^{k},g,r^{k},r^{m},R^{i}\right\} .$
+\end_inset
+
+ We need a system of equations to solve the stationary equilibrium.
+ 
+\end_layout
+
+\begin_layout Standard
+We need to solve a system of xxx unknowns.
+ These comes from the system of returns:
 \begin_inset Formula 
 \[
-\underbrace{\lambda\frac{\phi_{t}\omega^{k}+\omega^{m}}{1-\theta q_{t}}}_{\text{investment supply}}=\underbrace{\frac{\left[r_{t}-\delta\right]}{q_{t}}\omega_{t}^{k}-\bar{c}_{t}}_{\text{savings per unit of wealth}}
+r^{m}=-\pi
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+r^{k}=\frac{r^{a}}{q}-\delta
+\]
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+R^{i}=\left[\frac{q-1}{1-\theta q}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The relationship between the evolution of wealth and the capital stock (assuming
+ 
+\begin_inset Formula $\dot{q}=0$
+\end_inset
+
+) 
+\begin_inset Formula 
+\[
+g=\left(\left(r^{k}-r^{m}\right)\omega^{k}+r^{m}\right)-\rho
+\]
+
+\end_inset
+
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g=-\pi.
+\]
+
+\end_inset
+
+The investment demand equilibrium:
+\begin_inset Formula 
+\[
+\lambda\frac{\theta q}{1-\theta q}\left(1-\left(1-\phi\right)\omega^{k}\right)=g\omega^{k}.
+\]
+
+\end_inset
+
+and the optimality of the capital share:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\left[r^{k}-r^{m}\right]=\frac{1-\phi}{R^{i}\left(1-(1-\phi)\omega^{k}\right)+1}R^{i}.
 \]
 
 \end_inset
@@ -1392,20 +1773,7 @@ we obtain:
 \begin_layout Section
 
 \series bold
-Equilibrium
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Definition.
- 
-\series default
-A sequential equilibrium is a sequence of prices 
-\begin_inset Formula $\left\{ q_{t},\pi_{t}\right\} $
-\end_inset
-
-...
+Questions
 \end_layout
 
 \begin_layout Standard
@@ -1421,7 +1789,71 @@ begin{exercise}
 
 \end_inset
 
- Caracterize a statinoary solution as much as possible.
+ Consider a version of this economy characterized by no money.
+ For that, drop the optimization condition and set 
+\begin_inset Formula $\omega^{k}$
+\end_inset
+
+.
+ Characterize the equilibrium growth rate of the economy for the log utility
+ and linear investment rule.
+ Produce a plot in two equations and two unknows for 
+\begin_inset Formula $\left\{ g,q\right\} $
+\end_inset
+
+.
+ Produce a comparative statics analysis as function of 
+\begin_inset Formula $\phi$
+\end_inset
+
+.
+ Interpret each equation.
+ Interpret the equations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{exercise}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{exercise}
+\end_layout
+
+\end_inset
+
+ Consider extending the solution to the case where 
+\begin_inset Formula $\phi$
+\end_inset
+
+ follows a deterministic pattern.
+ Remain with the log case with linear investments.
+ Still, work with the case without money first.
+ Explain how the equilibrium changes as now 
+\begin_inset Formula $\dot{q}$
+\end_inset
+
+ appears in the equilibrium system.
+ Describe how you could solve the equilibrium of this econonomy through
+ a pseudo algorithm.
  
 \end_layout
 
@@ -1439,6 +1871,239 @@ end{exercise}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{exercise}
+\end_layout
+
+\end_inset
+
+ Consider extending the solution where now money appears.
+ Introduce back the portfolio optimality condition.
+ Characterize the stationary equilibrium again.
+ Explain how here money can be understood as a bubble.
+ How does its presence affect growth? 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{exercise}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{exercise}
+\end_layout
+
+\end_inset
+
+ Consider extending the solution to the case where 
+\begin_inset Formula $\phi$
+\end_inset
+
+ follows a deterministic pattern.
+ Add money again.
+ Explain how you will adapt this economy and what algorithm you could use
+ to solve it.
+ Does money amplify or dampen shocks? 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{exercise}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{exercise}
+\end_layout
+
+\end_inset
+
+ Argue that if money is introduced by paying interest on reserves, monetary
+ policy is neutral, in fact super neutral.
+ What if money is introduced through wealth proportional taxes.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{exercise}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Solution.
+ 
+\end_layout
+
+\begin_layout Standard
+We have that 
+\begin_inset Formula 
+\[
+g=\left(\left(r^{k}-r^{m}\right)+g\right)-\rho
+\]
+
+\end_inset
+
+implies that:
+\begin_inset Formula 
+\[
+\frac{r^{a}}{q}=\rho+g+\delta.
+\]
+
+\end_inset
+
+Then, we have that:
+\begin_inset Formula 
+\[
+\frac{r^{a}}{\rho+g+\delta}=q,
+\]
+
+\end_inset
+
+leading to a relationship between growth and the rate of capital accumulation.
+ Next, we have that the invesetment rate is given by:
+\begin_inset Formula 
+\[
+\lambda\frac{\theta q}{1-\theta q}\left(1-\left(1-\phi\right)\right)=g.
+\]
+
+\end_inset
+
+This yields an equation for the growth of the economy vis-a-vis the price
+ of capital.
+ Interepret the solution.
+ 
+\end_layout
+
+\begin_layout Standard
+Now consider the case with money.
+ We obtain from:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+g=\left(\left(r^{k}-r^{m}\right)\omega^{k}+r^{m}\right)-\rho,
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+that the equation,
+\begin_inset Formula 
+\[
+\frac{r^{a}}{\rho/\omega^{k}+g+\delta}=q.
+\]
+
+\end_inset
+
+The investment demand equilibrium:
+\begin_inset Formula 
+\[
+\lambda\frac{\theta q}{1-\theta q}\left(1-\left(1-\phi\right)\omega^{k}\right)=g\omega^{k}.
+\]
+
+\end_inset
+
+and the optimality of the capital share:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\left[\frac{r^{a}}{q}-\left(\delta+g\right)\right]=\frac{1-\phi}{\left(1-(1-\phi)\omega^{k}\right)+\frac{1-\theta q}{q-1}}.
+\]
+
+\end_inset
+
+This provides as with an equilibrium system.
+ 
 \end_layout
 
 \end_body

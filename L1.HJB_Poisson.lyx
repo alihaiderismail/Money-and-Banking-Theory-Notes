@@ -1,0 +1,1658 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\special{papersize=8.5in,11in}
+%\usepackage{palatino,amssymb,amsfonts,amsmath,latexsym,setspace}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+% \usepackage[dvips]{graphicx}
+
+\usepackage{fancyhdr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{lscape}
+% \usepackage{color}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{caption}
+% \usepackage{subcaption}
+\usepackage{sidecap}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+
+
+
+\setcounter{MaxMatrixCols}{10}
+%  Chad's style file for nice paper format.
+%  Various ideas for this style are taken from
+%    -- Matthias Doepke and Michele Tertilt
+%    -- Tony Roberts
+
+% Hyperstuff
+
+
+% example file to change the style of LaTeX
+% first colour for latex or pdflatex
+%\ifx\pdfoutput\@undefined\usepackage[usenames,dvips]{color}
+% \else\usepackage[usenames,dvipsnames]{color}
+% and fix pdf colour problems
+% \IfFileExists{pdfcolmk.sty}{\usepackage{pdfcolmk}}{} 
+%\fi
+
+% Chad's colors:
+% See http://web.njit.edu/~kevin/rgb.txt.html for possibilities
+\definecolor{ChadDarkBlue}{rgb}{.1,0,.2}  
+\definecolor{ChadBlue}{rgb}{.1,.1,.5}  
+\definecolor{ChadRoyal}{rgb}{.2,.2,.8}  
+%\definecolor{ChadGreen}{rgb}{0,.35,.1}
+%\definecolor{ChadGreen}{rgb}{0,.5,.25}  % Too bright
+%\definecolor{ChadGreen}{rgb}{0,.4,.2}    % Still too bright
+\definecolor{ChadGreen}{rgb}{0,.4,0}    % Dark Green
+%\definecolor{ChadRed}{rgb}{.8,.1,.2}    % Too bright
+\definecolor{ChadRed}{rgb}{.5,0,.5}  % purple
+\definecolor{ChadMagenta}{rgb}{.6,0,.6}  % magenta
+\definecolor{webbrown}{rgb}{.1,0,.2}  % magenta
+
+%%% HYPERLINKS %%%%%%%%%%%%%%%%%%%%%
+\usepackage[figure,table]{hypcap}% Correct a problem with hyperref
+\urlstyle{rm} %so it doesn't use a typewriter font for url's.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
+% Fix title, sections, etc.
+
+\let\LaTeXtitle\title
+\renewcommand{\title}[1]{\LaTeXtitle{\color{ChadBlue}{\LARGE #1}}}
+\renewcommand{\abstractname}{\color{ChadBlue}Abstract}
+\renewcommand{\figurename}{\color{ChadBlue}Figure}
+\renewcommand{\tablename}{\color{ChadBlue}Table}
+
+\let\LaTeX@startsection\@startsection 
+\renewcommand{\@startsection}[6]{\LaTeX@startsection%
+{#1}{#2}{#3}{#4}{#5}{\color{ChadBlue}\raggedright #6}} 
+
+%% % Fix periods at end of section numbers
+%% \renewcommand \thesection {\@arabic\c@section.}
+%% \renewcommand\thesubsection   {\thesection\@arabic\c@subsection}%.}
+%% \renewcommand\thesubsubsection{\thesubsection \@arabic\c@subsubsection}%.}
+
+
+% Add a period *only* after Section and *only* in title, not cross ref
+% April 2017
+
+\renewcommand{\@seccntformat}[1]{%
+  \csname the#1\endcsname% Print sectional counter
+  \ifnum\pdfstrcmp{#1}{section}=0 .\fi% If \section, print .
+  \quad% Space between number and title
+}
+
+
+
+
+% Margin, Paragraph Setup
+
+%\textheight=21.5cm \textwidth=14.95cm \topmargin=-5.5mm
+%\oddsidemargin=8mm \evensidemargin=8mm
+\textheight=22.5cm 
+\textwidth=16.35cm 
+\topmargin=0mm
+\oddsidemargin=0mm 
+\evensidemargin=0mm
+%\setlength{\parindent}{0em} 
+%\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+%\setlength{\parsep}{0pt}
+
+
+% This is how to control linespacing using setspace
+% (\singlespacing or doublespacing just call this command)
+
+
+%% Setting up page headers
+
+\rhead[]{\thepage}
+\lhead[\thepage]{}
+\cfoot[]{} 
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\runningheads}[2]{
+   \chead[\color{ChadGreen}{\uppercase {\footnotesize #1}}]  % Author page header
+   {\color{ChadGreen}{\uppercase {\footnotesize #2}}}  % Short title
+  }
+
+% Make hyperlinks jump more accurately
+
+\newcommand{\org@hypertarget}{}
+\let\org@hypertarget\hypertarget
+\renewcommand{\hypertarget}[2]{%
+\Hy@raisedlink{\org@hypertarget{#1}{}}#2%
+}  
+
+
+% Spacing in Tables and Figures
+%\renewcommand{\tabcolsep}{1pt}   % space between columns
+\renewcommand{\arraystretch}{1.5} % space between rows
+\addtolength{\textfloatsep}{0pt} % space between floats and text
+\addtolength{\abovecaptionskip}{0pt} % space above caption
+\addtolength{\belowcaptionskip}{.15in} % space below caption
+
+\newcommand{\spc}[0]{\vspace{.1in}}
+\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+\newcommand{\clr}[1]{{\color{ChadBlue} #1}}
+\newcommand{\boxeq}[1]{\boxed{\hspace{.25in} #1 \hspace{.25in}}} 
+
+\newcommand{\bb}[1]{\color{ChadBlue}{#1}}
+\newcommand{\clrg}[1]{\color{ChadGreen}{#1}}
+\newcommand{\gn}[1]{{\color{ChadGreen}{#1}}}
+\newcommand{\gr}[1]{\tiny\textcolor{green4}{#1}}
+\newcommand{\rd}[1]{\textcolor{ChadRed}{#1}}
+\newcommand{\rr}[1]{\textcolor{red}{#1}}
+\newcommand{\imp}[0]{$\Rightarrow \,$} % implies
+
+%% Shortcut commands
+\newcommand{\growth}[1]{\frac{\dot{#1}_t}{{#1}_t}}
+\newcommand{\prtl}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\prtlsec}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\commentno}[2]{\underset{\mbox{#2}}{#1}}
+% \newcommand{\comment}[2]{\underbrace{#1}_{\mbox{{\small \color{ChadGreen}#2}}}}
+\newcommand{\cn}[1]{\citet*{#1}}
+\newcommand{\cnp}[1]{(\citealt{#1})}  % (Jones 2002)
+\newcommand{\up}[0]{\uparrow \hspace{-.5ex}}  % \! is a negative thinspace
+\newcommand{\down}[0]{\downarrow \hspace{-.5ex}}
+\newcommand{\query}[1]{{\it \color{red}[??? #1]}}
+\newcommand{\Ex}[1]{\mbox{ }\mathbb{E}}
+
+% Use of Proof...
+\newcommand{\Proof}[2]{{\hspace{-\parindent} {\color{ChadGreen}\bf Proof of Proposition}~\ref{#1}.}
+{\color{ChadBlue} #2} \vspace{.1in}}
+\newcommand{\Prob}[1]{\mbox{\textnormal{Pr}} \, [#1] }
+\newcommand{\SubSubSection}[1]{\subsubsection{#1} \baselineskip=18pt}
+% \newcommand{\problem}[2]{\hspace{.1in} {{\color{ChadBlue}{\bf #1:} #2}}}
+\newcommand{\proptitle}[1]{\color{ChadBlue} \textnormal{(#1):}}
+
+%\newcommand{\fignote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+%\newcommand{\tabnote}[2]{\begin{center}\parbox[c]{#1}{\footnotesize #2} \end{center}}
+% \newcommand{\definition}[1]{\mbox{\textnormal{Pr}} \, [#1] 
+
+% \newcommand{\assume}[2]{{\bf{Assumption #1}} (#2)} 
+% For graphs of networks
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,backgrounds,positioning,fit,graphs.standard}%finish for graphs of networks
+
+\newtheorem{proposition}{\color{ChadGreen} Proposition}\newtheorem{definition}{\color{ChadGreen} Definition}\newtheorem{corollary}{\color{ChadGreen} Corollary}\newtheorem{theorem}{\color{ChadGreen} Proposition}\newtheorem{lemma}{\color{ChadGreen} Lemma}
+
+\newtheorem{problem}{\color{ChadBlue} Problem} 
+
+\newcommand{\pfrac}[2]{\left( \frac{#1}{#2} \right)}  % frac with large paren
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding iso8859-15
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing double
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "citecolor=ChadMagenta,linkcolor=ChadDarkBlue,urlcolor=ChadDarkBlue"
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Lecture I: Dynamic Programming in Continuous Time - Poisson Events
+\end_layout
+
+\begin_layout Section
+Overview
+\end_layout
+
+\begin_layout Standard
+These notes begin with a review of Poisson processes, as a starting point
+ to think of continuous-time stochastic events.
+ Then, we derive a Bellman equation in continuous time, the HJB equation.
+ The advantages of continuous time are that you can obtain, often, tractable
+ solutions.
+ There are also some numerical advantages.
+ We will cover some numerical approaches at the end of the lecture.
+ This block is useful throughout our course.
+\end_layout
+
+\begin_layout Section
+Preliminary: Poisson Processes
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+From Bernoulli to Poisson.
+
+\series default
+ Divide the real line into a sequence of time 
+\begin_inset Formula $t=\left\{ 1,2,3,...,\infty\right\} .$
+\end_inset
+
+ Assume that every periods, there is a chance of an occurrence of a given
+ event.
+ We let the random variable 
+\begin_inset Formula $N_{t}\in\left\{ 0,1\right\} $
+\end_inset
+
+ be the one that turns into a 1 when an event has occurred by time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ This function is a random variable because it is a function defined in
+ an underlying probability space.
+ We let that probability be, 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Because the process is Bernoulli, the outcome is independent of time by
+ definition.
+ Thus, the probability that an event has not occurred by period 
+\begin_inset Formula $t$
+\end_inset
+
+ is given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Pr\left\{ N_{t}=0\right\} =\left(1-p\right)^{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The chance that the event occurs exactly at time 
+\begin_inset Formula $t+1$
+\end_inset
+
+ is:
+\begin_inset Formula 
+\[
+\Pr\left\{ N_{t+1}=1,N_{t}=0\right\} =\left(1-p\right)^{t}p.
+\]
+
+\end_inset
+
+Observe that 
+\begin_inset Formula $\Pr\left\{ N_{t+s}=0,N_{t}=0\right\} =\left(1-p\right)^{t}\left(1-p\right)^{s}=\left(1-p\right)^{t+s}=\Pr\left\{ N_{t+s}=0\right\} $
+\end_inset
+
+.
+ Thus, the probability that the event has not realized by time 
+\begin_inset Formula $t+s$
+\end_inset
+
+ is the same as the probability that it did not realize up to time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Thus, 
+\begin_inset Formula 
+\[
+\Pr\left\{ N_{t+s}=0|N_{t}=0\right\} =\frac{\Pr\left\{ N_{t+s}=0,N_{t}=0\right\} }{\Pr\left\{ N_{t}=0\right\} }=\left(1-p\right)^{s}=\Pr\left\{ N_{s}=0\right\} .
+\]
+
+\end_inset
+
+This process is is stationary—it is invariant to initial conditions.
+ It's chance of no events up to 
+\begin_inset Formula $t+s$
+\end_inset
+
+ conditional on no event up to 
+\begin_inset Formula $t$
+\end_inset
+
+ is the same as not observing an event in 
+\begin_inset Formula $s$
+\end_inset
+
+ periods.
+ 
+\end_layout
+
+\begin_layout Standard
+Now, we want to study what happens as we divided the real line into a finer
+ and finer sets.
+ Thus, we set 
+\begin_inset Formula $t=\left\{ \Delta,2\Delta,...\infty\right\} $
+\end_inset
+
+ and work by shrinking these into finer and finer intervals.
+ However, we study the probability in this problem in a particular way.
+ We cannot simply divide the real line into finer and finer points without
+ adjusting the probability.
+ Otherwise, as we continue doing so, we would eventually have infinite Bernoulli
+ trials in a single period.
+ Instead, we have to be more careful and specify a ratio for the probabilities:
+ 
+\begin_inset Formula 
+\[
+\lambda\Delta=p\left(\Delta\right).
+\]
+
+\end_inset
+
+Thus, as 
+\begin_inset Formula $\Delta\rightarrow0,$
+\end_inset
+
+ the probability shrinks, but the rate at which it does is constant.
+ The date can be divided into the number of intervals via:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t=\Delta\times n\left(\Delta,t\right).
+\]
+
+\end_inset
+
+Let's now compute the chances of seeing the event at a particular date:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Pr\left\{ N_{t}=1,N_{t-\Delta}=0\right\} =\left(1-p\left(\Delta\right)\right)^{n\left(\Delta,t\right)-\Delta}p\left(\Delta\right).
+\]
+
+\end_inset
+
+Note that for every 
+\begin_inset Formula $t$
+\end_inset
+
+, this defines a proability of occurrence of the event at exactly the date
+ 
+\begin_inset Formula $t.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, we write this expression as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(1-\lambda\Delta\right)^{n\left(\Delta,t\right)-\Delta}\lambda\Delta.
+\]
+
+\end_inset
+
+Since as 
+\begin_inset Formula $\Delta\rightarrow0,$
+\end_inset
+
+ the probability of the event becomes a density, we can define the following
+ density:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f\left(t;\lambda\right)=\lim_{\Delta\rightarrow\infty}\frac{\left(1-\lambda\Delta\right)^{n\left(\Delta,t\right)-\Delta}\lambda}{\Delta}\Delta.
+\]
+
+\end_inset
+
+I'm skipping many steps from measure theory that prove the continuity of
+ probabilities.
+ For now, we can compute this object:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{t/\Delta}\left(1-\lambda\Delta\right)^{-\Delta}\lambda\\
+ & = & \left(\lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{1/\Delta}\right)^{t}\lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{-\Delta}
+\end{eqnarray*}
+
+\end_inset
+
+and by definition of 
+\begin_inset Formula $\exp$
+\end_inset
+
+, we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ & = & \left(\lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{1/\Delta}\right)^{t}\lim_{\Delta\rightarrow\infty}\left(1-\lambda\Delta\right)^{-\Delta}\lambda\\
+ & = & \lambda\exp\left(-\lambda t\right).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let's integrate this density from zero to infinity:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{0}^{\infty}\lambda\exp\left(-\lambda t\right)dt=-\exp\left(-\lambda t\right)|_{t=0}^{\infty}=-0-\left(-1\right)=1.
+\]
+
+\end_inset
+
+This is the density of the probability that the event occurs at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ The c.d.f.
+ of the event is this:
+\begin_inset Formula 
+\[
+\int_{0}^{\tau}\lambda\exp\left(-\lambda t\right)dt=-\exp\left(-\lambda t\right)|_{t=0}^{\tau}=\exp\left(-\lambda\tau\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Naturally, the density of the event not occurring by 
+\begin_inset Formula $t$
+\end_inset
+
+ can be obtained in a similar way.
+ The probability that the event has not occurred up to 
+\begin_inset Formula $\tau$
+\end_inset
+
+is:
+\begin_inset Formula 
+\[
+1-\exp\left(-\lambda\tau\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Connection with Poisson Distribution.
+ 
+\end_layout
+
+\begin_layout Standard
+Poisson processes are understood as random 
+\begin_inset Formula $N\left(\omega\right)$
+\end_inset
+
+ variable taking values in 
+\begin_inset Formula $Z_{+}$
+\end_inset
+
+.
+ These are the only processes satisfying the conditions of:
+\end_layout
+
+\begin_layout Enumerate
+independent increments 
+\end_layout
+
+\begin_layout Enumerate
+stationarity
+\end_layout
+
+\begin_layout Enumerate
+that expected number of arrivals in a given fraction of time is constant.
+ 
+\end_layout
+
+\begin_layout Standard
+The Poisson distribution of is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Pr\left(N=k\right)=\frac{\lambda^{k}e^{-\lambda}}{k!}
+\]
+
+\end_inset
+
+This comes from taking the Bernoulli process above, but adding different
+ intervals of size 
+\begin_inset Formula $N$
+\end_inset
+
+, and then taking the same limit.
+\end_layout
+
+\begin_layout Standard
+A poisson counting process generalizes the result to any moment in time,
+ expressing things in terms of rates, replacing 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ by 
+\begin_inset Formula $\lambda t$
+\end_inset
+
+.
+ Thus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Pr\left(N_{t}=k\right)=\frac{\left(\lambda t\right)^{k}e^{-\lambda t}}{k!}
+\]
+
+\end_inset
+
+Additional useful property of the poisson process is its additivity characterist
+ic; namely for 
+\begin_inset Formula $X+Y$
+\end_inset
+
+ poisson events with rates 
+\begin_inset Formula $\lambda_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{y},$
+\end_inset
+
+ it holds that :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N_{t}^{1}+N_{t}^{2}\sim\text{Poisson}(\lambda_{x}+\lambda_{y})
+\]
+
+\end_inset
+
+The stopping time 
+\begin_inset Formula $\tau=\inf\left\{ s:N_{t+s}-N_{t}=1\right\} $
+\end_inset
+
+ has and exponential density with parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+—the same as the exponential distribution:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau\sim\lambda\cdot\exp(-\lambda t)
+\]
+
+\end_inset
+
+so obviously the stopping time 
+\begin_inset Formula $\tau=\min(\tau_{1},\tau_{2})$
+\end_inset
+
+ for two independent poisson processes with rates 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ is associated with the 
+\begin_inset Formula $X_{1}+X_{2}$
+\end_inset
+
+ poisson random variable.
+ Therefore, its distribution is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau\sim\left(\lambda_{1}+\lambda_{2}\right)\cdot\exp(-\left(\lambda_{1}+\lambda_{2}\right)t)
+\]
+
+\end_inset
+
+Finally, 
+\begin_inset Formula $P\left[\tau=\tau_{1}\right]$
+\end_inset
+
+ is computed as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Pr(\tau_{1}=t,N_{t}^{2}=0)=\Pr(\tau_{1}=t)\cdot\Pr(N_{t}^{2}=0)=\left(\lambda_{1}\cdot\exp(-\lambda_{1}t)\right)\cdot\exp\left(-\lambda_{2}t\right).
+\]
+
+\end_inset
+
+which is the probability that 
+\begin_inset Formula $N_{t}^{1}$
+\end_inset
+
+ jumps at t while 
+\begin_inset Formula $N_{t}^{2}$
+\end_inset
+
+ remains at 0.
+ Integrating over the whole domain yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{o}^{\infty}\left(\lambda_{1}\cdot\exp(-\lambda_{1}t)\right)\cdot\exp\left(-\lambda_{2}t\right)dt & = & \int_{o}^{\infty}\exp\left(-\lambda_{2}t\right)dt-\int_{o}^{\infty}\exp\left(-\left(\lambda_{1}+\lambda_{2}\right)t\right)\lambda_{1}dt\\
+ & = & \frac{\lambda_{1}}{\left(\lambda_{1}+\lambda_{2}\right)}
+\end{eqnarray*}
+
+\end_inset
+
+and to check that this is correct we look at 
+\begin_inset Formula $P\left[\tau=\tau_{1}\right]+P\left[\tau=\tau_{2}\right]$
+\end_inset
+
+, by symmetry: 
+\begin_inset Formula 
+\[
+\frac{\lambda_{1}}{\left(\lambda_{1}+\lambda_{2}\right)}+\frac{\lambda_{2}}{\left(\lambda_{1}+\lambda_{2}\right)}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Critically, the time between two Poisson events is distributed exponential:
+ 
+\begin_inset Formula 
+\[
+\Pr\left[N_{t+\Delta}\ge N_{t}+1|N_{t}\right]=1-\exp\left(-\lambda\Delta\right).
+\]
+
+\end_inset
+
+We make use of this distribution repeatedly below.
+ The density is, of course, 
+\begin_inset Formula 
+\[
+f\left(N_{t+\Delta}\ge N_{t}+1|N_{t}\right)=1-\exp\left(-\lambda\Delta\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hamilton-Jacobi-Bellman Equation 
+\end_layout
+
+\begin_layout Paragraph
+Net present values in continuous time.
+\end_layout
+
+\begin_layout Standard
+We now move on to study the continuous time version of Bellman equations.
+ Let's begin first computing a net present value formula, without the maximizati
+on.
+ We try to compute:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{t}=\sum_{s=0}^{\infty}\beta^{s}U\left(c_{t+s}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{t+s}$
+\end_inset
+
+ is a known path.
+ We can conduct the following convenient change of variables and let 
+\begin_inset Formula $\beta=\exp\left(-\rho\right).$
+\end_inset
+
+ Thus, 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is approximately 
+\begin_inset Formula $1-\beta.$
+\end_inset
+
+ Thus, we can write the expression as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{t}=\sum_{s=0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right).
+\]
+
+\end_inset
+
+We want to make the same computations as time intervals, become smaller
+ and smaller, as we did with the Bernoulli example above.
+ Naturally, we need to weight utility by the length of the interval 
+\begin_inset Formula $\Delta$
+\end_inset
+
+, to make things consistent.
+ Thus, the value is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V\left(t,\Delta\right)=\sum_{s=0:\Delta:\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)\Delta.
+\]
+
+\end_inset
+
+Taking the limit yields, by definition of Lebesgue integral,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{\Delta\rightarrow0}V\left(t,\Delta\right)=\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds.
+\]
+
+\end_inset
+
+From now on, abandon the notation that 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ for the time interval and we use it to compute derivatives.
+\end_layout
+
+\begin_layout Standard
+Now, we want to compute how the value changes as a function of calendar
+ time.
+ Thus, we compute:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{V\left(t+\Delta\right)-V\left(t\right)}{\Delta}.
+\]
+
+\end_inset
+
+Why are we interested in this object? Because it will be useful to characterize
+ Continuous Time problems that often do not have solutions in discrete time.
+ By definition we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t+\Delta\right)-V\left(t\right) & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds\\
+ & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds\\
+ & = & \int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{0}^{\infty}\exp\left(-\rho\left(z+\Delta\right)\right)U\left(c_{t+\Delta+z}\right)dz
+\end{eqnarray*}
+
+\end_inset
+
+where the last line is a change of variables 
+\begin_inset Formula $z=s-\Delta$
+\end_inset
+
+.
+ Thus, we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V\left(t+\Delta\right)-V\left(t\right)=\left(1-\exp\left(-\rho\Delta\right)\right)\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds.
+\]
+
+\end_inset
+
+Then, we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{\Delta\rightarrow0}\frac{V\left(t+\Delta\right)-V\left(t\right)}{\Delta}=\lim_{\Delta\rightarrow0}\frac{\left(1-\exp\left(-\rho\Delta\right)\right)}{\Delta}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\Delta}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The next line just follows a number of definitions.
+ Thus, we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}=\lim_{\Delta\rightarrow0}\frac{\left(1-\exp\left(-\rho\Delta\right)\right)}{\Delta}\cdot\lim_{\Delta\rightarrow0}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{0}^{0}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\Delta}.
+\]
+
+\end_inset
+
+The last term can be evaluated via Leibnitz's rule.
+ First term, is the product of two limits.
+ Note that: 
+\begin_inset Formula 
+\[
+\lim_{\Delta\rightarrow0}\frac{\exp\left(-\rho\Delta\right)-1}{\Delta}\equiv\frac{\partial\exp\left(-\rho\Delta\right)}{\partial\Delta}|_{\Delta=0}=-\rho.
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds-\int_{0}^{0}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\Delta} & \equiv & \frac{\partial\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\partial\Delta}|_{\Delta=0}\\
+ & = & \exp\left(-\rho\Delta\right)U\left(c_{t+\Delta}\right)|_{s=0}=U\left(c_{t}\right).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{V} & = & \rho\cdot\lim_{\Delta\rightarrow0}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds-U\left(c_{t}\right)\rightarrow\\
+\rho V & = & \dot{V}+U\left(c_{t+s}\right).
+\end{eqnarray*}
+
+\end_inset
+
+I assumed to this point that 
+\begin_inset Formula $c$
+\end_inset
+
+ is a constant, then 
+\begin_inset Formula $V_{t}$
+\end_inset
+
+ is a constant, and we have that 
+\begin_inset Formula $\dot{V}=0$
+\end_inset
+
+.
+ In this case, we obtain: 
+\begin_inset Formula 
+\[
+V=U\left(c\right)/\rho.
+\]
+
+\end_inset
+
+This is nothing but the famous net present value function.
+ It's is the continuous-time analogue of 
+\begin_inset Formula $U\left(c\right)/\left(1-\beta\right)$
+\end_inset
+
+.
+ This approximation is exact for 
+\begin_inset Formula $\rho\rightarrow0$
+\end_inset
+
+—although the net-present value is undefined.
+\end_layout
+
+\begin_layout Paragraph
+Exercise I.
+ 
+\end_layout
+
+\begin_layout Standard
+What if 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ varies with time? Can you find the solution to 
+\begin_inset Formula $V$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Paragraph*
+Exercise II.
+ 
+\end_layout
+
+\begin_layout Standard
+Derive the corresponding formula when the discount factor is time varying.
+\end_layout
+
+\begin_layout Paragraph
+When Consumption is a function of a State Variable.
+ 
+\end_layout
+
+\begin_layout Standard
+Assume now that 
+\begin_inset Formula $c$
+\end_inset
+
+ is a function of some variable 
+\begin_inset Formula $S$
+\end_inset
+
+ and a function of time as well, rather than a function of time only.
+ Thus 
+\begin_inset Formula $c_{t}=c\left(S_{t},t\right)$
+\end_inset
+
+.
+ In addition, assume that 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ is a known function of time, above.
+ In particular, we assume that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{S}_{t}=\mu\left(S_{t}\right)S_{t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, we define the value function as 
+\begin_inset Formula $V\left(S,t\right)$
+\end_inset
+
+ and do the same calculations as we did above.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t+\Delta\right)-V\left(S_{t},t\right)}{\Delta} & = & \lim_{\Delta\rightarrow0}\frac{\left(1-\exp\left(-\rho\Delta\right)\right)}{\Delta}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+\Delta+s}\right)ds\\
+ & \ldots & -\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds}{\Delta}\\
+ & = & \lim_{\Delta\rightarrow0}\frac{\left(1-\exp\left(-\rho\Delta\right)\right)}{\Delta}\cdot\lim_{\Delta\rightarrow0}\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c\left(S_{t+\Delta+s}\right)\right)ds\\
+ & \ldots & -\lim_{\Delta\rightarrow0}\frac{\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(S_{s}\right)\right)ds}{\Delta}.
+\end{eqnarray*}
+
+\end_inset
+
+The term on the right-hand side remains identical.
+ The term on the left is slightly different:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t+\Delta\right)-V\left(S_{t+\Delta},t\right)+V\left(S_{t+\Delta},t\right)-V\left(S,t\right)}{\Delta} & = & \lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t+\Delta\right)-V\left(S_{t+\Delta},t\right)}{\Delta}\\
+ & \ldots & +\lim_{\Delta\rightarrow0}\frac{V\left(S_{t+\Delta},t\right)-V\left(S,t\right)}{\Delta}\\
+ & = & \frac{\partial V\left(S_{t+\Delta},t+\Delta\right)}{\partial\Delta}|_{\Delta=0}+\frac{\partial V\left(S_{t+\Delta},t\right)}{\partial\Delta}|_{\Delta=0}\\
+ & = & \dot{V}+V_{s}\dot{S}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, we obtain the following formula:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho V=U\left(c\left(S\right)\right)+V_{s}\dot{S}+\dot{V}.
+\]
+
+\end_inset
+
+When consumption is only a function of 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $V$
+\end_inset
+
+ is no longer a function of time—we need the time formula because it become
+ redundant.
+ Thus, we have: 
+\begin_inset Formula 
+\[
+\rho V=U\left(c\left(S\right)\right)+V_{s}\mu\left(S\right)S.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Example I.
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $c\left(S\right)=\bar{c}\cdot S$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu\left(s\right)=\left(r-\bar{c}\right)\cdot S$
+\end_inset
+
+.
+ How do you interpret this terms? Assume 
+\begin_inset Formula $U$
+\end_inset
+
+ is a power utility: 
+\begin_inset Formula 
+\[
+U\left(C\right)=\frac{C^{1-\sigma}-1}{1-\sigma}.
+\]
+
+\end_inset
+
+Show that the value function is of the form: 
+\begin_inset Formula 
+\[
+V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are undetermined coefficients.
+ 
+\end_layout
+
+\begin_layout Proof
+The proof is by ``Guess and Verify'' where we match coefficients: 
+\begin_inset Formula 
+\[
+V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma}.
+\]
+
+\end_inset
+
+Note that under the conjecture: 
+\begin_inset Formula 
+\[
+\rho V=\frac{\bar{c}^{1-\sigma}S^{1-\sigma}}{1-\sigma}+AS^{1-\sigma}\left(r-\bar{c}\right)-\frac{1}{1-\sigma}.
+\]
+
+\end_inset
+
+Grouping terms: 
+\begin_inset Formula 
+\[
+\rho V=\frac{\left(\bar{c}^{1-\sigma}+\left(1-\sigma\right)\left(r-\bar{c}\right)A\right)}{1-\sigma}S^{1-\sigma}-\frac{1}{1-\sigma}
+\]
+
+\end_inset
+
+What if 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ varies with time? Can you find the solution to 
+\begin_inset Formula $V$
+\end_inset
+
+? Thus, matching coefficients, we obtain: 
+\begin_inset Formula 
+\[
+\rho A=\bar{c}^{1-\sigma}+\left(1-\sigma\right)\left(r-\bar{c}\right)A\rightarrow A=\frac{\bar{c}^{1-\sigma}}{\rho-\left(1-\sigma\right)\left(r-\bar{c}\right)}.
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $B=1/\rho$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+When Consumption is Maximized.
+ 
+\end_layout
+
+\begin_layout Standard
+What if consumption is actually maximized.
+ Since the HJB equation is valid for any path of 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+, optimal consumption will maximize: 
+\begin_inset Formula 
+\[
+V=\max_{c}U\left(c\right)+V_{s}\mu\left(S,c\right)S+\dot{V}
+\]
+
+\end_inset
+
+if 
+\begin_inset Formula $\mu\left(S,c\right)$
+\end_inset
+
+ is a control variable.
+ This is true because the problem does not depend on past decisions—the
+ principle of optimality.
+ Hence, the reference to Richard Bellman.
+\end_layout
+
+\begin_layout Paragraph
+Example II.
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mu\left(s\right)=r\cdot S-c$
+\end_inset
+
+ but let 
+\begin_inset Formula $c$
+\end_inset
+
+ be now maximized.
+ Assume 
+\begin_inset Formula $U$
+\end_inset
+
+ is a power utility: 
+\begin_inset Formula 
+\[
+U\left(C\right)=\frac{C^{1-\sigma}-1}{1-\sigma}.
+\]
+
+\end_inset
+
+Show that 
+\begin_inset Formula 
+\[
+V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma},
+\]
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\frac{\rho-\left(1-\sigma\right)r}{\sigma}\right)^{-\sigma}$
+\end_inset
+
+ and 
+\begin_inset Formula $B=1/\rho$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+The proof is again by ``Guess and Verify
+\begin_inset Quotes erd
+\end_inset
+
+ where I match coefficients: 
+\begin_inset Formula 
+\[
+V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma}.
+\]
+
+\end_inset
+
+Note that under the conjecture: 
+\begin_inset Formula 
+\[
+U'\left(c\right)=V_{s}=AS^{-\sigma}\rightarrow c=\left(AS^{-\sigma}\right)^{-1/\sigma}=A^{-1/\sigma}S.
+\]
+
+\end_inset
+
+This implies that the solution to the previous example is identical, but
+ now must solve a fixed point.
+ Namely, it must be that 
+\begin_inset Formula $\bar{c}=A^{-1/\sigma}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Thus, this implies that 
+\begin_inset Formula $\bar{c}=A/\left(1-\sigma\right)$
+\end_inset
+
+ in the previous example.
+ Thus: 
+\begin_inset Formula 
+\[
+\rho\frac{A}{1-\sigma}=\frac{A^{1-1/\sigma}}{1-\sigma}+rA-A^{1-1/\sigma}
+\]
+
+\end_inset
+
+Simplifying terms by dividing both sides by 
+\begin_inset Formula $A$
+\end_inset
+
+, we obtain: 
+\begin_inset Formula 
+\[
+\frac{\rho}{1-\sigma}=\frac{\sigma}{1-\sigma}A^{-1/\sigma}+r,
+\]
+
+\end_inset
+
+and from here:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+A^{-1/\sigma}=\frac{\rho-\left(1-\sigma\right)r}{\sigma}.
+\]
+
+\end_inset
+
+The proof for 
+\begin_inset Formula $B$
+\end_inset
+
+ is the same as above.
+ 
+\end_layout
+
+\begin_layout Standard
+We can connect this term with the Euler Equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{c}=A^{-1/\sigma}\dot{S}=A^{-1/\sigma}\left(r-\bar{c}\right)S=A^{-1/\sigma}\frac{\sigma r-\rho+\left(1-\sigma\right)r}{\sigma}S=A^{-1/\sigma}\frac{r-\rho}{\sigma}S
+\]
+
+\end_inset
+
+The Euler equation will be derived from first principles later, but here
+ note that: 
+\begin_inset Formula 
+\[
+\frac{\dot{c}}{c}=\frac{r-\rho}{\sigma}S.
+\]
+
+\end_inset
+
+We will encounter this Euler equation in multiple places.
+\end_layout
+
+\begin_layout Subsection
+HJB equation with Poisson Events
+\end_layout
+
+\begin_layout Paragraph
+Two Consecutive Events Cannot Happen.
+ 
+\end_layout
+
+\begin_layout Standard
+A first observation regards the possibility of two subsequent events.
+ Recall that the probability that the first Poisson event is exponential.
+ By independence, we can show:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Pr\left[N_{t+\Delta}\geq1|N_{t}=0\right]=1-\exp\left(-\lambda\Delta\right)
+\]
+
+\end_inset
+
+and likewise, the probability that two events happen is: 
+\begin_inset Formula 
+\[
+\Pr\left[N_{t+\Delta}\geq2|N_{t}=0\right]=\int_{0}^{\Delta}\lambda\exp\left(-\lambda\tau\right)\cdot\left(1-\exp\left(-\lambda\left(\Delta-\tau\right)\right)\right)d\tau.
+\]
+
+\end_inset
+
+Then, consider: 
+\begin_inset Formula 
+\[
+\lim_{\Delta\downarrow0}\frac{\Pr\left[N_{t+\Delta}\geq1\right]}{\Delta}=\lim_{\Delta\downarrow0}\frac{1-\exp\left(-\lambda\Delta\right)}{\Delta}=\lambda.
+\]
+
+\end_inset
+
+But now for 
+\begin_inset Formula $\Pr\left[N_{t+\Delta}\geq2|N_{t}=0\right]$
+\end_inset
+
+, notice that: 
+\begin_inset Formula 
+\[
+\lim_{\Delta\downarrow0}\frac{\Pr\left[N_{t+\Delta}\geq2|N_{t}=0\right]}{\Delta}=\lim_{\Delta\downarrow0}\int_{0}^{\Delta}\lambda\exp\left(-\lambda\tau\right)\cdot\frac{\left(1-\exp\left(-\lambda\left(\Delta-\tau\right)\right)\right)}{\Delta}d\tau=0.
+\]
+
+\end_inset
+
+This can be verified since the term inside cannot blow up.
+\end_layout
+
+\begin_layout Paragraph
+Consecutive Jumps.
+ 
+\end_layout
+
+\begin_layout Standard
+We now move on to Hamilton-Jacobi-Bellman equation, but allowing Jumps.
+ We compute:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V\left(t,X_{t}\right)=\mathbb{E}\left[\int_{0}^{\infty}\exp\left(-\rho s\right)U\left(c_{t+s}\right)ds|X_{t}\right].
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{t+s}$
+\end_inset
+
+ is a Poisson process.
+ What do we mean by this? It's a process that switches value upon the realizatio
+n of a Poisson event.
+ We can think of 
+\begin_inset Formula $|X_{t}$
+\end_inset
+
+ as the conditioning over a state given by the value before the switch.
+ For example, 
+\begin_inset Formula $X_{t}\in\left\{ L,H\right\} $
+\end_inset
+
+ implies that there are only two states.
+ For simplicity, here I assume it takes high and low values, thus, 
+\begin_inset Formula $c=C\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We start with 
+\begin_inset Formula $X_{t}=H,$
+\end_inset
+
+ for simplicity.
+ The expectation refers to the current state.
+ We compute the value as before, regarding a short time interval.
+ We split the integral between two terms:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t,H\right) & = & \mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{0}=H\right]\\
+ & + & \exp\left(-\rho\Delta\right)\mathbb{E}\left[\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=H\right]|,X_{0}=H\right]\\
+ & + & \exp\left(-\rho\Delta\right)\mathbb{E}\left[\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=L\right]|,X_{0}=H\right].
+\end{eqnarray*}
+
+\end_inset
+
+Consider the probability of only one switch, ignoring the probabilities
+ of more than one switch by 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t,H\right) & = & \mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t+s}\right)\right)ds|X_{0}=H\right]\\
+ & + & \exp\left(-\rho\Delta\right)\exp\left(-\lambda\Delta\right)\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t+s}\right)\right)ds|X_{t+\Delta}=H\right]\\
+ & + & \exp\left(-\rho\Delta\right)\left(1-\exp\left(-\lambda\Delta\right)\right)\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=L\right]+O\left(\Delta\right).
+\end{eqnarray*}
+
+\end_inset
+
+Then, exploiting the Markovian structure: 
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t,H\right) & = & \mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t+s}\right)\right)ds|X_{0}=H\right]\\
+ & + & \exp\left(-\left(\rho+\lambda\right)\Delta\right)V\left(t+\Delta,H\right)\\
+ & + & \exp\left(-\rho\Delta\right)\left(1-\exp\left(-\lambda\Delta\right)\right)V\left(t+\Delta,L\right)+O\left(\Delta\right).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We perform the same operation as before, subtracting 
+\begin_inset Formula $V\left(t+\Delta,H\right)$
+\end_inset
+
+ from both sides.
+ We obtain: 
+\begin_inset Formula 
+\begin{eqnarray*}
+V\left(t,H\right)-V\left(t+\Delta,H\right) & = & \mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t+s}\right)\right)ds|X_{0}=H\right]\\
+ & + & \left(\exp\left(-\left(\rho+\lambda\right)\Delta\right)-1\right)V\left(t+\Delta,H\right)+\exp\left(-\rho\Delta\right)\left(1-\exp\left(-\lambda\Delta\right)\right)V\left(t+\Delta,L\right)+O\left(\Delta\right).
+\end{eqnarray*}
+
+\end_inset
+
+Dividing by 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ and taking limits, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{\Delta\downarrow0}\frac{V\left(t,H\right)-V\left(t+\Delta,H\right)}{\Delta} & = & \lim_{\Delta\downarrow0}\frac{\mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{0}=H\right]}{\Delta}\\
+ & + & \lim_{\Delta\downarrow0}\frac{\left(\exp\left(-\left(\rho+\lambda\right)\Delta\right)-1\right)}{\Delta}\lim_{\Delta\downarrow0}V\left(t+\Delta,H\right)\\
+ & + & \lim_{\Delta\downarrow0}\exp\left(-\rho\Delta\right)\lim_{\Delta\downarrow0}\frac{\left(1-\exp\left(-\lambda\Delta\right)\right)}{\Delta}\lim_{\Delta\downarrow0}V\left(t+\Delta,L\right)+\lim_{\Delta\downarrow0}\frac{O\left(\Delta\right)}{\Delta}.
+\end{eqnarray*}
+
+\end_inset
+
+From the same arguments used above, we arrive at: 
+\begin_inset Formula 
+\[
+\rho V\left(t,H\right)=U\left(c\left(H\right)\right)+\lambda\left[V\left(t,L\right)-V\left(t,H\right)\right]+\dot{V},
+\]
+
+\end_inset
+
+and by analogy: 
+\begin_inset Formula 
+\[
+\rho V\left(t,L\right)=U\left(c\left(L\right)\right)+\lambda\left[V\left(t,H\right)-V\left(t,L\right)\right]+\dot{V}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Exercise III.
+ 
+\end_layout
+
+\begin_layout Standard
+What if there is a state variable, show following the same steps that the
+ HJB equation becomes: 
+\begin_inset Formula 
+\[
+\rho V\left(t,S,H\right)=U\left(c\left(X,S\right)\right)+V_{s}\mu_{s}+\lambda\left[V\left(t,S,L\right)-V\left(t,S,H\right)\right]+\dot{V},
+\]
+
+\end_inset
+
+and by analogy: 
+\begin_inset Formula 
+\[
+\rho V\left(t,S,H\right)=U\left(c\left(X,S\right)\right)+V_{s}\mu_{s}+\lambda\left[V\left(t,S,H\right)-V\left(t,S,L\right)\right]+\dot{V}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

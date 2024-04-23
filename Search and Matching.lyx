@@ -313,7 +313,7 @@ over-the-counter
 \begin_layout Standard
 We will cover a couple of topics in this lecture.
  First, I begin with a review of Poisson processes, as a starting point
- to think of Continuous Time events.
+ to think of continuous-time events.
  Then I derive some basic Bellman equations.
  Then we will study two applications: The first is a variation of the seminal
  paper by Duffie Garleanu and Pedersen (2005, ECMA).
@@ -1132,7 +1132,7 @@ where
 \end_layout
 
 \begin_layout Proof
-The proof is by Guess and Verify where I match coefficients: 
+The proof is by ``Guess and Verify'' where we match coefficients: 
 \begin_inset Formula 
 \[
 V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma}.
@@ -1260,7 +1260,11 @@ where
 \end_layout
 
 \begin_layout Proof
-The proof is by Guess and Verify where I match coefficients: 
+The proof is again by ``Guess and Verify
+\begin_inset Quotes erd
+\end_inset
+
+ where I match coefficients: 
 \begin_inset Formula 
 \[
 V(S)=\frac{AS^{1-\sigma}-B}{1-\sigma}.
