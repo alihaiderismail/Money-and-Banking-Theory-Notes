@@ -1051,7 +1051,7 @@ R_{t}^{i}=\max_{\iota}\left[\iota-\frac{\varphi\left(\iota,\omega^{k}\right)}{q_
 subject to: 
 \begin_inset Formula 
 \[
-\iota\theta_{t}+d_{t}\geq\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}.
+\iota\theta_{t}+1\geq\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}.
 \]
 
 \end_inset
