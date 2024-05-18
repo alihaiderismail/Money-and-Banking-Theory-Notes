@@ -419,7 +419,7 @@ It is convenient at this state to specify the budget constraint first in
 \begin_layout Standard
 \begin_inset Formula 
 \[
-q_{t+\Delta}k_{t+\Delta}+\xi_{t+\Delta}m_{t+\Delta}=\underbrace{\Delta\cdot r^{a}k_{t}-\delta q_{t+\Delta}k_{t}+q_{t+\Delta}\left(1-\Delta\delta\right)k_{t}}_{\text{Capital Earnings}}+\underbrace{\xi_{t+\Delta}m_{t}}_{\text{Revaluation of Monney}}-c_{t}.
+q_{t+\Delta}k_{t+\Delta}+\xi_{t+\Delta}m_{t+\Delta}=\underbrace{\Delta\cdot r^{a}k_{t}+q_{t+\Delta}\left(1-\Delta\delta\right)k_{t}}_{\text{Capital Earnings}}+\underbrace{\xi_{t+\Delta}m_{t}}_{\text{Revaluation of Monney}}-\Delta\cdot c_{t}.
 \]
 
 \end_inset
@@ -1051,7 +1051,7 @@ R_{t}^{i}=\max_{\iota}\left[\iota-\frac{\varphi\left(\iota,\omega^{k}\right)}{q_
 subject to: 
 \begin_inset Formula 
 \[
-\iota\theta_{t}+d_{t}\geq\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}.
+\iota\theta_{t}+1\geq\frac{\varphi\left(\iota,\omega^{k}\right)}{q_{t}}.
 \]
 
 \end_inset

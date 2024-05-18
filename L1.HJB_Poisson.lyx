@@ -1545,8 +1545,8 @@ We start with
 \begin_inset Formula 
 \begin{eqnarray*}
 V\left(t,H\right) & = & \mathbb{E}\left[\int_{0}^{\Delta}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{0}=H\right]\\
- & + & \exp\left(-\rho\Delta\right)\mathbb{E}\left[\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=H\right]|,X_{0}=H\right]\\
- & + & \exp\left(-\rho\Delta\right)\mathbb{E}\left[\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=L\right]|,X_{0}=H\right].
+ & + & \exp\left(-\rho\Delta\right)\mathrm{Pr}\left[X_{t+\Delta}=H|X_{0}=H\right]\mathbb{E}\left[\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=H\right]|,X_{0}=H\right]\\
+ & + & \exp\left(-\rho\Delta\right)\mathrm{Pr}\left[X_{t+\Delta}=L|X_{0}=H\right]\mathbb{E}\left[\mathbb{E}\left[\int_{\Delta}^{\infty}\exp\left(-\rho s\right)U\left(c\left(X_{t}\right)\right)ds|X_{t+\Delta}=L\right]|,X_{0}=H\right].
 \end{eqnarray*}
 
 \end_inset
